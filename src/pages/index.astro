@@ -8,7 +8,7 @@ import "../styles/base.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>That Charming BOLE</title>
   </head>
   <body>
     <div
@@ -17,9 +17,21 @@ import "../styles/base.css";
       <h1 class="text-4xl font-bold leading-normal text-[#eee]">
         That Charming BOLE
       </h1>
-      <h2 class="text-lg font-medium leading-tight text-[#ccc]">
-        Coming soon!
-      </h2>
+      <p class="text-lg leading-tight text-[#ccc]">
+        For now, please
+        <a
+          class="hyperlink--decorated"
+          href="https://linktr.ee/YtCharmyngeBole"
+        >
+          visit my linktree</a
+        >.
+      </p>
     </div>
   </body>
 </html>
+
+<style>
+  .hyperlink--decorated {
+    @apply font-medium text-[#999] underline decoration-[#bbb2] decoration-1 underline-offset-2 transition-colors hover:text-[#666];
+  }
+</style>
