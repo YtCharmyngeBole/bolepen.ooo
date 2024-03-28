@@ -7,7 +7,7 @@ export const SITE = {
   description: "Fursonal website for That Charming BOLE",
   ogImage: ogImage.src,
   themeColor: "#48215B",
-  siteUrl: "https://bolepen.ooo",
+  url: "https://bolepen.ooo",
 };
 
 // TODO: Use social objects in website

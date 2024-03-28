@@ -10,9 +10,11 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 
+import { SITE } from "./src/config.ts";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bole.soy",
+  site: SITE.url,
   integrations: [
     tailwind({ applyBaseStyles: false, nesting: true }),
     sitemap(),
