@@ -30,8 +30,9 @@ export default {
       black: "black",
       transparent: "transparent",
       current: "currentColor",
-      primary: {},
-      secondary: {},
+      layout: {
+        bg: "oklch(15% 0.02 313 / <alpha-value>)",
+      },
     },
     extend: {
       fontFamily: {

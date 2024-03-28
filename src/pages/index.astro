@@ -1,34 +1,23 @@
 ---
-import "../styles/base.css";
+import BaseLayout from "../layouts/base/layout.astro";
+
+// TODO: add missing social icons
+// TODO: put up all social links
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>That Charming BOLE</title>
-  </head>
-  <body>
-    <div
-      class="flex min-h-svh flex-col place-content-center items-center bg-[#111]"
-    >
-      <h1 class="text-4xl font-bold leading-normal text-[#eee]">
-        That Charming BOLE
-      </h1>
-      <p class="text-lg leading-tight text-[#ccc]">
-        For now, please
-        <a
-          class="hyperlink--decorated"
-          href="https://linktr.ee/YtCharmyngeBole"
-        >
-          visit my linktree</a
-        >.
-      </p>
-    </div>
-  </body>
-</html>
+<BaseLayout>
+  <div class="flex min-h-svh flex-col place-content-center items-center">
+    <h1 class="text-layout-title text-4xl font-bold leading-normal">
+      That Charming BOLE
+    </h1>
+    <p class="text-lg leading-tight text-[#ccc]">
+      For now, please
+      <a class="hyperlink--decorated" href="https://linktr.ee/YtCharmyngeBole">
+        visit my linktree</a
+      >.
+    </p>
+  </div>
+</BaseLayout>
 
 <style>
   .hyperlink--decorated {
