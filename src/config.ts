@@ -6,7 +6,7 @@ export const SITE = {
   title: "In The Bolepen",
   description: "Fursonal website for That Charming BOLE",
   ogImage: ogImage.src,
-  themeColor: "#48215B",
+  themeColor: "#48215b",
   url: "https://bolepen.ooo",
 };
 
