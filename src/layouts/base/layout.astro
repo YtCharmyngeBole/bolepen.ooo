@@ -86,6 +86,14 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
+    <!-- Google Fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Inconsolata:wdth,wght@90,200..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
     <ViewTransitions />
   </head>
   <body>

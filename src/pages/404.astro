@@ -1,7 +1,19 @@
 ---
-import IndexPage from "./index.astro";
-
-// TODO: Generate dedicated 404 page
+import BaseLayout from "../layouts/base/layout.astro";
 ---
 
-<IndexPage />
+<BaseLayout>
+  <div class="flex min-h-svh flex-col place-content-center items-center p-12">
+    <h1
+      class="text-layout-title leading-1 mb-1 text-center text-2xl font-bold leading-tight"
+    >
+      404 Not Found
+    </h1>
+    <a
+      class="hyperlink text-pretty text-center font-mono font-normal leading-tight"
+      href="/"
+    >
+      Back to main page
+    </a>
+  </div>
+</BaseLayout>

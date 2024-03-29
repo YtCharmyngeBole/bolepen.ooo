@@ -25,20 +25,18 @@ export default {
     "./src/**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,cjsx,tsx,mtsx,ctsx,astro,svelte,vue,html,md,mdx}",
   ],
   theme: {
-    colors: {
-      white: "white",
-      black: "black",
-      transparent: "transparent",
-      current: "currentColor",
-      layout: {
-        bg: "oklch(15% 0.02 313 / <alpha-value>)",
-      },
-    },
     extend: {
+      colors: {
+        layout: {
+          bg: "oklch(15% 0.02 313 / <alpha-value>)",
+          "hyperlink-ground": "oklch(74% 0.194 31 / <alpha-value>)",
+          "hyperlink-excited": "oklch(85.86% 0.0897 31 / <alpha-value>)",
+        },
+      },
       fontFamily: {
-        sans: [...defaultTheme.fontFamily.sans],
-        serif: [...defaultTheme.fontFamily.serif],
-        mono: [...defaultTheme.fontFamily.mono],
+        sans: ["Rubik", ...defaultTheme.fontFamily.sans],
+        serif: ["Alegreya", ...defaultTheme.fontFamily.serif],
+        mono: ["Inconsolata", ...defaultTheme.fontFamily.mono],
       },
       typography: {
         sm: {

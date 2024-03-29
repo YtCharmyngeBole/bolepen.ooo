@@ -3,7 +3,29 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 20px;
+  }
+
   body {
     @apply bg-layout-bg text-white antialiased;
+  }
+}
+
+@layer utilities {
+  .hyperlink {
+    @apply font-medium text-[var(--hyperlink-text)] underline decoration-[var(--hyperlink-decoration)] decoration-2 underline-offset-2 motion-safe:transition-colors motion-safe:duration-500;
+
+    --hyperlink-text: theme("colors.layout.hyperlink-ground");
+    --hyperlink-decoration: color-mix(
+      in oklch,
+      transparent,
+      var(--hyperlink-text) 30%
+    );
+
+    &:hover,
+    &:focus {
+      --hyperlink-text: theme("colors.layout.hyperlink-excited");
+    }
   }
 }

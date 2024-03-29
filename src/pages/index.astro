@@ -8,21 +8,15 @@ import BaseLayout from "../layouts/base/layout.astro";
 <BaseLayout>
   <div class="flex min-h-svh flex-col place-content-center items-center p-12">
     <h1
-      class="text-layout-title leading-1 mb-2 text-center text-4xl font-bold leading-tight"
+      class="text-layout-title leading-1 mb-1 text-center text-2xl font-bold leading-tight"
     >
       That Charming BOLE
     </h1>
-    <p class="text-pretty text-center text-lg leading-tight text-[#ccc]">
+    <p class="text-pretty text-center font-mono leading-tight">
       For now, please
-      <a class="hyperlink--decorated" href="https://linktr.ee/YtCharmyngeBole">
+      <a class="hyperlink" href="https://linktr.ee/YtCharmyngeBole">
         visit my linktree</a
       >.
     </p>
   </div>
 </BaseLayout>
-
-<style>
-  .hyperlink--decorated {
-    @apply font-medium text-[#999] underline decoration-[#bbb2] decoration-1 underline-offset-2 transition-colors hover:text-[#666];
-  }
-</style>
