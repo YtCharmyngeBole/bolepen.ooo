@@ -4,11 +4,11 @@
   "version": "0.0.1",
   "license": "Proprietary",
   "scripts": {
-    "dev": "astro dev --host=0.0.0.0",
+    "preinstall": "npx only-allow pnpm",
     "start": "astro dev --host=0.0.0.0",
+    "dev": "astro dev --host=0.0.0.0",
     "build": "astro check && astro build",
-    "preview": "astro preview --host=0.0.0.0",
-    "astro": "astro"
+    "preview": "astro preview --host=0.0.0.0"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
