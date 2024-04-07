@@ -18,10 +18,8 @@ export type TopNavItem = {
  *
  * @property name - The name of the social media or external link.
  * @property href - The URL or path to navigate to when the social media or external link is clicked.
- * @property active - Show this social object item when this property is true.
  */
 export type SocialObject = {
   name: string;
   href: string;
-  active: boolean;
 };

@@ -1,9 +1,11 @@
 import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
+import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
 import mdx from "@astrojs/mdx";
+import solid from "@astrojs/solid-js";
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -17,9 +19,11 @@ export default defineConfig({
   prefetch: true,
   integrations: [
     tailwind({ applyBaseStyles: false, nesting: true }),
+    icon(),
     sitemap(),
     partytown(),
     mdx(),
+    solid(),
   ],
   markdown: {
     remarkPlugins: [],

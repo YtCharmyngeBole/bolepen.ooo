@@ -26,17 +26,9 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        layout: {
-          bg: "oklch(15% 0.02 313 / <alpha-value>)",
-          "hyperlink-ground": "oklch(74% 0.194 31 / <alpha-value>)",
-          "hyperlink-excited": "oklch(85.86% 0.0897 31 / <alpha-value>)",
-        },
-      },
       fontFamily: {
-        sans: ["Rubik", ...defaultTheme.fontFamily.sans],
-        serif: ["Alegreya", ...defaultTheme.fontFamily.serif],
-        mono: ["Inconsolata", ...defaultTheme.fontFamily.mono],
+        display: ["Rubik", ...defaultTheme.fontFamily.sans],
+        body: ["Inconsolata", ...defaultTheme.fontFamily.mono],
       },
       typography: {
         sm: {
