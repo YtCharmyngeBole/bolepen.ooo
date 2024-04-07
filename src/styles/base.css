@@ -4,9 +4,7 @@
 
 @layer base {
   html {
-    font-family: Inconsolata, ui-monospace, SFMono-Regular, Menlo, Monaco,
-      Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 20px;
+    @apply font-body text-[20px] sm:text-[24px];
 
     --body-bg: oklch(15% 0.02 313);
     --hyperlink-text--ground: white;
