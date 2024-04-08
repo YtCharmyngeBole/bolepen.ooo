@@ -1,7 +1,5 @@
 import _ from "lodash";
 
-const luminances = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95] as const;
-
 /**
  * Round a number to 7 decimal places and remove trailing zeros.
  */
@@ -40,12 +38,17 @@ export function oklch(
 /**
  * Generate an OKLCH palette based on the given chroma and hue.
  */
-export function oklchPalette(c: number, h: number) {
-  return _.fromPairs(
-    _.map(luminances, (l) => [luminanceToValue(l), oklch(l, c, h)]),
-  );
+export function oklchPalette(
+  c: number,
+  h: number,
+  ls: number[] = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95],
+): Record<string, string> {
+  return _.fromPairs(_.map(ls, (l) => [valueFromLuminance(l), oklch(l, c, h)]));
 }
 
-function luminanceToValue(l: (typeof luminances)[number]): string {
-  return ((100 - l) * 10).toString();
+function valueFromLuminance(l: number): string {
+  if (0 <= l && l <= 100) {
+    return ((100 - l) * 10).toString();
+  }
+  throw new Error(`Invalid luminance value: ${l}`);
 }
