@@ -4,9 +4,8 @@
 
 @layer base {
   html {
-    @apply bg-[var(--ambient-bg)] font-body text-[20px] text-white antialiased sm:text-[24px] xl:text-[28px];
+    @apply bg-ambient-bg font-body text-[20px] text-white antialiased sm:text-[24px] xl:text-[28px];
 
-    --ambient-bg: oklch(15% 0.02 313);
     --hyperlink-text--ground: white;
     --hyperlink-text--excited: theme("colors.gray.400");
     --hyperlink-bg--ground: transparent;
@@ -37,7 +36,7 @@
   }
 
   .hyperlink--basic {
-    --hyperlink-text--ground: oklch(70% 0.1914 31);
-    --hyperlink-text--excited: oklch(90% 0.0891 78);
+    --hyperlink-text--ground: theme("colors.orange.300");
+    --hyperlink-text--excited: theme("colors.lemon.100");
   }
 }

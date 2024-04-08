@@ -40,9 +40,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <style>
   .hyperlink--social-link {
-    --hyperlink-text--ground: oklch(70% 0.1914 31);
-    --hyperlink-text--excited: var(--ambient-bg);
+    --hyperlink-text--ground: theme("colors.orange.300");
+    --hyperlink-text--excited: theme("colors.ambient-bg");
     --hyperlink-bg--ground: color-mix(in oklch, transparent, white 5%);
-    --hyperlink-bg--excited: oklch(90% 0.0891 78);
+    --hyperlink-bg--excited: theme("colors.lemon.100");
   }
 </style>

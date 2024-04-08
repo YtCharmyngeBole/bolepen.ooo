@@ -3,16 +3,7 @@ import type { PluginCreator } from "tailwindcss/types/config";
 import defaultTheme from "tailwindcss/defaultTheme";
 import colors from "tailwindcss/colors";
 import tailwindTypography from "@tailwindcss/typography";
-
-const round = (num: number): string =>
-  num
-    .toFixed(7)
-    .replace(/(\.[0-9]+?)0+$/, "$1")
-    .replace(/\.0$/, "");
-const rem = (px: number): string => `${round(px / 16)}rem`;
-const em = (px: number, base: number): string => `${round(px / base)}em`;
-const oklch = (l: number, c: number, h: number): string =>
-  `oklch(${l}% ${c} ${h} / <alpha-value>)`;
+import { oklch, oklchPalette, rem, round } from "./src/lib/tailwind.ts";
 
 /**
  * Custom component in Tailwind
@@ -33,6 +24,9 @@ export default {
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
+      "ambient-bg": oklch(15, 0.02, 313),
+      orange: oklchPalette(0.1914, 31),
+      lemon: oklchPalette(0.0891, 78),
     },
     fontFamily: {
       display: ["Rubik", ...defaultTheme.fontFamily.sans],
