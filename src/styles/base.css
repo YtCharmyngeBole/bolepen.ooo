@@ -4,17 +4,13 @@
 
 @layer base {
   html {
-    @apply font-body text-[20px] sm:text-[24px];
+    @apply bg-[var(--ambient-bg)] font-body text-[20px] text-white antialiased sm:text-[24px] xl:text-[28px];
 
-    --body-bg: oklch(15% 0.02 313);
+    --ambient-bg: oklch(15% 0.02 313);
     --hyperlink-text--ground: white;
     --hyperlink-text--excited: theme("colors.gray.400");
     --hyperlink-bg--ground: transparent;
     --hyperlink-bg--excited: transparent;
-  }
-
-  body {
-    @apply bg-[var(--body-bg)] text-white antialiased;
   }
 }
 

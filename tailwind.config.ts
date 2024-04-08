@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import type { PluginCreator } from "tailwindcss/types/config";
 import defaultTheme from "tailwindcss/defaultTheme";
+import colors from "tailwindcss/colors";
 import tailwindTypography from "@tailwindcss/typography";
 
 const round = (num: number): string =>
@@ -25,11 +26,19 @@ export default {
     "./src/**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,cjsx,tsx,mtsx,ctsx,astro,svelte,vue,html,md,mdx}",
   ],
   theme: {
+    colors: {
+      inherit: colors.inherit,
+      current: colors.current,
+      transparent: colors.transparent,
+      black: colors.black,
+      white: colors.white,
+      gray: colors.gray,
+    },
+    fontFamily: {
+      display: ["Rubik", ...defaultTheme.fontFamily.sans],
+      body: ["Inconsolata", ...defaultTheme.fontFamily.mono],
+    },
     extend: {
-      fontFamily: {
-        display: ["Rubik", ...defaultTheme.fontFamily.sans],
-        body: ["Inconsolata", ...defaultTheme.fontFamily.mono],
-      },
       typography: {
         sm: {
           css: {

@@ -8,7 +8,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
   <div class="flex min-h-svh flex-col place-content-center items-center p-12">
     <h1
-      class="text-layout-title leading-1 mb-4 text-center font-display text-2xl font-bold leading-tight"
+      class="text-layout-title leading-1 mb-4 text-center font-display text-2xl font-bold leading-tight text-gray-50"
     >
       That Charming BOLE
     </h1>
@@ -28,7 +28,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         ))
       }
     </ul>
-    <p class="mt-5 text-pretty text-center text-sm leading-tight">
+    <p class="mt-5 text-pretty text-center text-sm leading-tight text-gray-300">
       All these links also available on
       <a
         class="hyperlink hyperlink--underline hyperlink--basic font-bold"
@@ -41,7 +41,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <style>
   .hyperlink--social-link {
     --hyperlink-text--ground: oklch(70% 0.1914 31);
-    --hyperlink-text--excited: var(--body-bg);
+    --hyperlink-text--excited: var(--ambient-bg);
     --hyperlink-bg--ground: color-mix(in oklch, transparent, white 5%);
     --hyperlink-bg--excited: oklch(90% 0.0891 78);
   }
