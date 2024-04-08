@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply bg-ambient-bg font-body text-[20px] text-white antialiased sm:text-[24px] xl:text-[28px];
+    @apply bg-ambient-bg font-body text-[20px] text-white antialiased sm:text-[24px];
 
     --hyperlink-text--ground: white;
     --hyperlink-text--excited: theme("colors.gray.400");
