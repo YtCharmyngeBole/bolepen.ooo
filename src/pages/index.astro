@@ -1,40 +1,63 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
 import { SOCIALS, SITE } from "../config.ts";
+import resolvedConfig from "../helpers/tailwind.ts";
+import imgProfilePic from "../images/profilepic.png";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const { screens } = resolvedConfig.theme;
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
-  <div class="flex min-h-svh flex-col place-content-center items-center p-12">
-    <h1
-      class="text-layout-title leading-1 mb-4 text-center font-display text-2xl font-bold leading-tight text-gray-50"
-    >
-      That Charming BOLE
-    </h1>
-    <ul class="grid grid-cols-4 gap-3">
-      {
-        SOCIALS.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              title={`Me on ${item.name}`}
-              rel="noopener"
-              class="hyperlink hyperlink--social-link flex items-center justify-center rounded-lg p-1 shadow-md"
-            >
-              <Icon name={`social/${item.name}`} class="size-7" />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-    <p class="mt-5 text-pretty text-center text-sm leading-tight text-gray-300">
-      All these links also available on
-      <a
-        class="hyperlink hyperlink--underline hyperlink--basic font-bold"
-        href="https://linktr.ee/YtCharmyngeBole">my linktree</a
+  <div
+    class="max-tablet:py-4 flex min-h-svh flex-col items-center justify-center py-8"
+  >
+    <Image
+      src={imgProfilePic}
+      alt="Drawing of Bole's head"
+      widths={[256, 384, 512]}
+      sizes={`(max-width: ${screens.phone}) 256px, (max-width: ${screens.tablet}) 384px, 512px`}
+      class="max-phone:w-[256px] max-tablet:w-[384px] w-[512px] p-4"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="flex flex-col items-center justify-center px-12">
+      <h1
+        class="text-layout-title leading-1 max-tablet:mt-2 my-4 text-center font-display text-2xl font-bold leading-tight text-gray-50"
       >
-    </p>
+        That Charming BOLE
+      </h1>
+      <ul class="max-phone:gap-2 grid grid-cols-4 gap-3">
+        {
+          SOCIALS.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                title={`Me on ${item.name}`}
+                rel="noopener"
+                class="group rounded-lg"
+              >
+                <Icon
+                  name={`social/${item.name}`}
+                  class="hyperlink hyperlink--social-link size-9 rounded-lg shadow-md"
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p
+        class="mt-5 text-pretty text-center text-sm leading-tight text-gray-400"
+      >
+        Links also available on
+        <a
+          class="hyperlink hyperlink--underline hyperlink--basic font-bold"
+          href="https://linktr.ee/YtCharmyngeBole">my linktree</a
+        >
+      </p>
+    </div>
   </div>
 </BaseLayout>
 

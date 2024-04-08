@@ -3,7 +3,7 @@ import type { PluginCreator } from "tailwindcss/types/config";
 import defaultTheme from "tailwindcss/defaultTheme";
 import colors from "tailwindcss/colors";
 import tailwindTypography from "@tailwindcss/typography";
-import { oklch, oklchPalette, rem, round } from "./src/lib/tailwind.ts";
+import { oklch, oklchPalette, rem, round } from "./src/lib/styling.ts";
 
 /**
  * Custom component in Tailwind
@@ -31,6 +31,12 @@ export default {
     fontFamily: {
       display: ["Rubik", ...defaultTheme.fontFamily.sans],
       body: ["Inconsolata", ...defaultTheme.fontFamily.mono],
+    },
+    screens: {
+      phone: "480px",
+      tablet: "640px",
+      laptop: "1024px",
+      desktop: "1280px",
     },
     extend: {
       typography: {
