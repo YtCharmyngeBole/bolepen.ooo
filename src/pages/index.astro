@@ -7,7 +7,10 @@ import resolvedConfig from "../helpers/tailwind.ts";
 import imgProfilePic from "../images/profilepic.png";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const { screens } = resolvedConfig.theme;
+const {
+  // @ts-ignore[2339] TypeScript inference is not working for custom screen breakpoints
+  screens: { phone, tablet },
+} = resolvedConfig.theme;
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
@@ -18,7 +21,7 @@ const { screens } = resolvedConfig.theme;
       src={imgProfilePic}
       alt="Drawing of Bole's head"
       widths={[256, 384, 512]}
-      sizes={`(max-width: ${screens.phone}) 256px, (max-width: ${screens.tablet}) 384px, 512px`}
+      sizes={`(max-width: ${phone}) 256px, (max-width: ${tablet}) 384px, 512px`}
       class="max-phone:w-[256px] max-tablet:w-[384px] w-[512px] p-4"
       loading="eager"
       fetchpriority="high"
