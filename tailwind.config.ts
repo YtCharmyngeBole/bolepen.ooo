@@ -27,6 +27,7 @@ export default {
       "ambient-bg": oklch(15, 0.02, 313),
       orange: oklchPalette(0.1914, 31),
       lemon: oklchPalette(0.0891, 78),
+      fadecream: oklchPalette(0.03, 54),
     },
     fontFamily: {
       display: ["Rubik", ...defaultTheme.fontFamily.sans],
