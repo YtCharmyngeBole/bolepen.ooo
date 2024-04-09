@@ -30,7 +30,7 @@ export default {
       fadecream: oklchPalette(0.03, 54),
     },
     fontFamily: {
-      display: ["Rubik", ...defaultTheme.fontFamily.sans],
+      display: ["Barlow", ...defaultTheme.fontFamily.sans],
       body: ["Inconsolata", ...defaultTheme.fontFamily.mono],
     },
     screens: {

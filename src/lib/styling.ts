@@ -3,9 +3,9 @@ import _ from "lodash";
 /**
  * Round a number to 7 decimal places and remove trailing zeros.
  */
-export function round(num: number): string {
+export function round(num: number, fractionDigits: number = 7): string {
   return num
-    .toFixed(7)
+    .toFixed(fractionDigits)
     .replace(/(\.[0-9]+?)0+$/, "$1")
     .replace(/\.0$/, "");
 }
@@ -48,7 +48,7 @@ export function oklchPalette(
 
 function valueFromLuminance(l: number): string {
   if (0 <= l && l <= 100) {
-    return ((100 - l) * 10).toString();
+    return ((100 - l) * 10).toFixed();
   }
   throw new Error(`Invalid luminance value: ${l}`);
 }
