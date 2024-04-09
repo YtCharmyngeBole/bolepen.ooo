@@ -1,0 +1,9 @@
+---
+import { SITE, SOCIALS } from "../config.ts";
+
+const endYear = new Date().getFullYear();
+const formattedPeriod =
+  SITE.startYear == endYear ? `${endYear}` : `${SITE.startYear} – ${endYear}`;
+---
+
+&copy; {`${formattedPeriod} ${SITE.author}`}

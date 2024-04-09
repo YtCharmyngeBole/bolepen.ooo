@@ -4,11 +4,12 @@ import ogImage from "./images/pauline-loroy-U3aF7hgUSrk-unsplash.jpg";
 export const SITE = {
   author: "That Charming BOLE",
   title: "In The Bolepen",
-  description: "Fursonal website for That Charming BOLE",
-  ogImage: ogImage.src,
-  themeColor: "#48215b",
+  description: "A fursonal website for That Charming BOLE",
   url: "https://bolepen.ooo",
-};
+  themeColor: "#48215b",
+  ogImage: ogImage.src,
+  startYear: 2024,
+} as const;
 
 export const SOCIALS: SocialObject[] = [
   {

@@ -6,6 +6,7 @@ import resolvedConfig from "../helpers/tailwind.ts";
 import imgProfilePic from "../images/profilepic.png";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SocialLinks from "../layouts/SocialLinks.astro";
+import Copyright from "../layouts/Copyright.astro";
 
 const {
   // @ts-ignore[2339] TypeScript inference is not working for custom screen breakpoints
@@ -34,13 +35,15 @@ const {
       </h1>
       <SocialLinks />
       <p
-        class="mt-5 text-pretty text-center text-sm leading-tight text-gray-400"
+        class="mt-5 text-pretty text-center text-xs font-medium leading-tight text-gray-500"
       >
         Links also available on
         <a
           class="hyperlink hyperlink--underline hyperlink--basic font-bold"
           href="https://linktr.ee/YtCharmyngeBole">my linktree</a
         >
+        <br />
+        <Copyright />
       </p>
     </div>
   </div>
