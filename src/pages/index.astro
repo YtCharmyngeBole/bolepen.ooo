@@ -6,13 +6,16 @@ import { SITE } from "../config.ts";
 import resolvedConfig from "../helpers/tailwind.ts";
 import imgProfilePic from "../images/profilepic.png";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Footnote from "../layouts/Footnote.astro";
 import SocialLinks from "../layouts/SocialLinks.astro";
-import Copyright from "../layouts/Copyright.astro";
 
 const {
   // @ts-ignore[2339] TypeScript inference is not working for custom screen breakpoints
   screens: { phone, tablet },
 } = resolvedConfig.theme;
+
+// NOTE: Decided not to refactor usages of twemoji icons into new component
+//       (need emoji unicode database & twemoji database updated regularly)
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
@@ -38,24 +41,30 @@ const {
         <p>
           <Icon
             name="twemoji/dog-face"
-            title="Dog face"
-            class="inline-block align-[-0.15em] text-[0.9em]"
+            title="Dog face emoji"
+            role="presentation"
+            class="mx-px inline-block align-[-0.15em] text-[0.9em]"
           />
-          A rodent pup born in <span aria-label="1990s">199×</span>
+          A rodent pup born in <span
+            role="presentation"
+            aria-label="A rodent pup born in 1990s">199×</span
+          >
         </p>
         <p>
           <Icon
             name="twemoji/flag-thailand"
-            title="Flag of Thailand"
-            class="inline-block align-[-0.15em] text-[0.9em]"
+            title="Flag of Thailand emoji"
+            role="presentation"
+            class="mx-px inline-block align-[-0.15em] text-[0.9em]"
           />
           Born and based in Thailand
         </p>
         <p>
           <Icon
             name="twemoji/rainbow-flag"
-            title="Rainbow flag"
-            class="inline-block align-[-0.15em] text-[0.9em]"
+            title="Rainbow flag emoji"
+            role="presentation"
+            class="mx-px inline-block align-[-0.15em] text-[0.9em]"
           />
           Typical gay furry
         </p>
@@ -70,8 +79,8 @@ const {
           href="https://linktr.ee/YtCharmyngeBole">my linktree</a
         >
         <br />
-        <Copyright />
       </p>
+      <Footnote />
     </div>
   </div>
 </BaseLayout>

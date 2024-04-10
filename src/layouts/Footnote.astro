@@ -1,0 +1,13 @@
+---
+import { SITE } from "../config.ts";
+
+const endYear = new Date().getFullYear();
+const formattedPeriod =
+  SITE.startYear == endYear ? `${endYear}` : `${SITE.startYear} – ${endYear}`;
+---
+
+<footer
+  class="text-pretty text-center text-xs font-medium leading-tight text-gray-400"
+>
+  &copy;&nbsp;{`${formattedPeriod} ${SITE.author}`}
+</footer>
