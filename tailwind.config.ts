@@ -36,7 +36,7 @@ export default {
     screens: {
       phone: "480px",
       tablet: "640px",
-      laptop: "1024px",
+      laptop: "960px",
       desktop: "1280px",
     },
     extend: {
