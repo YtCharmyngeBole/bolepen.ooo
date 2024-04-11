@@ -96,7 +96,9 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
       document
         .querySelectorAll('link[rel="preload"][as="style"]')
         .forEach((link) => {
-          link.setAttribute("rel", "stylesheet");
+          link.addEventListener("load", () => {
+            link.setAttribute("rel", "stylesheet");
+          });
         });
     </script>
 
