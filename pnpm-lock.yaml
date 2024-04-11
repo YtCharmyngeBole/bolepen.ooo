@@ -26,6 +26,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.5.15)(tailwindcss@3.4.3)
+  '@kindspells/astro-shield':
+    specifier: ^1.3.4
+    version: 1.3.4(astro@4.5.15)
   '@kobalte/core':
     specifier: ^0.12.6
     version: 0.12.6(solid-js@1.8.16)
@@ -1262,6 +1265,15 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: false
+
+  /@kindspells/astro-shield@1.3.4(astro@4.5.15):
+    resolution: {integrity: sha512-8yAVCNC0fR8L66Vjxq+AUJFBTSBbYjIQ7zte/LvZe8PZ4wL8rAtreZFpao4+BAnUWOiv+zAUW2i5cVfC0CaTiA==}
+    engines: {node: '>= 18.0.0'}
+    peerDependencies:
+      astro: ^4.0.0
+    dependencies:
+      astro: 4.5.15(typescript@5.4.3)
     dev: false
 
   /@kobalte/core@0.12.6(solid-js@1.8.16):

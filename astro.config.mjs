@@ -1,3 +1,4 @@
+import { resolve } from "node:path";
 import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
@@ -6,12 +7,17 @@ import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
 import mdx from "@astrojs/mdx";
 import solid from "@astrojs/solid-js";
+import { shield } from "@kindspells/astro-shield";
+
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 
 import { SITE } from "./src/config.ts";
+
+const rootDir = new URL(".", import.meta.url).pathname;
+const modulePath = resolve(rootDir, "src", "generated", "sriHashes.mjs");
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,6 +30,22 @@ export default defineConfig({
     partytown(),
     mdx(),
     solid(),
+    shield({
+      sri: {
+        enableMiddleware: true,
+        hashesModule: modulePath,
+      },
+      securityHeaders: {
+        contentSecurityPolicy: {
+          cspDirectives: {
+            "default-src": "'self'",
+            "script-src": "'self' 'unsafe-inline'",
+            "style-src": "'self' https://fonts.googleapis.com 'unsafe-inline'",
+            "font-src": "'self' https://fonts.gstatic.com 'unsafe-inline'",
+          },
+        },
+      },
+    }),
   ],
   markdown: {
     remarkPlugins: [],
