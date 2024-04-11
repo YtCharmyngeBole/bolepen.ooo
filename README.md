@@ -5,18 +5,18 @@ A fursonal website built with [Astro](https://astro.build) located at https://bo
 
 ## TODOs
 
-- [ ] On main page: put text side-by-side with profile picture if viewport is wide enough
 - [ ] Add biography page; include facts about:
   - [ ] Origin of name
   - [ ] Name pronunciation guide
   - [ ] Attended conventions
   - [ ] Kemono Baseball Team No. TH 90
   - [ ] Character sheet
-- [ ] Replace `ogImage` with a more relevant image and with correct aspect ratio
 - [ ] Adorn the website background with animated patterns
 - [ ] Consider adding commissioned art page
 - [x] ~~Add footer with copyright declaration~~
 - [x] ~~Try new fonts~~
+- [x] ~~On main page: put text side-by-side with profile picture if viewport is wide enough~~
+- [x] ~~Replace `ogImage` with a more relevant image and with correct aspect ratio~~
 
 ## License
 
