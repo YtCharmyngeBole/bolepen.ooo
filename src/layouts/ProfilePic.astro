@@ -1,13 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-import resolvedConfig from "../helpers/tailwind.ts";
 import imgProfilePic from "../images/profilepic.png";
-
-const {
-  // @ts-ignore[2339] TypeScript inference is not working for custom screen breakpoints
-  screens: { phone, tablet },
-} = resolvedConfig.theme;
 ---
 
 <Image
