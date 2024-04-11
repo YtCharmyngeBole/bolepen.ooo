@@ -30,22 +30,7 @@ export default defineConfig({
     partytown(),
     mdx(),
     solid(),
-    shield({
-      sri: {
-        enableMiddleware: true,
-        hashesModule: modulePath,
-      },
-      securityHeaders: {
-        contentSecurityPolicy: {
-          cspDirectives: {
-            "default-src": "'self'",
-            "script-src": "'self' 'unsafe-inline'",
-            "style-src": "'self' https://fonts.googleapis.com 'unsafe-inline'",
-            "font-src": "'self' https://fonts.gstatic.com 'unsafe-inline'",
-          },
-        },
-      },
-    }),
+    shield({ sri: { hashesModule: modulePath } }),
   ],
   markdown: {
     remarkPlugins: [],
