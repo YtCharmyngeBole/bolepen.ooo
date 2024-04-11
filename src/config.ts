@@ -8,7 +8,7 @@ export const SITE = {
   url: "https://bolepen.ooo",
   themeColor: "#48215b",
   ogImage: ogImage.src,
-  startYear: 2024,
+  startYear: 2023,
 } as const;
 
 export const SOCIALS: SocialObject[] = [

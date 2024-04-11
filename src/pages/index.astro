@@ -1,82 +1,37 @@
 ---
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 import { SITE } from "../config.ts";
-import resolvedConfig from "../helpers/tailwind.ts";
-import imgProfilePic from "../images/profilepic.png";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Footnote from "../layouts/Footnote.astro";
+import ProfilePic from "../layouts/ProfilePic.astro";
+import ShortBio from "../layouts/ShortBio.astro";
 import SocialLinks from "../layouts/SocialLinks.astro";
-
-const {
-  // @ts-ignore[2339] TypeScript inference is not working for custom screen breakpoints
-  screens: { phone, tablet },
-} = resolvedConfig.theme;
 
 // NOTE: Decided not to refactor usages of twemoji icons into new component
 //       (need emoji unicode database & twemoji database updated regularly)
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
-  <div
-    class="flex min-h-svh flex-col items-center justify-center py-8 max-tablet:py-4"
-  >
-    <Image
-      src={imgProfilePic}
-      alt="Drawing of Bole's head"
-      widths={[256, 384, 512]}
-      sizes={`(max-width: ${phone}) 256px, (max-width: ${tablet}) 384px, 512px`}
-      class="w-[512px] px-4 max-tablet:w-[384px] max-phone:w-[256px]"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="mx-12 flex flex-col items-center justify-center">
-      <h1
-        class="text-layout-title leading-1 mt-4 text-center font-display text-2xl font-bold leading-tight text-fadecream-100 max-tablet:mt-2"
-      >
-        That Charming BOLE
-      </h1>
-      <div class="mb-4 mt-2 text-center text-sm/tight text-gray-100">
-        <p>
-          <Icon
-            name="twemoji/dog-face"
-            title="Dog face emoji"
-            class="mx-[0.15em] inline-block align-[-0.15em] text-[0.875em]"
-          />
-          <span aria-label="A rodent pup born in 1990s"
-            >A rodent pup born in 199×</span
-          >
-        </p>
-        <p>
-          <Icon
-            name="twemoji/flag-thailand"
-            title="Flag of Thailand emoji"
-            class="mx-[0.15em] inline-block align-[-0.15em] text-[0.875em]"
-          />
-          Born and based in Thailand
-        </p>
-        <p>
-          <Icon
-            name="twemoji/rainbow-flag"
-            title="Rainbow flag emoji"
-            class="mx-[0.15em] inline-block align-[-0.15em] text-[0.875em]"
-          />
-          Typical gay furry
-        </p>
+  <div class="flex min-h-svh flex-col">
+    <div
+      class="flex grow items-center justify-center gap-8 max-laptop:flex-col max-laptop:gap-4 max-tablet:py-4 laptop:mt-8"
+    >
+      <div class="max-laptop:px-8">
+        <ProfilePic />
       </div>
-      <SocialLinks />
-      <p
-        class="mt-5 text-pretty text-center text-xs font-medium leading-tight text-gray-400"
+      <div
+        class="flex flex-col items-start justify-center max-laptop:items-center"
       >
-        Links also available on
-        <a
-          class="hyperlink hyperlink--underline hyperlink--basic font-bold"
-          href="https://linktr.ee/YtCharmyngeBole">my linktree</a
+        <h1
+          class="text-layout-title leading-1 font-display text-2xl font-bold leading-tight text-fadecream-100 max-laptop:text-center"
         >
-        <br />
-      </p>
-      <Footnote />
+          That Charming BOLE
+        </h1>
+        <ShortBio />
+        <SocialLinks />
+      </div>
     </div>
+    <Footnote />
   </div>
 </BaseLayout>
