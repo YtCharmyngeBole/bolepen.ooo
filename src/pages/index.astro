@@ -4,9 +4,10 @@ import { Image } from "astro:assets";
 import { SITE } from "../config.ts";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Footnote from "../layouts/Footnote.astro";
-import SocialLinks from "../layouts/SocialLinks.astro";
 
 import imgProfilePic from "../images/profilepic.png";
+import { SOCIALS_SHORT } from "../config";
+import { Icon } from "astro-icon/components";
 
 // NOTE: Decided not to refactor usages of twemoji icons into new component
 //       (need emoji unicode database & twemoji database updated regularly)
@@ -20,17 +21,45 @@ import imgProfilePic from "../images/profilepic.png";
       <div
         class="mt-16 flex items-center justify-center gap-8 max-laptop:max-w-screen-phone max-laptop:flex-col max-laptop:gap-4"
       >
-        <Image
-          src={imgProfilePic}
-          alt="Drawing of Bole's head"
-          width="256"
-          densities={[1, 1.5, 2, 2.5, 3, 4]}
-          class="w-[320px] max-laptop:mx-8 max-laptop:w-[256px]"
-          loading="eager"
-          fetchpriority="high"
-        />
         <div
-          class="flex max-w-sm grow flex-col items-start justify-center px-4 max-laptop:items-center max-laptop:text-center"
+          class="flex max-w-[320px] flex-col items-center gap-2 max-laptop:mx-8"
+        >
+          <Image
+            src={imgProfilePic}
+            alt="Drawing of Bole's head"
+            width="256"
+            densities={[1, 1.5, 2, 2.5, 3, 4]}
+            loading="eager"
+            fetchpriority="high"
+          />
+          <p
+            class="text-balance text-center text-sm font-medium leading-tight text-gray-400"
+          >
+            Despite my own belief that I am not terminally online, I'm terribly
+            omni-present on the web:
+          </p>
+          <ul class="flex w-fit gap-2.5 max-phone:gap-2 phone:grid-cols-4">
+            {
+              SOCIALS_SHORT.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    title={`Me on ${item.name}`}
+                    rel="noopener"
+                    class="group rounded-lg"
+                  >
+                    <Icon
+                      name={`social/${item.icon}`}
+                      class="hyperlink hyperlink--social-link size-7 rounded-lg shadow-md"
+                    />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div
+          class="flex max-w-sm grow flex-col items-start justify-center max-laptop:items-center max-laptop:text-center"
         >
           <h1
             class="text-layout-title leading-1 font-display text-3xl font-bold leading-tight text-fadecream-100 max-laptop:text-center"
@@ -41,7 +70,7 @@ import imgProfilePic from "../images/profilepic.png";
             That Charming BOLE
           </h1>
           <h2
-            class="leading-extra-tight mt-2 text-balance text-xl text-gray-100"
+            class="mt-2 text-balance text-xl leading-extra-tight text-gray-100"
           >
             Hey there, that's my name, and welcome to my bolepen!
           </h2>
@@ -61,7 +90,6 @@ import imgProfilePic from "../images/profilepic.png";
           </p>
         </div>
       </div>
-      <SocialLinks />
       <!-- TODO: Insert more content here -->
     </div>
     <Footnote />
@@ -69,6 +97,13 @@ import imgProfilePic from "../images/profilepic.png";
 </BaseLayout>
 
 <style>
+  .hyperlink--social-link {
+    --hyperlink-text--ground: theme("colors.orange.200");
+    --hyperlink-text--excited: theme("colors.ambient-bg");
+    --hyperlink-bg--ground: color-mix(in oklch, transparent, white 5%);
+    --hyperlink-bg--excited: theme("colors.lemon.100");
+  }
+
   .short-bio {
     @apply mt-4 text-pretty leading-tight text-gray-300;
   }

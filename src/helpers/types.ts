@@ -17,9 +17,11 @@ export type TopNavItem = {
  * Represents a social media or external link object.
  *
  * @property name - The name of the social media or external link.
+ * @property icon - The name of the icon to use from the Social Icons set.
  * @property href - The URL or path to navigate to when the social media or external link is clicked.
  */
 export type SocialObject = {
   name: string;
+  icon: string;
   href: string;
 };
