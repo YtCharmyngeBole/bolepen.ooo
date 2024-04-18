@@ -13,27 +13,27 @@ export const SITE = {
 
 export const SOCIALS_SHORT: SocialObject[] = [
   {
-    name: "Facebook",
+    name: "Me on Facebook",
     icon: "facebook",
     href: "https://facebook.com/YtCharmyngeBole",
   },
   {
-    name: "Instagram",
+    name: "Me on Instagram",
     icon: "instagram",
     href: "https://instagram.com/YtCharmyngeBole",
   },
   {
-    name: "Bluesky",
+    name: "Me on Bluesky",
     icon: "bluesky",
     href: "https://bsky.app/profile/me.bolepen.ooo",
   },
   {
-    name: "Twitter",
+    name: "Me on Twitter",
     icon: "twitter",
     href: "https://twitter.com/YtCharmyngeBole",
   },
   {
-    name: "All Links",
+    name: "See all links",
     icon: "ellipsis",
     href: "/links",
   },
@@ -41,42 +41,42 @@ export const SOCIALS_SHORT: SocialObject[] = [
 
 export const SOCIALS_FULL: SocialObject[] = [
   {
-    name: "Facebook",
+    name: "Me on Facebook",
     icon: "facebook",
     href: "https://facebook.com/YtCharmyngeBole",
   },
   {
-    name: "Instagram",
+    name: "Me on Instagram",
     icon: "instagram",
     href: "https://instagram.com/YtCharmyngeBole",
   },
   {
-    name: "Mastodon",
+    name: "Me on Mastodon",
     icon: "mastodon",
     href: "https://furry.engineer/@YtCharmyngeBole",
   },
   {
-    name: "Discord",
+    name: "Me on Discord",
     icon: "discord",
     href: "https://discordapp.com/users/1218406319124512821",
   },
   {
-    name: "Bluesky",
+    name: "Me on Bluesky",
     icon: "bluesky",
     href: "https://bsky.app/profile/me.bolepen.ooo",
   },
   {
-    name: "Twitter",
+    name: "Me on Twitter",
     icon: "twitter",
     href: "https://twitter.com/YtCharmyngeBole",
   },
   {
-    name: "Plurk",
+    name: "Me on Plurk",
     icon: "plurk",
     href: "https://www.plurk.com/YtCharmyngeBole",
   },
   {
-    name: "GitHub",
+    name: "Me on GitHub",
     icon: "github",
     href: "https://github.com/YtCharmyngeBole",
   },

@@ -11,6 +11,10 @@
     --hyperlink-bg--ground: transparent;
     --hyperlink-bg--excited: transparent;
   }
+
+  body {
+    @apply flex min-h-svh flex-col items-stretch;
+  }
 }
 
 @layer utilities {

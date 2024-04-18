@@ -1,23 +1,23 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
-import { SITE } from "../config.ts";
+import { SITE, SOCIALS_SHORT } from "../config.ts";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Body from "../layouts/Body.astro";
 import Footnote from "../layouts/Footnote.astro";
 
 import imgProfilePic from "../images/profilepic.png";
-import { SOCIALS_SHORT } from "../config";
-import { Icon } from "astro-icon/components";
 
 // NOTE: Decided not to refactor usages of twemoji icons into new component
 //       (need emoji unicode database & twemoji database updated regularly)
+
+// TODO: add header (apart from the main page)
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
-  <div class="flex min-h-svh flex-col">
-    <div
-      class="flex grow flex-col items-center justify-center gap-12 max-laptop:gap-8"
-    >
+  <Body>
+    <div class="gap-12 max-laptop:gap-8">
       <div
         class="mt-16 flex items-center justify-center gap-8 max-laptop:max-w-screen-phone max-laptop:flex-col max-laptop:gap-4"
       >
@@ -44,7 +44,7 @@ import { Icon } from "astro-icon/components";
                 <li>
                   <a
                     href={item.href}
-                    title={`Me on ${item.name}`}
+                    title={item.name}
                     rel="noopener"
                     class="group rounded-lg"
                   >
@@ -92,8 +92,8 @@ import { Icon } from "astro-icon/components";
       </div>
       <!-- TODO: Insert more content here -->
     </div>
-    <Footnote />
-  </div>
+  </Body>
+  <Footnote />
 </BaseLayout>
 
 <style>
