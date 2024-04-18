@@ -8,15 +8,13 @@ import { SOCIALS } from "../config.ts";
 ---
 
 <div
-  class="flex flex-col items-start justify-center text-pretty text-xs font-medium leading-tight text-gray-400 max-laptop:items-center max-laptop:text-center"
+  class="flex flex-col items-center justify-center text-pretty text-center text-sm font-medium leading-tight text-gray-400"
 >
-  <p class="mb-2 max-laptop:mb-3">
-    Despite my belief that I am not terminally online, <br />
-    I am considerably omni-present on the web:
+  <p class="mb-2 max-w-[55ch] max-laptop:mb-3">
+    Despite my own belief that I am not terminally online, I'm terribly
+    omni-present on the web:
   </p>
-  <ul
-    class="grid w-fit grid-cols-8 gap-1.5 max-laptop:grid-cols-4 max-phone:gap-2"
-  >
+  <ul class="flex w-fit gap-2.5 max-phone:gap-2">
     {
       SOCIALS.map((item) => (
         <li>
@@ -28,21 +26,13 @@ import { SOCIALS } from "../config.ts";
           >
             <Icon
               name={`social/${item.name}`}
-              class="hyperlink hyperlink--social-link size-7 rounded-lg shadow-md"
+              class="hyperlink hyperlink--social-link size-8 rounded-lg shadow-md"
             />
           </a>
         </li>
       ))
     }
   </ul>
-  <p class="mt-2 max-laptop:mt-3">
-    Links also available on
-    <a
-      class="hyperlink hyperlink--underline hyperlink--basic font-bold"
-      href="https://linktr.ee/YtCharmyngeBole">my linktree</a
-    >
-    <br />
-  </p>
 </div>
 
 <style>

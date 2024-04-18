@@ -1,10 +1,12 @@
 ---
+import { Image } from "astro:assets";
+
 import { SITE } from "../config.ts";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Footnote from "../layouts/Footnote.astro";
-import ProfilePic from "../layouts/ProfilePic.astro";
-import ShortBio from "../layouts/ShortBio.astro";
 import SocialLinks from "../layouts/SocialLinks.astro";
+
+import imgProfilePic from "../images/profilepic.png";
 
 // NOTE: Decided not to refactor usages of twemoji icons into new component
 //       (need emoji unicode database & twemoji database updated regularly)
@@ -12,27 +14,62 @@ import SocialLinks from "../layouts/SocialLinks.astro";
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
   <div class="flex min-h-svh flex-col">
-    <div class="flex grow flex-col items-center justify-center">
+    <div
+      class="flex grow flex-col items-center justify-center gap-12 max-laptop:gap-8"
+    >
       <div
-        class="mb-8 mt-16 flex items-center justify-center gap-8 max-laptop:flex-col max-laptop:gap-4"
+        class="mt-16 flex items-center justify-center gap-8 max-laptop:max-w-screen-phone max-laptop:flex-col max-laptop:gap-4"
       >
-        <div class="max-laptop:px-8">
-          <ProfilePic />
-        </div>
+        <Image
+          src={imgProfilePic}
+          alt="Drawing of Bole's head"
+          width="256"
+          densities={[1, 1.5, 2, 2.5, 3, 4]}
+          class="w-[320px] max-laptop:mx-8 max-laptop:w-[256px]"
+          loading="eager"
+          fetchpriority="high"
+        />
         <div
-          class="flex flex-col items-start justify-center max-laptop:items-center"
+          class="flex max-w-sm grow flex-col items-start justify-center px-4 max-laptop:items-center max-laptop:text-center"
         >
           <h1
-            class="text-layout-title leading-1 font-display text-2xl font-bold leading-tight text-fadecream-100 max-laptop:text-center"
+            class="text-layout-title leading-1 font-display text-3xl font-bold leading-tight text-fadecream-100 max-laptop:text-center"
           >
+            <span class="ml-[-0.125ch]">
+              <!-- Slightly hanging the first letter to make the left alignment more balanced -->
+            </span>
             That Charming BOLE
           </h1>
-          <ShortBio />
-          <SocialLinks />
+          <h2
+            class="leading-extra-tight mt-2 text-balance text-xl text-gray-100"
+          >
+            Hey there, that's my name, and welcome to my bolepen!
+          </h2>
+          <p class="short-bio">
+            I am a domestic dog born way back in <span aria-label="1990s"
+              >199×</span
+            >, yet I still pretend that I haven't left puppyhood behind.
+          </p>
+          <p class="short-bio">
+            I'm chubby and fluffy most of the year, but I occasionally
+            transformed into different versions of myself with the magic of
+            commissioned artworks.
+          </p>
+          <p class="short-bio">
+            Feel free to reach out and say hi! I'm always excited to meet new
+            friends.
+          </p>
         </div>
       </div>
-      <!-- More content here -->
+      <SocialLinks />
+      <!-- TODO: Insert more content here -->
     </div>
     <Footnote />
   </div>
 </BaseLayout>
+
+<style>
+  .short-bio {
+    @apply mt-4 text-pretty leading-tight text-gray-300;
+  }
+</style>

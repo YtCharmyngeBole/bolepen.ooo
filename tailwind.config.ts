@@ -40,6 +40,13 @@ export default {
       desktop: "1280px",
     },
     extend: {
+      lineHeight: {
+        "extra-tight": "1.125",
+        "more-relaxed": "1.75",
+        "almost-loose": "1.875",
+        "extra-loose": "2.125",
+        "overly-loose": "2.25",
+      },
       typography: {
         sm: {
           css: {
