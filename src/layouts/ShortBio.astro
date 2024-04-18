@@ -2,7 +2,11 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="mb-4 mt-2 text-sm/tight text-gray-100 max-laptop:text-center">
+<div class="my-2 text-sm/tight text-gray-100 max-laptop:text-center">
+  <p>
+    <!-- TODO: find suitable emoji -->
+    That's me, and welcome to my <a href="/what-is-bolepen">bolepen</a>!
+  </p>
   <p>
     <Icon
       name="twemoji/dog-face"
@@ -10,10 +14,11 @@ import { Icon } from "astro-icon/components";
       class="mx-[0.15em] inline-block align-[-0.15em] text-[0.875em]"
     />
     <span aria-label="A rodent pup born in 1990s"
-      >A rodent pup born in 199×</span
+      >I am a rodent pup born in 199×</span
     >
   </p>
   <p>
+    <!-- TODO: find better text -->
     <Icon
       name="twemoji/flag-thailand"
       title="Flag of Thailand emoji"
@@ -21,6 +26,7 @@ import { Icon } from "astro-icon/components";
     />
     Born and based in Thailand
   </p>
+  <!--
   <p>
     <Icon
       name="twemoji/rainbow-flag"
@@ -29,4 +35,5 @@ import { Icon } from "astro-icon/components";
     />
     Prefers to say gex
   </p>
+  -->
 </div>

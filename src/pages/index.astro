@@ -12,23 +12,26 @@ import SocialLinks from "../layouts/SocialLinks.astro";
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
   <div class="flex min-h-svh flex-col">
-    <div
-      class="flex grow items-center justify-center gap-8 max-laptop:flex-col max-laptop:gap-4 max-tablet:py-4 laptop:mt-8"
-    >
-      <div class="max-laptop:px-8">
-        <ProfilePic />
-      </div>
+    <div class="flex grow flex-col items-center justify-center">
       <div
-        class="flex flex-col items-start justify-center max-laptop:items-center"
+        class="mb-8 mt-16 flex items-center justify-center gap-8 max-laptop:flex-col max-laptop:gap-4"
       >
-        <h1
-          class="text-layout-title leading-1 font-display text-2xl font-bold leading-tight text-fadecream-100 max-laptop:text-center"
+        <div class="max-laptop:px-8">
+          <ProfilePic />
+        </div>
+        <div
+          class="flex flex-col items-start justify-center max-laptop:items-center"
         >
-          That Charming BOLE
-        </h1>
-        <ShortBio />
-        <SocialLinks />
+          <h1
+            class="text-layout-title leading-1 font-display text-2xl font-bold leading-tight text-fadecream-100 max-laptop:text-center"
+          >
+            That Charming BOLE
+          </h1>
+          <ShortBio />
+          <SocialLinks />
+        </div>
       </div>
+      <!-- More content here -->
     </div>
     <Footnote />
   </div>
