@@ -4,7 +4,6 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
-import partytown from "@astrojs/partytown";
 import mdx from "@astrojs/mdx";
 import solid from "@astrojs/solid-js";
 import { shield } from "@kindspells/astro-shield";
@@ -27,7 +26,6 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false, nesting: true }),
     icon(),
     sitemap(),
-    partytown(),
     mdx(),
     solid(),
     shield({ sri: { hashesModule: modulePath } }),
