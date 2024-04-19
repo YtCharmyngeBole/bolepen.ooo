@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+
+import imgProfilePic from "../images/profilepic.png";
+import TODO from "./TODO.astro";
+---
+
+<div class="flex flex-col items-center text-center">
+  <Image
+    src={imgProfilePic}
+    alt="Drawing of Bole's head"
+    width="256"
+    densities={[1, 1.5, 2, 2.5, 3, 4]}
+    loading="eager"
+    fetchpriority="high"
+  /><h1
+    class="text-layout-title leading-1 mt-4 font-display text-2xl font-bold leading-tight text-fadecream-200"
+  >
+    That Charming BOLE
+  </h1>
+  <h2 class="mt-2 text-base/snug text-gray-300">
+    Hey there, that's my name. <br /> Welcome to my bolepen!
+  </h2>
+
+  <TODO>[TODO: Add all social links here, <br /> must be spelled out]</TODO>
+</div>

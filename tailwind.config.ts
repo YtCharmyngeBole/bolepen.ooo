@@ -9,7 +9,17 @@ import { oklch, oklchPalette, rem, round } from "./src/lib/styling.ts";
  * Custom component in Tailwind
  */
 const customComponent: PluginCreator = ({ addComponents }) => {
-  addComponents({});
+  addComponents({
+    ".roman": {
+      fontStyle: "normal",
+    },
+    ".italic": {
+      fontStyle: "italic",
+    },
+    ".oblique": {
+      fontStyle: "oblique",
+    },
+  });
 };
 
 export default {
@@ -31,7 +41,7 @@ export default {
     },
     fontFamily: {
       display: ["Barlow", ...defaultTheme.fontFamily.sans],
-      body: ["Inconsolata", ...defaultTheme.fontFamily.mono],
+      body: ["'Iosevka Custom Web'", ...defaultTheme.fontFamily.mono],
     },
     screens: {
       phone: "480px",
@@ -40,13 +50,6 @@ export default {
       desktop: "1280px",
     },
     extend: {
-      lineHeight: {
-        "extra-tight": "1.125",
-        "more-relaxed": "1.75",
-        "almost-loose": "1.875",
-        "extra-loose": "2.125",
-        "overly-loose": "2.25",
-      },
       typography: {
         sm: {
           css: {

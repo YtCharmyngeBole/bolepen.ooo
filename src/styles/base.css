@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply min-w-[360px] bg-ambient-bg font-body text-[20px] text-white antialiased max-phone:text-[16px];
+    @apply bg-ambient-bg font-body text-[18px] text-gray-200 antialiased max-phone:text-[16px];
 
     --hyperlink-text--ground: white;
     --hyperlink-text--excited: theme("colors.gray.400");
@@ -14,6 +14,18 @@
 
   body {
     @apply flex min-h-svh flex-col items-stretch;
+  }
+
+  hr {
+    @apply w-full border-[0.5px] border-solid border-white/10;
+  }
+}
+
+@layer components {
+  .formatted-content {
+    p + p {
+      @apply mt-4;
+    }
   }
 }
 
@@ -28,6 +40,9 @@
       --hyperlink-text: var(--hyperlink-text--excited);
       --hyperlink-bg: var(--hyperlink-bg--excited);
     }
+
+    --hyperlink-text--ground: theme("colors.orange.300");
+    --hyperlink-text--excited: theme("colors.lemon.100");
   }
 
   .hyperlink--underline {
@@ -37,10 +52,5 @@
       transparent,
       var(--hyperlink-text--ground) 25%
     );
-  }
-
-  .hyperlink--basic {
-    --hyperlink-text--ground: theme("colors.orange.300");
-    --hyperlink-text--excited: theme("colors.lemon.100");
   }
 }

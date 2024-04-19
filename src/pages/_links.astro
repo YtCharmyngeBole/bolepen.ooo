@@ -3,8 +3,8 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 import { SITE, SOCIALS_FULL } from "../config.ts";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Body from "../layouts/Body.astro";
+import BaseLayout from "../layouts/base/BaseLayout.astro";
+import Body from "../layouts/base/Body.astro";
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>

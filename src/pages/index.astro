@@ -1,75 +1,34 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-
-import { SITE, SOCIALS_SHORT } from "../config.ts";
+import { SITE } from "../config.ts";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Body from "../layouts/Body.astro";
 import Footnote from "../layouts/Footnote.astro";
-import MainInfo from "../layouts/main/Info.astro";
 
-import imgProfilePic from "../images/profilepic.png";
+import MyCharacter from "../layouts/MyCharacterReference.astro";
+import MyHistory from "../layouts/MyHistory.astro";
+import MyInterests from "../layouts/MyInterests.astro";
+import MyParticipation from "../layouts/MyParticipation.astro";
+import MyShortBio from "../layouts/MyShortBio.astro";
 
-// NOTE: Decided not to refactor usages of twemoji icons into new component
-//       (need emoji unicode database & twemoji database updated regularly)
-
-// TODO: add header (apart from the main page)
+import Banner from "../layouts/Banner.astro";
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
   <Body>
     <div
-      class="mt-16 flex items-center justify-center gap-8 max-laptop:max-w-screen-phone max-laptop:flex-col max-laptop:gap-4"
+      class="mx-auto mt-16 flex items-start justify-center px-8 max-laptop:flex-col max-laptop:items-center max-phone:px-4 laptop:gap-12"
     >
+      <Banner />
       <div
-        class="flex max-w-[320px] flex-col items-center gap-2 max-laptop:mx-8"
+        class="flex max-w-prose flex-col items-start justify-center max-laptop:items-center"
       >
-        <Image
-          src={imgProfilePic}
-          alt="Drawing of Bole's head"
-          width="256"
-          densities={[1, 1.5, 2, 2.5, 3, 4]}
-          loading="eager"
-          fetchpriority="high"
-        />
-        <p
-          class="text-balance text-center text-sm font-medium leading-tight text-gray-400"
-        >
-          Despite my own belief that I am not terminally online, I'm terribly
-          omni-present on the web:
-        </p>
-        <ul class="flex w-fit gap-2.5 max-phone:gap-2 phone:grid-cols-4">
-          {
-            SOCIALS_SHORT.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  title={item.name}
-                  rel="noopener"
-                  class="group rounded-lg"
-                >
-                  <Icon
-                    name={`social/${item.icon}`}
-                    class="hyperlink hyperlink--social-link size-7 rounded-lg shadow-md"
-                  />
-                </a>
-              </li>
-            ))
-          }
-        </ul>
+        <MyShortBio />
+        <MyInterests />
+        <MyHistory />
+        <MyParticipation />
+        <MyCharacter />
       </div>
-      <MainInfo />
     </div>
-    <!-- TODO: Add main navigational links to other pages (instead of having header) -->
   </Body>
   <Footnote />
 </BaseLayout>
-
-<style>
-  .hyperlink--social-link {
-    --hyperlink-text--ground: theme("colors.orange.200");
-    --hyperlink-text--excited: theme("colors.ambient-bg");
-    --hyperlink-bg--ground: color-mix(in oklch, transparent, white 5%);
-    --hyperlink-bg--excited: theme("colors.lemon.100");
-  }
-</style>
