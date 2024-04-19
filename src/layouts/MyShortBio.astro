@@ -1,18 +1,56 @@
-<div
-  class="flex flex-col items-start justify-center text-pretty text-base/snug text-gray-400 max-laptop:max-w-[45ch] max-laptop:items-center max-laptop:text-center"
+---
+import { SOCIALS_FULL } from "../config.ts";
+import { Icon } from "astro-icon/components";
+---
+
+<section
+  class="flex flex-col items-start max-laptop:flex-col-reverse max-laptop:items-center"
 >
-  <p>
-    I'm a middle-aged dog, born back in <span aria-label="1990s">199x</span>,
-    but I still love to play like a puppy.
-  </p>
-  <p class="mt-4">
-    Despite being anatomically chubby most time of the year, I allow myself to
-    magically transform into different versions of myself (e.g. buff, lean, or
-    anything in between) with the power of
-    <em class="text-fadecream-200">commissioned artworks</em>.
-  </p>
-  <p class="mt-4">
-    Feel free to reach out and say hi! I'm always excited to meet new friends
-    (furry or not). Please cuddle me if you happen to see me in person.
-  </p>
-</div>
+  <div
+    class="flex flex-col items-start justify-center text-pretty text-base/snug text-gray-400 max-laptop:max-w-[45ch] max-laptop:items-center max-laptop:text-center"
+  >
+    <p>
+      I'm a middle-aged dog, born back in <span aria-label="1990s">199x</span>,
+      but my heart is still young as that of a cheerful puppy.
+    </p>
+    <p class="mt-4">
+      Despite being anatomically chubby most time of the year, I allow myself to
+      magically transform into different versions of myself (e.g. buff, lean, or
+      anything in between) with the power of
+      <em class="text-fadecream-400">commissioned artworks</em>.
+    </p>
+    <p class="mt-4">
+      Feel free to reach out and say hi! I'm always excited to meet new friends
+      (furry or not). Please offer to cuddle me if you happen to meet me in
+      person.
+    </p>
+  </div>
+  <ul class="mt-4 flex w-fit gap-2.5 max-laptop:mb-4 max-phone:gap-2">
+    {
+      SOCIALS_FULL.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            title={`Me on ${item.name}`}
+            rel="noopener"
+            class="group rounded-lg"
+          >
+            <Icon
+              name={`social/${item.icon}`}
+              class="hyperlink hyperlink--social-link size-8 rounded-lg shadow-md"
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .hyperlink--social-link {
+    --hyperlink-text--ground: theme("colors.orange.400");
+    --hyperlink-text--excited: theme("colors.ambient-bg");
+    --hyperlink-bg--ground: color-mix(in oklch, transparent, white 5%);
+    --hyperlink-bg--excited: theme("colors.lemon.100");
+  }
+</style>
