@@ -1,7 +1,7 @@
 /*.ttf
     Cache-Control: private, max-age=86400, stale-while-revalidate=604800
 
-/*.woff
+/*.woff2
     Cache-Control: private, max-age=86400, stale-while-revalidate=604800
 
 /*
