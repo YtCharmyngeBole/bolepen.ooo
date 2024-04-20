@@ -7,7 +7,14 @@ const formattedPeriod =
 ---
 
 <footer
-  class="my-8 text-pretty text-center text-sm font-medium leading-tight text-gray-400"
+  class="dimmed-footer mb-16 mt-8 text-pretty text-center text-sm font-semibold leading-tight tracking-wide"
 >
   &copy;&nbsp;{`${formattedPeriod} ${SITE.author}`}.
 </footer>
+
+<style>
+  .dimmed-footer {
+    @apply text-[var(--dimmed-color)];
+    --dimmed-color: color-mix(in oklch, theme("colors.gray.400"), black 15%);
+  }
+</style>
