@@ -1,2 +1,8 @@
+/*.ttf
+    Cache-Control: private, max-age=86400, stale-while-revalidate=604800
+
+/*.woff
+    Cache-Control: private, max-age=86400, stale-while-revalidate=604800
+
 /*
     Content-Security-Policy: default-src 'self' https: data:; script-src 'self'; style-src 'self' 'unsafe-inline' https:;base-uri 'self'; worker-src 'self';
