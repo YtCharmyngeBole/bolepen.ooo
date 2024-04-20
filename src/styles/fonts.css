@@ -1,0 +1,225 @@
+@font-face {
+  /* Fallback font for Iosevka Custom Web */
+  font-family: "Iosevka Custom Web override";
+  src: local("Arial"), local("Roboto");
+  ascent-override: 96.5%;
+  descent-override: 21.5%;
+  line-gap-override: 7%;
+}
+
+@font-face {
+  /* Fallback font for Barlow normal width */
+  font-family: "Barlow override";
+  src: local("Arial"), local("Roboto");
+  ascent-override: 100%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 100;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-Thin.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-Thin.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 100;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-ThinOblique.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-ThinOblique.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 200;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-ExtraLight.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 200;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-ExtraLightOblique.woff2")
+      format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-ExtraLightOblique.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-Light.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-LightOblique.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-LightOblique.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-Regular.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-Oblique.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-Oblique.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-Medium.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-MediumOblique.woff2")
+      format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-MediumOblique.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-SemiBold.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-SemiBoldOblique.woff2")
+      format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-SemiBoldOblique.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-Bold.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-BoldOblique.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-BoldOblique.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-ExtraBold.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-ExtraBoldOblique.woff2")
+      format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-ExtraBoldOblique.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-Heavy.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-Heavy.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka Custom Web";
+  font-display: swap;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: oblique;
+  src:
+    url("/fonts/IosevkaCustom/IosevkaCustom-HeavyOblique.woff2") format("woff2"),
+    url("/fonts/IosevkaCustom/IosevkaCustom-HeavyOblique.ttf")
+      format("truetype");
+}
