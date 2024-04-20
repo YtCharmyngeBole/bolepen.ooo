@@ -102,8 +102,12 @@ export default {
       },
     },
     fontFamily: {
-      display: ["Barlow", ...defaultTheme.fontFamily.sans],
-      body: ["'Iosevka Custom Web'", ...defaultTheme.fontFamily.mono],
+      display: ["Barlow", "'Barlow override'", ...defaultTheme.fontFamily.sans],
+      body: [
+        "'Iosevka Custom Web'",
+        "'Iosevka Custom Web override'",
+        ...defaultTheme.fontFamily.mono,
+      ],
     },
     screens: {
       phone: "480px",

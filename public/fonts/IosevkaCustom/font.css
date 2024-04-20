@@ -5,8 +5,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-Thin.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-Thin.ttf") format("truetype");
+    url("IosevkaCustom-Thin.woff2") format("woff2"),
+    url("IosevkaCustom-Thin.ttf") format("truetype");
 }
 
 @font-face {
@@ -16,8 +16,8 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-ThinOblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-ThinOblique.ttf") format("truetype");
+    url("IosevkaCustom-ThinOblique.woff2") format("woff2"),
+    url("IosevkaCustom-ThinOblique.ttf") format("truetype");
 }
 
 @font-face {
@@ -27,8 +27,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-ExtraLight.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-ExtraLight.ttf") format("truetype");
+    url("IosevkaCustom-ExtraLight.woff2") format("woff2"),
+    url("IosevkaCustom-ExtraLight.ttf") format("truetype");
 }
 
 @font-face {
@@ -38,8 +38,8 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-ExtraLightOblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-ExtraLightOblique.ttf") format("truetype");
+    url("IosevkaCustom-ExtraLightOblique.woff2") format("woff2"),
+    url("IosevkaCustom-ExtraLightOblique.ttf") format("truetype");
 }
 
 @font-face {
@@ -49,8 +49,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-Light.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-Light.ttf") format("truetype");
+    url("IosevkaCustom-Light.woff2") format("woff2"),
+    url("IosevkaCustom-Light.ttf") format("truetype");
 }
 
 @font-face {
@@ -60,8 +60,8 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-LightOblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-LightOblique.ttf") format("truetype");
+    url("IosevkaCustom-LightOblique.woff2") format("woff2"),
+    url("IosevkaCustom-LightOblique.ttf") format("truetype");
 }
 
 @font-face {
@@ -71,8 +71,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-Regular.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-Regular.ttf") format("truetype");
+    url("IosevkaCustom-Regular.woff2") format("woff2"),
+    url("IosevkaCustom-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -82,8 +82,8 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-Oblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-Oblique.ttf") format("truetype");
+    url("IosevkaCustom-Oblique.woff2") format("woff2"),
+    url("IosevkaCustom-Oblique.ttf") format("truetype");
 }
 
 @font-face {
@@ -93,8 +93,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-Medium.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-Medium.ttf") format("truetype");
+    url("IosevkaCustom-Medium.woff2") format("woff2"),
+    url("IosevkaCustom-Medium.ttf") format("truetype");
 }
 
 @font-face {
@@ -104,8 +104,8 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-MediumOblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-MediumOblique.ttf") format("truetype");
+    url("IosevkaCustom-MediumOblique.woff2") format("woff2"),
+    url("IosevkaCustom-MediumOblique.ttf") format("truetype");
 }
 
 @font-face {
@@ -115,8 +115,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-SemiBold.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-SemiBold.ttf") format("truetype");
+    url("IosevkaCustom-SemiBold.woff2") format("woff2"),
+    url("IosevkaCustom-SemiBold.ttf") format("truetype");
 }
 
 @font-face {
@@ -126,8 +126,8 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-SemiBoldOblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-SemiBoldOblique.ttf") format("truetype");
+    url("IosevkaCustom-SemiBoldOblique.woff2") format("woff2"),
+    url("IosevkaCustom-SemiBoldOblique.ttf") format("truetype");
 }
 
 @font-face {
@@ -137,8 +137,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-Bold.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-Bold.ttf") format("truetype");
+    url("IosevkaCustom-Bold.woff2") format("woff2"),
+    url("IosevkaCustom-Bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -148,8 +148,8 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-BoldOblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-BoldOblique.ttf") format("truetype");
+    url("IosevkaCustom-BoldOblique.woff2") format("woff2"),
+    url("IosevkaCustom-BoldOblique.ttf") format("truetype");
 }
 
 @font-face {
@@ -159,8 +159,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-ExtraBold.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-ExtraBold.ttf") format("truetype");
+    url("IosevkaCustom-ExtraBold.woff2") format("woff2"),
+    url("IosevkaCustom-ExtraBold.ttf") format("truetype");
 }
 
 @font-face {
@@ -170,8 +170,8 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-ExtraBoldOblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-ExtraBoldOblique.ttf") format("truetype");
+    url("IosevkaCustom-ExtraBoldOblique.woff2") format("woff2"),
+    url("IosevkaCustom-ExtraBoldOblique.ttf") format("truetype");
 }
 
 @font-face {
@@ -181,8 +181,8 @@
   font-stretch: normal;
   font-style: normal;
   src:
-    url("woff2/IosevkaCustom-Heavy.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-Heavy.ttf") format("truetype");
+    url("IosevkaCustom-Heavy.woff2") format("woff2"),
+    url("IosevkaCustom-Heavy.ttf") format("truetype");
 }
 
 @font-face {
@@ -192,6 +192,6 @@
   font-stretch: normal;
   font-style: oblique;
   src:
-    url("woff2/IosevkaCustom-HeavyOblique.woff2") format("woff2"),
-    url("ttf/IosevkaCustom-HeavyOblique.ttf") format("truetype");
+    url("IosevkaCustom-HeavyOblique.woff2") format("woff2"),
+    url("IosevkaCustom-HeavyOblique.ttf") format("truetype");
 }

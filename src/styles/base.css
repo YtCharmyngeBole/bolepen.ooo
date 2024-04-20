@@ -54,3 +54,21 @@
     );
   }
 }
+
+@font-face {
+  /* Fallback font for Iosevka Custom Web */
+  font-family: "Iosevka Custom Web override";
+  src: local("Arial"), local("Roboto");
+  ascent-override: 96.5%;
+  descent-override: 21.5%;
+  line-gap-override: 7%;
+}
+
+@font-face {
+  /* Fallback font for Barlow normal width */
+  font-family: "Barlow override";
+  src: local("Arial"), local("Roboto");
+  ascent-override: 100%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
