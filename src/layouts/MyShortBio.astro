@@ -38,11 +38,11 @@ import { Icon } from "astro-icon/components";
             href={item.href}
             title={`Me on ${item.name}`}
             rel="noopener"
-            class="hyperlink hyperlink--social-link flex items-center gap-0.5 rounded-lg p-0.5 laptop:pl-1 laptop:pr-2"
+            class="hyperlink hyperlink--social-link flex items-center gap-0.5 rounded-lg p-0.5 shadow-md laptop:pl-1 laptop:pr-2"
           >
             <Icon
               name={`social/${item.name.toLowerCase()}`}
-              class="inline-block size-8 rounded-lg align-[-0.5rem] shadow-md"
+              class="inline-block size-8 align-[-0.5rem]"
             />
             <span class="grow max-laptop:hidden">{item.name}</span>
           </a>
