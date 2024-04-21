@@ -54,7 +54,7 @@ import { Icon } from "astro-icon/components";
   .hyperlink--social-link {
     --hyperlink-text--ground: theme("colors.orange.400");
     --hyperlink-text--excited: theme("colors.ambient-bg");
-    --hyperlink-bg--ground: color-mix(in oklch, transparent, white 5%);
-    --hyperlink-bg--excited: theme("colors.lemon.100");
+    --hyperlink-bg--ground: oklch(100% 0 0 / 5%);
+    --hyperlink-bg--excited: theme("colors.lemon.300");
   }
 </style>
