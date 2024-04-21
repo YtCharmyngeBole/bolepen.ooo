@@ -1,5 +1,5 @@
 ---
-import { SOCIALS_FULL } from "../config.ts";
+import { SOCIALS } from "../config.ts";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -28,21 +28,23 @@ import { Icon } from "astro-icon/components";
       <!-- TODO: Add hug emoji -->
     </p>
   </div>
-  <ul class="mt-4 flex w-fit gap-2.5 max-laptop:mb-4 max-phone:gap-2">
+  <ul
+    class="mt-4 grid w-fit auto-cols-max grid-cols-4 justify-center gap-2.5 max-laptop:mb-4 max-phone:gap-2"
+  >
     {
-      SOCIALS_FULL.map((item) => (
+      SOCIALS.map((item) => (
         <li>
           <a
             href={item.href}
             title={`Me on ${item.name}`}
             rel="noopener"
-            class="group rounded-lg"
+            class="hyperlink hyperlink--social-link flex items-center gap-0.5 rounded-lg p-0.5 laptop:pl-1 laptop:pr-2"
           >
             <Icon
-              name={`social/${item.icon}`}
-              class="hyperlink hyperlink--social-link size-8 rounded-lg shadow-md"
+              name={`social/${item.name.toLowerCase()}`}
+              class="inline-block size-8 rounded-lg align-[-0.5rem] shadow-md"
             />
-            <!-- TODO: add word next to icon -->
+            <span class="grow max-laptop:hidden">{item.name}</span>
           </a>
         </li>
       ))
