@@ -10,26 +10,36 @@ import { Icon } from "astro-icon/components";
     class="flex flex-col items-start justify-center text-pretty text-base/snug text-gray-400 max-laptop:max-w-[45ch] max-laptop:items-center max-laptop:text-center"
   >
     <p>
-      I'm a middle-aged dog, born back in <span aria-label="1990s">199x</span>,
-      but my heart is still young as that of a cheerful puppy.
-      <!-- TODO: Add dog-face emoji -->
+      I was born in 1990s, but don’t be fooled by my age, though. I’m a
+      free-spirited doggo who loves lying around and enjoy some belly rubs&nbsp;<Icon
+        name="twemoji/dog-face"
+        class="inline-block align-[-0.1em]"
+        title="Dog face emoji"
+      />.
     </p>
     <p class="mt-4">
-      Despite being anatomically chubby most time of the year, I allow myself to
-      magically transform into different versions of myself (e.g. buff, lean, or
-      anything in between) with the power of
-      <em class="text-fadecream-400">commissioned artworks</em>.
-      <!-- TODO: Add money emoji -->
+      Despite being anatomically chubby most time of the year, I occasionally
+      allow myself to transform into other forms (e.g. buff, lean, or anything
+      in between) with the magical power of
+      <em class="text-fadecream-400">commissioned artworks</em>&nbsp;<Icon
+        name="twemoji/money-with-wings"
+        class="inline-block align-[-0.1em]"
+        title="Money with wings emoji"
+      />.
     </p>
     <p class="mt-4">
       Feel free to reach out and say hi! I'm always excited to meet new friends
-      (furry or not). Please offer to cuddle me if you happen to meet me in
-      person.
-      <!-- TODO: Add hug emoji -->
+      (furry or otherwise). Please offer to cuddle me if you happen to meet me
+      in person&nbsp;<Icon
+        name="twemoji/woozy-face"
+        class="inline-block align-[-0.1em]"
+        title="Woozy face emoji"
+      />.
     </p>
   </div>
   <ul
-    class="mt-4 flex w-fit flex-wrap justify-start gap-3 max-laptop:mb-4 max-laptop:justify-center max-laptop:gap-2"
+    class="mt-4 flex w-fit flex-wrap justify-start gap-3
+    max-laptop:mb-4 max-laptop:grid max-laptop:grid-cols-4 max-laptop:justify-center max-laptop:gap-2"
   >
     {
       SOCIALS.map((item) => (
