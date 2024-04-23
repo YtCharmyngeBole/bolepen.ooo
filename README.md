@@ -1,22 +1,17 @@
-# Fursona Website 
+# Fursona Website
 
-A fursonal website built with [Astro](https://astro.build) located at https://bolepen.ooo.
-
+A *fursonal* website located at https://bolepen.ooo.
 
 ## TODOs
 
-- [ ] Add biography page; include facts about:
-  - [ ] Origin of name
-  - [ ] Name pronunciation guide
-  - [ ] Attended conventions
-  - [ ] Kemono Baseball Team No. TH 90
-  - [ ] Character sheet
+- [ ] Add a section of **My Interests** (e.g. hobbies, favorite things, etc.)
+    - Mentions membership of Kemono Baseball Team No. TH 90
+- [ ] Add a section of **My History** (e.g. origin, name, pronunciation, etc.)
+- [ ] Add a section of **My Participation** (e.g. attended events, conventions, etc.)
+- [ ] Add a section of **My Character** (e.g. character sheet, etc.)
 - [ ] Adorn the website background with animated patterns
-- [ ] Consider adding commissioned art page
-- [x] ~~Add footer with copyright declaration~~
-- [x] ~~Try new fonts~~
-- [x] ~~On main page: put text side-by-side with profile picture if viewport is wide enough~~
-- [x] ~~Replace `ogImage` with a more relevant image and with correct aspect ratio~~
+    - Greek adornment patterns on the header and footer area
+    - Animated background SVGs
 
 ## License
 
@@ -31,3 +26,24 @@ and configuration files (`.json`, `.yaml`, etc.) included in this repository.
 > That Charming BOLE 2024. All rights reserved.
 
 Please see the [`LICENSE`](LICENSE) file for more details about the Apache 2.0 License.
+
+## Colophon
+
+### Tools
+
+The website is built using the following toolings:
+
+- [Astro](https://astro.build) for the static site generation
+- [Tailwind CSS](https://tailwindcss.com) for the styling
+
+### Fonts and icons in use
+
+The website uses [Barlow font by Jeremy Tribby](https://tribby.com/fonts/barlow/)
+as well as a custom version of [Iosevka font by Belleve Invis](https://typeof.net/Iosevka/).
+Both fonts are licensed under the SIL Open Font License
+and are hosted locally from the same server as the website.
+
+The website also uses some of the still-maintained
+[twemoji icon sets](https://github.com/jdecked/twemoji).
+Its code is licensed under the MIT License
+whereas the graphics are licensed under the CC-BY 4.0 License.
