@@ -6,6 +6,7 @@ import Footnote from "../layouts/Footer.astro";
 
 import Banner from "../layouts/Banner.astro";
 import MyShortBio from "../layouts/MyShortBio.astro";
+import MyInterests from "../layouts/MyInterests.astro";
 
 // TODO: Add adornment to the top and bottom page area
 ---
@@ -20,7 +21,9 @@ import MyShortBio from "../layouts/MyShortBio.astro";
         class="flex max-w-prose flex-col items-start justify-center max-laptop:items-center"
       >
         <MyShortBio />
-        {/* <MyInterests /> */}
+        <div class="prose prose-base prose-gray prose-invert">
+          <MyInterests />
+        </div>
         {/* <MyHistory /> */}
         {/* <MyParticipation /> */}
         {/* <MyCharacter /> */}

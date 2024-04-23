@@ -10,6 +10,13 @@ import { oklch, rem, round } from "./src/lib/styling.ts";
  */
 const customComponent: PluginCreator = ({ addComponents }) => {
   addComponents({
+    ".icon-masked": {
+      display: "inline-block",
+      backgroundColor: "currentColor",
+      maskImage: "var(--svg)",
+      maskRepeat: "no-repeat",
+      maskSize: "100% 100%",
+    },
     ".roman": {
       fontStyle: "normal",
     },
@@ -33,7 +40,37 @@ export default {
       transparent: colors.transparent,
       black: colors.black,
       white: colors.white,
+      muted: {
+        10: "color-mix(in oklch, currentColor, black 10%)",
+        20: "color-mix(in oklch, currentColor, black 20%)",
+        30: "color-mix(in oklch, currentColor, black 30%)",
+        40: "color-mix(in oklch, currentColor, black 40%)",
+        50: "color-mix(in oklch, currentColor, black 50%)",
+        60: "color-mix(in oklch, currentColor, black 60%)",
+        70: "color-mix(in oklch, currentColor, black 70%)",
+        80: "color-mix(in oklch, currentColor, black 80%)",
+        90: "color-mix(in oklch, currentColor, black 90%)",
+      },
+      lit: {
+        10: "color-mix(in oklch, currentColor, white 10%)",
+        20: "color-mix(in oklch, currentColor, white 20%)",
+        30: "color-mix(in oklch, currentColor, white 30%)",
+        40: "color-mix(in oklch, currentColor, white 40%)",
+        50: "color-mix(in oklch, currentColor, white 50%)",
+        60: "color-mix(in oklch, currentColor, white 60%)",
+        70: "color-mix(in oklch, currentColor, white 70%)",
+        80: "color-mix(in oklch, currentColor, white 80%)",
+        90: "color-mix(in oklch, currentColor, white 90%)",
+      },
       gray: colors.gray,
+      grayext: {
+        // 300: oklch(87.17% 0.009 258.34)
+        // 400: oklch(71.37% 0.019 261.32)
+        425: "oklch(67.3025% 0.01775 262.08)",
+        450: "oklch(63.235% 0.0165 262.84)",
+        475: "oklch(59.1675% 0.01975 263.6)",
+        // 500: oklch(55.1% 0.023 264.36)
+      },
       "ambient-bg": oklch(15, 0.02, 313),
       beetroot: {
         50: "oklch(97.23% 0.007 354.79 / <alpha-value>)",
