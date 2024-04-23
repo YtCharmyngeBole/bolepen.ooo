@@ -11,6 +11,7 @@
   /* Fallback font for Iosevka Web */
   font-family: "Iosevka Web override";
   src: local("Arial"), local("Roboto");
+  size-adjust: 89.9032%;
   ascent-override: 96.5%;
   descent-override: 28.5%;
   line-gap-override: 0%;
@@ -204,6 +205,7 @@
   /* Fallback font for Barlow normal width */
   font-family: "Barlow override";
   src: local("Arial"), local("Roboto");
+  size-adjust: 95.2835%;
   ascent-override: 100%;
   descent-override: 20%;
   line-gap-override: 0%;
