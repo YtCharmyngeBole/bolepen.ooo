@@ -12,8 +12,8 @@
   font-family: "Iosevka Web override";
   src: local("Arial"), local("Roboto");
   ascent-override: 96.5%;
-  descent-override: 21.5%;
-  line-gap-override: 7%;
+  descent-override: 28.5%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -22,7 +22,7 @@
   font-weight: 100;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-Thin.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-Thin.woff2") format("woff2");
 }
 
 @font-face {
@@ -31,7 +31,8 @@
   font-weight: 100;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-ThinOblique.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-ThinOblique.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -40,7 +41,8 @@
   font-weight: 200;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-ExtraLight.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-ExtraLight.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -49,7 +51,7 @@
   font-weight: 200;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-ExtraLightOblique.woff2")
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-ExtraLightOblique.woff2")
     format("woff2");
 }
 
@@ -59,7 +61,7 @@
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-Light.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-Light.woff2") format("woff2");
 }
 
 @font-face {
@@ -68,7 +70,8 @@
   font-weight: 300;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-LightOblique.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-LightOblique.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -77,7 +80,8 @@
   font-weight: 400;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-Regular.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-Regular.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -86,7 +90,8 @@
   font-weight: 400;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-Oblique.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-Oblique.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -95,7 +100,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-Medium.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-Medium.woff2") format("woff2");
 }
 
 @font-face {
@@ -104,7 +109,8 @@
   font-weight: 500;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-MediumOblique.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-MediumOblique.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -113,7 +119,8 @@
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-SemiBold.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-SemiBold.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -122,7 +129,8 @@
   font-weight: 600;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-SemiBoldOblique.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-SemiBoldOblique.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -131,7 +139,7 @@
   font-weight: 700;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-Bold.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-Bold.woff2") format("woff2");
 }
 
 @font-face {
@@ -140,7 +148,8 @@
   font-weight: 700;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-BoldOblique.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-BoldOblique.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -149,7 +158,8 @@
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-ExtraBold.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-ExtraBold.woff2")
+    format("woff2");
 }
 
 @font-face {
@@ -158,7 +168,7 @@
   font-weight: 800;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-ExtraBoldOblique.woff2")
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-ExtraBoldOblique.woff2")
     format("woff2");
 }
 
@@ -168,7 +178,7 @@
   font-weight: 900;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-Heavy.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-Heavy.woff2") format("woff2");
 }
 
 @font-face {
@@ -177,7 +187,8 @@
   font-weight: 900;
   font-stretch: normal;
   font-style: oblique;
-  src: url("/fonts/IosevkaWeb/IosevkaWeb-HeavyOblique.woff2") format("woff2");
+  src: url("/fonts/IosevkaWeb-29.2.1-0/IosevkaWeb-HeavyOblique.woff2")
+    format("woff2");
 }
 
 /*
@@ -204,7 +215,7 @@
   font-weight: 100;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-Thin.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-Thin.woff2") format("woff2");
 }
 
 @font-face {
@@ -213,7 +224,7 @@
   font-weight: 100;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-Italic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-Italic.woff2") format("woff2");
 }
 
 @font-face {
@@ -222,7 +233,7 @@
   font-weight: 200;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-ExtraLight.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-ExtraLight.woff2") format("woff2");
 }
 
 @font-face {
@@ -231,7 +242,7 @@
   font-weight: 200;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-ExtraLightItalic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-ExtraLightItalic.woff2") format("woff2");
 }
 
 @font-face {
@@ -240,7 +251,7 @@
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-Light.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-Light.woff2") format("woff2");
 }
 
 @font-face {
@@ -249,7 +260,7 @@
   font-weight: 300;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-LightItalic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-LightItalic.woff2") format("woff2");
 }
 
 @font-face {
@@ -258,7 +269,7 @@
   font-weight: 400;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-Regular.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-Regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -267,7 +278,7 @@
   font-weight: 400;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-Italic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-Italic.woff2") format("woff2");
 }
 
 @font-face {
@@ -276,7 +287,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-Medium.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-Medium.woff2") format("woff2");
 }
 
 @font-face {
@@ -285,7 +296,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-MediumItalic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-MediumItalic.woff2") format("woff2");
 }
 
 @font-face {
@@ -294,7 +305,7 @@
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-SemiBold.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-SemiBold.woff2") format("woff2");
 }
 
 @font-face {
@@ -303,7 +314,7 @@
   font-weight: 600;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-SemiBoldItalic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-SemiBoldItalic.woff2") format("woff2");
 }
 
 @font-face {
@@ -312,7 +323,7 @@
   font-weight: 700;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-Bold.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-Bold.woff2") format("woff2");
 }
 
 @font-face {
@@ -321,7 +332,7 @@
   font-weight: 700;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-BoldItalic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-BoldItalic.woff2") format("woff2");
 }
 
 @font-face {
@@ -330,7 +341,7 @@
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-ExtraBold.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-ExtraBold.woff2") format("woff2");
 }
 
 @font-face {
@@ -339,7 +350,7 @@
   font-weight: 800;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-ExtraBoldItalic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-ExtraBoldItalic.woff2") format("woff2");
 }
 
 @font-face {
@@ -348,7 +359,7 @@
   font-weight: 900;
   font-stretch: normal;
   font-style: normal;
-  src: url("/fonts/Barlow/Barlow-Black.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-Black.woff2") format("woff2");
 }
 
 @font-face {
@@ -357,5 +368,5 @@
   font-weight: 900;
   font-stretch: normal;
   font-style: italic;
-  src: url("/fonts/Barlow/Barlow-BlackItalic.woff2") format("woff2");
+  src: url("/fonts/Barlow-1.422/Barlow-BlackItalic.woff2") format("woff2");
 }
