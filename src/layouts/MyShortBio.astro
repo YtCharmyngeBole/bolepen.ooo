@@ -38,8 +38,8 @@ import { Icon } from "astro-icon/components";
     </p>
   </div>
   <ul
-    class="mt-4 flex w-fit flex-wrap justify-start gap-3
-    max-laptop:mb-4 max-laptop:grid max-laptop:grid-cols-4 max-laptop:justify-center max-laptop:gap-2"
+    class="mt-4 flex w-fit flex-wrap justify-start gap-x-3 gap-y-2.5
+    max-laptop:mb-4 max-laptop:grid max-laptop:grid-cols-4 max-laptop:justify-center max-laptop:gap-2.5"
   >
     {
       SOCIALS.map((item) => (
@@ -48,13 +48,13 @@ import { Icon } from "astro-icon/components";
             href={item.href}
             title={`Me on ${item.name}`}
             rel="noopener"
-            class="hyperlink hyperlink--social-link flex items-center gap-0.5 rounded-lg p-0.5 shadow-md laptop:pl-1 laptop:pr-2"
+            class="hyperlink hyperlink--social-link flex items-center gap-0.5 rounded-lg p-0.5 shadow-md laptop:pl-1 laptop:pr-2.5"
           >
             <Icon
               name={`social/${item.name.toLowerCase()}`}
-              class="inline-block size-8 align-[-0.5rem]"
+              class="inline-block size-8"
             />
-            <span class="grow max-laptop:hidden">{item.name}</span>
+            <span class="grow pb-0.5 pt-1 max-laptop:hidden">{item.name}</span>
           </a>
         </li>
       ))
