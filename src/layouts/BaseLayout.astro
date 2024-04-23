@@ -31,10 +31,6 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Preconnect to External Resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <!-- Theming Metadata -->
     <meta name="viewport" content="width=device-width" />
     <meta name="color-scheme" content="dark" />
@@ -86,22 +82,6 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
-
-    <!-- Loading Fonts -->
-    <script>
-      window.addEventListener("load", () => {
-        document
-          .querySelectorAll('link[rel="preload"][as="style"]')
-          .forEach((link) => {
-            link.setAttribute("rel", "stylesheet");
-          });
-      });
-    </script>
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      as="style"
-    />
 
     <ViewTransitions />
   </head>
