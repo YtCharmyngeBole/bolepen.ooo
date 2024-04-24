@@ -4,9 +4,7 @@
 
 @layer base {
   html {
-    @apply bg-ambient-bg font-body text-[18px] text-gray-200 antialiased
-    max-phone:text-[16px]
-    print:bg-white print:text-gray-950;
+    @apply bg-ambient-bg font-body text-[16px] text-gray-200 antialiased;
 
     --hyperlink-text--ground: white;
     --hyperlink-text--excited: theme("colors.gray.400");
@@ -24,14 +22,20 @@
 }
 
 @layer components {
-  .formatted-content {
-    p + p {
-      @apply mt-4;
+  .prose-auto {
+    @apply prose prose-base prose-gray prose-invert max-w-full;
+
+    a {
+      @apply hyperlink hyperlink--underline font-bold;
     }
   }
 }
 
 @layer utilities {
+  .subparagraph-head {
+    @apply font-bold text-lemon-200;
+  }
+
   .hyperlink {
     @apply bg-[var(--hyperlink-bg)] text-[var(--hyperlink-text)] motion-safe:transition-colors;
     --hyperlink-text: var(--hyperlink-text--ground);
@@ -43,8 +47,8 @@
       --hyperlink-bg: var(--hyperlink-bg--excited);
     }
 
-    --hyperlink-text--ground: theme("colors.orange.300");
-    --hyperlink-text--excited: theme("colors.lemon.100");
+    --hyperlink-text--ground: theme("colors.orange.400");
+    --hyperlink-text--excited: theme("colors.lemon.400");
   }
 
   .hyperlink--underline {
