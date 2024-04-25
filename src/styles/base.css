@@ -25,17 +25,29 @@
   .prose-auto {
     @apply prose prose-base prose-gray prose-invert max-w-full;
 
+    h2 {
+      @apply text-orange-300;
+    }
+
+    h3 {
+      @apply text-gray-400;
+    }
+
     a {
       @apply hyperlink hyperlink--underline font-bold;
+    }
+
+    .accented {
+      @apply text-lemon-200;
+    }
+
+    .muted {
+      @apply text-muted-30;
     }
   }
 }
 
 @layer utilities {
-  .subparagraph-head {
-    @apply font-bold text-lemon-200;
-  }
-
   .hyperlink {
     @apply bg-[var(--hyperlink-bg)] text-[var(--hyperlink-text)] motion-safe:transition-colors;
     --hyperlink-text: var(--hyperlink-text--ground);
