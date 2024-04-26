@@ -2,7 +2,8 @@
  * Utility functions for generating CSS values,
  * especially useful for Tailwind CSS.
  */
-import _ from "lodash";
+
+import { isPercentageString, type PercentageString } from "./types.ts";
 
 /**
  * Round a number to 7 decimal places and remove trailing zeros.
@@ -29,65 +30,42 @@ export function em(px: number, base: number): string {
 }
 
 /**
- * Format OKLCH color value suitable for Tailwind CSS.
+ * Color value in oklch space suitable for TailwindCss.
+ */
+export class Oklch {
+  l: number;
+  c: number;
+  h: number;
+
+  constructor(l: number | PercentageString, c: number, h: number) {
+    this.l = isPercentageString(l) ? parseFloat(l) / 100 : l;
+    this.c = c;
+    this.h = h;
+  }
+
+  toString(): string {
+    return `oklch(${this.l * 100}% ${this.c} ${this.h} / <alpha-value>)`;
+  }
+
+  /**
+   * Interpolate between two Oklch colors.
+   */
+  static interpolate(lambda: number, start: Oklch, end: Oklch): Oklch {
+    return new Oklch(
+      start.l + lambda * (end.l - start.l),
+      start.c + lambda * (end.c - start.c),
+      start.h + lambda * (end.h - start.h),
+    );
+  }
+}
+
+/**
+ * Create an Oklch color value
  */
 export function oklch(
-  l: number | string,
-  c: number | string,
-  h: number | string,
-): string {
-  return `oklch(${l}% ${c} ${h} / <alpha-value>)`;
-}
-
-/**
- * Format OKLAB color value suitable for Tailwind CSS.
- */
-export function oklab(
-  l: number | string,
-  a: number | string,
-  b: number | string,
-): string {
-  return `oklab(${l}% ${a} ${b} / <alpha-value>)`;
-}
-
-const luminancesPresets = {
-  standard: [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95],
-  extended: [
-    5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
-  ],
-} as Record<string, number[]>;
-
-function valueFromLuminance(l: number): string {
-  if (0 <= l && l <= 100) {
-    return ((100 - l) * 10).toFixed();
-  }
-  throw new Error(`Invalid luminance value: ${l}`);
-}
-
-/**
- * Generate an OKLCH palette based on the given chroma and hue.
- */
-export function oklchPalette(
+  l: number | PercentageString,
   c: number,
   h: number,
-  ls: keyof typeof luminancesPresets | number[] = "standard",
-): Record<string, string> {
-  const luminances = typeof ls === "string" ? luminancesPresets[ls] : ls;
-  return _.fromPairs(
-    _.map(luminances, (l) => [valueFromLuminance(l), oklch(l, c, h)]),
-  );
-}
-
-/**
- * Generate an OKLCH palette based on the given chroma and hue.
- */
-export function oklabPalette(
-  a: number,
-  b: number,
-  ls: keyof typeof luminancesPresets | number[] = "standard",
-): Record<string, string> {
-  const luminances = typeof ls === "string" ? luminancesPresets[ls] : ls;
-  return _.fromPairs(
-    _.map(luminances, (l) => [valueFromLuminance(l), oklab(l, a, b)]),
-  );
+): Oklch {
+  return new Oklch(l, c, h);
 }

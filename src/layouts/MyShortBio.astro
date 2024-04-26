@@ -4,10 +4,12 @@ import { SOCIALS } from "../config.ts";
 ---
 
 <section
-  class="flex flex-col items-start max-laptop:flex-col-reverse max-laptop:items-center"
+  class="flex flex-col items-start
+  max-laptop:flex-col-reverse max-laptop:items-center"
 >
   <div
-    class="flex flex-col items-start justify-center text-pretty text-base/snug text-gray-400 max-laptop:max-w-[55ch] max-laptop:items-center max-laptop:text-center"
+    class="flex flex-col items-start justify-center text-pretty text-base/6
+    max-laptop:max-w-[55ch] max-laptop:items-center max-laptop:text-center"
   >
     <p>
       I was born in 1990s, but don’t be fooled by my age, though. I’m a
@@ -48,7 +50,8 @@ import { SOCIALS } from "../config.ts";
             href={item.href}
             title={`Me on ${item.name}`}
             rel="noopener"
-            class="hyperlink hyperlink--social-link flex items-center gap-0.5 rounded-lg p-0.5 shadow-md laptop:pl-1 laptop:pr-2.5"
+            class="hyperlink hyperlink--social-link flex items-center gap-0.5 rounded-lg p-0.5 shadow-md
+            laptop:pl-1 laptop:pr-2.5"
           >
             <Icon
               name={`social/${item.name.toLowerCase()}`}

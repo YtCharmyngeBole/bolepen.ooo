@@ -68,6 +68,16 @@ export type HumanMachineReadable<H, M> = {
 };
 
 /**
+ * Represents a string that is a valid percentage value.
+ */
+export type PercentageString = `${number}%`;
+
+export function isPercentageString(value: any): value is PercentageString {
+  const regex = /^-?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?%$/;
+  return typeof value === "string" && regex.test(value);
+}
+
+/**
  * Throws an error indicating that the code path is unreachable.
  *
  * This function is used to mark code paths that should never be reached.
