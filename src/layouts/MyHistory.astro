@@ -1,5 +1,28 @@
 ---
 import Section from "./Section.astro";
+
+const linkToIPATable =
+  "https://en.wiktionary.org/wiki/Appendix:Middle_English_pronunciation";
 ---
 
-<!--<Section title="Lore and History">--><!--  <p>Hello.</p>--><!--</Section>-->
+<Section title="Character Background and History">
+  <p>
+    His name is <strong class="font-black text-beetroot-500">BOLE</strong>.
+    Despite being a dog, this auspicious name comes from the Middle English word
+    for a young heraldic bull and shares the pronunciation of <em>bull</em>.
+  </p>
+  <p class="muted mx-6 text-sm/6">
+    For those linguistic inclined, here are IPA transcriptions of the word:
+    <span class="ipa">/ˈbul(ə)/</span>,
+    <span class="ipa">/ˈbuːl(ə)/</span>,
+    <span class="ipa">/ˈbɔːl(ə)/</span>&emsp;(see
+    <a href={linkToIPATable}>pronunciation guide</a>)
+  </p>
+  <p><em>This is a work in progress. More details coming soon.</em></p>
+</Section>
+
+<style>
+  .ipa {
+    @apply inline-block font-bold text-grayext-350;
+  }
+</style>
