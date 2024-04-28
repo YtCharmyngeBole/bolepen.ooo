@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply text-grayext-350 bg-ambient-bg font-body text-[16px] antialiased;
+    @apply bg-ambient-bg font-body text-[16px] text-grayext-350 antialiased;
 
     --hyperlink-text--ground: theme("colors.orange.400");
     --hyperlink-text--excited: theme("colors.lemon.400");
@@ -23,25 +23,25 @@
 
 @layer components {
   .prose-auto {
-    @apply text-grayext-350 prose prose-base prose-gray prose-invert max-w-full leading-6;
+    @apply prose prose-base prose-gray prose-invert max-w-full leading-6 text-grayext-350;
 
     h2 {
       @apply text-orange-300;
     }
 
     h3 {
-      @apply text-gray-400;
+      @apply text-orange-200;
     }
 
     a {
       @apply hyperlink hyperlink--underline font-bold;
     }
 
-    .accented {
-      @apply text-lemon-200;
+    .bright {
+      @apply text-[color-mix(in_oklch,currentColor,white_50%)];
     }
 
-    .muted {
+    .dimmed {
       @apply text-[color-mix(in_oklch,currentColor,black_25%)];
     }
   }
