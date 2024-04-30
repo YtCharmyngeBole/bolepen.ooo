@@ -38,11 +38,15 @@
     }
 
     .bright {
-      @apply text-[color-mix(in_oklch,currentColor,white_50%)];
+      @apply text-[color-mix(in_oklch,_currentColor,_white_50%)];
     }
 
     .dimmed {
-      @apply text-[color-mix(in_oklch,currentColor,black_25%)];
+      @apply text-[color-mix(in_oklch,_currentColor,_black_25%)];
+    }
+
+    .ipa {
+      @apply inline-block font-bold text-gray-300;
     }
   }
 }

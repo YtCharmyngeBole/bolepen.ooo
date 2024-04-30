@@ -5,11 +5,8 @@ import Body from "../layouts/Body.astro";
 import Footnote from "../layouts/Footer.astro";
 
 import Banner from "../layouts/Banner.astro";
-import MyHistory from "../layouts/MyHistory.astro";
-import MyInterests from "../layouts/MyInterests.astro";
-import MyShortBio from "../layouts/MyShortBio.astro";
-
-// TODO: Add adornment to the top and bottom page area
+import ShortBio from "../layouts/ShortBio.astro";
+import Writeup from "../layouts/Writeup.astro";
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
@@ -23,11 +20,8 @@ import MyShortBio from "../layouts/MyShortBio.astro";
         class="flex max-w-[70ch] flex-col items-start justify-center
         max-laptop:items-center"
       >
-        <MyShortBio />
-        <MyInterests />
-        <MyHistory />
-        {/* <MyParticipation /> */}
-        {/* <MyCharacter /> */}
+        <ShortBio />
+        <Writeup />
       </div>
     </div>
   </Body>

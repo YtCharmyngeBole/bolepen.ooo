@@ -11,7 +11,7 @@ import { SOCIALS } from "../config.ts";
     class="flex flex-col items-start justify-center text-pretty text-base/6
     max-laptop:max-w-[55ch] max-laptop:items-center max-laptop:text-center"
   >
-    <p>
+    <p class="mt-4">
       I was born in 1990s, but don’t be fooled by my age, though. I’m a
       free-spirited doggo who loves lying around and enjoy some belly rubs&nbsp;<Icon
         name="twemoji/dog-face"
@@ -57,7 +57,7 @@ import { SOCIALS } from "../config.ts";
               name={`social/${item.name.toLowerCase()}`}
               class="inline-block size-8"
             />
-            <span class="grow pb-0.5 pt-1 max-laptop:hidden">{item.name}</span>
+            <span class="grow max-laptop:hidden">{item.name}</span>
           </a>
         </li>
       ))
