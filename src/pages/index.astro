@@ -1,12 +1,11 @@
 ---
 import { SITE } from "../config.ts";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Body from "../layouts/Body.astro";
-import Footnote from "../layouts/Footer.astro";
-
-import Banner from "../layouts/Banner.astro";
-import ShortBio from "../layouts/ShortBio.astro";
-import Writeup from "../layouts/Writeup.astro";
+import BaseLayout from "../layouts/base/Layout.astro";
+import Body from "../layouts/base/Body.astro";
+import Footnote from "../layouts/base/Footer.astro";
+import Banner from "../layouts/main/Banner.astro";
+import ShortBio from "../layouts/main/ShortBio.astro";
+import Writeup from "../layouts/main/Writeup.astro";
 ---
 
 <BaseLayout title={`${SITE.title} – ${SITE.description}`}>
