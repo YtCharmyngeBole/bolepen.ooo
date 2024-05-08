@@ -87,7 +87,7 @@
   }
 
   .hyperlink--underline {
-    @apply underline decoration-[var(--hyperlink-decoration)] decoration-2 underline-offset-2;
+    @apply underline decoration-[var(--hyperlink-decoration)] decoration-[0.1em] underline-offset-2;
     --hyperlink-decoration: color-mix(
       in oklch,
       transparent,

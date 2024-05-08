@@ -30,6 +30,9 @@ const customComponent: PluginCreator = ({ addComponents }) => {
     ".oblique": {
       fontStyle: "oblique",
     },
+    ".nolig": {
+      fontVariantLigatures: "none",
+    },
   });
 };
 
