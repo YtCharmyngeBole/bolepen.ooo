@@ -83,6 +83,22 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
+    <!-- Load font as soon as possible -->
+    <script is:inline>
+      const fontBodyRegular = new FontFace(
+        "Iosevka Custom Web Propo",
+        "url(/fonts/IosevkaCustomWebPropo-30.0.0-0/IosevkaCustomWebPropo-Regular.woff2)",
+        {
+          style: "normal",
+          weight: "400",
+        },
+      );
+
+      fontBodyRegular.load().then(function () {
+        document.fonts.add(fontBodyRegular);
+      });
+    </script>
+
     <ViewTransitions />
   </head>
   <body>

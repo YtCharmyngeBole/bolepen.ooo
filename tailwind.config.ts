@@ -127,7 +127,8 @@ export default {
       display: ["Barlow", "'Barlow override'", ...defaultTheme.fontFamily.sans],
       body: [
         "'Iosevka Custom Web Propo'",
-        "'Iosevka Custom Web override'",
+        "'Iosevka Custom Web quickload'",
+        "'Iosevka Custom Web fallback'",
         ...defaultTheme.fontFamily.sans,
       ],
     },
