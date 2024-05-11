@@ -38,7 +38,10 @@ export default defineConfig({
         ),
       ],
       styleOverrides: {
-        codeFontFamily: ["'Iosevka Web'", ...defaultTheme.fontFamily.mono],
+        codeFontFamily: [
+          "'Iosevka Custom Web Mono'",
+          ...defaultTheme.fontFamily.mono,
+        ],
         codeFontSize: "1rem",
       },
     }),
