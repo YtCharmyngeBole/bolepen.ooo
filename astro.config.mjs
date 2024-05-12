@@ -1,15 +1,16 @@
 import fs from "node:fs";
-import { resolve } from "node:path";
 
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import solid from "@astrojs/solid-js";
+import solidJs from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
 import { shield } from "@kindspells/astro-shield";
 import defaultTheme from "tailwindcss/defaultTheme";
-import expressiveCode from "astro-expressive-code";
-import icon from "astro-icon";
+import astroExpressiveCode, {
+  ExpressiveCodeTheme,
+} from "astro-expressive-code";
+import astroIcon from "astro-icon";
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -17,10 +18,11 @@ import rehypeSlug from "rehype-slug";
 
 import { SITE } from "./src/config.ts";
 
-const rootDir = new URL(".", import.meta.url).pathname;
-const modulePath = resolve(rootDir, "src", "generated", "sriHashes.mjs");
+// For astro-expressive-code: read syntax highlight theme from JSON file
+const ayuDarkTheme = ExpressiveCodeTheme.fromJSONString(
+  fs.readFileSync(new URL("ayu-dark-theme.json", import.meta.url), "utf-8"),
+);
 
-// https://astro.build/config
 export default defineConfig({
   site: SITE.url,
   prefetch: true,
@@ -29,10 +31,10 @@ export default defineConfig({
       applyBaseStyles: false,
       nesting: true,
     }),
-    icon(),
+    astroIcon(),
     sitemap(),
-    expressiveCode({
-      themes: [JSON.parse(fs.readFileSync("./src/ayu-dark.json", "utf-8"))],
+    astroExpressiveCode({
+      themes: [ayuDarkTheme],
       styleOverrides: {
         codeFontFamily: [
           "'Iosevka Custom Web Mono'",
@@ -42,12 +44,8 @@ export default defineConfig({
       },
     }),
     mdx(),
-    solid(),
-    shield({
-      sri: {
-        hashesModule: modulePath,
-      },
-    }),
+    solidJs(),
+    shield({}),
   ],
   markdown: {
     remarkPlugins: [],

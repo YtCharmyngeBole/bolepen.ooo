@@ -3,6 +3,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "module": "ESNext",
-    "target": "ES2022"
+    "target": "ES2022",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ]
+    }
   }
 }

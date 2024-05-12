@@ -87,11 +87,11 @@
   }
 
   .hyperlink--underline {
-    @apply underline decoration-[var(--hyperlink-decoration)] decoration-[0.1em] underline-offset-2;
+    @apply underline decoration-[var(--hyperlink-decoration)] decoration-[0.2em] underline-offset-[0.15em];
     --hyperlink-decoration: color-mix(
       in oklch,
       transparent,
-      var(--hyperlink-text--ground) 25%
+      var(--hyperlink-text--ground) 20%
     );
   }
 }
