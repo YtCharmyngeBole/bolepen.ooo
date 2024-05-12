@@ -5,11 +5,11 @@ A *fursonal* website located at https://bolepen.ooo.
 ## TODOs
 
 - [ ] Webfont subsetting ([see this help](https://github.com/be5invis/Iosevka/issues/238#issuecomment-351527918))
-- [ ] Add a section of **My Interests** (e.g. hobbies, favorite things, etc.)
+- [x] Add a section of **Hobbies and Interests** (e.g. hobbies, favorite things, etc.)
     - Mentions membership of Kemono Baseball Team No. TH 90
-- [ ] Add a section of **My History** (e.g. origin, name, pronunciation, etc.)
-- [ ] Add a section of **My Participation** (e.g. attended events, conventions, etc.)
-- [ ] Add a section of **My Character** (e.g. character sheet, etc.)
+- [x] Add a section of **My Fursona** (e.g. origin, name, pronunciation, etc.)
+- [ ] Add a section of **Event Participation** (e.g. attended events, conventions, etc.)
+- [ ] Add a section of **Character References** (e.g. character sheet, etc.)
 - [ ] Adorn the website background with animated patterns
     - Greek adornment patterns on the header and footer area
     - Animated background SVGs
