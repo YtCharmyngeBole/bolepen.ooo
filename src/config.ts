@@ -4,7 +4,8 @@ import ogImage from "./images/ogimage.png";
 export const SITE = {
   author: "That Charming BOLE",
   title: "In The Bolepen",
-  description: "A fursonal website for That Charming BOLE",
+  description:
+    "Home base of That Charming BOLE, the free-spirited doggo who loves belly rubs. Welcome, please come visit and have a look around! Why the wait?",
   url: "https://bolepen.ooo",
   themeColor: "#48215b",
   ogImage: ogImage.src,
