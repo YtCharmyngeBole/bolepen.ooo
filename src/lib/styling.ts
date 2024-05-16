@@ -18,15 +18,15 @@ export function round(num: number, fractionDigits: number = 7): string {
 /**
  * Convert pixel to rem assuming 16px base font size.
  */
-export function rem(px: number): string {
-  return `${round(px / 16)}rem`;
+export function rem(px: number): `${number}rem` {
+  return `${round(px / 16)}rem` as `${number}rem`;
 }
 
 /**
  * Convert pixel to em using the given base font size.
  */
-export function em(px: number, base: number): string {
-  return `${round(px / base)}em`;
+export function em(px: number, base: number): `${number}em` {
+  return `${round(px / base)}em` as `${number}em`;
 }
 
 /**
