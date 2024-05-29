@@ -1,18 +1,21 @@
 ---
 export interface Props {
-  style: "abbr" | "full" | "quoted";
+  style: "abbr" | "full" | "full-emphasized" | "handle";
 }
 
 const { style = "abbr" } = Astro.props as Props;
 ---
 
 {
+  /* prettier-ignore */
   style === "abbr" ? (
-    <span class="font-black text-beetroot-500">BOLE</span>
+    <span class="text-beetroot-400">BOLE</span>
   ) : style === "full" ? (
-    <span class="italic font-bold text-beetroot-400">That Charming BOLE</span>
+    <span class="text-beetroot-400">That Charming BOLE</span>
+  ): style === "full-emphasized" ? (
+    <span class="text-beetroot-400"><em>That</em> Charming BOLE</span>
   ) : (
-    <span class="text-fadecream-200 before:content-[open-quote] after:content-[close-quote]">
+    <span class="text-beetroot-400 before:content-[open-quote] after:content-[close-quote]">
       <span class="px-px">YtCharmyngeBole</span>
     </span>
   )

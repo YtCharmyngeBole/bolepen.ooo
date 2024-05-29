@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import { SOCIALS } from "../../config.ts";
+import Bole from "@components/Bole.astro";
+import Muted from "../../components/Muted.astro";
 ---
 
 <section
@@ -12,27 +14,17 @@ import { SOCIALS } from "../../config.ts";
     max-laptop:max-w-[55ch] max-laptop:items-center max-laptop:text-center"
   >
     <p class="mt-4">
-      I was born in 1990s, but don’t be fooled by my age, though. I’m a
-      free-spirited doggo who loves lying around and enjoy some belly rubs&nbsp;<Icon
+      Hi, my name is <Bole />, a free-spirited doggo who loves lying around and
+      enjoy some belly rubs&nbsp;<Icon
         name="twemoji/dog-face"
         class="inline-block align-[-0.1em]"
         title="Dog face emoji"
       />.
     </p>
     <p class="mt-4">
-      Despite being anatomically chubby most time of the year, I occasionally
-      allow myself to transform into other forms (e.g. buff, lean, or anything
-      in between) with the magical power of
-      <em class="text-fadecream-400">commissioned artworks</em>&nbsp;<Icon
-        name="twemoji/money-with-wings"
-        class="inline-block align-[-0.1em]"
-        title="Money with wings emoji"
-      />.
-    </p>
-    <p class="mt-4">
       Feel free to reach out and say hi! I'm always excited to meet new friends
-      (furry or otherwise). Please offer to cuddle me if you happen to meet me
-      in person&nbsp;<Icon
+      <Muted>(furry or otherwise)</Muted>. And please offer to cuddle me if you
+      happen to meet me in person&nbsp;<Icon
         name="twemoji/woozy-face"
         class="inline-block align-[-0.1em]"
         title="Woozy face emoji"
@@ -49,7 +41,7 @@ import { SOCIALS } from "../../config.ts";
           <a
             href={item.href}
             title={`Me on ${item.name}`}
-            rel="noopener"
+            rel="me noopener"
             class="hyperlink hyperlink--social-link flex items-center gap-0.5 rounded-lg p-0.5 shadow-md
             laptop:pl-1 laptop:pr-2.5"
           >

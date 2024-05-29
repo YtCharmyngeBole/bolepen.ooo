@@ -11,7 +11,7 @@
     @apply bg-ambient-bg font-body text-[16px] text-grayext-350 antialiased laptop:text-[18px];
 
     --hyperlink-text--ground: theme("colors.orange.400");
-    --hyperlink-text--excited: theme("colors.lemon.400");
+    --hyperlink-text--excited: theme("colors.lemon.300");
     --hyperlink-bg--ground: transparent;
     --hyperlink-bg--excited: transparent;
   }
@@ -52,23 +52,11 @@
     }
 
     h3 {
-      @apply text-orange-200;
+      @apply text-orange-300;
     }
 
     a {
       @apply hyperlink hyperlink--underline font-bold;
-    }
-
-    .bright {
-      @apply text-[color-mix(in_oklch,_currentColor,_white_75%)];
-    }
-
-    .dimmed {
-      @apply text-[color-mix(in_oklch,_currentColor,_black_25%)];
-    }
-
-    .ipa {
-      @apply inline-block font-bold text-gray-300;
     }
   }
 }
@@ -87,11 +75,23 @@
   }
 
   .hyperlink--underline {
-    @apply underline decoration-[var(--hyperlink-decoration)] decoration-[0.2em] underline-offset-[0.15em];
+    @apply underline decoration-[var(--hyperlink-decoration)] decoration-[0.125em] underline-offset-[0.15em];
     --hyperlink-decoration: color-mix(
       in oklch,
       transparent,
       var(--hyperlink-text--ground) 20%
     );
+  }
+
+  .bright {
+    @apply text-[color-mix(in_oklch,_currentColor,_white_75%)];
+  }
+
+  .dimmed {
+    @apply text-[color-mix(in_oklch,_currentColor,_black_25%)];
+  }
+
+  .ipa {
+    @apply inline-block font-bold text-gray-300;
   }
 }
