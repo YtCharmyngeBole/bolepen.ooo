@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  style: "abbr" | "full" | "full-emphasized" | "handle";
+  style?: "abbr" | "full" | "full-emphasized" | "handle";
 }
 
 const { style = "abbr" } = Astro.props as Props;
@@ -12,7 +12,7 @@ const { style = "abbr" } = Astro.props as Props;
     <span class="text-beetroot-400">BOLE</span>
   ) : style === "full" ? (
     <span class="text-beetroot-400">That Charming BOLE</span>
-  ): style === "full-emphasized" ? (
+  ) : style === "full-emphasized" ? (
     <span class="text-beetroot-400"><em>That</em> Charming BOLE</span>
   ) : (
     <span class="text-beetroot-400 before:content-[open-quote] after:content-[close-quote]">
