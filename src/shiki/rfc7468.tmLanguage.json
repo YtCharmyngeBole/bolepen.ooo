@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "rfc7468",
+  "scopeName": "source.rfc7468",
+  "patterns": [
+    {
+      "include": "#envelope"
+    }
+  ],
+  "repository": {
+    "envelope": {
+      "patterns": [
+        {
+          "begin": "^-{5,}BEGIN(\\x20[\\x20-\\x2c\\x2e-\\x7e]*)-{5,}\\s*$",
+          "end": "^-{5,}END\\1-{5,}\\s*$",
+          "beginCaptures": {
+            "0": {
+              "name": "comment.line.rfc7468"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "comment.line.rfc7468"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#body"
+            }
+          ],
+          "name": "meta.envelope.rfc7468"
+        }
+      ]
+    },
+    "body": {
+      "patterns": [
+        {
+          "name": "string.body.rfc7468",
+          "match": "."
+        }
+      ]
+    }
+  }
+}
