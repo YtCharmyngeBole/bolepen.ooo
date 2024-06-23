@@ -1,0 +1,51 @@
+---
+export interface Props {
+  feature: LigatureFeature;
+}
+
+type LigatureFeature =
+  (typeof mappedLigatureOptions)[keyof typeof mappedLigatureOptions];
+
+const mappedLigatureOptions = {
+  off: "none",
+  contextual: "calt",
+  discretionary: "dlig",
+  clike: "CLIK",
+  javascript: "JSPT",
+  php: "PHPX",
+  julia: "JLIA",
+  raku: "RAKU",
+  ml: "MLXX",
+  fsharp: "FSHP",
+  fstar: "FSTA",
+  haskell: "HSKL",
+  idris: "IDRS",
+  elm: "ELMX",
+  purescript: "PURS",
+  swift: "SWFT",
+  dafny: "DFNY",
+  coq: "COQX",
+  matlab: "MTLB",
+  verilog: "VRLG",
+  wolfram: "WFLM",
+  erlang: "ERLA",
+} as const;
+
+function getFontFeatureSettingsValue(feature: LigatureFeature) {
+  const nativeFeature = mappedLigatureOptions[feature.toLowerCase()] || feature;
+  if (nativeFeature === "calt") {
+    return '"calt" 1';
+  } else if (nativeFeature === "none") {
+    return '"calt" 0';
+  } else if (Object.values(mappedLigatureOptions).includes(nativeFeature)) {
+    return `"calt" 0, "${nativeFeature}" 1`;
+  } else {
+    return '"calt" 1';
+  }
+}
+
+const { feature } = Astro.props as Props;
+const fontFeatureSettingsValue = getFontFeatureSettingsValue(feature);
+---
+
+<div style={`font-feature-settings: ${fontFeatureSettingsValue}`}><slot /></div>
