@@ -15,14 +15,6 @@
 
 @font-face {
   /* Fallback font for Iosevka Custom Web Propo */
-  font-family: "Iosevka Custom Web quickload";
-  font-display: swap;
-  src: url("/fonts/IosevkaCustomWebPropo-30.0.0-0/IosevkaCustomWebPropo-Regular.woff2")
-    format("woff2");
-}
-
-@font-face {
-  /* Fallback font for Iosevka Custom Web Propo */
   font-family: "Iosevka Custom Web fallback";
   src: local("Arial"), local("Roboto");
   size-adjust: 89.9032%;

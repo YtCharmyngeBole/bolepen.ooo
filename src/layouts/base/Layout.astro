@@ -81,6 +81,17 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
+    <!-- Fonts (disabled due to performance hit) -->
+    <script>
+      // const font = new FontFace(
+      //   "Iosevka Custom Web quickload",
+      //   "url(/fonts/IosevkaCustomWebPropo-30.0.0-0/IosevkaCustomWebPropo-Regular.woff2)",
+      //   {},
+      // );
+      // await font.load();
+      // document.fonts.add(font);
+    </script>
+
     <ViewTransitions />
   </head>
   <body>
