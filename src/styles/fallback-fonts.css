@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Iosevka Custom Web fallback";
+  src: local("Arial"), local("Roboto");
+  size-adjust: 89.9032%;
+  ascent-override: 96.5%;
+  descent-override: 28.5%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Barlow fallback";
+  src: local("Arial"), local("Roboto");
+  size-adjust: 95.2835%;
+  ascent-override: 100%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}

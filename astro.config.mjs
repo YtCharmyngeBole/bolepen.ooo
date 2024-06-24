@@ -48,6 +48,8 @@ export default defineConfig({
       styleOverrides: {
         codeFontFamily: [
           "'Iosevka Custom Web Mono'",
+          "'Iosevka Custom Web Propo'",
+          "'Iosevka Custom Web fallback'",
           ...defaultTheme.fontFamily.mono,
         ],
         codeFontSize: "1rem",

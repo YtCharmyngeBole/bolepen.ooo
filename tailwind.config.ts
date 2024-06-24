@@ -121,10 +121,9 @@ export default {
       },
     },
     fontFamily: {
-      display: ["Barlow", "'Barlow override'", ...defaultTheme.fontFamily.sans],
+      display: ["Barlow", "'Barlow fallback'", ...defaultTheme.fontFamily.sans],
       body: [
         "'Iosevka Custom Web Propo'",
-        "'Iosevka Custom Web quickload'",
         "'Iosevka Custom Web fallback'",
         ...defaultTheme.fontFamily.sans,
       ],
