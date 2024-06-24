@@ -4,7 +4,7 @@ A *fursonal* website located at https://bolepen.ooo.
 
 ## TODOs
 
-- [ ] Webfont subsetting ([see this help](https://github.com/be5invis/Iosevka/issues/238#issuecomment-351527918))
+- [x] Webfont subsetting (*currently in beta*)
 - [x] Add a section of **Hobbies and Interests** (e.g. hobbies, favorite things, etc.)
     - Mentions membership of Kemono Baseball Team No. TH 90
 - [x] Add a section of **My Fursona** (e.g. origin, name, pronunciation, etc.)
