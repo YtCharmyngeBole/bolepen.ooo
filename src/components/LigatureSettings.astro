@@ -3,42 +3,44 @@ export interface Props {
   feature: LigatureFeature;
 }
 
-type LigatureFeature =
-  (typeof mappedLigatureOptions)[keyof typeof mappedLigatureOptions];
+const LIGATURE_FEATURES = [
+  "none",
+  "calt",
+  "dlig",
+  "CLIK",
+  "JSPT",
+  "PHPX",
+  "JLIA",
+  "RAKU",
+  "MLXX",
+  "FSHP",
+  "FSTA",
+  "HSKL",
+  "IDRS",
+  "ELMX",
+  "PURS",
+  "SWFT",
+  "DFNY",
+  "COQX",
+  "MTLB",
+  "VRLG",
+  "WFLM",
+  "ERLA",
+] as const;
 
-const mappedLigatureOptions = {
-  off: "none",
-  contextual: "calt",
-  discretionary: "dlig",
-  clike: "CLIK",
-  javascript: "JSPT",
-  php: "PHPX",
-  julia: "JLIA",
-  raku: "RAKU",
-  ml: "MLXX",
-  fsharp: "FSHP",
-  fstar: "FSTA",
-  haskell: "HSKL",
-  idris: "IDRS",
-  elm: "ELMX",
-  purescript: "PURS",
-  swift: "SWFT",
-  dafny: "DFNY",
-  coq: "COQX",
-  matlab: "MTLB",
-  verilog: "VRLG",
-  wolfram: "WFLM",
-  erlang: "ERLA",
-} as const;
+type LigatureFeature = (typeof LIGATURE_FEATURES)[number];
+
+function isLigatureFeature(value: string): value is LigatureFeature {
+  return LIGATURE_FEATURES.includes(value as LigatureFeature);
+}
 
 function getFontFeatureSettingsValue(feature: LigatureFeature) {
-  const nativeFeature = mappedLigatureOptions[feature.toLowerCase()] || feature;
-  if (nativeFeature === "calt") {
+  if (feature === "calt") {
     return '"calt" 1';
-  } else if (nativeFeature === "none") {
+  } else if (feature === "none") {
     return '"calt" 0';
-  } else if (Object.values(mappedLigatureOptions).includes(nativeFeature)) {
-    return `"calt" 0, "${nativeFeature}" 1`;
+  } else if (isLigatureFeature(feature)) {
+    return `"calt" 0, "${feature}" 1`;
   } else {
     return '"calt" 1';
   }
@@ -48,4 +50,6 @@ const { feature } = Astro.props as Props;
 const fontFeatureSettingsValue = getFontFeatureSettingsValue(feature);
 ---
 
-<div style={`font-feature-settings: ${fontFeatureSettingsValue}`}><slot /></div>
+<div style={`font-feature-settings: ${fontFeatureSettingsValue}`}>
+  <slot />
+</div>
