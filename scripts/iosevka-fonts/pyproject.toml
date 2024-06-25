@@ -1,0 +1,34 @@
+[project]
+name = "iosevka-fonts"
+version = "0.1.0"
+description = "Iosevka Subsetting Script"
+authors = [
+    { name = "That Charming BOLE", email = "165321522+YtCharmyngeBole@users.noreply.github.com" }
+]
+dependencies = [
+    "brotli~=1.1",
+    "click~=8.1",
+    "fonttools~=4.53",
+    "tqdm~=4.66",
+]
+license = "Apache-2.0"
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pyright>=1.1.369",
+    "ruff>=0.4.10",
+    "ruff-lsp>=0.0.53",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["iosevka-subsetting"]
