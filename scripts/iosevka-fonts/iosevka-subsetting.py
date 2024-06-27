@@ -64,7 +64,7 @@ RANKS_FILE = THIS_DIR / "ranks.toml"
 #                   |_|                                 |___/
 #
 
-WORKING_DIR = THIS_DIR / "sandbox"
+WORKING_DIR = THIS_DIR / "assets"
 IOSEVKA_VERSION = "30.3.0-0"
 IOSEVKA_FAMILIES = ["IosevkaCustomWebPropo", "IosevkaCustomWebMono"]
 IOSEVKA_SAMPLE_FONT_FILE = (
@@ -103,7 +103,7 @@ def program(mode):
     ]
 
     if mode in ("css-only", "all"):
-        css_output_file = WORKING_DIR / "iosevka.css"
+        css_output_file = WORKING_DIR / "build" / "iosevka.css"
         generate_css(css_output_file, runners)
 
     if mode in ("subsets-only", "all"):
@@ -117,6 +117,7 @@ def program(mode):
 
 def generate_css(output_file: Path, runners: list[FontSubsetRunner]):
     print(f"Generating CSS to {output_file}...")
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     with output_file.open("w") as f:
         for runner in runners:
             print(runner.generate_css(), file=f)
@@ -301,7 +302,9 @@ class FontSubsetRunner:
     def font_output_file(self) -> Path:
         """Output file path of the font subset."""
         input_file = self.input_metadata.path
-        return input_file.parent / "output" / f"{input_file.stem}-{self.subset_name}.woff2"
+        return (
+            input_file.parent.parent / "build" / input_file.parent.name / f"{input_file.stem}-{self.subset_name}.woff2"
+        )
 
     @property
     def in_css_output_file(self) -> Path:
