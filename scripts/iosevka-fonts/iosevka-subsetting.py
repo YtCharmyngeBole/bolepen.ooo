@@ -1,8 +1,28 @@
 #!/usr/bin/env python
 """
 Font subsetting script for Iosevka Custom Web fonts.
-The script expects a collection of Iosevka font files
-with complete set of character sets.
+The script expects a collection of Iosevka font files with complete set of character sets.
+
+Before using this script...
+
+1. Ensure that the working directory should contain Iosevka font files
+   with the following structure:
+
+       {working_dir}/{family}-{version}/{family}-{variant}.woff2
+
+   where:
+   - {family} is the font family name (e.g. IosevkaCustomWebPropo)
+   - {version} is the version of the font (e.g. 30.3.0-0)
+   - {variant} is the font variant (e.g. Regular, Bold, LightItalic, etc.)
+
+2. Set the following constants in the Script Config section:
+   - `WORKING_DIR`: Path to the working directory containing the font files.
+   - `IOSEVKA_VERSION`: Version of the Iosevka font.
+   - `IOSEVKA_FAMILIES`: List of Iosevka font families.
+   - `IOSEVKA_SAMPLE_FONT_FILE`: Path to a sample Iosevka font file.
+
+Then, just run the script with the desired mode,
+or run `iosevka_font_subsets.py --help` for more information.
 """
 
 from __future__ import annotations
@@ -13,12 +33,11 @@ import os
 import re
 import subprocess
 import textwrap
+import tomllib
 import typing as t
-from collections import defaultdict
 from collections.abc import Iterable
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
-from types import SimpleNamespace
 
 import click
 import fontTools.unicodedata as ud
@@ -35,50 +54,39 @@ WEIGHTS: list[Weight] = list(t.get_args(Weight.__value__))
 STYLES: list[Style] = list(t.get_args(Style.__value__))
 
 THIS_DIR = Path(__file__).absolute().parent
-SANDBOX_DIR = THIS_DIR / "sandbox"
+RANKS_FILE = THIS_DIR / "ranks.toml"
 
+#  ____            _       _      ____             __ _
+# / ___|  ___ _ __(_)_ __ | |_   / ___|___  _ __  / _(_) __ _
+# \___ \ / __| '__| | '_ \| __| | |   / _ \| '_ \| |_| |/ _` |
+#  ___) | (__| |  | | |_) | |_  | |__| (_) | | | |  _| | (_| |
+# |____/ \___|_|  |_| .__/ \__|  \____\___/|_| |_|_| |_|\__, |
+#                   |_|                                 |___/
+#
+
+WORKING_DIR = THIS_DIR / "sandbox"
 IOSEVKA_VERSION = "30.3.0-0"
 IOSEVKA_FAMILIES = ["IosevkaCustomWebPropo", "IosevkaCustomWebMono"]
 IOSEVKA_SAMPLE_FONT_FILE = (
-    SANDBOX_DIR / f"IosevkaCustomWebPropo-{IOSEVKA_VERSION}" / "IosevkaCustomWebPropo-Regular.woff2"
+    WORKING_DIR / f"IosevkaCustomWebPropo-{IOSEVKA_VERSION}" / "IosevkaCustomWebPropo-Regular.woff2"
 )
 
 
 @click.command()
-@click.option('--css-only', 'mode', flag_value='css-only', help='Generate CSS only.')
-@click.option('--subsets-only', 'mode', flag_value='subsets-only', help='Generate font subsets only.')
-@click.option('--all', 'mode', flag_value='all', help='Generate all assets.')
-@click.option('--dry-run', '-n', 'mode', flag_value='dry-run', default=True, show_default=True, help='Dry run.')
+@click.option("--css-only", "mode", flag_value="css-only", help="Generate CSS only.")
+@click.option("--subsets-only", "mode", flag_value="subsets-only", help="Generate font subsets only.")
+@click.option("--all", "mode", flag_value="all", help="Generate all assets.")
+@click.option("--dry-run", "-n", "mode", flag_value="dry-run", default=True, show_default=True, help="Dry run.")
 def program(mode):
     """
     Generates font subsets and CSS for Iosevka Custom Web fonts.
     For more information, please inspect the source code.
     """
-    std_unicodes = standard_font_subsets()
-    iosevka_unicodes = iosevka_font_subsets(IOSEVKA_SAMPLE_FONT_FILE, std_unicodes)
-
-    subsets = [
-        ("Latin", std_unicodes.latin),
-        ("LatinExt", std_unicodes.latin_ext),
-        ("Greek", std_unicodes.greek),
-        ("GreekExt", std_unicodes.greek_ext),
-        ("Cyrillic", std_unicodes.cyrillic),
-        ("CyrillicExt", std_unicodes.cyrillic_ext),
-        ("Vietnamese", std_unicodes.vietnamese),
-        ("IPAOnly", std_unicodes.ipa_only),
-        ("SpecialLetters", iosevka_unicodes.special_letters),
-        ("MathLetters", iosevka_unicodes.math_letters),
-        ("MathSymbols", iosevka_unicodes.math_symbols),
-        ("Arrows", iosevka_unicodes.arrows),
-        ("Geometric", iosevka_unicodes.geometric),
-        ("Esoteric", iosevka_unicodes.esoteric),
-        ("Braille", iosevka_unicodes.braille),
-        ("OtherSymbols", iosevka_unicodes.other_symbols),
-    ]
+    subsets = get_font_subsets(RANKS_FILE, IOSEVKA_SAMPLE_FONT_FILE)
 
     font_infos = [
         IosevkaFontInfo(
-            parent_dir=SANDBOX_DIR / f"{family}-{IOSEVKA_VERSION}",
+            parent_dir=WORKING_DIR / f"{family}-{IOSEVKA_VERSION}",
             abbr_family=family,
             weight=t.cast(Weight, weight),
             style=t.cast(Style, style),
@@ -91,17 +99,17 @@ def program(mode):
     runners = [
         FontSubsetRunner(input_font_info, subset_name, unicodes)
         for input_font_info in font_infos
-        for subset_name, unicodes in subsets
+        for subset_name, unicodes in subsets.items()
     ]
 
     if mode in ("css-only", "all"):
-        css_output_file = SANDBOX_DIR / "iosevka.css"
+        css_output_file = WORKING_DIR / "iosevka.css"
         generate_css(css_output_file, runners)
 
     if mode in ("subsets-only", "all"):
         generate_font_subsets(runners)
 
-    if mode == 'dry-run':
+    if mode == "dry-run":
         print("Dry run: List of output font files to generate:")
         for runner in runners:
             print("\t", runner.font_output_file, sep="")
@@ -137,136 +145,113 @@ def generate_font_subsets(runners: list[FontSubsetRunner]):
 #
 
 
-def standard_font_subsets() -> SimpleNamespace:
-    unicodes = SimpleNamespace()
-    unicodes.google_latin = UnicodeRanges.from_range_str(
-        "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,"
-        "U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
-    )
-    unicodes.currency = UnicodeRanges.from_range_str(
-        "U+0024,U+00A2-00A5,U+058F,U+060B,U+07FE-07FF,U+09F2-09F3,U+09FB,U+0AF1,U+0BF9,U+0E3F,"
-        "U+17DB,U+20A0-20BF,U+A838,U+FDFC,U+FE69,U+FF04,U+FFE0-FFE1,U+FFE5-FFE6,U+11FDD-11FE0,"
-        "U+1E2FF,U+1ECB0"
-    )
-    unicodes.latin = unicodes.google_latin | unicodes.currency
-    unicodes.latin_ext = UnicodeRanges.from_range_str(
-        "U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,"
-        "U+2113,U+2C60-2C7F,U+A720-A7FF"
-    )
-    unicodes.greek = UnicodeRanges.from_range_str("U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF")
-    unicodes.greek_ext = UnicodeRanges.from_range_str("U+1F00-1FFF")
-    unicodes.cyrillic = UnicodeRanges.from_range_str("U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116")
-    unicodes.cyrillic_ext = UnicodeRanges.from_range_str(
-        "U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F"
-    )
-    unicodes.vietnamese = UnicodeRanges.from_range_str(
-        "U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,"
-        "U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB"
-    )
-    unicodes.thai = UnicodeRanges.from_range_str("U+0E01-0E5B,U+200C-200D,U+25CC")
-    unicodes.lao = UnicodeRanges.from_range_str("U+0E81-0EDF,U+200C-200D,U+25CC")
-    unicodes.khmer = UnicodeRanges.from_range_str("U+1780-17FF,U+19E0-19FF,U+200C-200D,U+25CC")
-    unicodes.myanmar = UnicodeRanges.from_range_str("U+1000-109F,U+200C-200D,U+25CC,U+A92E,U+A9E0-A9FE,U+AA60-AA7F")
-    unicodes.ipa_complete = UnicodeRanges.from_range_str(
-        "U+0020-007E,U+00A0-03FF,U+1AB0-1AFF,U+1DC0-1DFF,U+2000-209F,U+2190-21FF,U+2C60-2C7F,"
-        "U+A700-A71F,U+1D00-1D7F,U+1D80-1DBF,U+A720-A7FF,U+AB30-AB6F,U+10780-107BF,U+1DF00-1DFFF"
-    )
-    unicodes.western_complete = UnicodeRanges()
-    unicodes.western_complete.update(
-        unicodes.latin,
-        unicodes.latin_ext,
-        unicodes.greek,
-        unicodes.greek_ext,
-        unicodes.cyrillic,
-        unicodes.cyrillic_ext,
-        unicodes.vietnamese,
-    )
-    unicodes.ipa_only = unicodes.ipa_complete - unicodes.western_complete
-    unicodes.ipa_only.clear_invalid()
+def get_font_subsets(ranks_file: Path, sample_iosevka_font_file: Path) -> dict[str, UnicodeRanges]:
+    """Gather the font subsets from the ranks file."""
 
-    return unicodes
+    with ranks_file.open("rb") as f:
+        data = tomllib.load(f)
+
+    iosevka_unicodes = UnicodeRanges.from_font_file(sample_iosevka_font_file)
+
+    subsets = {}
+
+    common_unicodes = UnicodeRanges()
+    for k, v in data["codepoints"]["common"].items():
+        name = k.replace("-", " ").title().replace(" ", "")
+        subsets[name] = UnicodeRanges.from_range_str(v)
+        common_unicodes.update(subsets[name])
+
+    handpicked_unicodes = UnicodeRanges()
+    for k, v in data["codepoints"]["handpick"].items():
+        name = k.replace("-", " ").title().replace(" ", "")
+        subsets[name] = UnicodeRanges.from_range_str(v) - common_unicodes
+        handpicked_unicodes.update(subsets[name])
+
+    subsets["Others"] = iosevka_unicodes.difference(common_unicodes, handpicked_unicodes)
+    return subsets
 
 
-def iosevka_font_subsets(sample_font: Path, std_unicodes: SimpleNamespace) -> SimpleNamespace:
+#  ___                     _           _____           _     ___        __
+# |_ _|___  ___  _____   _| | ____ _  |  ___|__  _ __ | |_  |_ _|_ __  / _| ___
+#  | |/ _ \/ __|/ _ \ \ / / |/ / _` | | |_ / _ \| '_ \| __|  | || '_ \| |_ / _ \
+#  | | (_) \__ \  __/\ V /|   < (_| | |  _| (_) | | | | |_   | || | | |  _| (_) |
+# |___\___/|___/\___| \_/ |_|\_\__,_| |_|  \___/|_| |_|\__| |___|_| |_|_|  \___/
+#
+
+
+@dataclasses.dataclass(frozen=True)
+class IosevkaFontInfo:
     """
-    Generate Unicode subsets specifically for Iosevka Custom Web fonts.
-    The categorization is hand-crafted by manually inspecting `char_by_blocks`.
+    Represents the metadata and other information regarding of an Iosevka font file.
     """
-    iosevka_unicodes = SimpleNamespace()
-    iosevka_unicodes.from_file = UnicodeRanges.from_font_file(sample_font)
-    iosevka_unicodes.trimmed = iosevka_unicodes.from_file - std_unicodes.western_complete - std_unicodes.ipa_only
 
-    char_by_blocks = defaultdict(UnicodeRanges)
-    for c in sorted(iosevka_unicodes.trimmed):
-        block = ud.block(chr(c))
-        char_by_blocks[block].add(c)
+    parent_dir: Path
+    abbr_family: str
+    weight: Weight
+    style: Style
 
-    iosevka_unicodes.special_letters = UnicodeRanges()
-    iosevka_unicodes.special_letters.update(
-        char_by_blocks["Alphabetic Presentation Forms"],
-        char_by_blocks["Cyrillic Extended-D"],
-        char_by_blocks["Enclosed Alphanumerics"],
-        char_by_blocks["Enclosed Alphanumeric Supplement"],
-        char_by_blocks["Enclosed CJK Letters and Months"],
+    @classmethod
+    def from_path(cls, path: Path) -> t.Self:
+        """Parses the font file path to create an instance of IosevkaFontInfo."""
+
+        match = cls.weight_style_re.fullmatch(path.name)
+        if match is None:
+            raise ValueError(f"Invalid font file name: {path.name}")
+
+        abbr_family = match.group("family")
+        weight = t.cast(Weight, cls.weight_as_number(match.group("weight")))
+        style = t.cast(Style, (match.group("style") or "normal").lower())
+
+        return cls(path.parent, abbr_family, weight, style)
+
+    @property
+    def path(self) -> Path:
+        """Reconstructs the path to the font file."""
+        return self.parent_dir / f"{self.abbr_family}-{self.variant}.woff2"
+
+    @property
+    def variant(self) -> str:
+        """The weight and style of the font."""
+        weight = self.weight_as_string(self.weight)
+        style = "" if self.style == "normal" else self.style.capitalize()
+        return f"{weight}{style}" or "Regular"
+
+    @property
+    def family(self) -> str:
+        """The full name of the font family."""
+        return " ".join(self.capitalized_word_re.findall(self.abbr_family))
+
+    @classmethod
+    def weight_as_number(cls, weight: str) -> int:
+        """Converts a weight enum to a number."""
+        return next(num for text, num in cls.weights_map if text.casefold() == weight.casefold())
+
+    @classmethod
+    def weight_as_string(cls, weight: Weight) -> str:
+        """Converts a weight number to a string."""
+        return next(text for text, num in cls.weights_map if num == weight)
+
+    capitalized_word_re: t.ClassVar[re.Pattern] = re.compile(r"[A-Z][a-z]*")
+    weight_style_re: t.ClassVar[re.Pattern] = re.compile(
+        r"(?P<family>\w+)-"
+        r"(?P<weight>(?i:|Thin|ExtraLight|Light|Regular|Medium|SemiBold|Bold|ExtraBold|Heavy|Black))"
+        r"(?P<style>(?i:|Italic))"
+        r"(?:-\w+)?"
+        r"\.woff2"
     )
-
-    iosevka_unicodes.math_letters = UnicodeRanges()
-    iosevka_unicodes.math_letters.update(
-        char_by_blocks["Mathematical Alphanumeric Symbols"], char_by_blocks["Letterlike Symbols"]
-    )
-
-    iosevka_unicodes.math_symbols = UnicodeRanges()
-    iosevka_unicodes.math_symbols.update(
-        char_by_blocks["Mathematical Operators"],
-        char_by_blocks["Supplemental Mathematical Operators"],
-        char_by_blocks["Miscellaneous Mathematical Symbols-A"],
-        char_by_blocks["Miscellaneous Mathematical Symbols-B"],
-        char_by_blocks["Supplemental Mathematical Operators"],
-    )
-
-    iosevka_unicodes.arrows = UnicodeRanges()
-    iosevka_unicodes.arrows.update(
-        char_by_blocks["Miscellaneous Symbols and Arrows"],
-        char_by_blocks["Supplemental Arrows-A"],
-        char_by_blocks["Supplemental Arrows-B"],
-        char_by_blocks["Supplemental Arrows-C"],
-    )
-
-    iosevka_unicodes.geometric = UnicodeRanges()
-    iosevka_unicodes.geometric.update(
-        char_by_blocks["Geometric Shapes"],
-        char_by_blocks["Geometric Shapes Extended"],
-        char_by_blocks["Block Elements"],
-        char_by_blocks["Box Drawing"],
-    )
-
-    iosevka_unicodes.esoteric = UnicodeRanges()
-    iosevka_unicodes.esoteric.update(
-        char_by_blocks["Tai Xuan Jing Symbols"], char_by_blocks["Yijing Hexagram Symbols"]
-    )
-
-    iosevka_unicodes.braille = char_by_blocks["Braille Patterns"].copy()
-
-    iosevka_unicodes.other_symbols = iosevka_unicodes.from_file.copy()
-    iosevka_unicodes.other_symbols.difference_update(
-        std_unicodes.latin,
-        std_unicodes.latin_ext,
-        std_unicodes.greek,
-        std_unicodes.greek_ext,
-        std_unicodes.cyrillic,
-        std_unicodes.cyrillic_ext,
-        std_unicodes.vietnamese,
-        std_unicodes.ipa_only,
-        iosevka_unicodes.special_letters,
-        iosevka_unicodes.math_letters,
-        iosevka_unicodes.math_symbols,
-        iosevka_unicodes.arrows,
-        iosevka_unicodes.geometric,
-        iosevka_unicodes.esoteric,
-        iosevka_unicodes.braille,
-    )
-
-    return iosevka_unicodes
+    weights_map: t.ClassVar[list[tuple[str, Weight]]] = [
+        ("Thin", 100),
+        ("ExtraLight", 200),
+        ("Light", 300),
+        ("", 400),
+        ("Regular", 400),  # empty preferred
+        ("Medium", 500),
+        ("SemiBold", 600),
+        ("Bold", 700),
+        ("ExtraBold", 800),
+        ("Heavy", 900),
+        ("Black", 900),  # 'heavy' preferred
+    ]
 
 
 #  _____           _     ____        _              _   _   _               ____
@@ -388,11 +373,6 @@ class UnicodeRanges:
         """
         return sep.join(cont_range.range_str() for cont_range in self.cont_unicode_ranges())
 
-    def print_debug(self):
-        """Prints a debug representation of the UnicodeRanges."""
-        for c in sorted(self.charset):
-            print(f"U+{c:04X}: {chr(c)} {ud.name(chr(c), None)}")
-
     ###################
     # Iterator method #
     ###################
@@ -412,6 +392,16 @@ class UnicodeRanges:
     ###################################
     # Non-operator, immutable methods #
     ###################################
+
+    def empty(self) -> bool:
+        """Return True if the charset is empty."""
+        return not bool(self.charset)
+
+    def print_debug(self):
+        """Prints a debug representation of the UnicodeRanges."""
+        print(f"Codepoints: {len(self.charset)}")
+        for c in sorted(self.charset):
+            print(f"U+{c:04X}: {chr(c)} {ud.name(chr(c), None)}")
 
     def is_disjoint(self, other) -> bool:
         """Return True if the charset is disjoint with the other."""
@@ -637,89 +627,6 @@ class ContUnicodeRange:
             return f"U+{self.start:04X}"
         else:
             return f"U+{self.start:04X}-{self.end:04X}"
-
-
-#  ___                     _           _____           _     ___        __
-# |_ _|___  ___  _____   _| | ____ _  |  ___|__  _ __ | |_  |_ _|_ __  / _| ___
-#  | |/ _ \/ __|/ _ \ \ / / |/ / _` | | |_ / _ \| '_ \| __|  | || '_ \| |_ / _ \
-#  | | (_) \__ \  __/\ V /|   < (_| | |  _| (_) | | | | |_   | || | | |  _| (_) |
-# |___\___/|___/\___| \_/ |_|\_\__,_| |_|  \___/|_| |_|\__| |___|_| |_|_|  \___/
-#
-
-
-@dataclasses.dataclass(frozen=True)
-class IosevkaFontInfo:
-    """
-    Represents the metadata and other information regarding of an Iosevka font file.
-    """
-
-    parent_dir: Path
-    abbr_family: str
-    weight: Weight
-    style: Style
-
-    @classmethod
-    def from_path(cls, path: Path) -> t.Self:
-        """Parses the font file path to create an instance of IosevkaFontInfo."""
-
-        match = cls.weight_style_re.fullmatch(path.name)
-        if match is None:
-            raise ValueError(f"Invalid font file name: {path.name}")
-
-        abbr_family = match.group("family")
-        weight = t.cast(Weight, cls.weight_as_number(match.group("weight")))
-        style = t.cast(Style, (match.group("style") or "normal").lower())
-
-        return cls(path.parent, abbr_family, weight, style)
-
-    @property
-    def path(self) -> Path:
-        """Reconstructs the path to the font file."""
-        return self.parent_dir / f"{self.abbr_family}-{self.variant}.woff2"
-
-    @property
-    def variant(self) -> str:
-        """The weight and style of the font."""
-        weight = self.weight_as_string(self.weight)
-        style = "" if self.style == "normal" else self.style.capitalize()
-        return f"{weight}{style}" or "Regular"
-
-    @property
-    def family(self) -> str:
-        """The full name of the font family."""
-        return " ".join(self.capitalized_word_re.findall(self.abbr_family))
-
-    @classmethod
-    def weight_as_number(cls, weight: str) -> int:
-        """Converts a weight enum to a number."""
-        return next(num for text, num in cls.weights_map if text.casefold() == weight.casefold())
-
-    @classmethod
-    def weight_as_string(cls, weight: Weight) -> str:
-        """Converts a weight number to a string."""
-        return next(text for text, num in cls.weights_map if num == weight)
-
-    capitalized_word_re: t.ClassVar[re.Pattern] = re.compile(r"[A-Z][a-z]*")
-    weight_style_re: t.ClassVar[re.Pattern] = re.compile(
-        r"(?P<family>\w+)-"
-        r"(?P<weight>(?i:|Thin|ExtraLight|Light|Regular|Medium|SemiBold|Bold|ExtraBold|Heavy|Black))"
-        r"(?P<style>(?i:|Italic))"
-        r"(?:-\w+)?"
-        r"\.woff2"
-    )
-    weights_map: t.ClassVar[list[tuple[str, Weight]]] = [
-        ("Thin", 100),
-        ("ExtraLight", 200),
-        ("Light", 300),
-        ("", 400),
-        ("Regular", 400),  # empty preferred
-        ("Medium", 500),
-        ("SemiBold", 600),
-        ("Bold", 700),
-        ("ExtraBold", 800),
-        ("Heavy", 900),
-        ("Black", 900),  # 'heavy' preferred
-    ]
 
 
 if __name__ == "__main__":
