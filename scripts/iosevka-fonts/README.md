@@ -60,8 +60,7 @@ Before using it, install these dependencies:
 - `click` for command-line interface
 - `tqdm` for progress bar
 
-This can be done by running `pip install` without arguments
-in a fresh virtual environment.
+This can be done by running `pip install .` in a fresh virtual environment.
 
 Refer to the script's documentation for usage instructions.
 This may involve adjusting the file structure

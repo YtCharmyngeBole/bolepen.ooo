@@ -8,6 +8,8 @@
       <excludeFolder url="file://$MODULE_DIR$/.astro" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/sandbox" />
+      <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/assets/build" />
+      <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
