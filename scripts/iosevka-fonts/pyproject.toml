@@ -19,16 +19,16 @@ email = "165321522+YtCharmyngeBole@users.noreply.github.com"
 [tool.rye]
 managed = true
 dev-dependencies = [
-    "pyright>=1.1.369",
-    "ruff>=0.4.10",
-    "ruff-lsp>=0.0.53",
+    "pyright>=1.1.371",
+    "ruff>=0.5.1",
+    "ruff-lsp>=0.0.54",
 ]
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["iosevka-subsetting"]
+packages = ["iosevka_subsetting"]
 
 [build-system]
 requires = ["hatchling"]
