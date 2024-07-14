@@ -8,6 +8,7 @@
 #   with-sources: false
 #   generate-hashes: true
 
+-e file:.
 brotli==1.1.0 \
     --hash=sha256:03d20af184290887bdea3f0f78c4f737d126c74dc2f3ccadf07e54ceca3bf208 \
     --hash=sha256:0541e747cce78e24ea12d69176f6a7ddb690e62c425e01d31cc065e69ce55b48 \
@@ -92,9 +93,11 @@ brotli==1.1.0 \
     --hash=sha256:fce1473f3ccc4187f75b4690cfc922628aed4d3dd013d047f95a9b3919a86596 \
     --hash=sha256:fd5f17ff8f14003595ab414e45fce13d073e0762394f957182e69035c9f3d7c2 \
     --hash=sha256:fdc3ff3bfccdc6b9cc7c342c03aa2400683f0cb891d46e94b64a197910dc4064
+    # via iosevka-fonts
 click==8.1.7 \
     --hash=sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28 \
     --hash=sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de
+    # via iosevka-fonts
 fonttools==4.53.0 \
     --hash=sha256:099634631b9dd271d4a835d2b2a9e042ccc94ecdf7e2dd9f7f34f7daf333358d \
     --hash=sha256:0c555e039d268445172b909b1b6bdcba42ada1cf4a60e367d68702e3f87e5f64 \
@@ -138,6 +141,8 @@ fonttools==4.53.0 \
     --hash=sha256:ef50ec31649fbc3acf6afd261ed89d09eb909b97cc289d80476166df8438524d \
     --hash=sha256:fa1f3e34373aa16045484b4d9d352d4c6b5f9f77ac77a178252ccbc851e8b2ee \
     --hash=sha256:fca66d9ff2ac89b03f5aa17e0b21a97c21f3491c46b583bb131eb32c7bab33af
+    # via iosevka-fonts
 tqdm==4.66.4 \
     --hash=sha256:b75ca56b413b030bc3f00af51fd2c1a1a5eac6a0c1cca83cbb37a5c52abce644 \
     --hash=sha256:e4d936c9de8727928f3be6079590e97d9abfe8d39a590be678eb5919ffc186bb
+    # via iosevka-fonts
