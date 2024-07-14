@@ -17,12 +17,18 @@ name = "That Charming BOLE"
 email = "165321522+YtCharmyngeBole@users.noreply.github.com"
 
 [tool.rye]
-managed = true
 dev-dependencies = [
     "pyright>=1.1.371",
     "ruff>=0.5.1",
     "ruff-lsp>=0.0.54",
 ]
+universal = true
+generate-hashes = true
+managed = true
+virtual = true
+
+[tool.rye.scripts]
+iosevka-subset = "python iosevka_subsetting.py"
 
 [tool.hatch.metadata]
 allow-direct-references = true

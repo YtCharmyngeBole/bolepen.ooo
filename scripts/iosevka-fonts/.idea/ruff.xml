@@ -2,7 +2,7 @@
 <project version="4">
   <component name="RuffConfigService">
     <option name="globalRuffExecutablePath" value="/home/linuxbrew/.linuxbrew/bin/ruff" />
-    <option name="projectRuffExecutablePath" value="$USER_HOME$/Scripts/.venv/bin/ruff" />
-    <option name="projectRuffLspExecutablePath" value="$USER_HOME$/Scripts/.venv/bin/ruff-lsp" />
+    <option name="projectRuffExecutablePath" value="$PROJECT_DIR$/.venv/bin/ruff" />
+    <option name="projectRuffLspExecutablePath" value="$PROJECT_DIR$/.venv/bin/ruff-lsp" />
   </component>
 </project>
