@@ -52,25 +52,9 @@ The initial Iosevka fonts are large and contain many unused characters.
 Font subsetting splits the fonts into smaller sets based on scripts and usage
 to reduce file size and improve web page loading.
 
-The script [`iosevka-subsetting.py`](iosevka_subsetting.py) is used for this process.
-Before using it, install these dependencies:
-
-- `fonttools` for font manipulation
-- `brotli` for WOFF2 compression
-- `click` for command-line interface
-- `tqdm` for progress bar
-
-This can be done by running `pip install .` in a fresh virtual environment.
+This project contains the script [`iosevka-subsetting.py`](iosevka_subsetting.py)
+which will produce font subsets files from the original font files generated from the previous step.
 
 Refer to the script's documentation for usage instructions.
 This may involve adjusting the file structure
 and modifying the script for your environment.
-
-Finally, run the script to subset the fonts:
-
-```shell
-$ python iosevka_subsetting.py --help          # view commands
-$ python iosevka_subsetting.py --css-only      # generate CSS files only
-$ python iosevka_subsetting.py --subsets-only  # generate WOFF2 files only
-$ python iosevka_subsetting.py --all           # generate both CSS and WOFF2 files
-```

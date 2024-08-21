@@ -1,11 +1,32 @@
 #!/usr/bin/env python
+# /// script
+# name = "iosevka-fonts"
+# description = "Iosevka Subsetting Script"
+# license = "Apache-2.0"
+#
+# requires-python = ">=3.12"
+# dependencies = [
+#     "brotli~=1.1",
+#     "click~=8.1",
+#     "fonttools~=4.53",
+#     "tqdm~=4.66",
+# ]
+#
+# [[authors]]
+# name = "That Charming BOLE"
+# email = "165321522+YtCharmyngeBole@users.noreply.github.com"
+# ///
 """
 Font subsetting script for Iosevka Custom Web fonts.
 The script expects a collection of Iosevka font files with complete set of character sets.
 
 Before using this script...
 
-1. Ensure that the working directory should contain Iosevka font files
+1. Install UV Python package manager v0.3 or above.
+   UV will automatically install package dependencies whenever you invoke this script with `uv run` command.
+   See https://docs.astral.sh/uv/getting-started/installation/ for installation instructions.
+
+2. Ensure that the working directory should contain Iosevka font files
    with the following structure:
 
        {working_dir}/{family}-{version}/{family}-{variant}.woff2
@@ -15,14 +36,22 @@ Before using this script...
    - {version} is the version of the font (e.g. 30.3.0-0)
    - {variant} is the font variant (e.g. Regular, Bold, LightItalic, etc.)
 
-2. Set the following constants in the Script Config section:
+3. Set the following constants in the Script Config section:
    - `WORKING_DIR`: Path to the working directory containing the font files.
    - `IOSEVKA_VERSION`: Version of the Iosevka font.
    - `IOSEVKA_FAMILIES`: List of Iosevka font families.
    - `IOSEVKA_SAMPLE_FONT_FILE`: Path to a sample Iosevka font file.
 
-Then, just run the script with the desired mode,
-or run `iosevka_font_subsets.py --help` for more information.
+Then, just run the script with the desired mode using the command `uv run iosevka_subsetting.py`.
+The complete list of command line options is shown below:
+
+```bash
+$ uv run iosevka_subsetting.py --help          # view commands
+$ uv run iosevka_subsetting.py --dry-run       # dry run (no file generation), default
+$ uv run iosevka_subsetting.py --css-only      # generate CSS files only
+$ uv run iosevka_subsetting.py --subsets-only  # generate WOFF2 files only
+$ uv run iosevka_subsetting.py --all           # generate both CSS and WOFF2 files
+```
 """
 
 from __future__ import annotations
@@ -68,15 +97,30 @@ WORKING_DIR = THIS_DIR / "assets"
 IOSEVKA_VERSION = "30.3.0-0"
 IOSEVKA_FAMILIES = ["IosevkaCustomWebPropo", "IosevkaCustomWebMono"]
 IOSEVKA_SAMPLE_FONT_FILE = (
-    WORKING_DIR / f"IosevkaCustomWebPropo-{IOSEVKA_VERSION}" / "IosevkaCustomWebPropo-Regular.woff2"
+    WORKING_DIR
+    / f"IosevkaCustomWebPropo-{IOSEVKA_VERSION}"
+    / "IosevkaCustomWebPropo-Regular.woff2"
 )
 
 
 @click.command()
 @click.option("--css-only", "mode", flag_value="css-only", help="Generate CSS only.")
-@click.option("--subsets-only", "mode", flag_value="subsets-only", help="Generate font subsets only.")
+@click.option(
+    "--subsets-only",
+    "mode",
+    flag_value="subsets-only",
+    help="Generate font subsets only.",
+)
 @click.option("--all", "mode", flag_value="all", help="Generate all assets.")
-@click.option("--dry-run", "-n", "mode", flag_value="dry-run", default=True, show_default=True, help="Dry run.")
+@click.option(
+    "--dry-run",
+    "-n",
+    "mode",
+    flag_value="dry-run",
+    default=True,
+    show_default=True,
+    help="Dry run.",
+)
 def program(mode):
     """
     Generates font subsets and CSS for Iosevka Custom Web fonts.
@@ -146,7 +190,9 @@ def generate_font_subsets(runners: list[FontSubsetRunner]):
 #
 
 
-def get_font_subsets(ranks_file: Path, sample_iosevka_font_file: Path) -> dict[str, UnicodeRanges]:
+def get_font_subsets(
+    ranks_file: Path, sample_iosevka_font_file: Path
+) -> dict[str, UnicodeRanges]:
     """Gather the font subsets from the ranks file."""
 
     with ranks_file.open("rb") as f:
@@ -168,7 +214,9 @@ def get_font_subsets(ranks_file: Path, sample_iosevka_font_file: Path) -> dict[s
         subsets[name] = UnicodeRanges.from_range_str(v) - common_unicodes
         handpicked_unicodes.update(subsets[name])
 
-    subsets["Others"] = iosevka_unicodes.difference(common_unicodes, handpicked_unicodes)
+    subsets["Others"] = iosevka_unicodes.difference(
+        common_unicodes, handpicked_unicodes
+    )
     return subsets
 
 
@@ -225,7 +273,9 @@ class IosevkaFontInfo:
     @classmethod
     def weight_as_number(cls, weight: str) -> int:
         """Converts a weight enum to a number."""
-        return next(num for text, num in cls.weights_map if text.casefold() == weight.casefold())
+        return next(
+            num for text, num in cls.weights_map if text.casefold() == weight.casefold()
+        )
 
     @classmethod
     def weight_as_string(cls, weight: Weight) -> str:
@@ -303,14 +353,21 @@ class FontSubsetRunner:
         """Output file path of the font subset."""
         input_file = self.input_metadata.path
         return (
-            input_file.parent.parent / "build" / input_file.parent.name / f"{input_file.stem}-{self.subset_name}.woff2"
+            input_file.parent.parent
+            / "build"
+            / input_file.parent.name
+            / f"{input_file.stem}-{self.subset_name}.woff2"
         )
 
     @property
     def in_css_output_file(self) -> Path:
         """Output file path of a font subset to include in CSS string."""
         input_file = self.input_metadata.path
-        return Path("/fonts") / input_file.parent.name / f"{input_file.stem}-{self.subset_name}.woff2"
+        return (
+            Path("/fonts")
+            / input_file.parent.name
+            / f"{input_file.stem}-{self.subset_name}.woff2"
+        )
 
 
 #  _   _       _               _        ____
@@ -344,7 +401,9 @@ class UnicodeRanges:
         charset = set()
         for cont_range_str in s.split(","):
             cont_range = ContUnicodeRange.from_range_str(cont_range_str)
-            charset.update(t.cast(Iterable[int], range(cont_range.start, cont_range.end + 1)))
+            charset.update(
+                t.cast(Iterable[int], range(cont_range.start, cont_range.end + 1))
+            )
         return cls(charset)
 
     @classmethod
@@ -374,7 +433,10 @@ class UnicodeRanges:
         Returns a string representation of the UnicodeRanges
         as a comma-separated list of contiguous range strings U+XXXX[-YYYY].
         """
-        return sep.join(cont_range.range_str() for cont_range in self.cont_unicode_ranges())
+        return sep.join(
+            cont_range.range_str()  #
+            for cont_range in self.cont_unicode_ranges()
+        )
 
     ###################
     # Iterator method #
@@ -608,7 +670,9 @@ class ContUnicodeRange:
     end: int
 
     #: Regular expressions for parsing a contiguous unicode range: U+XXXX[-[U+]YYYY]
-    cont_unicode_range_re: t.ClassVar[re.Pattern] = re.compile(r"U\+([0-9A-F]+)(?:-(?:U\+)?([0-9A-F]+))?")
+    cont_unicode_range_re: t.ClassVar[re.Pattern] = re.compile(
+        r"U\+([0-9A-F]+)(?:-(?:U\+)?([0-9A-F]+))?"
+    )
 
     @classmethod
     def from_range_str(cls, s: str) -> t.Self:
