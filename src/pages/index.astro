@@ -1,25 +1,80 @@
 ---
-import BaseLayout from "#layouts/base/Layout.astro";
-import Body from "#layouts/base/Body.astro";
-import Footnote from "#layouts/base/Footer.astro";
-import Banner from "#layouts/main/Banner.astro";
-import ShortBio from "#layouts/main/ShortBio.astro";
-import Writeup from "#layouts/main/Writeup.astro";
+import { ViewTransitions } from "astro:transitions";
+
+import Footer from "#layouts/Footer.astro";
+import Header from "#layouts/Header.astro";
+
+import "#styles/base.css";
+import "#styles/fonts.ts";
+import ogImage from "#root/src/images/ogimage.png";
+
+const title = "Page Title";
+const author = "Author Lastname";
+const description = "Website Description";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
-<BaseLayout>
-  <Body>
-    <div
-      class="mx-auto mt-16 flex items-start justify-center px-8 max-laptop:flex-col max-laptop:items-center max-phone:px-4 laptop:gap-12"
-    >
-      <Banner />
-      <div
-        class="flex max-w-[35rem] flex-col items-start justify-center max-laptop:items-center"
-      >
-        <ShortBio />
-        <Writeup />
-      </div>
-    </div>
-  </Body>
-  <Footnote />
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Theming Metadata -->
+    <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#eeeeee" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="any"
+      href="/favicons/favicon.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage.src} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage.src} />
+
+    <ViewTransitions />
+  </head>
+  <body class="flex flex-col items-center justify-center">
+    <Header />
+    <main></main>
+    <Footer />
+  </body>
+</html>

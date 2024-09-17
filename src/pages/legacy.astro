@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/legacy/Layout.astro";
+import Body from "../layouts/legacy/Body.astro";
+import Footer from "../layouts/legacy/Footer.astro";
+import Banner from "../layouts/legacy/Banner.astro";
+import ShortBio from "../layouts/legacy/ShortBio.astro";
+import Writeup from "../layouts/legacy/Writeup.astro";
+---
+
+<BaseLayout>
+  <Body>
+    <div
+      class="mx-auto mt-16 flex items-start justify-center px-8 max-laptop:flex-col max-laptop:items-center max-phone:px-4 laptop:gap-12"
+    >
+      <Banner />
+      <div
+        class="flex max-w-[35rem] flex-col items-start justify-center max-laptop:items-center"
+      >
+        <ShortBio />
+        <Writeup />
+      </div>
+    </div>
+  </Body>
+  <Footer />
+</BaseLayout>
