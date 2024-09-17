@@ -8,7 +8,7 @@
   }
 
   html {
-    @apply bg-ambient-bg font-body text-[16px] text-grayext-350 antialiased laptop:text-[18px];
+    @apply bg-ambient-bg font-body text-grayext-350 antialiased;
 
     --hyperlink-text--ground: theme("colors.orange.400");
     --hyperlink-text--excited: theme("colors.lemon.300");
