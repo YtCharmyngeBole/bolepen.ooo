@@ -8,10 +8,10 @@
   }
 
   html {
-    @apply bg-ambient-bg font-body text-grayext-350 antialiased;
+    @apply bg-custom-bg text-custom-text font-body antialiased;
 
-    --hyperlink-text--ground: theme("colors.orange.400");
-    --hyperlink-text--excited: theme("colors.lemon.300");
+    --hyperlink-text--ground: theme("colors.custom.ground");
+    --hyperlink-text--excited: theme("colors.custom.excited");
     --hyperlink-bg--ground: transparent;
     --hyperlink-bg--excited: transparent;
   }
@@ -27,7 +27,7 @@
 
 @layer components {
   .prose-auto {
-    @apply prose prose-gray prose-invert max-w-none leading-6 text-grayext-350;
+    @apply text-custom-text prose prose-gray prose-invert max-w-none leading-6;
 
     h1,
     h2,
@@ -48,11 +48,11 @@
     }
 
     h2 {
-      @apply text-orange-300;
+      @apply text-[oklch(70.96%_0.147_25.44)];
     }
 
     h3 {
-      @apply text-lemon-300;
+      @apply text-[oklch(80.72%_0.1094_30.89)];
     }
 
     a {
@@ -63,7 +63,7 @@
 
 @layer utilities {
   .hyperlink {
-    @apply bg-[var(--hyperlink-bg)] text-[var(--hyperlink-text)] motion-safe:transition-colors;
+    @apply bg-[var(--hyperlink-bg)] text-[var(--hyperlink-text)] motion-safe:transition-colors motion-safe:duration-500;
     --hyperlink-text: var(--hyperlink-text--ground);
     --hyperlink-bg: var(--hyperlink-bg--ground);
 

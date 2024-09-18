@@ -9,14 +9,20 @@ const { style = "abbr" } = Astro.props as Props;
 {
   /* prettier-ignore */
   style === "abbr" ? (
-    <span class="text-beetroot-400 font-bold">BOLE</span>
+    <span class="colored-name font-bold">BOLE</span>
   ) : style === "full" ? (
-    <span class="text-beetroot-400 font-bold">That Charming BOLE</span>
+    <span class="colored-name font-bold">That Charming BOLE</span>
   ) : style === "full-emphasized" ? (
-    <span class="text-beetroot-400 font-bold"><em>That</em> Charming BOLE</span>
+    <span class="colored-name font-bold"><em>That</em> Charming BOLE</span>
   ) : (
-    <span class="text-beetroot-400 before:content-[open-quote] after:content-[close-quote] font-bold">
+    <span class="colored-name before:content-[open-quote] after:content-[close-quote] font-bold">
       <span class="px-px">YtCharmyngeBole</span>
     </span>
   )
 }
+
+<style>
+  .colored-name {
+    color: oklch(68.21% 0.103 360);
+  }
+</style>

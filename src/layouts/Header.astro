@@ -8,7 +8,7 @@ import { SOCIALS } from "#config";
 >
   <h1 class="text-2xl max-laptop:text-center">
     <span
-      class="leading-1 font-display font-bold leading-tight tracking-wide text-fadecream-300"
+      class="leading-1 font-display font-bold leading-tight tracking-wide text-[oklch(87.16%_0.043_54.36)]"
       >That Charming BOLE</span
     >
     <span
@@ -34,7 +34,7 @@ import { SOCIALS } from "#config";
           >
             <Icon
               name={`social/${item.name.toLowerCase()}`}
-              class="m-0.5 inline-block size-9 laptop:mx-1"
+              class="m-0.5 inline-block size-9 laptop:mx-1 laptop:my-0"
             />
             <span class="grow max-laptop:hidden laptop:mr-2.5">
               {item.name}
@@ -48,9 +48,9 @@ import { SOCIALS } from "#config";
 
 <style>
   .hyperlink--social-link {
-    --hyperlink-text--ground: theme("colors.orange.400");
-    --hyperlink-text--excited: theme("colors.ambient-bg");
+    --hyperlink-text--ground: theme("colors.custom.ground");
+    --hyperlink-text--excited: theme("colors.custom.bg");
     --hyperlink-bg--ground: oklch(100% 0 0 / 5%);
-    --hyperlink-bg--excited: theme("colors.lemon.300");
+    --hyperlink-bg--excited: theme("colors.custom.excited");
   }
 </style>
