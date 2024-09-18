@@ -15,7 +15,7 @@ import imgProfilePic from "#root/src/images/profilepic.png";
     fetchpriority="high"
   />
   <div
-    class="flex flex-col items-center laptop:max-w-[32rem] laptop:items-start"
+    class="flex flex-col items-center laptop:max-w-[32.5rem] laptop:items-start"
   >
     <h1 class="text-2xl max-laptop:text-center">
       <span
@@ -31,7 +31,7 @@ import imgProfilePic from "#root/src/images/profilepic.png";
       Welcome to my <em>bolepen</em>!
     </p>
     <ul
-      class="mt-4 flex w-fit flex-wrap justify-start gap-x-3 gap-y-2.5 max-laptop:mb-4 max-laptop:grid max-laptop:grid-cols-4 max-laptop:justify-center max-laptop:gap-2.5"
+      class="mt-4 flex w-fit flex-wrap justify-start gap-3 max-laptop:mb-4 max-laptop:max-w-[12.25rem] max-laptop:justify-center laptop:gap-y-2.5"
     >
       {
         SOCIALS.map((item) => (
@@ -40,7 +40,7 @@ import imgProfilePic from "#root/src/images/profilepic.png";
               href={item.href}
               title={`Me on ${item.name}`}
               rel="me noopener"
-              class="hyperlink hyperlink--social-link flex items-center rounded-lg shadow-md"
+              class="hyperlink hyperlink--social-link flex items-center justify-center rounded-lg text-center"
             >
               <Icon
                 name={`social/${item.name.toLowerCase()}`}

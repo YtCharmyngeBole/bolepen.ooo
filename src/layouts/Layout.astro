@@ -2,7 +2,8 @@
 import { ViewTransitions } from "astro:transitions";
 
 import { SITE } from "#config";
-import "#styles/legacy.css";
+
+import "#styles/base.css";
 import "#styles/fonts.ts";
 
 export interface Props {
@@ -20,8 +21,6 @@ const {
   ogImage = SITE.ogImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
-
-const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
 ---
 
 <!doctype html>
@@ -32,7 +31,7 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <!-- Theming Metadata -->
     <meta name="viewport" content="width=device-width" />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content={SITE.themeColor} />
+    <meta name="theme-color" content="#eeeeee" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link
       rel="icon"
@@ -66,31 +65,19 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta name="author" content={author} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image" content={ogImage} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={socialImageURL} />
-
-    <!-- Fonts (disabled due to performance hit) -->
-    <script>
-      // const font = new FontFace(
-      //   "Iosevka Custom Web quickload",
-      //   "url(/fonts/IosevkaCustomWebPropo-30.0.0-0/IosevkaCustomWebPropo-Regular.woff2)",
-      //   {},
-      // );
-      // await font.load();
-      // document.fonts.add(font);
-    </script>
+    <meta property="twitter:image" content={ogImage} />
 
     <ViewTransitions />
   </head>

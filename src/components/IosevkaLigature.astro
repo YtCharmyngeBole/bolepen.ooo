@@ -1,8 +1,4 @@
 ---
-export interface Props {
-  feature: LigatureFeature;
-}
-
 const LIGATURE_FEATURES = [
   "none",
   "calt",
@@ -42,8 +38,12 @@ function getFontFeatureSettingsValue(feature: LigatureFeature) {
   } else if (isLigatureFeature(feature)) {
     return `"calt" 0, "${feature}" 1`;
   } else {
-    return '"calt" 1';
+    throw new Error(`Invalid ligature feature: ${feature}`);
   }
+}
+
+export interface Props {
+  feature: LigatureFeature;
 }
 
 const { feature } = Astro.props as Props;

@@ -1,0 +1,12 @@
+---
+import { Icon as AstroIcon } from "astro-icon/components";
+
+export interface Props {
+  name: string;
+  title: string;
+}
+
+const { name, title } = Astro.props as Props;
+---
+
+<AstroIcon name={name} title={title} class="inline-block align-[-0.1em]" />

@@ -1,9 +1,8 @@
-import { Icon } from "astro-icon/components";
 import Bole from "#components/Bole.astro";
 import Highlight from "#components/Highlight.astro";
 import IPATranscript from "#components/IPATranscript.astro";
-import Muted from "#components/Muted.astro";
-import LigatureSettings from "#components/LigatureSettings.astro";
+import LigatureSettings from "#components/IosevkaLigature.astro";
+import Mute from "#components/Mute.astro";
 import Smaller from "#components/Smaller.astro";
 
 
@@ -52,7 +51,7 @@ His soft pelage consists of _four_ primary colors:
 <Bole/> can transform into other shapes (e.g. buff, lean, or anything in between)
 with the magical power of <Highlight>commissioned artworks</Highlight>.
 
-<Muted>_More information in the Character Sheet section_ (_coming soon_).</Muted>
+<Mute>_More information in the Character Sheet section_ (_coming soon_).</Mute>
 
 
 ### Personal Preferences
@@ -60,8 +59,8 @@ with the magical power of <Highlight>commissioned artworks</Highlight>.
 These are my personal preferences pertaining to my fursona:
 
 - **Favorite food:** Chicken thighs and drumsticks; Beef; People inside BEEF
-- **Favorite color:** Green <Muted>(who would’ve guessed?)</Muted>
-- **Hobbies:** Lying around, Belly rubs, and Working out <Muted>(or at least immensely thinking about it)</Muted>
+- **Favorite color:** Green <Mute>(who would’ve guessed?)</Mute>
+- **Hobbies:** Lying around, Belly rubs, and Working out <Mute>(or at least immensely thinking about it)</Mute>
 - **Likes:** 3 M’s: Music, Munchies, and Mad calves
 - **Dislikes:** Sense of impending doom
 
@@ -72,6 +71,7 @@ These are my personal preferences pertaining to my fursona:
 Furry Code is a way to represent a furry’s interests and personality in a concise format.
 Following the tradition, below is my Furry Code:
 
+{/* FIXME: This part causes layout shift and there is no known fix. */}
 <LigatureSettings feature="none">
 ```rfc7468 frame=none
 -----BEGIN FURRY CODE BLOCK-----
@@ -94,8 +94,4 @@ To prepare myself of becoming one someday, I have started collecting sport jerse
 The inaugural piece is from the Kemono Baseball Team clothing line, and I proudly wear number **90&hairsp;&NoBreak;TH**.
 Stay tuned for more additions to my collection as my budget allows.
 
-<Muted>_More information are more to come soon._</Muted>
-
-
-{/* TOPIC: my participation */}
-{/* TOPIC: my character reference */}
+<Mute>_More information are more to come soon._</Mute>
