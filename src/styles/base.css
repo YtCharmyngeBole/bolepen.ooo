@@ -56,7 +56,7 @@
     }
 
     a {
-      @apply hyperlink hyperlink--underline font-bold;
+      @apply hyperlink hyperlink--underline font-medium;
     }
   }
 }
