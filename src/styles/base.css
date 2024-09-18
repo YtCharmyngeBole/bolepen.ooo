@@ -17,7 +17,7 @@
   }
 
   body {
-    @apply flex min-h-svh flex-col items-center justify-center px-4;
+    @apply flex min-h-svh flex-col items-stretch px-4;
   }
 
   hr {
@@ -27,7 +27,7 @@
 
 @layer components {
   .prose-auto {
-    @apply prose prose-base prose-gray prose-invert leading-6 text-grayext-350;
+    @apply prose prose-gray prose-invert max-w-none leading-6 text-grayext-350;
 
     h1,
     h2,

@@ -53,6 +53,12 @@ export default defineConfig({
           ...defaultTheme.fontFamily.mono,
         ],
         codeFontSize: "0.85rem",
+        uiFontFamily: [
+          "'Iosevka Custom Web Mono'",
+          "'Iosevka Custom Web Propo'",
+          "'Iosevka Custom Web fallback'",
+          ...defaultTheme.fontFamily.mono,
+        ],
         uiFontSize: "0.75rem",
       },
       shiki: {

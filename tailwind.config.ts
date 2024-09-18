@@ -3,7 +3,7 @@ import colors from "tailwindcss/colors";
 import defaultTheme from "tailwindcss/defaultTheme";
 import tailwindTypography from "@tailwindcss/typography";
 import type { PluginCreator } from "tailwindcss/types/config";
-import { Oklch, rem, round } from "./src/lib/styling.ts";
+import { Oklch, rem, round } from "#lib/styling.ts";
 
 const gray300 = new Oklch(0.8717, 0.009, 258.34);
 const gray400 = new Oklch(0.7137, 0.019, 261.32);

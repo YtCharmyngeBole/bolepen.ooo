@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import imgProfilePic from "#root/src/images/profilepic.png";
 ---
 
-<figure>
+<figure class="flex shrink-0 flex-col items-center max-laptop:mb-4">
   <Image
     src={imgProfilePic}
     alt="Drawing of Bole's head"
@@ -17,5 +17,7 @@ import imgProfilePic from "#root/src/images/profilepic.png";
       href="https://x.com/l4zily"
       class="font-semibold text-gray-400">@L4ZILY</a
     >
+    <br />
+    through commission
   </figcaption>
 </figure>
