@@ -1,4 +1,5 @@
 ---
+import Avatar from "#layouts/Avatar.astro";
 import Footer from "#layouts/Footer.astro";
 import Header from "#layouts/Header.astro";
 import Layout from "#layouts/Layout.astro";
@@ -9,15 +10,22 @@ import FursonaContent from "#writeups/03_fursona.mdx";
 ---
 
 <Layout>
-  <Header />
-  <main>
-    <section class="prose-auto">
-      <IntroContent />
-      <HobbiesContent />
-      <FursonaContent />
-      {/* TODO TOPIC: my participation */}
-      {/* TODO TOPIC: my character reference */}
-    </section>
-  </main>
-  <Footer />
+  <div
+    class="mb-12 mt-[4rem] flex items-center gap-6 max-laptop:mt-[calc(max(50svh-15rem,4rem))] max-laptop:flex-col laptop:items-start laptop:gap-12"
+  >
+    <Avatar />
+    <div id="content">
+      <Header />
+      <main>
+        <section class="prose-auto">
+          <IntroContent />
+          <HobbiesContent />
+          <FursonaContent />
+          {/* TODO TOPIC: my participation */}
+          {/* TODO TOPIC: my character reference */}
+        </section>
+      </main>
+      <Footer />
+    </div>
+  </div>
 </Layout>

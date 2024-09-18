@@ -52,7 +52,8 @@ export default defineConfig({
           "'Iosevka Custom Web fallback'",
           ...defaultTheme.fontFamily.mono,
         ],
-        codeFontSize: "1rem",
+        codeFontSize: "0.85rem",
+        uiFontSize: "0.75rem",
       },
       shiki: {
         langs: extraLanguages,
