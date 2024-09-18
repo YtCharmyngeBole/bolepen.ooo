@@ -38,12 +38,12 @@ cp /path/to/Iosevka-Custom.toml private-build-plans.toml
 npm install
 
 # Build the custom  fonts
-npm run build -- --jCmd=12 webfont::IosevkaCustomWebPropo webfont::IosevkaCustomWebMono
+npm run build -- --jCmd=$(nproc) webfont::IosevkaCustomWebPropo webfont::IosevkaCustomWebMono
 ```
 
 ### Notes:
 
-- `--jCmd=12` enables faster parallel building.
+- `--jCmd=$(nproc)` enables faster parallel building.
 - Output fonts will be in `dist/*/WOFF2` directories.
 
 ## 2. Font Subsetting

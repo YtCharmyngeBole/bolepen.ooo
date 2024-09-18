@@ -33,7 +33,7 @@ Before using this script...
 
    where:
    - {family} is the font family name (e.g. IosevkaCustomWebPropo)
-   - {version} is the version of the font (e.g. 30.3.0-0)
+   - {version} is the version of the font (e.g. 31.6.1-0)
    - {variant} is the font variant (e.g. Regular, Bold, LightItalic, etc.)
 
 3. Set the following constants in the Script Config section:
@@ -94,7 +94,7 @@ RANKS_FILE = THIS_DIR / "ranks.toml"
 #
 
 WORKING_DIR = THIS_DIR / "assets"
-IOSEVKA_VERSION = "30.3.0-0"
+IOSEVKA_VERSION = "31.6.1-0"
 IOSEVKA_FAMILIES = ["IosevkaCustomWebPropo", "IosevkaCustomWebMono"]
 IOSEVKA_SAMPLE_FONT_FILE = (
     WORKING_DIR
@@ -124,7 +124,7 @@ IOSEVKA_SAMPLE_FONT_FILE = (
 def program(mode):
     """
     Generates font subsets and CSS for Iosevka Custom Web fonts.
-    For more information, please inspect the source code.
+    For more information, please inspect the docstring of the source code.
     """
     subsets = get_font_subsets(RANKS_FILE, IOSEVKA_SAMPLE_FONT_FILE)
 
