@@ -17,18 +17,18 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import defaultTheme from "tailwindcss/defaultTheme";
 
-import { SITE } from "./src/config.ts";
-import { PathBuilder } from "./src/lib/fs.ts";
+import { SITE } from "#config";
+import { PathBuilder } from "#lib/fs.ts";
 
 const basePathBuilder = PathBuilder.fromImportMetaURL(import.meta.url);
 
 // For astro-expressive-code: prepare textmate grammars and a theme
 const extraLanguages = basePathBuilder
-  .glob("src/shiki/*.tmLanguage.json")
+  .glob("src/lib/shiki/*.tmLanguage.json")
   .map((path) => JSON.parse(fs.readFileSync(path, "utf-8")));
 const ayuDarkTheme = ExpressiveCodeTheme.fromJSONString(
   fs.readFileSync(
-    basePathBuilder.join("src/shiki/ayu-dark-theme.json"),
+    basePathBuilder.join("src/lib/shiki/ayu-dark-theme.json"),
     "utf-8",
   ),
 );
