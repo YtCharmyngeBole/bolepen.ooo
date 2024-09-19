@@ -8,7 +8,7 @@
   }
 
   html {
-    @apply bg-custom-bg text-custom-text font-body antialiased;
+    @apply bg-custom-bg font-body text-custom-text antialiased;
 
     --hyperlink-text--ground: theme("colors.custom.ground");
     --hyperlink-text--excited: theme("colors.custom.excited");
@@ -27,7 +27,7 @@
 
 @layer components {
   .prose-auto {
-    @apply text-custom-text prose prose-gray prose-invert max-w-none leading-6;
+    @apply prose prose-gray prose-invert max-w-none leading-6 text-custom-text;
 
     h1,
     h2,
@@ -38,7 +38,7 @@
       @apply text-pretty;
 
       a {
-        @apply px-[0.125em] text-gray-800 hover:text-gray-500 motion-safe:transition-colors;
+        @apply px-[0.125em] text-gray-800 hocus:text-gray-400 motion-safe:transition-colors;
 
         .icon--autolink-heading {
           @apply icon-masked h-[0.9em] w-[0.9em] bg-current align-[0.1em];
@@ -84,10 +84,10 @@
   }
 
   .bright {
-    @apply text-[color-mix(in_oklch,_currentColor,_white_75%)];
+    @apply text-[color-mix(in_oklch, _currentColor, _white_75%)];
   }
 
   .dimmed {
-    @apply text-[color-mix(in_oklch,_currentColor,_black_25%)];
+    @apply text-[color-mix(in_oklch, _currentColor, _black_25%)];
   }
 }
