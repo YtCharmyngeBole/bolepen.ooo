@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
-// import { shield } from "@kindspells/astro-shield";
+import { shield } from "@kindspells/astro-shield";
 import { defineConfig } from "astro/config";
 import {
   astroExpressiveCode,
@@ -67,27 +67,27 @@ export default defineConfig({
     }),
     mdx(),
     solidJs(),
-    // shield({
-    //   securityHeaders: {
-    //     enableOnStaticPages: { provider: "netlify" },
-    //     contentSecurityPolicy: {
-    //       cspDirectives: {
-    //         "default-src": "'none'",
-    //         "script-src": "'self'",
-    //         "style-src": "'self' 'unsafe-inline'",
-    //         "img-src": "'self' data:",
-    //         "font-src": "'self' data:",
-    //         "frame-src": "'self'",
-    //         "form-action": "'self'",
-    //         "frame-ancestors": "'self'",
-    //         "base-uri": "'self'",
-    //         "worker-src": "'self'",
-    //         "manifest-src": "'self'",
-    //         "upgrade-insecure-requests": "",
-    //       },
-    //     },
-    //   },
-    // }),
+    shield({
+      // securityHeaders: {
+      //   enableOnStaticPages: { provider: "netlify" },
+      //   contentSecurityPolicy: {
+      //     cspDirectives: {
+      //       "default-src": "'none'",
+      //       "script-src": "'self'",
+      //       "style-src": "'self' 'unsafe-inline'",
+      //       "img-src": "'self' data:",
+      //       "font-src": "'self' data:",
+      //       "frame-src": "'self'",
+      //       "form-action": "'self'",
+      //       "frame-ancestors": "'self'",
+      //       "base-uri": "'self'",
+      //       "worker-src": "'self'",
+      //       "manifest-src": "'self'",
+      //       "upgrade-insecure-requests": "",
+      //     },
+      //   },
+      // },
+    }),
   ],
   markdown: {
     remarkPlugins: [],
