@@ -1,5 +1,5 @@
 ---
-import { SITE } from "#config";
+import { SITE } from "#src/config.ts";
 
 const endYear = new Date().getFullYear();
 const formattedPeriod =
@@ -7,7 +7,7 @@ const formattedPeriod =
 ---
 
 <footer
-  class="text-custom-muted mb-16 mt-12 text-pretty text-sm font-semibold leading-tight tracking-wide max-laptop:text-center"
+  class="mb-16 mt-12 text-pretty text-sm font-semibold leading-tight tracking-wide text-custom-muted max-laptop:text-center"
 >
   &copy;&nbsp;{`${formattedPeriod} ${SITE.author}`}.
 </footer>

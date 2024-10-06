@@ -17,7 +17,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import defaultTheme from "tailwindcss/defaultTheme";
 
-import { SITE } from "#config";
+import { SITE } from "#src/config.ts";
 import { PathBuilder } from "#lib/fs.ts";
 
 const basePathBuilder = PathBuilder.fromImportMetaURL(import.meta.url);
