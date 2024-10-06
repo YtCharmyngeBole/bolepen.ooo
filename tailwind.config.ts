@@ -3,7 +3,7 @@ import colors from "tailwindcss/colors";
 import defaultTheme from "tailwindcss/defaultTheme";
 import tailwindTypography from "@tailwindcss/typography";
 import type { PluginCreator } from "tailwindcss/types/config";
-import { Oklch, rem, round } from "#lib/styling.ts";
+import { rem, round } from "#lib/styling.ts";
 
 /**
  * Custom component in Tailwind

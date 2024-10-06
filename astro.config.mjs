@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
-import { shield } from "@kindspells/astro-shield";
+// import { shield } from "@kindspells/astro-shield";
 import { defineConfig } from "astro/config";
 import {
   astroExpressiveCode,

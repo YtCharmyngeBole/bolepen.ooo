@@ -12,7 +12,7 @@
   },
   "imports": {
     "#root/*": "./*",
-    "#src": "./src/*",
+    "#src/*": "./src/*",
     "#config": "./src/config.ts",
     "#components/*": "./src/components/*",
     "#helpers/*": "./src/helpers/*",
