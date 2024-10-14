@@ -29,6 +29,9 @@ importers:
       '@fontsource/barlow':
         specifier: ^5.1.0
         version: 5.1.0
+      '@iconify/tailwind':
+        specifier: ^1.1.3
+        version: 1.1.3
       '@kindspells/astro-shield':
         specifier: ^1.6.1
         version: 1.6.1(astro@4.16.3(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.3))
@@ -621,6 +624,9 @@ packages:
 
   '@fontsource/barlow@5.1.0':
     resolution: {integrity: sha512-HXpoWJQX3RzVrUOpuZUBfWaoruLJ69B7Z3T9lZCWySEiEjvJ1FEwLz6BDJXx0lCrW8dEIf4UMq/xFs5IEn09ag==}
+
+  '@iconify/tailwind@1.1.3':
+    resolution: {integrity: sha512-SfyeT+2b/aKWA6DjwdevXdLUqaEqJ5xWTegD92KItaWc47IYsGuqrt/GOz4dJCPcTVCrsUjlvMpy8cNd+uV5nQ==}
 
   '@iconify/tools@4.0.7':
     resolution: {integrity: sha512-zOJxKIfZn96ZRGGvIWzDRLD9vb2CsxjcLuM+QIdvwWbv6SWhm49gECzUnd4d2P0sq9sfodT7yCNobWK8nvavxQ==}
@@ -3692,6 +3698,10 @@ snapshots:
   '@floating-ui/utils@0.2.8': {}
 
   '@fontsource/barlow@5.1.0': {}
+
+  '@iconify/tailwind@1.1.3':
+    dependencies:
+      '@iconify/types': 2.0.0
 
   '@iconify/tools@4.0.7':
     dependencies:

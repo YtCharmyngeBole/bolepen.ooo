@@ -32,9 +32,8 @@ import { SOCIALS } from "#src/config.ts";
             rel="me noopener"
             class="hyperlink hyperlink--social-link flex items-center justify-center rounded-lg text-center"
           >
-            <Icon
-              name={`social/${item.name.toLowerCase()}`}
-              class="m-0.5 inline-block size-9 laptop:mx-1 laptop:my-0"
+            <span
+              class={`iconify ${item.iconifyClass} m-0.5 inline-block size-9 laptop:mx-1 laptop:my-0`}
             />
             <span class="grow max-laptop:hidden laptop:mr-2.5">
               {item.name}

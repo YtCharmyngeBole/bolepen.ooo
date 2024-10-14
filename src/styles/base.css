@@ -27,7 +27,7 @@
 
 @layer components {
   .prose-auto {
-    @apply prose prose-gray prose-invert max-w-none leading-6 text-custom-text;
+    @apply prose prose-gray prose-invert max-w-none leading-[167%] text-custom-text;
 
     h1,
     h2,

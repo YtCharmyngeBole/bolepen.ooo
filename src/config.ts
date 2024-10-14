@@ -15,34 +15,42 @@ export const SITE = {
 export const SOCIALS: SocialObject[] = [
   {
     name: "Facebook",
+    iconifyClass: "social--facebook",
     href: "https://facebook.com/YtCharmyngeBole",
   },
   {
     name: "Instagram",
+    iconifyClass: "social--instagram",
     href: "https://instagram.com/YtCharmyngeBole",
   },
   {
     name: "Mastodon",
+    iconifyClass: "social--mastodon",
     href: "https://furry.engineer/@YtCharmyngeBole",
   },
   {
     name: "Discord",
+    iconifyClass: "social--discord",
     href: "https://discordapp.com/users/1218406319124512821",
   },
   {
     name: "Bluesky",
+    iconifyClass: "social--bluesky",
     href: "https://bsky.app/profile/me.bolepen.ooo",
   },
   {
     name: "Twitter",
+    iconifyClass: "social--twitter",
     href: "https://twitter.com/YtCharmyngeBole",
   },
   {
     name: "Plurk",
+    iconifyClass: "social--plurk",
     href: "https://www.plurk.com/YtCharmyngeBole",
   },
   {
     name: "GitHub",
+    iconifyClass: "social--github",
     href: "https://github.com/YtCharmyngeBole",
   },
 ];

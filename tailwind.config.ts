@@ -1,8 +1,10 @@
+import { addIconSelectors } from "@iconify/tailwind";
+import tailwindTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
 import defaultTheme from "tailwindcss/defaultTheme";
-import tailwindTypography from "@tailwindcss/typography";
 import type { PluginCreator } from "tailwindcss/types/config";
+
 import { rem, round } from "#lib/styling.ts";
 
 /**
@@ -112,5 +114,14 @@ export default {
       },
     },
   },
-  plugins: [tailwindTypography, customComponent],
+  plugins: [
+    tailwindTypography,
+    addIconSelectors([
+      {
+        prefix: "social",
+        source: "src/icons/social.json",
+      },
+    ]),
+    customComponent,
+  ],
 } as Config;
