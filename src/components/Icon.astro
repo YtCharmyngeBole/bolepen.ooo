@@ -1,12 +1,13 @@
 ---
-import { Icon as AstroIcon } from "astro-icon/components";
-
 export interface Props {
   name: string;
   title: string;
+  isColor?: boolean;
 }
 
-const { name, title } = Astro.props as Props;
+const { name, title, isColor = false } = Astro.props as Props;
 ---
 
-<AstroIcon name={name} title={title} class="inline-block align-[-0.1em]" />
+<span
+  class={`${isColor ? "iconify-color" : "iconify"} ${name} inline-block align-[-0.15em]`}
+  title={title}></span>

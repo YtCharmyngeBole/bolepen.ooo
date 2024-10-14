@@ -10,7 +10,6 @@ import {
   astroExpressiveCode,
   ExpressiveCodeTheme,
 } from "astro-expressive-code";
-import astroIcon from "astro-icon";
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -41,8 +40,6 @@ export default defineConfig({
       applyBaseStyles: false,
       nesting: true,
     }),
-    // NOTE: Difficult to remove this plugin: useful for custom SVG src/icons/
-    astroIcon(),
     sitemap(),
     astroExpressiveCode({
       themes: [ayuDarkTheme],

@@ -121,6 +121,10 @@ export default {
         prefix: "social",
         source: "src/icons/social.json",
       },
+      {
+        prefix: "twemoji",
+        source: "src/icons/twemoji.json",
+      },
     ]),
     customComponent,
   ],

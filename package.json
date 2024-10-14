@@ -34,7 +34,6 @@
     "@types/lodash": "^4.17.10",
     "astro": "^4.16.3",
     "astro-expressive-code": "^0.37.0",
-    "astro-icon": "^1.1.1",
     "change-case": "^5.4.4",
     "date-fns": "^4.1.0",
     "github-slugger": "^2.0.0",
