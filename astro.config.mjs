@@ -41,6 +41,7 @@ export default defineConfig({
       applyBaseStyles: false,
       nesting: true,
     }),
+    // NOTE: Difficult to remove this plugin: useful for custom SVG src/icons/
     astroIcon(),
     sitemap(),
     astroExpressiveCode({
