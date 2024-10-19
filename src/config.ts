@@ -15,12 +15,12 @@ export const SITE = {
 export const SOCIALS: SocialObject[] = [
   {
     name: "Facebook",
-    iconifyClass: "social--facebook",
+    iconifyClass: "social--feesubukku",
     href: "https://facebook.com/YtCharmyngeBole",
   },
   {
     name: "Instagram",
-    iconifyClass: "social--instagram",
+    iconifyClass: "social--innsuta",
     href: "https://instagram.com/YtCharmyngeBole",
   },
   {
@@ -40,7 +40,7 @@ export const SOCIALS: SocialObject[] = [
   },
   {
     name: "Twitter",
-    iconifyClass: "social--twitter",
+    iconifyClass: "social--tsuitaa",
     href: "https://twitter.com/YtCharmyngeBole",
   },
   {
