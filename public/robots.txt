@@ -1,4 +1,15 @@
-# Dark Visitors Robots.txt
+#     _    ___   ____        _          ____
+#    / \  |_ _| |  _ \  __ _| |_ __ _  / ___|  ___ _ __ __ _ _ __   ___ _ __
+#   / _ \  | |  | | | |/ _` | __/ _` | \___ \ / __| '__/ _` | '_ \ / _ \ '__|
+#  / ___ \ | |  | |_| | (_| | || (_| |  ___) | (__| | | (_| | |_) |  __/ |
+# /_/   \_\___| |____/ \__,_|\__\__,_| |____/ \___|_|  \__,_| .__/ \___|_|
+#                                                           |_|
+
+# AI Data Scraper
+# https://darkvisitors.com/agents/ai2bot
+
+User-agent: AI2Bot
+Disallow: /
 
 # AI Data Scraper
 # https://darkvisitors.com/agents/applebot-extended
@@ -49,10 +60,40 @@ User-agent: GPTBot
 Disallow: /
 
 # AI Data Scraper
+# https://darkvisitors.com/agents/kangaroo-bot
+
+User-agent: Kangaroo Bot
+Disallow: /
+
+# AI Data Scraper
+# https://darkvisitors.com/agents/meta-externalagent
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+# AI Data Scraper
 # https://darkvisitors.com/agents/omgili
 
 User-agent: omgili
 Disallow: /
+
+# AI Data Scraper
+# https://darkvisitors.com/agents/timpibot
+
+User-agent: Timpibot
+Disallow: /
+
+# AI Data Scraper
+# https://darkvisitors.com/agents/webzio-extended
+
+User-agent: Webzio-Extended
+Disallow: /
+
+#  _   _           _                                       _           _
+# | | | |_ __   __| | ___   ___ _   _ _ __ ___   ___ _ __ | |_ ___  __| |
+# | | | | '_ \ / _` |/ _ \ / __| | | | '_ ` _ \ / _ \ '_ \| __/ _ \/ _` |
+# | |_| | | | | (_| | (_) | (__| |_| | | | | | |  __/ | | | ||  __/ (_| |
+#  \___/|_| |_|\__,_|\___/ \___|\__,_|_| |_| |_|\___|_| |_|\__\___|\__,_|
 
 # Undocumented AI Agent
 # https://darkvisitors.com/agents/anthropic-ai
@@ -72,7 +113,12 @@ Disallow: /
 User-agent: cohere-ai
 Disallow: /
 
-# Do not crawl drafts
+#  ____            _           _                            _  __ _
+# |  _ \ _ __ ___ (_) ___  ___| |_      ___ _ __   ___  ___(_)/ _(_) ___
+# | |_) | '__/ _ \| |/ _ \/ __| __|____/ __| '_ \ / _ \/ __| | |_| |/ __|
+# |  __/| | | (_) | |  __/ (__| ||_____\__ \ |_) |  __/ (__| |  _| | (__
+# |_|   |_|  \___// |\___|\___|\__|    |___/ .__/ \___|\___|_|_| |_|\___|
+#               |__/                       |_|
 
-User-agent: *
-Disallow: /drafts/
+# Set up sitemap
+Sitemap: https://bolepen.ooo/sitemap-index.xml
