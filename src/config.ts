@@ -39,11 +39,6 @@ export const SOCIALS: SocialObject[] = [
     href: "https://bsky.app/profile/bolepen.ooo",
   },
   {
-    name: "Twitter",
-    iconifyClass: "social--tsuitaa",
-    href: "https://twitter.com/YtCharmyngeBole",
-  },
-  {
     name: "Plurk",
     iconifyClass: "social--plurk",
     href: "https://www.plurk.com/YtCharmyngeBole",
