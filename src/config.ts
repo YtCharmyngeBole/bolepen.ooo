@@ -24,9 +24,14 @@ export const SOCIALS: SocialObject[] = [
     href: "https://instagram.com/YtCharmyngeBole",
   },
   {
-    name: "Mastodon",
-    iconifyClass: "social--mastodon",
-    href: "https://furry.engineer/@YtCharmyngeBole",
+    name: "Bluesky",
+    iconifyClass: "social--bluesky",
+    href: "https://bsky.app/profile/bolepen.ooo",
+  },
+  {
+    name: "GitHub",
+    iconifyClass: "social--github",
+    href: "https://github.com/YtCharmyngeBole",
   },
   {
     name: "Discord",
@@ -34,18 +39,18 @@ export const SOCIALS: SocialObject[] = [
     href: "https://discordapp.com/users/1218406319124512821",
   },
   {
-    name: "Bluesky",
-    iconifyClass: "social--bluesky",
-    href: "https://bsky.app/profile/bolepen.ooo",
+    name: "BARQ!",
+    iconifyClass: "social--barq",
+    href: "https://barq.app/@YtCharmyngeBole",
   },
   {
     name: "Plurk",
     iconifyClass: "social--plurk",
-    href: "https://www.plurk.com/YtCharmyngeBole",
+    href: "https://plurk.com/YtCharmyngeBole",
   },
   {
-    name: "GitHub",
-    iconifyClass: "social--github",
-    href: "https://github.com/YtCharmyngeBole",
+    name: "Mastodon",
+    iconifyClass: "social--mastodon",
+    href: "https://furry.engineer/@YtCharmyngeBole",
   },
 ];
