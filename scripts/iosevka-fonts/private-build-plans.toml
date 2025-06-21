@@ -20,12 +20,13 @@ exportGlyphNames = false
 noLigation = true
 
 [buildPlans.IosevkaCustomWebPropo.variants.design]
-capital-g = "toothless-corner-serifless-hooked"
 three = "flat-top-serifless"
 six = "closed-contour"
 seven = "curly-serifless"
 eight = "two-circles"
 nine = "closed-contour"
+capital-g = "toothless-corner-serifless-hooked"
+asterisk = "penta-mid"
 paren = "large-contour"
 guillemet = "straight"
 
@@ -67,12 +68,13 @@ noCvSs = true
 exportGlyphNames = false
 
 [buildPlans.IosevkaCustomWebMono.variants.design]
-capital-g = "toothless-corner-serifless-hooked"
 three = "flat-top-serifless"
 six = "closed-contour"
 seven = "curly-serifless"
 eight = "two-circles"
 nine = "closed-contour"
+capital-g = "toothless-corner-serifless-hooked"
+asterisk = "penta-mid"
 paren = "large-contour"
 guillemet = "straight"
 
