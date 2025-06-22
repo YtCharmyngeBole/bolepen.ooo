@@ -1,10 +1,9 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 import { SITE } from "#src/config.ts";
-
-import "#styles/base.css";
-import "#styles/fonts.ts";
+import "#src/fonts/index.ts";
+import "#styles/global.css";
 
 export interface Props {
   title?: string;
@@ -79,7 +78,7 @@ const {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <slot />

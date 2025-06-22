@@ -3,8 +3,7 @@ import fs from "node:fs";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
-import tailwind from "@astrojs/tailwind";
-import { shield } from "@kindspells/astro-shield";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import {
   astroExpressiveCode,
@@ -18,6 +17,8 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 import { SITE } from "#src/config.ts";
 import { PathBuilder } from "#lib/fs.ts";
+
+import netlify from "@astrojs/netlify";
 
 const basePathBuilder = PathBuilder.fromImportMetaURL(import.meta.url);
 
@@ -34,12 +35,11 @@ const ayuDarkTheme = ExpressiveCodeTheme.fromJSONString(
 
 export default defineConfig({
   site: SITE.url,
+  adapter: netlify({
+    experimentalStaticHeaders: true,
+  }),
   prefetch: true,
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-      nesting: true,
-    }),
     sitemap(),
     astroExpressiveCode({
       themes: [ayuDarkTheme],
@@ -65,28 +65,14 @@ export default defineConfig({
     }),
     mdx(),
     solidJs(),
-    shield({
-      // securityHeaders: {
-      //   enableOnStaticPages: { provider: "netlify" },
-      //   contentSecurityPolicy: {
-      //     cspDirectives: {
-      //       "default-src": "'none'",
-      //       "script-src": "'self'",
-      //       "style-src": "'self' 'unsafe-inline'",
-      //       "img-src": "'self' data:",
-      //       "font-src": "'self' data:",
-      //       "frame-src": "'self'",
-      //       "form-action": "'self'",
-      //       "frame-ancestors": "'self'",
-      //       "base-uri": "'self'",
-      //       "worker-src": "'self'",
-      //       "manifest-src": "'self'",
-      //       "upgrade-insecure-requests": "",
-      //     },
-      //   },
-      // },
-    }),
   ],
+  image: {
+    responsiveStyles: true,
+    layout: "constrained",
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
   markdown: {
     remarkPlugins: [],
     rehypePlugins: [
@@ -96,9 +82,11 @@ export default defineConfig({
         {
           behavior: "append",
           content: h("span.icon.icon--autolink-heading", {
-            title: "Link to this heading",
             "aria-hidden": "true",
           }),
+          properties: {
+            title: "Link to this heading",
+          },
         },
       ],
       [
@@ -120,5 +108,10 @@ export default defineConfig({
         },
       ],
     ],
+  },
+  experimental: {
+    contentIntellisense: true,
+    headingIdCompat: true,
+    preserveScriptOrder: true,
   },
 });

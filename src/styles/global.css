@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@property --hyperlink-foreground-resting {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: oklch(70.77% 0.1844 27.61);
+}
+
+@property --hyperlink-foreground-hover {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: oklch(94.55% 0.0661 88.89);
+}
+
+@property --hyperlink-background-resting {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --hyperlink-background-hover {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@theme {
+  /* Reset all color variables to initial */
+  --color-*: initial;
+
+  /* Base colors */
+  --color-inherit: inherit;
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-white: oklch(100% 0 0);
+  --color-black: oklch(0% 0 0);
+
+  /* Taken verbatim from documentation verbatim at */
+  /* https://tailwindcss.com/docs/colors#default-color-palette-reference */
+  --color-gray-50: oklch(98.5% 0.002 247.839);
+  --color-gray-100: oklch(96.7% 0.003 264.542);
+  --color-gray-200: oklch(92.8% 0.006 264.531);
+  --color-gray-300: oklch(87.2% 0.01 258.338);
+  --color-gray-400: oklch(70.7% 0.022 261.325);
+  --color-gray-500: oklch(55.1% 0.027 264.364);
+  --color-gray-600: oklch(44.6% 0.03 256.802);
+  --color-gray-700: oklch(37.3% 0.034 259.733);
+  --color-gray-800: oklch(27.8% 0.033 256.848);
+  --color-gray-900: oklch(21% 0.034 264.665);
+  --color-gray-950: oklch(13% 0.028 261.692);
+
+  /* Custom set of colors */
+  --color-default-background: oklch(15% 0.02 313);
+  --color-default-foreground: oklch(79.27% 0.014 259.83);
+  --color-muted-foreground: oklch(53.41% 0.0434 313.07);
+  --color-beetroot: oklch(65.17% 0.103 360);
+  --color-orange: oklch(70.96% 0.147 25.44);
+  --color-lemon: oklch(85.52% 0.107 88.56);
+  --color-eggplant: oklch(69.12% 0.126 314.07);
+
+  /* Fonts */
+  --font-*: initial;
+  --font-display:
+    "Barlow", "Barlow fallback", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-body:
+    "Iosevka Custom Web Propo", "Iosevka Custom Web fallback", ui-sans-serif,
+    system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Breakpoints */
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 40rem;
+  --breakpoint-desktop: 60rem;
+  --breakpoint-wide: 80rem;
+}
+
+@layer base {
+  * {
+    scroll-margin-top: --spacing(8);
+  }
+
+  html {
+    background-color: var(--color-default-background);
+    font-family: var(--font-body), sans-serif;
+    color: var(--color-default-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: stretch;
+    padding-inline: --spacing(4);
+  }
+
+  hr {
+    @apply w-full border-[0.5px] border-solid border-white/10;
+  }
+}
+
+/* Utility for hoverable hyperlink */
+@utility hyperlink {
+  background-color: var(--hyperlink-background-resting);
+  color: var(--hyperlink-foreground-resting);
+
+  @variant hover {
+    color: var(--hyperlink-foreground-hover);
+    background-color: var(--hyperlink-background-hover);
+  }
+
+  @variant motion-safe {
+    @apply transition-colors duration-500;
+  }
+}
+
+/* Utility for underlining hyperlink */
+@utility hyperlink-underline {
+  text-decoration: underline;
+  text-decoration-color: --alpha(var(--hyperlink-foreground-resting) / 20%);
+  text-decoration-thickness: 0.125em;
+  text-underline-offset: 0.15em;
+}
+
+/* Utility for SVG icons from Iconify */
+@utility icon-masked {
+  display: inline-block;
+  background-color: currentColor;
+  mask-image: var(--svg);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+/* Upright font style */
+@utility roman {
+  font-style: normal;
+}
+
+/* Italic font style */
+@utility italic {
+  font-style: italic;
+}
+
+/* Oblique font style */
+@utility oblique {
+  font-style: oblique;
+}
+
+/* Oblique font style with angle */
+@utility oblique-* {
+  font-style: oblique --value(angle);
+}
+
+@utility brighter-* {
+  color: color-mix(in oklch, currentColor, white --value(number));
+}
+
+@utility darker-* {
+  color: color-mix(in oklch, currentColor, black --value(number));
+}
+
+@layer base {
+  /* Customize Tailwind CSS's typography settings */
+  .prose-auto {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-wrap: pretty;
+    }
+
+    h2 {
+      --tw-prose-headings: oklch(70.96% 0.147 25.44);
+    }
+
+    h3 {
+      --tw-prose-headings: oklch(80.72% 0.1094 30.89);
+    }
+
+    h4,
+    h5,
+    h6 {
+      --tw-prose-headings: --color-gray-100;
+    }
+  }
+}
+
+@layer components {
+  .prose-auto {
+    @apply prose prose-gray prose-invert;
+    color: var(--color-default-foreground);
+    max-width: none;
+    line-height: 1.67;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      a:has(.icon--autolink-heading) {
+        margin-inline-start: 0.125em;
+        color: var(--color-gray-500);
+
+        @variant hover {
+          color: var(--color-gray-400);
+        }
+
+        @variant motion-safe {
+          @apply transition-colors;
+        }
+
+        .icon--autolink-heading {
+          @apply icon-masked h-[0.9em] w-[0.9em] align-[0.1em];
+          --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z'/%3E%3Cpath fill='%23000' d='M9.686 2.512a1.5 1.5 0 0 1 1.303 1.674L10.637 7h3.976l.399-3.186a1.5 1.5 0 0 1 2.977.372L17.637 7H20a1.5 1.5 0 0 1 0 3h-2.738l-.5 4H19.5a1.5 1.5 0 0 1 0 3h-3.113l-.398 3.186a1.5 1.5 0 0 1-2.977-.372L13.363 17H9.388l-.398 3.186a1.5 1.5 0 1 1-2.977-.372L6.363 17H4.5a1.5 1.5 0 1 1 0-3h2.238l.5-4H5a1.5 1.5 0 1 1 0-3h2.613l.399-3.186A1.5 1.5 0 0 1 9.686 2.51ZM13.74 14l.5-4h-3.977l-.5 4z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+      }
+    }
+
+    a {
+      @apply hyperlink hyperlink-underline font-medium;
+
+      .icon--external-link {
+        @apply icon-masked mx-0.5 inline-block h-[0.9em] w-[0.9em] align-[0.05em] opacity-50;
+        --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 256 256'%3E%3Cpath fill='%23000' d='M228 104a12 12 0 0 1-24 0V69l-59.51 59.51a12 12 0 0 1-17-17L187 52h-35a12 12 0 0 1 0-24h64a12 12 0 0 1 12 12Zm-44 24a12 12 0 0 0-12 12v64H52V84h64a12 12 0 0 0 0-24H48a20 20 0 0 0-20 20v128a20 20 0 0 0 20 20h128a20 20 0 0 0 20-20v-68a12 12 0 0 0-12-12'/%3E%3C/svg%3E");
+      }
+    }
+  }
+}
+
+@plugin "@tailwindcss/typography";
+@plugin "./icons/index.ts";

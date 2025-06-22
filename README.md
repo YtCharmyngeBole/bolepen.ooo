@@ -22,7 +22,7 @@ A *fursonal* website located at https://bolepen.ooo.
 
 This repository is published under the Apache 2.0 License.
 This license covers only the source files (`.ts`, `.mjs`, `.astro`, etc.),
-markup files (`.astro`, `*.md`, `.css`, etc.),
+markup files (`.astro`, `.md`, `.css`, etc.),
 and configuration files (`.json`, `.yaml`, etc.) included in this repository.
 
 > [!WARNING]  
