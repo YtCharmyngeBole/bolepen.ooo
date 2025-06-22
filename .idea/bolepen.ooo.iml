@@ -10,10 +10,11 @@
       <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/sandbox" />
       <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/assets/build" />
       <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/libraries" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@twemoji/api" level="application" />
-    <orderEntry type="library" name="ts-external-references" level="project" />
   </component>
 </module>

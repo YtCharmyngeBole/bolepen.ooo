@@ -7,6 +7,7 @@ import { defineConfig } from "astro/config";
 import {
   astroExpressiveCode,
   ExpressiveCodeTheme,
+  multiplyAlpha,
 } from "astro-expressive-code";
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -34,14 +35,17 @@ export default defineConfig({
   integrations: [
     sitemap(),
     astroExpressiveCode({
-      themes: [ayuDarkTheme],
+      themes: ["catppuccin-mocha"],
       styleOverrides: {
         codeFontFamily:
           "'Iosevka Custom Web Mono', 'Iosevka Custom Web fallback', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-        codeFontSize: "0.85rem",
+        codeFontSize: "0.9rem",
         uiFontFamily:
           "'Iosevka Custom Web Mono', 'Iosevka Custom Web fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
-        uiFontSize: "0.75rem",
+        uiFontSize: "0.8rem",
+        frames: {
+          shadowColor: "#00000033",
+        },
       },
       shiki: {
         langs: extraLanguages,

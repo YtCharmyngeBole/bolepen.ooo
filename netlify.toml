@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "https://me.bolepen.ooo/*"
-  to = "https://bolepen.ooo/:splat"
-  status = 301
-  force = true

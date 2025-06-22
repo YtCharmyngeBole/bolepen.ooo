@@ -1,5 +1,8 @@
-/** @type {import("prettier").Config} */
-const config = {
+/**
+ * @see https://prettier.io/docs/configuration
+ * @type {import("prettier").Config}
+ */
+export default {
   plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   overrides: [
     {
@@ -9,6 +12,5 @@ const config = {
       },
     },
   ],
+  tailwindStylesheet: "./src/styles/global.css",
 };
-
-export default config;
