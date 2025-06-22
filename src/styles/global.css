@@ -1,27 +1,10 @@
 @import "tailwindcss";
 
-@property --hyperlink-foreground-resting {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: oklch(70.77% 0.1844 27.61);
-}
-
-@property --hyperlink-foreground-hover {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: oklch(94.55% 0.0661 88.89);
-}
-
-@property --hyperlink-background-resting {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: transparent;
-}
-
-@property --hyperlink-background-hover {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: transparent;
+:root {
+  --hyperlink-foreground-resting: var(--color-hyperlink-orange);
+  --hyperlink-foreground-hover: var(--color-hyperlink-lemon);
+  --hyperlink-background-resting: transparent;
+  --hyperlink-background-hover: transparent;
 }
 
 @theme {
@@ -51,8 +34,11 @@
 
   /* Custom set of colors */
   --color-default-background: oklch(15% 0.02 313);
-  --color-default-foreground: oklch(79.27% 0.014 259.83);
+  --color-default-foreground: oklch(78% 0.014 259.83);
   --color-muted-foreground: oklch(53.41% 0.0434 313.07);
+  --color-hyperlink-orange: oklch(70.77% 0.1844 27.61);
+  --color-hyperlink-lemon: oklch(94.55% 0.0661 88.89);
+
   --color-beetroot: oklch(65.17% 0.103 360);
   --color-orange: oklch(70.96% 0.147 25.44);
   --color-lemon: oklch(85.52% 0.107 88.56);
@@ -67,6 +53,10 @@
     "Iosevka Custom Web Propo", "Iosevka Custom Web fallback", ui-sans-serif,
     system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono:
+    "Iosevka Custom Web Mono", "Iosevka Custom Web fallback", ui-monospace,
+    SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
 
   /* Breakpoints */
   --breakpoint-*: initial;
@@ -148,17 +138,18 @@
   font-style: oblique;
 }
 
-/* Oblique font style with angle */
-@utility oblique-* {
-  font-style: oblique --value(angle);
-}
-
+/* Blend color towards white */
+/*noinspection ALL*/
 @utility brighter-* {
-  color: color-mix(in oklch, currentColor, white --value(number));
+  color: color-mix(in oklch, currentColor, white calc(--value(integer) * 1%));
+  color: color-mix(in oklch, currentColor, white --value([percentage]));
 }
 
+/* Blend color towards black */
+/*noinspection ALL*/
 @utility darker-* {
-  color: color-mix(in oklch, currentColor, black --value(number));
+  color: color-mix(in oklch, currentColor, black calc(--value(integer) * 1%));
+  color: color-mix(in oklch, currentColor, black --value([percentage]));
 }
 
 @layer base {
@@ -234,3 +225,4 @@
 
 @plugin "@tailwindcss/typography";
 @plugin "./icons/index.ts";
+@config "./tailwind.config.ts";

@@ -1,54 +1,41 @@
 ---
+import { Image } from "astro:assets";
 import { SOCIALS } from "#src/config.ts";
+import imgProfilePic from "#src/images/profilepic.png";
+import SocialButton from "./SocialButton.astro";
 ---
 
-<div
-  class="flex flex-col items-center laptop:my-6 laptop:max-w-[32.5rem] laptop:items-start"
->
-  <h1 class="text-2xl max-laptop:text-center">
+<header class="my-8 flex flex-col items-center gap-4">
+  <Image
+    src={imgProfilePic}
+    alt="Drawing of Bole's head"
+    title="Drawing of Bole's head"
+    width="256"
+    priority={true}
+    class="w-[50%]"
+  />
+  <h1 class="flex flex-col items-center leading-relaxed gap-1">
     <span
-      class="leading-1 font-display font-bold leading-tight tracking-wide text-[oklch(87.16%_0.043_54.36)]"
-      >That Charming BOLE</span
+      class="font-display text-2xl font-bold tracking-wide text-(--color-name) text-center"
+    >That Charming BOLE</span
     >
-    <span
-      class="align-[0.05rem] text-xl text-[oklch(51.31%_0.026_104.5)] max-laptop:hidden"
-      >(@YtCharmyngeBole)</span
-    >
+    <span class="font-mono text-xl text-(--color-username) text-center">
+      (@YtCharmyngeBole)
+    </span>
   </h1>
-  <p class="my-2 text-base/snug max-laptop:text-center laptop:mt-1">
+  <p class="text-center text-base/snug">
     A chubby rodent doggo born in 1990s. <br class="laptop:hidden" />
-    Welcome to my <em>bolepen</em>!
+    Welcome to my <em class="brighter-80">bolepen</em>!
   </p>
-  <ul
-    class="mt-4 flex w-fit flex-wrap justify-start gap-3 max-laptop:mb-4 max-laptop:max-w-[12.25rem] max-laptop:justify-center laptop:gap-y-2.5"
-  >
-    {
-      SOCIALS.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            title={`Me on ${item.name}`}
-            rel="me noopener"
-            class="hyperlink hyperlink--social-link flex items-center justify-center rounded-lg text-center"
-          >
-            <span
-              class={`iconify ${item.iconifyClass} m-0.5 inline-block size-9 laptop:mx-1 laptop:my-0`}
-            />
-            <span class="grow max-laptop:hidden laptop:mr-2.5">
-              {item.name}
-            </span>
-          </a>
-        </li>
-      ))
-    }
+  <ul class="flex flex-wrap gap-3 px-8 py-2 w-fit justify-center">
+    {SOCIALS.map((item) =>
+      <SocialButton item={item} />)}
   </ul>
-</div>
+</header>
 
 <style>
-  .hyperlink--social-link {
-    --hyperlink-text--ground: var(--color-hyperlink-ground);
-    --hyperlink-text--excited: var(--color-custom-background);
-    --hyperlink-bg--ground: oklch(100% 0 0 / 5%);
-    --hyperlink-bg--excited: var(--color-hyperlink-excited);
+  header {
+    --color-name: oklch(87.16% 0.043 54.36);
+    --color-username: oklch(51.31% 0.026 104.5);
   }
 </style>

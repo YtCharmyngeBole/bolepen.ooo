@@ -1,5 +1,4 @@
 ---
-import Avatar from "#layouts/Avatar.astro";
 import Footer from "#layouts/Footer.astro";
 import Header from "#layouts/Header.astro";
 import Layout from "#layouts/Layout.astro";
@@ -11,20 +10,19 @@ import EventsContent from "#writeups/03_events.mdx";
 ---
 
 <Layout>
-  <div
-    class="mb-12 mt-[4rem] gap-6 max-laptop:mt-[calc(max(50svh-15rem,4rem))] laptop:mx-auto laptop:flex laptop:items-start laptop:gap-12"
-  >
-    <Avatar />
-    <div id="content" class="mx-auto max-w-[32.5rem]">
-      <Header />
-      <main class="prose-auto">
-        <IntroContent />
-        <HobbiesContent />
-        <FursonaContent />
-        <EventsContent />
-        {/* TODO TOPIC: my character reference */}
-      </main>
-      <Footer />
-    </div>
-  </div>
+  <!--<div-->
+  <!--  class="mb-12 mt-[4rem] gap-6 max-laptop:mt-[calc(max(50svh-15rem,4rem))] laptop:mx-auto laptop:flex laptop:items-start laptop:gap-12"-->
+  <!--&gt;-->
+  <!--<div id="content" class="mx-auto max-w-[32.5rem]">-->
+  <Header />
+  <main class="prose-auto">
+    <IntroContent />
+    <HobbiesContent />
+    <FursonaContent />
+    <EventsContent />
+    {/* TODO TOPIC: my character reference */}
+  </main>
+  <Footer />
+  <!--</div>-->
+  <!--</div>-->
 </Layout>

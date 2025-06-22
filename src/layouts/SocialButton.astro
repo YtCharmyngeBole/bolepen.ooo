@@ -1,0 +1,31 @@
+---
+interface Props {
+  item: {
+    name: string;
+    href: string;
+    iconifyClass: string;
+  };
+}
+
+const { item } = Astro.props as Props;
+---
+
+<li>
+  <a
+    href={item.href}
+    title={`Me on ${item.name}`}
+    rel="me noopener"
+    class="hyperlink flex items-center rounded-lg text-center"
+  >
+    <span class={`iconify ${item.iconifyClass} inline-block w-9 h-9 mx-1 mt-0.5`}></span>
+    <span class="pt-0.5 pr-2.5 font-medium tracking-wide">{item.name}</span>
+  </a>
+</li>
+
+<style>
+  a {
+    --hyperlink-background-resting: oklch(100% 0 0 / 5%);
+    --hyperlink-background-hover: var(--color-hyperlink-lemon);
+    --hyperlink-foreground-hover: var(--color-default-background);
+  }
+</style>
