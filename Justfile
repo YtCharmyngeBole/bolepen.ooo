@@ -18,8 +18,8 @@ preview ARGS='--host=0.0.0.0':
 
 # Run formatters: remark, prettier, and xo
 format:
-    remark . -qfo
-    remark . -e mdx -u mdx -qfo
+    remark src/ -qfo
+    remark src/ -e mdx -u mdx -qfo
     prettier '**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,cjsx,tsx,mtsx,ctsx,astro,svelte,vue,css}' --write --log-level warn
 
 # Run type checking

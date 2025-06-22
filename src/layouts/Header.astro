@@ -6,13 +6,14 @@ import imgProfilePic from "#src/images/profilepic.png";
 import Link from "#layouts/Link.astro";
 ---
 
-<header class="my-8 flex flex-col items-center gap-4">
+<header class="flex flex-col items-center gap-4 pt-16 pb-4">
   <Image
     src={imgProfilePic}
     alt="Drawing of Bole's head"
     title="Drawing of Bole's head"
-    width="192"
+    width="288"
     priority={true}
+    class="tablet:w-[288px] w-[192px] transition-all"
   />
   <h1 class="flex flex-col items-center gap-1 leading-relaxed">
     <span
@@ -23,11 +24,10 @@ import Link from "#layouts/Link.astro";
       (@YtCharmyngeBole)
     </span>
   </h1>
-  <p class="text-center text-base/snug">
-    A chubby rodent doggo born in 1990s. <br class="laptop:hidden" />
-    Welcome to my <em class="brighter-80">bolepen</em>!
+  <p class="text-center text-base/snug text-balance">
+    Find me using the links below, and feel free to say hi!
   </p>
-  <ul class="flex w-fit flex-wrap justify-center gap-3 px-8 py-2">
+  <ul class="flex w-fit max-w-144 flex-wrap justify-center gap-3 px-8 py-2">
     {SOCIAL_LINKS.map((item) => <Link item={item} />)}
   </ul>
 </header>

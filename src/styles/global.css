@@ -68,9 +68,8 @@
 
   /* Breakpoints */
   --breakpoint-*: initial;
-  --breakpoint-tablet: 40rem;
-  --breakpoint-desktop: 60rem;
-  --breakpoint-wide: 80rem;
+  --breakpoint-tablet: 36rem;
+  --breakpoint-desktop: 72rem;
 }
 
 @layer base {
