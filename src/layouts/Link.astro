@@ -17,8 +17,10 @@ const { item } = Astro.props as Props;
     rel="me noopener"
     class="hyperlink flex items-center rounded-lg text-center"
   >
-    <span class={`iconify ${item.iconifyClass} inline-block w-9 h-9 mx-1 mt-0.5`}></span>
-    <span class="pt-0.5 pr-2.5 font-medium tracking-wide">{item.name}</span>
+    <span
+      class={`iconify ${item.iconifyClass} inline-block w-9 h-9 mx-1 mt-0.5`}
+    ></span>
+    <span class="pt-0.5 pr-2.5 font-semibold tracking-wide">{item.name}</span>
   </a>
 </li>
 

@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-
 import { rem, round } from "#lib/styling.ts";
 
 export default {

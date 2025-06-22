@@ -1,5 +1,5 @@
-import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { glob } from "glob";
 
@@ -8,7 +8,7 @@ export function dirnameFromImportMetaURL(importMetaURL: string) {
 }
 
 export class PathBuilder {
-  constructor(private base: string) {}
+  constructor(private readonly base: string) {}
 
   static fromImportMetaURL(importMetaURL: string) {
     return new PathBuilder(dirnameFromImportMetaURL(importMetaURL));

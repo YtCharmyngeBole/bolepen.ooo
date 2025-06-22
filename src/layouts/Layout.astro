@@ -18,69 +18,69 @@ const {
   author = SITE.author,
   description = SITE.description,
   ogImage = SITE.ogImage,
-  canonicalURL = new URL(Astro.url.pathname, Astro.site).href
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
+  <head>
+    <meta charset="UTF-8" />
 
-  <!-- Theming Metadata -->
-  <meta name="viewport" content="width=device-width" />
-  <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#eeeeee" />
-  <link rel="icon" href="/favicon.ico" sizes="48x48" />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="/favicons/favicon-16x16.png"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="/favicons/favicon-32x32.png"
-  />
-  <link
-    rel="icon"
-    type="image/svg+xml"
-    sizes="any"
-    href="/favicons/favicon.svg"
-  />
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/favicons/apple-touch-icon.png"
-  />
-  <link rel="manifest" href="/site.webmanifest" />
+    <!-- Theming Metadata -->
+    <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#eeeeee" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="any"
+      href="/favicons/favicon.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- General Meta Tags -->
-  <title>{title}</title>
-  <meta name="title" content={title} />
-  <meta name="description" content={description} />
-  <meta name="author" content={author} />
-  <meta name="generator" content={Astro.generator} />
-  <link rel="canonical" href={canonicalURL} />
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={canonicalURL} />
-  <meta property="og:image" content={ogImage} />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content={canonicalURL} />
-  <meta property="twitter:title" content={title} />
-  <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={ogImage} />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
 
-  <ClientRouter />
-</head>
-<body>
-<slot />
-</body>
+    <ClientRouter />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>

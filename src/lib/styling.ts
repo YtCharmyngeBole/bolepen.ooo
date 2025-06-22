@@ -3,7 +3,7 @@
  * especially useful for Tailwind CSS.
  */
 
-import { isPercentageString, type PercentageString } from "./types.ts";
+import { isPercentageString, type PercentageString } from "#lib/types.ts";
 
 /**
  * Round a number to 7 decimal places and remove trailing zeros.
@@ -11,7 +11,7 @@ import { isPercentageString, type PercentageString } from "./types.ts";
 export function round(num: number, fractionDigits: number = 7): string {
   return num
     .toFixed(fractionDigits)
-    .replace(/(\.[0-9]+?)0+$/, "$1")
+    .replace(/(\.\d+?)0+$/, "$1")
     .replace(/\.0$/, "");
 }
 
@@ -38,7 +38,7 @@ export class Oklch {
   h: number;
 
   constructor(l: number | PercentageString, c: number, h: number) {
-    this.l = isPercentageString(l) ? parseFloat(l) / 100 : l;
+    this.l = isPercentageString(l) ? Number.parseFloat(l) / 100 : l;
     this.c = c;
     this.h = h;
   }

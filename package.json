@@ -8,15 +8,15 @@
     "start": "astro dev --host=0.0.0.0",
     "dev": "astro dev --host=0.0.0.0",
     "build": "astro check && astro build",
-    "preview": "astro preview --host=0.0.0.0"
+    "preview": "astro preview --host=0.0.0.0",
+    "format": "remark . -qfo && remark . -e mdx -u mdx -qfo && prettier '**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,cjsx,tsx,mtsx,ctsx,astro,svelte,vue,css}' --write --log-level warn",
+    "check": "astro check && tsc --noEmit"
   },
   "imports": {
     "#root/*": "./*",
     "#src/*": "./src/*",
     "#components/*": "./src/components/*",
-    "#fonts/*": "./src/fonts/*",
     "#helpers/*": "./src/helpers/*",
-    "#images/*": "./src/images/*",
     "#layouts/*": "./src/layouts/*",
     "#lib/*": "./src/lib/*",
     "#styles/*": "./src/styles/*",
@@ -25,7 +25,6 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.0",
-    "@astrojs/netlify": "^6.4.0",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.1",
     "@astrojs/solid-js": "^5.1.0",
@@ -59,6 +58,8 @@
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.13",
+    "remark-cli": "^12.0.1",
+    "remark-mdx": "^3.1.0",
     "typescript-language-server": "^4.3.4"
   }
 }

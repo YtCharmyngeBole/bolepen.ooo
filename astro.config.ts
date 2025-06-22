@@ -1,5 +1,4 @@
 import fs from "node:fs";
-
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
@@ -13,50 +12,35 @@ import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
-import defaultTheme from "tailwindcss/defaultTheme";
-
 import { SITE } from "#src/config.ts";
 import { PathBuilder } from "#lib/fs.ts";
-
-import netlify from "@astrojs/netlify";
 
 const basePathBuilder = PathBuilder.fromImportMetaURL(import.meta.url);
 
 // For astro-expressive-code: prepare textmate grammars and a theme
 const extraLanguages = basePathBuilder
   .glob("src/lib/shiki/*.tmLanguage.json")
-  .map((path) => JSON.parse(fs.readFileSync(path, "utf-8")));
+  .map((path) => JSON.parse(fs.readFileSync(path, "utf8")));
 const ayuDarkTheme = ExpressiveCodeTheme.fromJSONString(
   fs.readFileSync(
     basePathBuilder.join("src/lib/shiki/ayu-dark-theme.json"),
-    "utf-8",
+    "utf8",
   ),
 );
 
 export default defineConfig({
   site: SITE.url,
-  adapter: netlify({
-    experimentalStaticHeaders: true,
-  }),
   prefetch: true,
   integrations: [
     sitemap(),
     astroExpressiveCode({
       themes: [ayuDarkTheme],
       styleOverrides: {
-        codeFontFamily: [
-          "'Iosevka Custom Web Mono'",
-          "'Iosevka Custom Web Propo'",
-          "'Iosevka Custom Web fallback'",
-          ...defaultTheme.fontFamily.mono,
-        ],
+        codeFontFamily:
+          "'Iosevka Custom Web Mono', 'Iosevka Custom Web fallback', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
         codeFontSize: "0.85rem",
-        uiFontFamily: [
-          "'Iosevka Custom Web Mono'",
-          "'Iosevka Custom Web Propo'",
-          "'Iosevka Custom Web fallback'",
-          ...defaultTheme.fontFamily.mono,
-        ],
+        uiFontFamily:
+          "'Iosevka Custom Web Mono', 'Iosevka Custom Web fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
         uiFontSize: "0.75rem",
       },
       shiki: {

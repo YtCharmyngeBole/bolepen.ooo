@@ -1,6 +1,5 @@
-import type { Config } from "prettier";
-
-export default {
+/** @type {import("prettier").Config} */
+const config = {
   plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   overrides: [
     {
@@ -10,4 +9,6 @@ export default {
       },
     },
   ],
-} as Config;
+};
+
+export default config;

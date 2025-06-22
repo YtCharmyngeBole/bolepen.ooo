@@ -1,4 +1,4 @@
-export const spaceChars = {
+export const SPACE_CHARS = {
   nbsp: "\u00a0", // non-breaking version of normal whitespace
   ensp: "\u2002", // half of an em space (LaTeX-borrowed alias)
   emsp: "\u2003", // equal to size type in points (LaTeX-borrowed alias)

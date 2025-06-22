@@ -50,6 +50,9 @@ const { feature } = Astro.props as Props;
 const fontFeatureSettingsValue = getFontFeatureSettingsValue(feature);
 ---
 
-<div style={`font-feature-settings: ${fontFeatureSettingsValue}`}>
+<div
+  class="contents"
+  style={`font-feature-settings: ${fontFeatureSettingsValue}`}
+>
   <slot />
 </div>

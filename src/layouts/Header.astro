@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import { SOCIALS } from "#src/config.ts";
+
+import { SOCIAL_LINKS } from "#src/config.ts";
 import imgProfilePic from "#src/images/profilepic.png";
-import SocialButton from "./SocialButton.astro";
+import Link from "#layouts/Link.astro";
 ---
 
 <header class="my-8 flex flex-col items-center gap-4">
@@ -10,16 +11,15 @@ import SocialButton from "./SocialButton.astro";
     src={imgProfilePic}
     alt="Drawing of Bole's head"
     title="Drawing of Bole's head"
-    width="256"
+    width="192"
     priority={true}
-    class="w-[50%]"
   />
-  <h1 class="flex flex-col items-center leading-relaxed gap-1">
+  <h1 class="flex flex-col items-center gap-1 leading-relaxed">
     <span
-      class="font-display text-2xl font-bold tracking-wide text-(--color-name) text-center"
-    >That Charming BOLE</span
+      class="font-display text-center text-2xl font-bold tracking-wide text-(--color-name)"
+      >That Charming BOLE</span
     >
-    <span class="font-mono text-xl text-(--color-username) text-center">
+    <span class="text-center font-mono text-xl text-(--color-username)">
       (@YtCharmyngeBole)
     </span>
   </h1>
@@ -27,9 +27,8 @@ import SocialButton from "./SocialButton.astro";
     A chubby rodent doggo born in 1990s. <br class="laptop:hidden" />
     Welcome to my <em class="brighter-80">bolepen</em>!
   </p>
-  <ul class="flex flex-wrap gap-3 px-8 py-2 w-fit justify-center">
-    {SOCIALS.map((item) =>
-      <SocialButton item={item} />)}
+  <ul class="flex w-fit flex-wrap justify-center gap-3 px-8 py-2">
+    {SOCIAL_LINKS.map((item) => <Link item={item} />)}
   </ul>
 </header>
 
