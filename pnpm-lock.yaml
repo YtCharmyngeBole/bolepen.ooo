@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  astro: ^5.10.0
-
 importers:
 
   .:
@@ -32,9 +29,6 @@ importers:
       '@iconify/tailwind':
         specifier: ^1.2.0
         version: 1.2.0
-      '@kindspells/astro-shield':
-        specifier: ^1.7.1
-        version: 1.7.1(astro@5.10.0(@netlify/blobs@8.2.0)(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.44.0)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0))
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@4.1.10)
@@ -161,7 +155,7 @@ packages:
     resolution: {integrity: sha512-OGX2KvPeBzjSSKhkCqrUoDMyzFcjKt5nTE5SFw3RdoLf0nrhyCXBQcCyclzWy1+P+XpOamn+p+hm1EhpCRyPxw==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
     peerDependencies:
-      astro: ^5.10.0
+      astro: ^5.0.0
 
   '@astrojs/prism@3.3.0':
     resolution: {integrity: sha512-q8VwfU/fDZNoDOf+r7jUnMC2//H2l0TuQ6FkGJL8vD8nw/q5KiL3DS1KKBI3QhI9UQhpJ5dc7AtqfbXWuOgLCQ==}
@@ -724,12 +718,6 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@kindspells/astro-shield@1.7.1':
-    resolution: {integrity: sha512-8M6rbXNp1v7CbwIjDXJzlgnPuYHmqTLGAiiMK738AhYE191uWGi6mzEhQEW9U4agDzi6Cq6+WFjJ/ZavYDz4pg==}
-    engines: {node: '>= 18.0.0'}
-    peerDependencies:
-      astro: ^5.10.0
-
   '@mdx-js/mdx@3.1.0':
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
 
@@ -1210,7 +1198,7 @@ packages:
   astro-expressive-code@0.41.2:
     resolution: {integrity: sha512-HN0jWTnhr7mIV/2e6uu4PPRNNo/k4UEgTLZqbp3MrHU+caCARveG2yZxaZVBmxyiVdYqW5Pd3u3n2zjnshixbw==}
     peerDependencies:
-      astro: ^5.10.0
+      astro: ^4.0.0-beta || ^5.0.0-beta || ^3.3.0
 
   astro@5.10.0:
     resolution: {integrity: sha512-g/t54kVzQnFVijs+GbbbX/NBAFTl/3yNAEA/AQYq4FumLLVv7n4BIF+jKhcPGn9iFGyT1Cjvr7KB/qYyNvHEIg==}
@@ -3987,10 +3975,6 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
-
-  '@kindspells/astro-shield@1.7.1(astro@5.10.0(@netlify/blobs@8.2.0)(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.44.0)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0))':
-    dependencies:
-      astro: 5.10.0(@netlify/blobs@8.2.0)(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.44.0)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0)
 
   '@mdx-js/mdx@3.1.0(acorn@8.15.0)':
     dependencies:

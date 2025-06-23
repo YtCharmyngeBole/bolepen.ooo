@@ -30,7 +30,6 @@
     "@astrojs/solid-js": "^5.1.0",
     "@fontsource/barlow": "^5.2.6",
     "@iconify/tailwind": "^1.2.0",
-    "@kindspells/astro-shield": "^1.7.1",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.10",
     "@types/lodash": "^4.17.18",
@@ -62,15 +61,5 @@
     "remark-cli": "^12.0.1",
     "remark-mdx": "^3.1.0",
     "typescript-language-server": "^4.3.4"
-  },
-  "overrides": {
-    "@kindspells/astro-shield": {
-      "astro": "$astro"
-    }
-  },
-  "pnpm": {
-    "overrides": {
-      "astro": "$astro"
-    }
   }
 }

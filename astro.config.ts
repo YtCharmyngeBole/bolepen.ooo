@@ -1,7 +1,6 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
-import { shield } from "@kindspells/astro-shield";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import type { AstroUserConfig } from "astro";
@@ -16,33 +15,7 @@ import { SITE } from "#src/config.ts";
 export default defineConfig({
   site: SITE.url,
   prefetch: true,
-  integrations: [
-    sitemap(),
-    astroExpressiveCode(),
-    mdx(),
-    solidJs(),
-    shield({
-      securityHeaders: {
-        enableOnStaticPages: { provider: "netlify" },
-        contentSecurityPolicy: {
-          cspDirectives: {
-            "default-src": "'none'",
-            "script-src": "'self'",
-            "style-src": "'self' 'unsafe-inline'",
-            "img-src": "'self' data:",
-            "font-src": "'self' data:",
-            "frame-src": "'self'",
-            "form-action": "'self'",
-            "frame-ancestors": "'self'",
-            "base-uri": "'self'",
-            "worker-src": "'self'",
-            "manifest-src": "'self'",
-            // "upgrade-insecure-requests": "",
-          },
-        },
-      },
-    }),
-  ],
+  integrations: [sitemap(), astroExpressiveCode(), mdx(), solidJs()],
   image: {
     responsiveStyles: true,
     layout: "constrained",

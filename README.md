@@ -15,7 +15,7 @@ A _fursonal_ website located at https://bolepen.ooo.
   - Animated background SVGs
 - [ ] Update open-graph cover image
 - [x] Upgrade to Astro 5.10 (or later)
-- [x] Make social links more prominent
+- [ ] Make social links more prominent
 - [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
 - [ ] Finally, separate all sections into their own separate pages
 
