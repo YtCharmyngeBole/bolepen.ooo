@@ -2,8 +2,8 @@
 
 This project utilizes two modified Iosevka webfont types:
 
-- `Iosevka Custom Web Propo` (quasi-proportional family)
-- `Iosevka Custom Web Mono` (monospaced family)
+- `Iosevka Consolas Propo` (quasi-proportional family)
+- `Iosevka Monaco Mono` (monospaced family)
 
 Creating these fonts involves two steps:
 
@@ -38,7 +38,7 @@ cp /path/to/Iosevka-Custom.toml private-build-plans.toml
 npm install
 
 # Build the custom  fonts
-npm run build -- --jCmd=$(nproc) webfont::IosevkaCustomWebPropo webfont::IosevkaCustomWebMono
+npm run build -- --jCmd=$(nproc) webfont::IosevkaConsolasPropo webfont::IosevkaMonacoMono
 ```
 
 ### Notes:

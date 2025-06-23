@@ -94,12 +94,12 @@ RANKS_FILE = THIS_DIR / "ranks.toml"
 #
 
 WORKING_DIR = THIS_DIR / "assets"
-IOSEVKA_VERSION = "33.2.5-0"
-IOSEVKA_FAMILIES = ["IosevkaCustomWebPropo", "IosevkaCustomWebMono"]
+IOSEVKA_VERSION = "33.2.5-1"
+IOSEVKA_FAMILIES = ["IosevkaConsolasPropo", "IosevkaMonacoMono"]
 IOSEVKA_SAMPLE_FONT_FILE = (
     WORKING_DIR
-    / f"IosevkaCustomWebPropo-{IOSEVKA_VERSION}"
-    / "IosevkaCustomWebPropo-Regular.woff2"
+    / f"IosevkaMonacoMono-{IOSEVKA_VERSION}"
+    / "IosevkaMonacoMono-Regular.woff2"
 )
 
 

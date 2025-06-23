@@ -19,10 +19,10 @@ export default defineEcConfig({
   themes: ["catppuccin-mocha"],
   styleOverrides: {
     codeFontFamily:
-      "'Iosevka Custom Web Mono', 'Iosevka Custom Web fallback', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+      "'Iosevka Monaco Mono', 'Iosevka fallback', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
     codeFontSize: "0.9rem",
     uiFontFamily:
-      "'Iosevka Custom Web Mono', 'Iosevka Custom Web fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
+      "'Iosevka Monaco Mono', 'Iosevka fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
     uiFontSize: "0.8rem",
     frames: {
       shadowColor: "#00000033",

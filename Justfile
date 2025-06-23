@@ -16,7 +16,7 @@ build:
 preview ARGS='--host=0.0.0.0':
     astro preview {{ ARGS }}
 
-# Run formatters: remark, prettier, and xo
+# Run formatters: remark and prettier
 format:
     remark src/ -qfo
     remark src/ -e mdx -u mdx -qfo
