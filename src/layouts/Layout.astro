@@ -17,7 +17,7 @@ const {
   title = SITE.title,
   author = SITE.author,
   description = SITE.description,
-  ogImage = SITE.ogImage,
+  ogImage = new URL(SITE.ogImage, Astro.site).href,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 ---
