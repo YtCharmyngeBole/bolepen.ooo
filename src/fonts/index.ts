@@ -17,7 +17,9 @@ import "@fontsource/barlow/600-italic.css";
 import "@fontsource/barlow/700-italic.css";
 import "@fontsource/barlow/800-italic.css";
 import "@fontsource/barlow/900-italic.css";
+
 // Iosevka fonts
 import "./iosevka.css";
+
 // Fallback fonts for Barlow and Iosevka
 import "./fallback.css";
