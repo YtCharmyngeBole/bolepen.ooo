@@ -1,6 +1,5 @@
 import type { SocialObject } from "#helpers/types.ts";
 import ogImage from "#src/images/og-image.png?url";
-import twitterImage from "#src/images/twitter-image.png?url";
 
 export const SITE = {
   author: "That Charming BOLE",
