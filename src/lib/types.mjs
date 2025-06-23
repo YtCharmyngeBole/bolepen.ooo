@@ -1,7 +1,10 @@
+// noinspection JSClosureCompilerSyntax
+
 /**
  * Represents a type that can be either the specified type `T` or `null`.
  *
- * @template T - The type that can be nullable.
+ * @template T
+ * @typedef {T | null} Nullable - A union type that represents either the specified type `T` or `null`.
  *
  * @description
  * The `Nullable` type alias is used to indicate that a value can be either of type `T`
@@ -20,16 +23,14 @@
  *   name: 'John Doe',
  *   age: null, // Valid, age can be null
  * };
- *
- * @returns A union type that represents either the specified type `T` or `null`.
  */
-export type Nullable<T> = T | null;
 
 /**
  * Creates a branded type by combining a base type `T` with a unique brand name `Brand`.
  *
- * @template T - The base type to be branded.
- * @template Brand - The unique brand name to distinguish the branded type.
+ * @template T
+ * @template Brand
+ * @typedef {T & { __brand: Brand }} BrandedType - A branded type that combines the base type `T` with the unique brand name `Brand`.
  *
  * @description
  * The `BrandedType` type alias allows you to create distinct types that are not assignable
@@ -45,34 +46,37 @@ export type Nullable<T> = T | null;
  *
  * // Error: Type 'USD' is not assignable to type 'EUR'.
  * // const invalid: EUR = usdAmount;
- *
- * @returns A branded type that combines the base type `T` with the unique brand name `Brand`.
  */
-export type BrandedType<T, Brand> = T & { __brand: Brand };
 
 /**
  * Extracts the base type from a branded type.
- */
-export type BrandedBase<Branded, FallbackType = never> =
-  Branded extends BrandedType<infer T, any> ? T : FallbackType;
-
-/**
- * Represents a value that has both human-readable and machine-readable representations.
  *
- * @property human - The human-readable representation of the value.
- * @property machine - The machine-readable representation of the value.
+ * @template Branded
+ * @template [FallbackType=never]
+ * @typedef {Branded extends BrandedType<infer T, any> ? T : FallbackType} BrandedBase
  */
-export type HumanMachineReadable<H, M> = {
-  human: H;
-  machine: M;
-};
 
 /**
- * Represents a string that is a valid percentage value.
+ * Represents a value that has both human-readable `H` and machine-readable `M` representations.
+ *
+ * @template H
+ * @template M
+ * @typedef {{ human: H, machine: M }} HumanMachineReadable
  */
-export type PercentageString = `${number}%`;
 
-export function isPercentageString(value: any): value is PercentageString {
+/**
+ * Represents a string that is a valid percentage, e.g., "50%", "-20.5%", "100%".
+ *
+ * @typedef {`${number}%`} PercentageString
+ */
+
+/**
+ * Checks if a value is a valid percentage string.
+ *
+ * @param {unknown} value
+ * @returns {value is PercentageString}
+ */
+export function isPercentageString(value) {
   const regex = /^-?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?%$/;
   return typeof value === "string" && regex.test(value);
 }
@@ -84,8 +88,6 @@ export function isPercentageString(value: any): value is PercentageString {
  * It throws an error with the message "Unreachable" to signal that an
  * unexpected situation has occurred.
  *
- * @throws {Error} Always throws an error indicating "Unreachable" code path.
- *
  * @example
  * function handleValue(value: string | number) {
  *   if (typeof value === "string") {
@@ -96,8 +98,11 @@ export function isPercentageString(value: any): value is PercentageString {
  *     unreachable();
  *   }
  * }
+ *
+ * @throws {Error} Always throws an error indicating "Unreachable" code path.
+ * @returns {never}
  */
-export function unreachable(): never {
+export function unreachable() {
   const error = new Error();
   const stack = error.stack?.split("\n");
 

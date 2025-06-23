@@ -1,5 +1,31 @@
 import type { Config } from "tailwindcss";
-import { rem, round } from "#lib/styling.ts";
+
+/**
+ * Round a number to 7 decimal places and remove trailing zeros.
+ * [Reference](https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js)
+ */
+export function round(num: number, fractionDigits: number = 7): string {
+  return num
+    .toFixed(fractionDigits)
+    .replace(/(\.\d+?)0+$/, "$1")
+    .replace(/\.0$/, "");
+}
+
+/**
+ * Convert pixel to rem assuming 16px base font size.
+ * [Reference](https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js)
+ */
+export function rem(px: number): `${number}rem` {
+  return `${round(px / 16)}rem` as `${number}rem`;
+}
+
+/**
+ * Convert pixel to em using the given base font size.
+ * [Reference](https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js)
+ */
+export function em(px: number, base: number): `${number}em` {
+  return `${round(px / base)}em` as `${number}em`;
+}
 
 export default {
   theme: {

@@ -1,7 +1,6 @@
 import type { SocialObject } from "#helpers/types.ts";
 import ogImage from "#src/images/ogimage.png?url";
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const SITE = {
   author: "That Charming BOLE",
   title: "In The Bolepen",
@@ -13,7 +12,6 @@ export const SITE = {
   startYear: 2023,
 } as const;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const SOCIAL_LINKS: SocialObject[] = [
   {
     name: "Facebook",
