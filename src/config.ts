@@ -10,7 +10,6 @@ export const SITE = {
   url: "https://bolepen.ooo",
   themeColor: "#48215b",
   ogImage,
-  twitterImage,
   startYear: 2023,
 } as const;
 
