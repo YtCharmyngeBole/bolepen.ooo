@@ -5,6 +5,7 @@
   --hyperlink-foreground-hover: var(--color-hyperlink-lemon);
   --hyperlink-background-resting: transparent;
   --hyperlink-background-hover: transparent;
+  --hyperlink-outline-focus: var(--hyperlink-foreground-resting);
 }
 
 @property --svg {
@@ -70,6 +71,24 @@
   --breakpoint-*: initial;
   --breakpoint-tablet: 36rem;
   --breakpoint-desktop: 72rem;
+
+  /* Animations */
+  --animate-shake-rotate: shake-rotate 0.3s ease-in-out;
+
+  @keyframes shake-rotate {
+    0%,
+    100% {
+      transform: rotate(0deg) translateX(0) scale(1);
+    }
+    20%,
+    60% {
+      transform: rotate(-2deg) translateX(-1px) scale(1.05);
+    }
+    40%,
+    80% {
+      transform: rotate(2deg) translateX(1px) scale(1.05);
+    }
+  }
 }
 
 @layer base {
@@ -107,6 +126,11 @@
   @variant hover {
     color: var(--hyperlink-foreground-hover);
     background-color: var(--hyperlink-background-hover);
+  }
+
+  @variant focus {
+    outline: 2px solid var(--hyperlink-outline-focus);
+    outline-offset: 1px;
   }
 
   @variant motion-safe {
@@ -230,11 +254,13 @@
     h5,
     h6 {
       a:has(.icon--autolink-heading) {
-        color: var(--color-gray-600);
-
-        @variant hover {
-          color: var(--color-hyperlink-lemon);
-        }
+        @apply hyperlink;
+        /* TailwindCSS's slate-500 and sky-300 */
+        --hyperlink-foreground-resting: oklch(55.4% 0.046 257.417);
+        --hyperlink-foreground-hover: oklch(82.8% 0.111 230.318);
+        --hyperlink-outline-focus: oklch(82.8% 0.111 230.318);
+        border-radius: var(--radius-sm);
+        margin-inline: calc(var(--spacing) * 0.25);
 
         @variant motion-safe {
           @apply transition-colors duration-150;
