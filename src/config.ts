@@ -1,5 +1,6 @@
 import type { SocialObject } from "#helpers/types.ts";
-import ogImage from "#src/images/ogimage.png?url";
+import ogImage from "#src/images/og-image.png?url";
+import twitterImage from "#src/images/twitter-image.png?url";
 
 export const SITE = {
   author: "That Charming BOLE",
@@ -9,6 +10,7 @@ export const SITE = {
   url: "https://bolepen.ooo",
   themeColor: "#48215b",
   ogImage,
+  twitterImage,
   startYear: 2023,
 } as const;
 
