@@ -24,6 +24,22 @@ export default defineConfig({
     shield({
       securityHeaders: {
         enableOnStaticPages: { provider: "netlify" },
+        contentSecurityPolicy: {
+          cspDirectives: {
+            //     "default-src": "'none'",
+            "script-src": "'self'",
+            "style-src": "'self' 'unsafe-inline'",
+            //     "img-src": "'self' data:",
+            //     "font-src": "'self' data:",
+            //     "frame-src": "'self'",
+            //     "form-action": "'self'",
+            //     "frame-ancestors": "'self'",
+            //     "base-uri": "'self'",
+            //     "worker-src": "'self'",
+            //     "manifest-src": "'self'",
+            //     // "upgrade-insecure-requests": "",
+          },
+        },
       },
     }),
   ],
