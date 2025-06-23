@@ -13,9 +13,9 @@ A _fursonal_ website located at https://bolepen.ooo.
 - [ ] Adorn the website background with animated patterns
   - Greek adornment patterns on the header and footer area
   - Animated background SVGs
-- [ ] Update open-graph cover image
+- [x] Update open-graph cover image
 - [x] Upgrade to Astro 5.10 (or later)
-- [ ] Make social links more prominent
+- [x] Make social links more prominent
 - [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
 - [ ] Finally, separate all sections into their own separate pages
 
