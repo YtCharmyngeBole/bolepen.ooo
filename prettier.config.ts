@@ -7,9 +7,7 @@ export default {
   overrides: [
     {
       files: "*.astro",
-      options: {
-        parser: "astro",
-      },
+      options: { parser: "astro" },
     },
   ],
   tailwindStylesheet: "./src/styles/global.css",

@@ -14,9 +14,9 @@ Creating these fonts involves two steps:
 
 This step creates Iosevka fonts for every possible combination of:
 
-- Font family (_propo_ or _mono_)
-- Weight (_100_ to _900_)
-- Style (_normal_ or _italic_)
+- Font family (*propo* or *mono*)
+- Weight (*100* to *900*)
+- Style (*normal* or *italic*)
 
 The [Customizer Tool](https://typeof.net/Iosevka/customizer)
 was used to create the configuration file

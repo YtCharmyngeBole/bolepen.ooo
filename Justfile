@@ -16,11 +16,11 @@ build:
 preview ARGS='--host=0.0.0.0':
     astro preview {{ ARGS }}
 
-# Run formatters: remark and prettier
+# Run multiple formatters on source files, including remark and prettier
 format:
-    remark src/ -qfo
-    remark src/ -e mdx -u mdx -qfo
-    prettier '**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,cjsx,tsx,mtsx,ctsx,astro,svelte,vue,css}' --write --log-level warn
+    remark . -u frontmatter -u gfm -fo
+    remark . -e mdx -u frontmatter -u gfm -u mdx -fo
+    prettier . --write
 
 # Run type checking
 check:

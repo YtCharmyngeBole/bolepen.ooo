@@ -2,5 +2,6 @@
 export default {
   settings: {
     bullet: "-",
+    rule: "-",
   },
 };

@@ -8,9 +8,7 @@
     "start": "pnpm run dev",
     "dev": "astro dev --host=0.0.0.0",
     "build": "astro check && astro build",
-    "preview": "astro preview --host=0.0.0.0",
-    "check": "astro check && tsc --noEmit",
-    "format": "remark src/ -qfo && remark src/ -e mdx -u mdx -qfo && prettier '**/*.{js,mjs,cjs,ts,mts,cts,jsx,mjsx,cjsx,tsx,mtsx,ctsx,astro,svelte,vue,css}' --write --log-level warn"
+    "preview": "astro preview --host=0.0.0.0"
   },
   "imports": {
     "#root/*": "./*",
@@ -55,11 +53,14 @@
   "devDependencies": {
     "@astrojs/language-server": "^2.15.4",
     "@tailwindcss/language-server": "^0.14.23",
+    "concurrently": "^9.2.0",
     "depcheck": "^1.4.7",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.13",
     "remark-cli": "^12.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-mdx": "^3.1.0",
     "typescript-language-server": "^4.3.4"
   }

@@ -58,6 +58,7 @@ export default defineConfig({
         },
       ],
     ],
+    smartypants: false,
   },
   experimental: {
     contentIntellisense: true,
