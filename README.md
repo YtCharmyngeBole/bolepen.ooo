@@ -4,20 +4,31 @@ A _fursonal_ website located at https://bolepen.ooo.
 
 ## TODOs
 
-- [x] Webfont subsetting (_currently in beta_)
+### Contents
+
 - [x] Add a section of **Hobbies and Interests** (e.g. hobbies, favorite things, etc.)
   - Mentions membership of Kemono Baseball Team No. TH 90
 - [x] Add a section of **My Fursona** (e.g. origin, name, pronunciation, etc.)
-- [x] Add a section of **Event Participation** (e.g. attended events, conventions, etc.)
+- [x] Add a section of **Social Gatherings** (e.g. attended events, conventions, etc.)
 - [ ] Add a section of **Character References** (e.g. character sheet, etc.)
+- [ ] Finally, separate some or all sections into their own separate pages
+
+### Design
+
+- [x] Make social links more prominent
 - [ ] Adorn the website background with animated patterns
   - Greek adornment patterns on the header and footer area
   - Animated background SVGs
 - [x] Update open-graph cover image
+
+### Technical
+
 - [x] Upgrade to Astro 5.10 (or later)
-- [x] Make social links more prominent
+- [x] Webfont subsetting (_currently in beta_)
+- [ ] Webfont prefetching
+  - [Reduce font-related CLS in your Astro projects with Fontaine](https://eatmon.co/blog/using-fontaine-with-astro)
+  - [Fontsource, Fontaine, Tailwind and Vite](https://aaronjbecker.com/posts/fontsource-fontaine-tailwind-vite/)
 - [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
-- [ ] Finally, separate all sections into their own separate pages
 
 ## License
 
