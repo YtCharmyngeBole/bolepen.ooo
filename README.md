@@ -11,6 +11,7 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [x] Add a section of **My Fursona** (e.g. origin, name, pronunciation, etc.)
 - [x] Add a section of **Event Participation** (e.g. attended events, conventions, etc.)
 - [ ] Add a section of **Character References** (e.g. character sheet, etc.)
+- [ ] Revisit 404 Not Found page
 - [ ] Finally, separate all sections into their own separate pages
 
 ### Design
@@ -26,6 +27,7 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [x] Webfont subsetting (*currently in beta*)
 - [x] Upgrade to Astro 5.10 (or later)
 - [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
+- [ ] Create a custom color theme for TailwindCSS Typography, especially a light theme for print
 - [ ] Make the web printable
   (Reference: <https://piccalil.li/blog/printing-the-web-making-webpages-look-good-on-paper/>)
 
