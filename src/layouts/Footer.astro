@@ -1,13 +1,14 @@
 ---
 import { SITE } from "#src/config.ts";
 
+const startYear = SITE.metadata.startYear;
 const endYear = new Date().getFullYear();
 const formattedPeriod =
-  SITE.startYear == endYear ? `${endYear}` : `${SITE.startYear} – ${endYear}`;
+  startYear == endYear ? `${endYear}` : `${startYear} – ${endYear}`;
 ---
 
 <footer
   class="pt-8 pb-16 text-center text-sm font-semibold tracking-wide text-pretty text-muted-foreground"
 >
-  &copy;&nbsp;{`${formattedPeriod} ${SITE.author}`}.
+  &copy;&nbsp;{`${formattedPeriod} ${SITE.metadata.author}`}.
 </footer>

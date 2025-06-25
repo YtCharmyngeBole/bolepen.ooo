@@ -13,7 +13,7 @@ import rehypeSlug from "rehype-slug";
 import { SITE } from "#src/config.ts";
 
 export default defineConfig({
-  site: SITE.url,
+  site: SITE.baseUrl,
   prefetch: true,
   integrations: [sitemap(), astroExpressiveCode(), mdx(), solidJs()],
   image: {

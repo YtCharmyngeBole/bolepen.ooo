@@ -1,0 +1,12 @@
+---
+import { SITE } from "#src/config.ts";
+import "#src/fonts/index.ts";
+---
+
+<link
+  rel="preload"
+  href={SITE.theme.mainFont.path}
+  as="font"
+  type={SITE.theme.mainFont.linkType}
+  crossorigin="anonymous"
+/>

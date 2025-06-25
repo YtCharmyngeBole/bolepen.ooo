@@ -2,7 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 
 import { SITE } from "#src/config.ts";
-import "#src/fonts/index.ts";
+import FontLoading from "#src/fonts/FontLoading.astro";
 import "#styles/global.css";
 
 export interface Props {
@@ -10,15 +10,14 @@ export interface Props {
   author?: string;
   description?: string;
   ogImage?: string;
-  twitterImage?: string;
   canonicalURL?: string;
 }
 
 const {
-  title = SITE.title,
-  author = SITE.author,
-  description = SITE.description,
-  ogImage = new URL(SITE.ogImage, Astro.site).href,
+  title = SITE.metadata.title,
+  author = SITE.metadata.author,
+  description = SITE.metadata.description,
+  ogImage = new URL(SITE.theme.ogImage, Astro.site).href,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 ---
@@ -31,7 +30,7 @@ const {
     <!-- Theming Metadata -->
     <meta name="viewport" content="width=device-width" />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#eeeeee" />
+    <meta name="theme-color" content={SITE.theme.color} />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link
       rel="icon"
@@ -79,6 +78,7 @@ const {
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:image" content={ogImage} />
 
+    <FontLoading />
     <ClientRouter />
   </head>
   <body>
