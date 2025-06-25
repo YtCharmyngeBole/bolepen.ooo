@@ -4,20 +4,28 @@ A *fursonal* website located at <https://bolepen.ooo>.
 
 ## TODOs
 
-- [x] Webfont subsetting (*currently in beta*)
+### Content
+
 - [x] Add a section of **Hobbies and Interests** (e.g. hobbies, favorite things, etc.)
   - Mentions membership of Kemono Baseball Team No. TH 90
 - [x] Add a section of **My Fursona** (e.g. origin, name, pronunciation, etc.)
 - [x] Add a section of **Event Participation** (e.g. attended events, conventions, etc.)
 - [ ] Add a section of **Character References** (e.g. character sheet, etc.)
+- [ ] Finally, separate all sections into their own separate pages
+
+### Design
+
 - [ ] Adorn the website background with animated patterns
   - Greek adornment patterns on the header and footer area
   - Animated background SVGs
-- [ ] Update open-graph cover image
+- [x] Update open-graph cover image
+- [x] Make social links more prominent
+
+### Technology
+
+- [x] Webfont subsetting (*currently in beta*)
 - [x] Upgrade to Astro 5.10 (or later)
-- [ ] Make social links more prominent
 - [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
-- [ ] Finally, separate all sections into their own separate pages
 
 ## License
 

@@ -5,18 +5,18 @@ help:
     @just --list --unsorted
 
 # Start the dev server
-dev ARGS='--host=0.0.0.0':
-    astro dev {{ ARGS }}
+dev *args='--host=0.0.0.0':
+    astro dev {{args}}
 
 # Build the website
 build:
     astro build
 
 # Preview the website
-preview ARGS='--host=0.0.0.0':
-    astro preview {{ ARGS }}
+preview *args='--host=0.0.0.0':
+    astro preview {{args}}
 
-# Run multiple formatters on source files, including remark and prettier
+# Format the codebase using remark and prettier
 format:
     remark . -u frontmatter -u gfm -fo
     remark . -e mdx -u frontmatter -u gfm -u mdx -fo
