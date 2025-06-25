@@ -26,6 +26,8 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [x] Webfont subsetting (*currently in beta*)
 - [x] Upgrade to Astro 5.10 (or later)
 - [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
+- [ ] Make the web printable
+  (Reference: <https://piccalil.li/blog/printing-the-web-making-webpages-look-good-on-paper/>)
 
 ## License
 
