@@ -232,8 +232,8 @@ geometric = "U+2500-259F"
 # | |___ >  <| |_| | | (_| | (__| ||  __/ (_| | | |_) | (_| \__ \  __/
 # |_____/_/\_\\__|_|  \__,_|\___|\__\___|\__,_| |____/ \__,_|___/\___|
 #
-# NOTE: Consider each of the following groupings of scripts.
-#       Each character that appears in at least two of the scripts
+# NOTE: Consider each of the following groupings of vendor.
+#       Each character that appears in at least two of the vendor
 #       should be extracted into a new or existing script
 #       whose name is given as the grouping key name.
 [groupings]

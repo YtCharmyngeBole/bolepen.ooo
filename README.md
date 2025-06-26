@@ -34,7 +34,7 @@ A *fursonal* website located at <https://bolepen.ooo>.
 ### Project Management
 
 - [ ] Use [husky](https://typicode.github.io/husky/) to run pre-commit hooks
-- [ ] Use [mise](https://mise.jdx.dev/) to manage the project dependencies
+- [x] Use [mise](https://mise.jdx.dev/) to manage the project dependencies
 
 ## License
 
