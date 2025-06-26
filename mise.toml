@@ -13,7 +13,7 @@ description = "Starts the development server"
 run = "astro dev --host=0.0.0.0"
 alias = "d"
 
-[tasks.check]
+[tasks.typecheck]
 description = "Performs type checking"
 run = [
     "astro check",
@@ -32,7 +32,7 @@ alias = "f"
 
 [tasks.build]
 description = "Builds the static site"
-depends = ["check"]
+depends = ["typecheck"]
 run = "astro build"
 alias = "b"
 

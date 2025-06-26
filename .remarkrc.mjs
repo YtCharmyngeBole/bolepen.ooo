@@ -1,4 +1,4 @@
-/** @type {import('unified').Preset} */
+/** @type {import("unified").Preset} */
 export default {
   settings: {
     bullet: "-",
