@@ -7,11 +7,11 @@
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/.astro" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/sandbox" />
-      <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/assets/build" />
-      <excludeFolder url="file://$MODULE_DIR$/scripts/iosevka-fonts/venv" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/libraries" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/iosevka-fonts/assets/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/iosevka-fonts/sandbox" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/iosevka-fonts/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

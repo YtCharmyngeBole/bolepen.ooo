@@ -1,0 +1,42 @@
+min_version = "2025.6.0"
+
+[tools]
+node = "24"
+
+[env]
+_.path = [
+    "{{config_root}}/node_modules/.bin"
+]
+
+[tasks.dev]
+description = "Starts the development server"
+run = "astro dev --host=0.0.0.0"
+alias = "d"
+
+[tasks.check]
+description = "Performs type checking"
+run = [
+    "astro check",
+    "tsc --noEmit",
+]
+alias = "c"
+
+[tasks.format]
+description = "Formats the code base"
+run = [
+    "remark . -u frontmatter -u gfm -fo",
+    "remark . -e mdx -u frontmatter -u gfm -u mdx -fo",
+    "prettier . --write",
+]
+alias = "f"
+
+[tasks.build]
+description = "Builds the static site"
+depends = ["check"]
+run = "astro build"
+alias = "b"
+
+[tasks.preview]
+description = "Previews the built site"
+run = "astro preview --host=0.0.0.0"
+alias = "p"

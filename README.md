@@ -28,8 +28,13 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [x] Upgrade to Astro 5.10 (or later)
 - [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
 - [ ] Create a custom color theme for TailwindCSS Typography, especially a light theme for print
-- [ ] Make the web printable
+- [ ] Make the web printable by using a new @layer directive
   (Reference: <https://piccalil.li/blog/printing-the-web-making-webpages-look-good-on-paper/>)
+
+### Project Management
+
+- [ ] Use [husky](https://typicode.github.io/husky/) to run pre-commit hooks
+- [ ] Use [mise](https://mise.jdx.dev/) to manage the project dependencies
 
 ## License
 
