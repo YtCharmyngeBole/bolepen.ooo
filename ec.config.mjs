@@ -6,7 +6,10 @@ import { defineEcConfig } from "astro-expressive-code";
 import { glob } from "glob";
 
 const basePath = fileURLToPath(new URL(".", import.meta.url));
-const extraLanguagesPath = path.join(basePath, "src/shiki/*.tmLanguage.json");
+const extraLanguagesPath = path.join(
+  basePath,
+  "src/lib/shiki/*.tmLanguage.json",
+);
 const extraLanguages = glob
   .sync(extraLanguagesPath)
   .map((path) => JSON.parse(fs.readFileSync(path, "utf8")));

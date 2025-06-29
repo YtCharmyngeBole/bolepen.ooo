@@ -5,7 +5,7 @@ node = "24"
 
 [env]
 _.path = [
-    "{{config_root}}/node_modules/.bin"
+    "{{config_root}}/node_modules/.bin",
 ]
 
 [tasks.dev]

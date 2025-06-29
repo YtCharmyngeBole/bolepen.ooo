@@ -11,6 +11,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 
 import { SITE } from "#src/config.ts";
+import rehypeTwemoji from "#src/lib/unified/rehypeTwemoji.ts";
 
 export default defineConfig({
   site: SITE.baseUrl,
@@ -57,6 +58,7 @@ export default defineConfig({
           },
         },
       ],
+      rehypeTwemoji,
     ],
     smartypants: false,
   },
