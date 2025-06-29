@@ -10,5 +10,5 @@ export default {
       options: { parser: "astro" },
     },
   ],
-  tailwindStylesheet: "./src/styles/global.css",
+  tailwindStylesheet: "./src/styles/index.css",
 };

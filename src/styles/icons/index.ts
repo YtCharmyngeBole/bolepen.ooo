@@ -11,4 +11,5 @@ export default addIconSelectors([
     prefix: "twemoji",
     source: twemojiIcons,
   },
+  "mingcute",
 ]);
