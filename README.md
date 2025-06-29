@@ -6,7 +6,6 @@ A *fursonal* website located at <https://bolepen.ooo>.
 
 ### Content
 
-- [ ] Revisits 404 Not Found page
 - [ ] Adds a new **Character Sheet** page
 - [ ] Adds a new **Social Media Policy** page
 
