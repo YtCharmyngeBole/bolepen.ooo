@@ -6,37 +6,24 @@ A *fursonal* website located at <https://bolepen.ooo>.
 
 ### Content
 
-- [x] Add a section of **Hobbies and Interests** (e.g. hobbies, favorite things, etc.)
-  - Mentions membership of Kemono Baseball Team No. TH 90
-- [x] Add a section of **My Fursona** (e.g. origin, name, pronunciation, etc.)
-- [x] Add a section of **Event Participation** (e.g. attended events, conventions, etc.)
-- [ ] Add a section of **Character References** (e.g. character sheet, etc.)
-- [ ] Revisit 404 Not Found page
-- [ ] Finally, separate all sections into their own separate pages
+- [ ] Revisits 404 Not Found page
+- [ ] Adds a new **Character Sheet** page
+- [ ] Adds a new **Social Media Policy** page
 
 ### Design
 
-- [ ] Adorn the website background with animated patterns
+- [ ] Adorns the website background with animated patterns
   - Greek adornment patterns on the header and footer area
   - Animated background SVGs
-- [x] Update open-graph cover image
-- [x] Make social links more prominent
 
 ### Technology
 
-- [x] Webfont subsetting (*currently in beta*)
-- [x] Upgrade to Astro 5.10 (or later)
-- [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
-- [x] Create a custom color theme for TailwindCSS Typography, especially a light theme for print
-- [x] Make the web printable by using a new @layer directive
-  (Reference: <https://piccalil.li/blog/printing-the-web-making-webpages-look-good-on-paper/>)
-- [ ] Customize @media print style for Expressive Code's syntax highlighting
+- [ ] Fixes local implementation of [rehype-twemoji](src/lib/unified/rehype-twemoji.ts)
+  so that the local copy of [twemoji SVG icon set](https://github.com/jdecked/twemoji)
+  is being used instead of the CDN version (currently using JSDelivr CDN).
+- [ ] Customizes @media print style for Expressive Code's syntax highlighting
 
-### Project Management
-
-- [x] Use [mise](https://mise.jdx.dev/) to manage the project dependencies
-
-## Known
+## Known Issues
 
 - SVG icons using CSS's `mask-image` such as via Iconify won't appear on print
 
