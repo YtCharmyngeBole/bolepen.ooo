@@ -15,7 +15,7 @@ import Link from "#layouts/Link.astro";
     title="Drawing of Bole's head"
     width="288"
     priority={true}
-    class="w-[192px] motion-safe:transition-all tablet:w-[288px]"
+    class="w-[192px] motion-safe:transition-all tablet:w-[288px] print:w-[2in]"
   />
   <h1 class="flex flex-col items-center gap-1 leading-relaxed">
     <span
@@ -29,14 +29,22 @@ import Link from "#layouts/Link.astro";
   <p class="text-center text-base/snug text-balance">
     Find me using the links below, and feel free to say hi!
   </p>
-  <ul class="flex w-fit max-w-144 flex-wrap justify-center gap-3 px-8 py-2">
+  <ul class="media-links">
     {SOCIAL_LINKS.map((item) => <Link item={item} />)}
   </ul>
 </header>
 
 <style>
+  @reference "#src/styles/index.css";
+
   header {
     --color-name: oklch(87.16% 0.043 54.36);
     --color-username: oklch(51.31% 0.026 104.5);
+  }
+
+  ul.media-links {
+    @variant not-print {
+      @apply flex w-fit max-w-144 flex-wrap justify-center gap-3 px-8 py-2;
+    }
   }
 </style>

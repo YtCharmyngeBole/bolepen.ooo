@@ -27,13 +27,18 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [x] Webfont subsetting (*currently in beta*)
 - [x] Upgrade to Astro 5.10 (or later)
 - [ ] Implements auto-remap of [twemoji icon sets](https://github.com/jdecked/twemoji) from Unicode to SVG
-- [ ] Create a custom color theme for TailwindCSS Typography, especially a light theme for print
-- [ ] Make the web printable by using a new @layer directive
+- [x] Create a custom color theme for TailwindCSS Typography, especially a light theme for print
+- [x] Make the web printable by using a new @layer directive
   (Reference: <https://piccalil.li/blog/printing-the-web-making-webpages-look-good-on-paper/>)
+- [ ] Customize @media print style for Expressive Code's syntax highlighting
 
 ### Project Management
 
 - [x] Use [mise](https://mise.jdx.dev/) to manage the project dependencies
+
+## Known
+
+- SVG icons using CSS's `mask-image` such as via Iconify won't appear on print
 
 ## License
 

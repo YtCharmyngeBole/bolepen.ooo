@@ -1,5 +1,4 @@
 .markdown {
-  --md-body: var(--color-default-foreground);
   --md-headings: white;
   --md-headings-section: oklch(70.96% 0.147 25.44);
   --md-headings-subsection: oklch(80.72% 0.1094 30.89);
@@ -20,9 +19,34 @@
   --md-th-borders: var(--color-gray-600);
   --md-td-borders: var(--color-gray-700);
 
-  color: var(--md-body);
+  @variant print {
+    --md-headings: black;
+    --md-headings-section: oklch(0.6055 0.2043 25.44);
+    --md-headings-subsection: oklch(0.6648 0.1384 41.72);
+    --md-headings-subsubsection: var(--color-gray-800);
+    --md-lead: var(--color-gray-600);
+    --md-bold: black;
+    --md-counters: var(--color-gray-500);
+    --md-bullets: var(--color-gray-500);
+    --md-hr: var(--color-gray-300);
+    --md-quotes: var(--color-gray-800);
+    --md-quote-borders: var(--color-gray-300);
+    --md-captions: var(--color-gray-600);
+    --md-kbd: black;
+    --md-kbd-shadows: black;
+    --md-code: black;
+    --md-pre-code: var(--color-gray-700);
+    --md-pre-bg: oklch(0% 0 0 / 50%);
+    --md-th-borders: var(--color-gray-400);
+    --md-td-borders: var(--color-gray-300);
+  }
+
   font-size: 1rem;
   line-height: 1.66667;
+
+  @variant print {
+    line-height: 1.5;
+  }
 
   p {
     margin-top: 1.25em;
@@ -46,6 +70,10 @@
 
     .icon--external-link {
       @apply mx-px iconify opacity-50 mingcute--external-link-line;
+
+      @variant print {
+        display: none;
+      }
     }
 
     h1 &:has(.icon--autolink-heading),
@@ -61,6 +89,10 @@
 
       @variant motion-safe {
         @apply transition-colors duration-150;
+      }
+
+      @variant print {
+        display: none;
       }
 
       .icon--autolink-heading {
