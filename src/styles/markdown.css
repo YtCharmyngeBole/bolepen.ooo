@@ -1,5 +1,5 @@
 .markdown {
-  --md-headings: white;
+  --md-headings: oklch(87.16% 0.043 54.36);
   --md-headings-section: oklch(70.96% 0.147 25.44);
   --md-headings-subsection: oklch(80.72% 0.1094 30.89);
   --md-headings-subsubsection: var(--color-gray-100);

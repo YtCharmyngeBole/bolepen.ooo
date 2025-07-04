@@ -11,5 +11,5 @@ export default addIconSelectors([
     prefix: "twemoji",
     source: twemojiIcons,
   },
-  "mingcute",
+  "mingcute", // Check out: https://icon-sets.iconify.design/mingcute/
 ]);

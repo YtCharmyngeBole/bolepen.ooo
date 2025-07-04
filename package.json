@@ -34,7 +34,7 @@
     "@twemoji/api": "^16.0.1",
     "@types/hast": "^3.0.4",
     "@types/lodash": "^4.17.18",
-    "astro": "^5.10.0",
+    "astro": "^5.11.0",
     "astro-expressive-code": "^0.41.2",
     "change-case": "^5.4.4",
     "date-fns": "^4.1.0",

@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import type { AstroUserConfig } from "astro";
 import { astroExpressiveCode } from "astro-expressive-code";
+import type * as hast from "hast";
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -38,6 +39,9 @@ export default defineConfig({
           }),
           properties: {
             title: "Link to this heading",
+          },
+          test(element: hast.Element) {
+            return element.tagName !== "h1";
           },
         },
       ],

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@plugin "#src/icons/iconify-tailwind/index.ts";
+@plugin "#styles/iconify-tailwind/index.ts";
 
 /*  __     __         _       _     _             */
 /*  \ \   / /_ _ _ __(_) __ _| |__ | | ___  ___   */
@@ -90,15 +90,15 @@
   @keyframes shake-rotate {
     0%,
     100% {
-      transform: rotate(0deg) translateX(0) scale(1);
+      transform: rotate(0deg) translateX(0);
     }
     20%,
     60% {
-      transform: rotate(-2deg) translateX(-1px) scale(1.05);
+      transform: rotate(-1.5deg) translateX(1px);
     }
     40%,
     80% {
-      transform: rotate(2deg) translateX(1px) scale(1.05);
+      transform: rotate(1.5deg) translateX(-1px);
     }
   }
 }
@@ -244,6 +244,25 @@
   text-decoration-color: --alpha(var(--hyperlink-foreground-resting) / 20%);
   text-decoration-thickness: 0.125em;
   text-underline-offset: 0.15em;
+}
+
+/* Utility to set the width of the container */
+@utility custom-container-width {
+  @variant tablet {
+  }
+
+  @variant not-print {
+    max-width: var(--breakpoint-tablet);
+
+    @variant tablet {
+      margin-inline: auto;
+      width: var(--breakpoint-tablet);
+    }
+  }
+
+  @variant motion-safe {
+    @apply transition-all;
+  }
 }
 
 /* ===============================
