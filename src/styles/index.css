@@ -1,5 +1,6 @@
 @layer base, components, utilities, print;
 @import "tailwindcss";
+
 @plugin "#src/icons/iconify-tailwind/index.ts";
 
 /*  __     __         _       _     _             */
@@ -116,6 +117,82 @@
 /*  | |_| | |_| | | | |_| |  __/\__ \  */
 /*   \___/ \__|_|_|_|\__|_|\___||___/  */
 /*                                     */
+
+/* ====================================================
+ * Very generic (non project-specific) set of utilities
+ * that could have been used in any project.
+ * ====================================================
+ */
+
+/* Upright font style */
+@utility roman {
+  font-style: normal;
+}
+
+/* Italic font style */
+@utility italic {
+  font-style: italic;
+}
+
+/* Oblique font style */
+@utility oblique {
+  font-style: oblique;
+}
+
+/* Muted text color */
+@utility muted {
+  color: var(--color-muted-foreground);
+}
+
+/* Blend color towards white */
+/* noinspection CssOverwrittenProperties */
+@utility brighter-* {
+  color: color-mix(in oklch, currentColor, white calc(--value(integer) * 1%));
+  color: color-mix(in oklch, currentColor, white --value([percentage]));
+
+  @variant print {
+    color: inherit;
+  }
+}
+
+/* Blend color towards black */
+/* noinspection CssOverwrittenProperties */
+@utility darker-* {
+  color: color-mix(in oklch, currentColor, black calc(--value(integer) * 1%));
+  color: color-mix(in oklch, currentColor, black --value([percentage]));
+
+  @variant print {
+    color: inherit;
+  }
+}
+
+/* ======================================
+ * Project-specific typographic utilities
+ * ======================================
+ */
+
+/* Smaller text with muted color */
+@utility smallnote {
+  margin-inline: calc(var(--spacing) * 6);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: calc(var(--spacing) * 6);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-muted-foreground);
+}
+
+/* Utility for inline-block IPA text */
+@utility ipa {
+  display: inline-block;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-gray-400);
+
+  @variant print {
+    color: inherit;
+  }
+}
+
 /* Hyperlink with customizable resting and hover colors */
 @utility hyperlink {
   background-color: var(--hyperlink-background-resting);
@@ -144,6 +221,11 @@
   text-underline-offset: 0.15em;
 }
 
+/* ===============================
+ * SVG-related utilities for icons
+ * ===============================
+ */
+
 /* Underlines the hyperlink with adaptive colors */
 @utility twemoji {
   display: inline-block;
@@ -154,74 +236,24 @@
   vertical-align: -0.25em;
 }
 
-/* Upright font style */
-@utility roman {
-  font-style: normal;
+/* Enforces icon under this utility to appear on print */
+@utility iconify {
+  print-color-adjust: exact;
 }
 
-/* Italic font style */
-@utility italic {
-  font-style: italic;
+/* Enforces icon under this utility to appear on print */
+@utility iconify-color {
+  print-color-adjust: exact;
 }
 
-/* Oblique font style */
-@utility oblique {
-  font-style: oblique;
-}
-
-/* Muted text color */
-@utility muted {
-  color: var(--color-muted-foreground);
-}
-
-/* Smaller text with muted color */
-@utility smallnote {
-  margin-inline: calc(var(--spacing) * 6);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  line-height: calc(var(--spacing) * 6);
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-muted-foreground);
-}
-
-/* Utility for inline-block IPA text */
-@utility ipa {
-  display: inline-block;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-wider);
-  color: var(--color-gray-400);
-
-  @variant print {
-    color: inherit;
-  }
-}
-
+/* =================================
+ * Project-specific custom utilities
+ * =================================
+ */
 /* Utility to highlight the fursona name */
 @utility bole {
   font-weight: var(--font-weight-extrabold);
   color: var(--color-bole);
-}
-
-/* Blend color towards white */
-/* noinspection CssOverwrittenProperties */
-@utility brighter-* {
-  color: color-mix(in oklch, currentColor, white calc(--value(integer) * 1%));
-  color: color-mix(in oklch, currentColor, white --value([percentage]));
-
-  @variant print {
-    color: inherit;
-  }
-}
-
-/* Blend color towards black */
-/* noinspection CssOverwrittenProperties */
-@utility darker-* {
-  color: color-mix(in oklch, currentColor, black calc(--value(integer) * 1%));
-  color: color-mix(in oklch, currentColor, black --value([percentage]));
-
-  @variant print {
-    color: inherit;
-  }
 }
 
 /*

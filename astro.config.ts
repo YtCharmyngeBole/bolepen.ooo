@@ -18,12 +18,12 @@ export default defineConfig({
   site: SITE.baseUrl,
   prefetch: true,
   integrations: [sitemap(), astroExpressiveCode(), mdx(), solidJs()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   image: {
     responsiveStyles: true,
     layout: "constrained",
-  },
-  vite: {
-    plugins: [tailwindcss()],
   },
   markdown: {
     remarkPlugins: [],

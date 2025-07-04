@@ -20,7 +20,7 @@ A *fursonal* website located at <https://bolepen.ooo>.
 
 - [ ] Fixes local implementation of [rehype-twemoji](src/lib/unified/rehype-twemoji.ts)
   so that the local copy of [twemoji SVG icon set](https://github.com/jdecked/twemoji)
-  is being used instead of the CDN version (currently using JSDelivr CDN).
+  is being used instead of the CDN version (currently using jsDelivr CDN).
 - [ ] Customizes @media print style for Expressive Code's syntax highlighting
 
 
