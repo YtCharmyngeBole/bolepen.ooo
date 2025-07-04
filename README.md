@@ -9,6 +9,7 @@ A *fursonal* website located at <https://bolepen.ooo>.
 
 - [ ] Adds a new **Character Sheet** page
 - [ ] Adds a new **Social Media Policy** page
+- [ ] Adds a mini web application to customize Artist's and Customer's Commissions Policy
 
 ### Design
 
@@ -21,7 +22,6 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [ ] Fixes local implementation of [rehype-twemoji](src/lib/unified/rehype-twemoji.ts)
   so that the local copy of [twemoji SVG icon set](https://github.com/jdecked/twemoji)
   is being used instead of the CDN version (currently using jsDelivr CDN).
-- [ ] Customizes @media print style for Expressive Code's syntax highlighting
 
 
 ## Known Issues

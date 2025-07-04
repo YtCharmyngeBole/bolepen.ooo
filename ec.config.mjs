@@ -21,14 +21,15 @@ const extraLanguages = glob
 export default defineEcConfig({
   themes: ["catppuccin-mocha"],
   styleOverrides: {
-    codeFontFamily:
-      "'Iosevka Monaco Mono', 'Iosevka fallback', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-    codeFontSize: "0.9rem",
-    uiFontFamily:
-      "'Iosevka Monaco Mono', 'Iosevka fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
-    uiFontSize: "0.8rem",
+    borderColor: "var(--ec-border-color)",
+    borderRadius: "var(--ec-border-radius)",
+    borderWidth: "var(--ec-border-width)",
+    codeFontFamily: "var(--font-mono)",
+    codeFontSize: "0.95rem", // NOTE: Not work when specified as a CSS variable
+    uiFontFamily: "var(--font-sans)",
+    uiFontSize: "0.9rem", // NOTE: Not work when specified as a CSS variable
     frames: {
-      shadowColor: "#00000033",
+      shadowColor: "var(--ec-frame-shadow-color)",
     },
   },
   shiki: {

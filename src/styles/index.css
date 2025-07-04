@@ -1,6 +1,4 @@
-@layer base, components, utilities, print;
 @import "tailwindcss";
-
 @plugin "#src/icons/iconify-tailwind/index.ts";
 
 /*  __     __         _       _     _             */
@@ -270,8 +268,8 @@
 
   html {
     background-color: var(--color-default-background);
-    font-family: var(--font-body), sans-serif;
     color: var(--color-default-foreground);
+    font-family: var(--font-body), sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -279,6 +277,8 @@
       --color-default-background: white;
       --color-default-foreground: var(--color-gray-900);
 
+      background-color: white;
+      color: var(--color-gray-900);
       font-size: 10pt;
     }
   }
@@ -318,35 +318,20 @@
   /* Styling elements within .markdown selector */
   /* noinspection CssInvalidImport */
   @import "./markdown.css";
-}
 
-/*   ____       _       _     */
-/*  |  _ \ _ __(_)_ __ | |_   */
-/*  | |_) | '__| | '_ \| __|  */
-/*  |  __/| |  | | | | | |_   */
-/*  |_|   |_|  |_|_| |_|\__|  */
-/*                            */
-@layer print {
-  /* Styling elements when @media print is active */
-  /* noinspection CssInvalidImport */
-  @variant print {
-    html {
-      background-color: white;
-      color: var(--color-gray-900);
-    }
+  /* Configure Expressive Code via CSS variables. */
+  /* See ec.config.mjs for more information. */
+  :root {
+    --ec-border-color: var(--color-gray-800);
+    --ec-border-radius: var(--radius-lg);
+    --ec-border-width: 2px;
+    --ec-frame-shadow-color: black;
 
-    .expressive-code {
-      /* TODO: introduce CSS variables into Expressive Code */
-      /*       and override them here for print */
-
-      .frame {
-        box-shadow: none !important;
-      }
-
-      pre {
-        border: 1px solid var(--color-gray-300) !important;
-        border-radius: var(--radius-2xl) !important;
-      }
+    @variant print {
+      --ec-border-color: var(--color-gray-300);
+      --ec-border-radius: 0;
+      --ec-border-width: 2px;
+      --ec-frame-shadow-color: transparent;
     }
   }
 }
