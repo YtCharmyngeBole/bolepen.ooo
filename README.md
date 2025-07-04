@@ -8,7 +8,6 @@ A *fursonal* website located at <https://bolepen.ooo>.
 ### Content
 
 - [ ] Adds a new **Character Sheet** page
-- [ ] Adds a new **Social Media Policy** page
 - [ ] Adds a mini web application to customize Artist's and Customer's Commissions Policy
 
 ### Design

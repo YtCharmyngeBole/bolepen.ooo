@@ -1,15 +1,15 @@
 ---
+import BackToHome from "#layouts/BackToHome.astro";
 import Footer from "#layouts/Footer.astro";
-import Header from "#layouts/Header.astro";
 import Layout from "#layouts/Layout.astro";
 
-import HomeWriteup from "#writeups/home.mdx";
+import BoleCharacterSheetWriteup from "#writeups/bole-character-sheet.mdx";
 ---
 
 <Layout>
-  <Header />
+  <BackToHome />
   <main class="markdown custom-container-width">
-    <HomeWriteup />
+    <BoleCharacterSheetWriteup />
   </main>
   <Footer />
 </Layout>
