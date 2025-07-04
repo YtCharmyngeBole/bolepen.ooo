@@ -19,16 +19,27 @@ run = [
     "astro check",
     "tsc --noEmit",
 ]
-alias = "c"
+alias = "tc"
 
 [tasks.format]
 description = "Formats the code base"
-run = [
-    "remark . -u frontmatter -u gfm -fo",
-    "remark . -e mdx -u frontmatter -u gfm -u mdx -fo",
-    "prettier . --write",
+depends = [
+    "format:markdown .",
+    "format:mdx .",
+    "format:prettier .",
 ]
 alias = "f"
+
+[tasks."format:markdown"]
+run = "remark {{arg(name='path', help='Path to markdown file')}} -u frontmatter -u gfm -u heading-gap -fo"
+
+[tasks."format:mdx"]
+description = "Formats MDX files"
+run = "remark {{arg(name='path', help='Path to MDX file')}} -e mdx -u frontmatter -u gfm -u heading-gap -u mdx -fo"
+
+[tasks."format:prettier"]
+description = "Formats code with Prettier"
+run = "prettier {{arg(name='path', help='Path to run prettier')}} --write"
 
 [tasks.build]
 description = "Builds the static site"

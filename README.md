@@ -2,6 +2,7 @@
 
 A *fursonal* website located at <https://bolepen.ooo>.
 
+
 ## TODOs
 
 ### Content
@@ -22,9 +23,11 @@ A *fursonal* website located at <https://bolepen.ooo>.
   is being used instead of the CDN version (currently using JSDelivr CDN).
 - [ ] Customizes @media print style for Expressive Code's syntax highlighting
 
+
 ## Known Issues
 
 - SVG icons using CSS's `mask-image` such as via Iconify won't appear on print
+
 
 ## License
 
@@ -39,6 +42,7 @@ and configuration files (`.json`, `.yaml`, etc.) included in this repository.
 > That Charming BOLE 2024. All rights reserved.
 
 Please see the [`LICENSE`](LICENSE) file for more details about the Apache 2.0 License.
+
 
 ## Colophon
 

@@ -10,6 +10,7 @@ Creating these fonts involves two steps:
 1. [Generating the fonts](#1-font-generation)
 2. [Subsetting the fonts](#2-font-subsetting)
 
+
 ## 1. Font Generation
 
 This step creates Iosevka fonts for every possible combination of:
@@ -45,6 +46,7 @@ npm run build -- --jCmd=$(nproc) webfont::IosevkaConsolasPropo webfont::IosevkaM
 
 - `--jCmd=$(nproc)` enables faster parallel building.
 - Output fonts will be in `dist/*/WOFF2` directories.
+
 
 ## 2. Font Subsetting
 

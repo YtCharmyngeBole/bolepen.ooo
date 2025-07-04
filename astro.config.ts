@@ -8,6 +8,7 @@ import { astroExpressiveCode } from "astro-expressive-code";
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 
 import { SITE } from "#src/config.ts";
@@ -58,6 +59,7 @@ export default defineConfig({
           },
         },
       ],
+      rehypeUnwrapImages,
       rehypeTwemoji,
     ],
     smartypants: false,
