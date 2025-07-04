@@ -19,8 +19,7 @@ const extraLanguages = glob
  * @type import('astro-expressive-code').AstroExpressiveCodeOptions
  */
 export default defineEcConfig({
-  // themes: ["catppuccin-mocha", "catppuccin-latte"],
-  themes: ["catppuccin-mocha"],
+  themes: ["catppuccin-mocha", "catppuccin-latte"],
   styleOverrides: {
     borderColor: "var(--ec-border-color)",
     borderRadius: "var(--ec-border-radius)",

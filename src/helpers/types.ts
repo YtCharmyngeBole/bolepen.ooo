@@ -20,7 +20,7 @@ export type TopNavItem = {
  * @property iconifyClass - The Iconify class name for the SVG icon as seen on https://icon-sets.iconify.design/
  * @property href - The URL or path to navigate to when the social media or external link is clicked.
  */
-export type SocialObject = {
+export type MediaLink = {
   name: string;
   iconifyClass: string;
   href: string;

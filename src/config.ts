@@ -1,4 +1,4 @@
-import type { SocialObject } from "#helpers/types.ts";
+import type { MediaLink } from "#helpers/types.ts";
 import ogImage from "#src/images/ogimage.png";
 
 export const SITE = {
@@ -20,7 +20,7 @@ export const SITE = {
   },
 } as const;
 
-export const SOCIAL_LINKS: SocialObject[] = [
+export const MEDIA_LINKS: MediaLink[] = [
   {
     name: "Facebook",
     iconifyClass: "social--feesubukku",
