@@ -230,7 +230,6 @@
   h1 {
     color: var(--md-headings);
     font-weight: var(--font-weight-extrabold);
-    text-wrap: pretty;
     font-size: 2.25em;
     margin-top: 0;
     margin-bottom: 0.88889em;
@@ -245,7 +244,6 @@
   h2 {
     color: var(--md-headings-section);
     font-weight: var(--font-weight-bold);
-    text-wrap: pretty;
     font-size: 1.5em;
     margin-top: 2em;
     margin-bottom: 1em;
@@ -260,7 +258,6 @@
   h3 {
     color: var(--md-headings-subsection);
     font-weight: var(--font-weight-semibold);
-    text-wrap: pretty;
     font-size: 1.25em;
     margin-top: 1.6em;
     margin-bottom: 0.6em;
@@ -275,7 +272,6 @@
   h4 {
     color: var(--md-headings-subsubsection);
     font-weight: var(--font-weight-semibold);
-    text-wrap: pretty;
     margin-top: 1.5em;
     margin-bottom: 0.5em;
     line-height: 1.5;
@@ -286,11 +282,19 @@
     }
   }
 
-  hr + *,
-  h1 + *,
-  h2 + *,
-  h3 + *,
-  h4 + * {
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: pretty;
+    break-after: avoid;
+
+    & + * {
+      margin-top: 0;
+    }
+  }
+
+  hr + * {
     margin-top: 0;
   }
 

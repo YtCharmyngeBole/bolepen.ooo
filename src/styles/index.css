@@ -109,6 +109,33 @@
   margin: 0.75in;
 }
 
+/* Page numbering on bottom outer corner */
+@page :first {
+  @bottom-left {
+    content: "";
+  }
+
+  @bottom-right {
+    content: "";
+  }
+}
+
+@page :right {
+  @bottom-right {
+    font-size: 9pt;
+    color: var(--color-gray-600);
+    content: counter(page);
+  }
+}
+
+@page :left {
+  @bottom-left {
+    font-size: 9pt;
+    color: var(--color-gray-600);
+    content: counter(page);
+  }
+}
+
 /*   _   _ _   _ _ _ _   _             */
 /*  | | | | |_(_) (_) |_(_) ___  ___   */
 /*  | | | | __| | | | __| |/ _ \/ __|  */
@@ -333,5 +360,9 @@
       --ec-border-width: 2px;
       --ec-frame-shadow-color: transparent;
     }
+  }
+
+  .expressive-code {
+    break-inside: avoid;
   }
 }
