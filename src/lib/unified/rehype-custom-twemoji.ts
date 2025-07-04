@@ -6,12 +6,12 @@ import { visit, SKIP } from "unist-util-visit";
 /**
  * A rehype plugin to replace Unicode emojis with Twemoji images.
  */
-export default function rehypeTwemoji() {
+export default function rehypeCustomTwemoji() {
   const twemojiOptions: TwemojiOptions = {
-    base: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/",
-    ext: ".svg",
     className: "twemoji",
-    folder: "svg",
+    callback(icon): string {
+      return `/twemoji/${icon}.svg`;
+    },
   };
 
   return function (tree: hast.Root) {

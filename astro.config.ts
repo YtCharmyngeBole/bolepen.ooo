@@ -12,7 +12,7 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 
 import { SITE } from "#src/config.ts";
-import rehypeTwemoji from "#lib/unified/rehype-twemoji.ts";
+import rehypeCustomTwemoji from "#lib/unified/rehype-custom-twemoji.ts";
 
 export default defineConfig({
   site: SITE.baseUrl,
@@ -60,7 +60,7 @@ export default defineConfig({
         },
       ],
       rehypeUnwrapImages,
-      rehypeTwemoji,
+      rehypeCustomTwemoji,
     ],
     smartypants: false,
   },

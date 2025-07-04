@@ -17,17 +17,6 @@ A *fursonal* website located at <https://bolepen.ooo>.
   - Greek adornment patterns on the header and footer area
   - Animated background SVGs
 
-### Technology
-
-- [ ] Fixes local implementation of [rehype-twemoji](src/lib/unified/rehype-twemoji.ts)
-  so that the local copy of [twemoji SVG icon set](https://github.com/jdecked/twemoji)
-  is being used instead of the CDN version (currently using jsDelivr CDN).
-
-
-## Known Issues
-
-- SVG icons using CSS's `mask-image` such as via Iconify won't appear on print
-
 
 ## License
 
