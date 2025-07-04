@@ -16,6 +16,11 @@ A *fursonal* website located at <https://bolepen.ooo>.
   - Greek adornment patterns on the header and footer area
   - Animated background SVGs
 
+### Technical
+
+- [ ] Create and use a custom Callout component based on `rehype-github`'s
+  [alert plugin](https://github.com/rehypejs/rehype-github/tree/main/packages/alert)
+
 
 ## License
 

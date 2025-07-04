@@ -5,10 +5,6 @@
 # |_|   |_|  \___// |\___|\___|\__|    |___/ .__/ \___|\___|_|_| |_|\___|
 #               |__/                       |_|
 
-# Ignore markdown files (processed by remark instead)
-*.md
-*.markdown
-*.mdx
 vendor/twemoji/
 
 #     _         _                                                         _

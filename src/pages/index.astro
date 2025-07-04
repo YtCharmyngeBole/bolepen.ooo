@@ -2,14 +2,17 @@
 import Footer from "#layouts/Footer.astro";
 import Header from "#layouts/Header.astro";
 import Layout from "#layouts/Layout.astro";
+import WrappedBody from "#layouts/WrappedBody.astro";
 
 import HomeWriteup from "#writeups/home.mdx";
 ---
 
 <Layout>
-  <Header />
-  <main class="markdown custom-container-width">
-    <HomeWriteup />
-  </main>
-  <Footer />
+  <WrappedBody>
+    <Header />
+    <main class="markdown custom-container-width mb-16">
+      <HomeWriteup />
+    </main>
+    <Footer />
+  </WrappedBody>
 </Layout>

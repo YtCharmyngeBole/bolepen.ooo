@@ -1,5 +1,6 @@
 ---
 import { SITE } from "#src/config.ts";
+import Twemoji from "#layouts/Twemoji.astro";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
@@ -10,7 +11,7 @@ const formattedPeriod =
 ---
 
 <footer
-  class="mt-12 mb-32 text-sm font-semibold tracking-wide text-pretty text-muted-foreground not-print:text-center"
+  class="text-sm font-semibold tracking-wide text-pretty text-muted-foreground not-print:text-center"
 >
   <p class="mb-4 not-print:hidden">
     You have been reading a copy of the original document which is available at <a

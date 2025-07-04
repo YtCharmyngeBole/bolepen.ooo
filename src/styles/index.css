@@ -198,12 +198,24 @@
 
 /* Smaller text with muted color */
 @utility smallnote {
-  margin-inline: calc(var(--spacing) * 6);
+  margin-inline: --spacing(6);
   font-size: var(--text-sm);
   font-weight: var(--font-weight-medium);
-  line-height: calc(var(--spacing) * 6);
+  line-height: --spacing(6);
   letter-spacing: var(--tracking-wide);
   color: var(--color-muted-foreground);
+}
+
+/* Callout box */
+@utility callout {
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--color-gray-800);
+  padding-inline: --spacing(6);
+
+  @variant print {
+    border-color: var(--color-gray-300);
+  }
 }
 
 /* Utility for inline-block IPA text */
@@ -327,14 +339,6 @@
       color: var(--color-gray-900);
       font-size: 10pt;
     }
-  }
-
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    align-items: stretch;
-    padding-inline: --spacing(4);
   }
 
   @variant print {
