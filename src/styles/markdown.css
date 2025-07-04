@@ -41,11 +41,9 @@
     --md-td-borders: var(--color-gray-300);
   }
 
-  font-size: 1rem;
-  line-height: 1.66667;
-
-  @variant print {
-    line-height: 1.5;
+  @variant not-print {
+    /* Add leading for web */
+    line-height: 1.66667;
   }
 
   p {
