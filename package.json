@@ -14,10 +14,8 @@
     "#root/*": "./*",
     "#src/*": "./src/*",
     "#components/*": "./src/components/*",
-    "#helpers/*": "./src/helpers/*",
     "#layouts/*": "./src/layouts/*",
     "#lib/*": "./src/lib/*",
-    "#styles/*": "./src/styles/*",
     "#writeups/*": "./src/writeups/*"
   },
   "dependencies": {

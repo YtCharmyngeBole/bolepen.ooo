@@ -4,14 +4,14 @@ import Header from "#layouts/Header.astro";
 import Layout from "#layouts/Layout.astro";
 import WrappedBody from "#layouts/WrappedBody.astro";
 
-import HomeWriteup from "#writeups/home.mdx";
+import { Content } from "#writeups/home.mdx";
 ---
 
 <Layout>
   <WrappedBody>
     <Header />
     <main class="markdown custom-container-width mb-16">
-      <HomeWriteup />
+      <Content />
     </main>
     <Footer />
   </WrappedBody>

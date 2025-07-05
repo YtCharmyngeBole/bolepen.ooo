@@ -12,7 +12,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 
-import { SITE } from "#src/config.ts";
+import { SITE } from "#root/src/config.ts";
 import rehypeCustomTwemoji from "#lib/unified/rehype-custom-twemoji.ts";
 
 export default defineConfig({

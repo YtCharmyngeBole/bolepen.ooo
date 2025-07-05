@@ -1,4 +1,4 @@
-import type { MediaLink } from "#helpers/types.ts";
+import type { MediaLink } from "#src/helpers/types.ts";
 import ogImage from "#src/images/ogimage.png";
 
 export const SITE = {

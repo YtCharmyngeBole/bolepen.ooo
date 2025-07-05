@@ -4,14 +4,14 @@ import Footer from "#layouts/Footer.astro";
 import Layout from "#layouts/Layout.astro";
 import WrappedBody from "#layouts/WrappedBody.astro";
 
-import SocialMediaPolicyWriteup from "#writeups/social-media-policy.mdx";
+import { Content } from "#writeups/social-media-policy.mdx";
 ---
 
 <Layout>
   <WrappedBody>
     <BackToHome />
     <main class="markdown custom-container-width mb-16">
-      <SocialMediaPolicyWriteup />
+      <Content />
     </main>
     <Footer />
   </WrappedBody>

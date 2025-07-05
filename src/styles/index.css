@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@plugin "#styles/iconify-tailwind/index.ts";
+@plugin "#src/styles/iconify-tailwind/index.ts";
 
 /*  __     __         _       _     _             */
 /*  \ \   / /_ _ _ __(_) __ _| |__ | | ___  ___   */

@@ -18,6 +18,7 @@ A *fursonal* website located at <https://bolepen.ooo>.
 
 ### Technical
 
+- [ ] Use `catppuccin-latte` (light) theme for code block in printed media.
 - [ ] Create and use a custom Callout component based on `rehype-github`'s
   [alert plugin](https://github.com/rehypejs/rehype-github/tree/main/packages/alert)
 
