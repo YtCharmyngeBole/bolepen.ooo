@@ -1,18 +1,8 @@
 ---
-import BackToHome from "#layouts/BackToHome.astro";
-import Footer from "#layouts/Footer.astro";
-import Layout from "#layouts/Layout.astro";
-import WrappedBody from "#layouts/WrappedBody.astro";
-
-import { Content } from "#writeups/social-media-policy.mdx";
+import MarkdownPage from "#layouts/MarkdownPage.astro";
+import { Content, frontmatter } from "#writeups/social-media-policy.mdx";
 ---
 
-<Layout>
-  <WrappedBody>
-    <BackToHome />
-    <main class="markdown custom-container-width mb-16">
-      <Content />
-    </main>
-    <Footer />
-  </WrappedBody>
-</Layout>
+<MarkdownPage title={frontmatter.title} description={frontmatter.description}>
+  <Content />
+</MarkdownPage>

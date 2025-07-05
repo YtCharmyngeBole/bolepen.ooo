@@ -6,6 +6,7 @@ export const SITE = {
   metadata: {
     author: "That Charming BOLE",
     title: "In the Bolepen: Habitat of That Charming BOLE",
+    subtitle: "Habitat of That Charming BOLE",
     description:
       "Welcome to the home base of That Charming BOLE, your friendly free-spirited doggo. I love belly rubs, making new friends, and sharing my adventures. Come on in and have a look around! Why wait? I don’t bite!",
     startYear: 2023,

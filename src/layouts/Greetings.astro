@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
 
+import MediaLink from "#layouts/MediaLink.astro";
 import { MEDIA_LINKS } from "#src/config.ts";
 import imgProfilePic from "#src/images/profilepic.png";
-import Link from "#layouts/Link.astro";
 ---
 
 <header
@@ -30,7 +30,7 @@ import Link from "#layouts/Link.astro";
     Find me using the links below, and feel free to say hi!
   </p>
   <ul class="media-links">
-    {MEDIA_LINKS.map((item) => <Link item={item} />)}
+    {MEDIA_LINKS.map((item) => <MediaLink item={item} />)}
   </ul>
 </header>
 

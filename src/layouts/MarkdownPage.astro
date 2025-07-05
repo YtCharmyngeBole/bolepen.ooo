@@ -1,17 +1,23 @@
 ---
+import ReturnHome from "#layouts/ReturnHome.astro";
 import BaseLayout from "#layouts/BaseLayout.astro";
 import Footer from "#layouts/Footer.astro";
-import Greetings from "#layouts/Greetings.astro";
 import InnerBodyWrapper from "#layouts/InnerBodyWrapper.astro";
 
-import { Content } from "#writeups/home.mdx";
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props as Props;
 ---
 
-<BaseLayout>
+<BaseLayout title={title} description={description}>
   <InnerBodyWrapper>
-    <Greetings />
+    <ReturnHome />
     <main class="markdown custom-container-width">
-      <Content />
+      {title && <h1>{title}</h1>}
+      <slot />
     </main>
     <Footer />
   </InnerBodyWrapper>

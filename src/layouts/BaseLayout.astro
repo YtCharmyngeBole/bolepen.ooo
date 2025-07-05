@@ -14,12 +14,16 @@ export interface Props {
 }
 
 const {
-  title = SITE.metadata.title,
+  title: rawTitle,
   author = SITE.metadata.author,
   description = SITE.metadata.description,
   ogImage = new URL(SITE.theme.ogImage, Astro.site).href,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
+
+const title = rawTitle
+  ? `${rawTitle} :: ${SITE.metadata.title}`
+  : `${SITE.metadata.title}: ${SITE.metadata.subtitle}`;
 ---
 
 <!doctype html>
