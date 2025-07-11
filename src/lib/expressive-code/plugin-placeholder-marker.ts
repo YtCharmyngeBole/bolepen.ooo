@@ -43,14 +43,6 @@ declare module "@expressive-code/core" {
 export function pluginPlaceholderMarker() {
   return definePlugin({
     name: "Placeholder Marker",
-    // baseStyles: `
-    //   .code-placeholder {
-    //     font-style: italic;
-    //     & span {
-    //       font-style: inherit;
-    //     }
-    //   }
-    // `,
     hooks: {
       preprocessMetadata: ({ codeBlock }) => {
         codeBlock.metaOptions.list("placeholder").forEach((option) => {
