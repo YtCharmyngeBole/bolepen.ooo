@@ -25,6 +25,8 @@
     "@astrojs/sitemap": "^3.4.1",
     "@astrojs/solid-js": "^5.1.0",
     "@astrojs/ts-plugin": "^1.10.4",
+    "@expressive-code/core": "^0.41.3",
+    "@expressive-code/plugin-text-markers": "^0.41.3",
     "@fontsource/barlow": "^5.2.6",
     "@iconify/json": "^2.2.353",
     "@iconify/tailwind": "^1.2.0",

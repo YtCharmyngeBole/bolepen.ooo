@@ -5,6 +5,8 @@ import { fileURLToPath, URL } from "node:url";
 import { defineEcConfig } from "astro-expressive-code";
 import { glob } from "glob";
 
+import { pluginPlaceholderMarker } from "#lib/expressive-code/plugin-placeholder-marker.ts";
+
 const basePath = fileURLToPath(new URL(".", import.meta.url));
 const extraLanguagesPath = path.join(
   basePath,
@@ -25,15 +27,17 @@ export default defineEcConfig({
     borderRadius: "var(--ec-border-radius)",
     borderWidth: "var(--ec-border-width)",
     codeFontFamily: "var(--font-mono)",
-    codeFontSize: "0.95rem", // NOTE: Not work when specified as a CSS variable
+    codeFontSize: "var(--ec-code-font-size)",
     uiFontFamily: "var(--font-sans)",
-    uiFontSize: "0.9rem", // NOTE: Not work when specified as a CSS variable
+    uiFontSize: "var(--ec-ui-font-size)",
     frames: {
       shadowColor: "var(--ec-frame-shadow-color)",
     },
   },
   useDarkModeMediaQuery: false,
+  useStyleReset: false,
   shiki: {
     langs: extraLanguages,
   },
+  plugins: [pluginPlaceholderMarker()],
 });
