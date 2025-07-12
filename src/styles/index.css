@@ -351,7 +351,6 @@
 
 @layer components {
   /* Configure Expressive Code via CSS variables. */
-  /* See ec.config.mjs for more information. */
   :root {
     --ec-code-font-size: 0.95rem;
     --ec-ui-font-size: 0.9rem;
