@@ -23,7 +23,7 @@ const {
 
 const title = rawTitle
   ? `${rawTitle} :: ${SITE.metadata.title}`
-  : `${SITE.metadata.title}: ${SITE.metadata.subtitle}`;
+  : SITE.metadata.fullTitle;
 ---
 
 <!doctype html>
@@ -64,7 +64,10 @@ const title = rawTitle
     <!-- General Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
-    <meta name="apple-mobile-web-app-title" content="Bolepen" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content={SITE.metadata.shortTitle}
+    />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     <meta name="generator" content={Astro.generator} />
