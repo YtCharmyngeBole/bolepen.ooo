@@ -5,7 +5,7 @@ import type * as hast from "hast";
 import { whitespace } from "hast-util-whitespace";
 import { visit } from "unist-util-visit";
 import { is } from "unist-util-is";
-import { h, s } from "hastscript";
+import { h } from "hastscript";
 
 /** Plugin options for Rehype Custom Alert plugin */
 export interface RehypeCustomAlertOptions {

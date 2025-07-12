@@ -59,7 +59,7 @@ export function pluginPlaceholderMarker() {
         });
       },
       annotateCode: ({ codeBlock }) => {
-        codeBlock.getLines().forEach((line, i) => {
+        codeBlock.getLines().forEach((line) => {
           const markerRanges = getInlineSearchTermMatches(line.text, codeBlock);
           const mergedRanges = mergeInlineMarkerRanges(markerRanges);
           mergedRanges.forEach((range) => {

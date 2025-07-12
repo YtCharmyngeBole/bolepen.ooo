@@ -12,9 +12,9 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import rehypeSlug from "rehype-slug";
 
-import { SITE } from "#root/src/config.ts";
+import { SITE } from "#src/config.ts";
 import rehypeCustomTwemoji from "#lib/unified/rehype-custom-twemoji.ts";
-import rehypeCustomAlert from "./src/lib/unified/rehype-custom-alert";
+import rehypeCustomAlert from "#lib/unified/rehype-custom-alert.ts";
 
 export default defineConfig({
   site: SITE.baseUrl,
