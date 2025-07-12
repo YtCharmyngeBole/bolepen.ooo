@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./markdown.css" layer(components);
 @plugin "#src/styles/iconify-tailwind/index.ts";
 
 /*  __     __         _       _     _             */
@@ -201,28 +202,6 @@
  * ======================================
  */
 
-/* Smaller text with muted color */
-@utility smallnote {
-  margin-inline: --spacing(6);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  line-height: --spacing(6);
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-muted-foreground);
-}
-
-/* Callout box */
-@utility callout {
-  border-width: 3px;
-  border-style: solid;
-  border-color: var(--color-gray-800);
-  padding-inline: --spacing(6);
-
-  @variant print {
-    border-color: var(--color-gray-300);
-  }
-}
-
 /* Utility for inline-block IPA text */
 @utility ipa {
   display: inline-block;
@@ -369,11 +348,8 @@
 /*  | |__| (_) | | | | | | |_) | (_) | | | |  __/ | | | |_\__ \  */
 /*   \____\___/|_| |_| |_| .__/ \___/|_| |_|\___|_| |_|\__|___/  */
 /*                       |_|                                     */
-@layer components {
-  /* Styling elements within .markdown selector */
-  /* noinspection CssInvalidImport */
-  @import "./markdown.css";
 
+@layer components {
   /* Configure Expressive Code via CSS variables. */
   /* See ec.config.mjs for more information. */
   :root {

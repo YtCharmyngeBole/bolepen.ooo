@@ -7,4 +7,5 @@ export default addIconSelectors([
     source: socialIcons,
   },
   "mingcute", // Check out: https://icon-sets.iconify.design/mingcute/
+  "octicon", // Check out: https://icon-sets.iconify.design/octicon/
 ]);

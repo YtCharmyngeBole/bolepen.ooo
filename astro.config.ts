@@ -14,6 +14,7 @@ import rehypeSlug from "rehype-slug";
 
 import { SITE } from "#root/src/config.ts";
 import rehypeCustomTwemoji from "#lib/unified/rehype-custom-twemoji.ts";
+import rehypeCustomAlert from "./src/lib/unified/rehype-custom-alert";
 
 export default defineConfig({
   site: SITE.baseUrl,
@@ -64,6 +65,7 @@ export default defineConfig({
         },
       ],
       rehypeUnwrapImages,
+      [rehypeCustomAlert, { allowedTypes: true }],
       rehypeCustomTwemoji,
     ],
     smartypants: false,
