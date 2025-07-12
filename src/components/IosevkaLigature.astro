@@ -1,4 +1,11 @@
 ---
+/**
+ * `IosevkaLigature` component for Astro that applies Iosevka-specific ligatures
+ * for text under HTML elements <code>, <kbd>, <samp>, and <pre>.
+ * For the effect to take place,
+ *   1. The component must be placed inside an element with `.markdown` class selector.
+ *   2. Iosevka font family must be applied to such elements.
+ */
 const LIGATURE_FEATURES = [
   "none",
   "calt",
@@ -52,7 +59,7 @@ const fontFeatureSettingsValue = getFontFeatureSettingsValue(feature);
 
 <div
   class="contents"
-  style={`font-feature-settings: ${fontFeatureSettingsValue}`}
+  style={`--md-code-font-feature-settings: ${fontFeatureSettingsValue}`}
 >
   <slot />
 </div>

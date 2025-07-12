@@ -19,9 +19,10 @@ A *fursonal* website located at <https://bolepen.ooo>.
 ### Technical
 
 - [ ] Use `catppuccin-latte` (light) theme for code block in printed media.
+- [ ] Write an Expressive Code plugin that applies the appropriate Iosevka font ligatures
+  based on the language of the code block (and allows users to override with meta-string).
 - [ ] Create and use a custom Callout component based on `rehype-github`'s
   [alert plugin](https://github.com/rehypejs/rehype-github/tree/main/packages/alert)
-- [ ] Fix [`favicon.svg`](public/favicons/favicon.svg) coloring in sRGB only
 
 
 ## License

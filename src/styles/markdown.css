@@ -14,6 +14,7 @@
   --md-kbd: white;
   --md-kbd-shadows: white;
   --md-code: white;
+  --md-code-font-feature-settings: normal;
   --md-pre-code: var(--color-gray-300);
   --md-pre-bg: oklch(0% 0 0 / 50%);
   --md-th-borders: var(--color-gray-600);
@@ -396,6 +397,13 @@
         content: "";
       }
     }
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-feature-settings: var(--md-code-font-feature-settings);
   }
 
   table {
