@@ -26,42 +26,42 @@ export const SITE = {
 export const MEDIA_LINKS: MediaLink[] = [
   {
     name: "Facebook",
-    iconifyClass: "social--feesubukku",
+    iconifyClass: "media--feesubukku",
     href: "https://facebook.com/YtCharmyngeBole",
   },
   {
     name: "Instagram",
-    iconifyClass: "social--innsuta",
+    iconifyClass: "media--innsuta",
     href: "https://instagram.com/YtCharmyngeBole",
   },
   {
     name: "Bluesky",
-    iconifyClass: "social--bluesky",
+    iconifyClass: "media--bluesky",
     href: "https://bsky.app/profile/bolepen.ooo",
   },
   {
     name: "GitHub",
-    iconifyClass: "social--github",
+    iconifyClass: "media--github",
     href: "https://github.com/YtCharmyngeBole",
   },
   {
     name: "Discord",
-    iconifyClass: "social--discord",
+    iconifyClass: "media--discord",
     href: "https://discordapp.com/users/1218406319124512821",
   },
   {
     name: "BARQ!",
-    iconifyClass: "social--barq",
+    iconifyClass: "media--barq",
     href: "https://barq.app/@YtCharmyngeBole",
   },
   {
     name: "Plurk",
-    iconifyClass: "social--plurk",
+    iconifyClass: "media--plurk",
     href: "https://plurk.com/YtCharmyngeBole",
   },
   {
     name: "Mastodon",
-    iconifyClass: "social--mastodon",
+    iconifyClass: "media--mastodon",
     href: "https://furry.engineer/@YtCharmyngeBole",
   },
 ];

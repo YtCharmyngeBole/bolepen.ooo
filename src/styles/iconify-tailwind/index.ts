@@ -1,10 +1,10 @@
 import { addIconSelectors } from "@iconify/tailwind";
-import socialIcons from "./social.json";
+import mediaIcons from "./media.json";
 
 export default addIconSelectors([
   {
-    prefix: "social",
-    source: socialIcons,
+    prefix: "media",
+    source: mediaIcons,
   },
   "mingcute", // Check out: https://icon-sets.iconify.design/mingcute/
   "octicon", // Check out: https://icon-sets.iconify.design/octicon/
