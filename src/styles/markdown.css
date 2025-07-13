@@ -1,3 +1,7 @@
+/*
+ * Mirrors the styles from Tailwind CSS Typography plugin.
+ */
+
 .markdown {
   --md-headings: oklch(87.16% 0.043 54.36);
   --md-headings-section: oklch(70.96% 0.147 25.44);
@@ -46,7 +50,7 @@
   }
 
   @variant not-print {
-    /* Add leading for web */
+    /* Increasing leading for web */
     line-height: 1.66667;
   }
 
@@ -492,6 +496,15 @@
     margin-top: 0.85714em;
   }
 
+  /*
+   *     _    _           _
+   *    / \  | | ___ _ __| |_
+   *   / _ \ | |/ _ \ '__| __|
+   *  / ___ \| |  __/ |  | |_
+   * /_/   \_\_|\___|_|   \__|
+   *
+   */
+
   .alert {
     --md-vert-breathing: 0em;
     border-inline-start-width: 0.25rem;
@@ -557,6 +570,7 @@
     --md-alert-border-color: oklch(0.4913 0.1586 20.09);
   }
 
+  /* TODO: Work on this */
   .smallnote {
     font-size: var(--text-sm);
     font-weight: var(--font-weight-medium);

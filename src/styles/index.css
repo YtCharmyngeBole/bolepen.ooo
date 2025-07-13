@@ -1,13 +1,18 @@
 @import "tailwindcss";
+@import "./utilities.css";
+@import "./base.css" layer(base);
 @import "./markdown.css" layer(components);
-@plugin "#src/styles/iconify-tailwind/index.ts";
+@import "./expressive-code.css" layer(components);
+@plugin "./iconify-tailwind/index.ts";
 
-/*  __     __         _       _     _             */
-/*  \ \   / /_ _ _ __(_) __ _| |__ | | ___  ___   */
-/*   \ \ / / _` | '__| |/ _` | '_ \| |/ _ \/ __|  */
-/*    \ V / (_| | |  | | (_| | |_) | |  __/\__ \  */
-/*     \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/  */
-/*                                                */
+/*
+ * __     __         _       _     _
+ * \ \   / /_ _ _ __(_) __ _| |__ | | ___  ___
+ *  \ \ / / _` | '__| |/ _` | '_ \| |/ _ \/ __|
+ *   \ V / (_| | |  | | (_| | |_) | |  __/\__ \
+ *    \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
+ *
+ */
 :root {
   --hyperlink-foreground-resting: var(--color-hyperlink-orange);
   --hyperlink-foreground-hover: var(--color-hyperlink-lemon);
@@ -16,31 +21,36 @@
   --hyperlink-outline-focus: var(--hyperlink-foreground-resting);
 }
 
+/* Displays missing glyphs for iconify icons without concrete icon name */
 @property --svg {
   syntax: "<url>";
   inherits: false;
   initial-value: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath fill='%23000' d='M22.996 51.754c2.977 2.977 7.125 2.93 10.101-.047l18.61-18.61c2.977-2.976 3.024-7.148.07-10.1L33.004 4.222c-2.977-2.953-7.125-2.883-10.102.093L4.316 22.902c-2.976 2.977-3.047 7.125-.07 10.102Zm4.289-17.461c-1.266 0-1.969-.656-1.969-1.922v-.328c0-2.414 1.313-3.727 3.094-4.945c2.156-1.477 3.188-2.32 3.188-4.008c0-1.852-1.454-3.117-3.704-3.117c-1.64 0-2.882.82-3.632 2.156c-.797.937-1.008 1.664-2.415 1.664c-.82 0-1.687-.586-1.687-1.687c0-.422.07-.82.211-1.22c.61-2.273 3.445-4.265 7.688-4.265c4.171 0 7.804 2.203 7.804 6.281c0 2.953-1.71 4.36-4.078 5.977c-1.687 1.148-2.531 1.992-2.531 3.375v.305c0 .96-.727 1.734-1.969 1.734m.094 7.055c-1.36 0-2.625-1.078-2.625-2.532s1.242-2.53 2.625-2.53c1.36 0 2.625 1.054 2.625 2.53c0 1.477-1.29 2.532-2.625 2.532'/%3E%3C/svg%3E");
 }
 
-/*   _____ _                           */
-/*  |_   _| |__   ___ _ __ ___   ___   */
-/*    | | | '_ \ / _ \ '_ ` _ \ / _ \  */
-/*    | | | | | |  __/ | | | | |  __/  */
-/*    |_| |_| |_|\___|_| |_| |_|\___|  */
-/*                                     */
+/*
+ *  _____ _
+ * |_   _| |__   ___ _ __ ___   ___
+ *   | | | '_ \ / _ \ '_ ` _ \ / _ \
+ *   | | | | | |  __/ | | | | |  __/
+ *   |_| |_| |_|\___|_| |_| |_|\___|
+ *
+ */
 @theme {
-  /* Reset all color variables to initial */
+  /* Resets all color variables to initial */
   --color-*: initial;
 
-  /* Base colors */
+  /* Basic colors */
   --color-inherit: inherit;
   --color-current: currentColor;
   --color-transparent: transparent;
   --color-white: oklch(100% 0 0);
   --color-black: oklch(0% 0 0);
 
-  /* Taken verbatim from documentation verbatim at */
-  /* https://tailwindcss.com/docs/colors#default-color-palette-reference */
+  /*
+   * Gray color palette is taken in verbatim from Tailwind CSS
+   * at https://tailwindcss.com/docs/colors#default-color-palette-reference
+   */
   --color-gray-50: oklch(98.5% 0.002 247.839);
   --color-gray-100: oklch(96.7% 0.003 264.542);
   --color-gray-200: oklch(92.8% 0.006 264.531);
@@ -53,21 +63,21 @@
   --color-gray-900: oklch(21% 0.034 264.665);
   --color-gray-950: oklch(13% 0.028 261.692);
 
-  /* Custom set of style colors */
+  /* Custom set of text foreground and background colors */
   --color-default-background: oklch(15% 0.02 313);
   --color-default-foreground: oklch(78% 0.014 259.83);
   --color-muted-foreground: oklch(53.41% 0.0434 313.07);
   --color-hyperlink-orange: oklch(70.77% 0.1844 27.61);
   --color-hyperlink-lemon: oklch(94.55% 0.0661 88.89);
 
-  /* Custom named colors */
+  /* Specially named colors */
   --color-bole: oklch(76% 0.15 360);
   --color-beetroot: oklch(65.17% 0.103 360);
   --color-orange: oklch(70.96% 0.147 25.44);
   --color-lemon: oklch(85.52% 0.107 88.56);
   --color-eggplant: oklch(69.12% 0.126 314.07);
 
-  /* Fonts */
+  /* Font family definitions */
   --font-*: initial;
   --font-display:
     "Barlow", "Barlow fallback", ui-sans-serif, system-ui, sans-serif,
@@ -79,18 +89,13 @@
   --font-mono:
     "Iosevka Monaco Mono", "Iosevka fallback", ui-monospace, SFMono-Regular,
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /*--font-mono--font-feature-settings: normal;*/
-  --font-display--font-feature-settings:
-    "ss01" on, "ss02" on, "ss03" on, "ss04" on, "ss05" on, "ss06" on, "ss07" on,
-    "ss08" on, "ss09" on, "ss10" on, "ss11" on, "ss12" on, "ss13" on, "ss14" on,
-    "ss15" on, "ss16" on, "ss17" on;
 
-  /* Breakpoints */
+  /* Screen viewport breakpoints */
   --breakpoint-*: initial;
   --breakpoint-tablet: 36rem;
   --breakpoint-desktop: 72rem;
 
-  /* Animations */
+  /* Custom animations */
   --animate-shake-rotate: shake-rotate 0.3s ease-in-out;
 
   @keyframes shake-rotate {
@@ -109,13 +114,22 @@
   }
 }
 
-/* Page Setup */
+/*
+ *  ____                    ____       _
+ * |  _ \ __ _  __ _  ___  / ___|  ___| |_ _   _ _ __
+ * | |_) / _` |/ _` |/ _ \ \___ \ / _ \ __| | | | '_ \
+ * |  __/ (_| | (_| |  __/  ___) |  __/ |_| |_| | |_) |
+ * |_|   \__,_|\__, |\___| |____/ \___|\__|\__,_| .__/
+ *             |___/                            |_|
+ */
+
+/* Page setup for print */
 @page {
   size: A4 portrait;
   margin: 0.75in;
 }
 
-/* Page numbering on bottom outer corner */
+/* No page number on the first page */
 @page :first {
   @bottom-left {
     content: "";
@@ -126,6 +140,10 @@
   }
 }
 
+/*
+ * On the right page (i.e. recto in left-to-right reading),
+ * the page number is displayed at the bottom right corner.
+ */
 @page :right {
   @bottom-right {
     font-size: 9pt;
@@ -134,246 +152,14 @@
   }
 }
 
+/*
+ * On the left page (i.e. verso in left-to-right reading),
+ * the page number is displayed at the bottom left corner.
+ */
 @page :left {
   @bottom-left {
     font-size: 9pt;
     color: var(--color-gray-600);
     content: counter(page);
-  }
-}
-
-/*   _   _ _   _ _ _ _   _             */
-/*  | | | | |_(_) (_) |_(_) ___  ___   */
-/*  | | | | __| | | | __| |/ _ \/ __|  */
-/*  | |_| | |_| | | | |_| |  __/\__ \  */
-/*   \___/ \__|_|_|_|\__|_|\___||___/  */
-/*                                     */
-
-/* ====================================================
- * Very generic (non project-specific) set of utilities
- * that could have been used in any project.
- * ====================================================
- */
-
-/* Upright font style */
-@utility roman {
-  font-style: normal;
-}
-
-/* Italic font style */
-@utility italic {
-  font-style: italic;
-}
-
-/* Oblique font style */
-@utility oblique {
-  font-style: oblique;
-}
-
-/* Muted text color */
-@utility muted {
-  color: var(--color-muted-foreground);
-}
-
-/* Blend color towards white */
-/* noinspection CssOverwrittenProperties */
-@utility brighter-* {
-  color: color-mix(in oklch, currentColor, white calc(--value(integer) * 1%));
-  color: color-mix(in oklch, currentColor, white --value([percentage]));
-
-  @variant print {
-    color: inherit;
-  }
-}
-
-/* Blend color towards black */
-/* noinspection CssOverwrittenProperties */
-@utility darker-* {
-  color: color-mix(in oklch, currentColor, black calc(--value(integer) * 1%));
-  color: color-mix(in oklch, currentColor, black --value([percentage]));
-
-  @variant print {
-    color: inherit;
-  }
-}
-
-/* ======================================
- * Project-specific typographic utilities
- * ======================================
- */
-
-/* Utility for inline-block IPA text */
-@utility ipa {
-  display: inline-block;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--tracking-wider);
-  color: var(--color-gray-400);
-
-  @variant print {
-    color: inherit;
-  }
-}
-
-/* Hyperlink with customizable resting and hover colors */
-@utility hyperlink {
-  background-color: var(--hyperlink-background-resting);
-  color: var(--hyperlink-foreground-resting);
-
-  @variant hover {
-    color: var(--hyperlink-foreground-hover);
-    background-color: var(--hyperlink-background-hover);
-  }
-
-  @variant focus {
-    outline: 2px solid var(--hyperlink-outline-focus);
-    outline-offset: 1px;
-  }
-
-  @variant motion-safe {
-    @apply transition-colors duration-150;
-  }
-}
-
-/* Underlines the hyperlink with adaptive colors */
-@utility hyperlink-underline {
-  text-decoration: underline;
-  text-decoration-color: --alpha(var(--hyperlink-foreground-resting) / 20%);
-  text-decoration-thickness: 0.125em;
-  text-underline-offset: 0.15em;
-}
-
-/* Utility to set the width of the container */
-@utility custom-container-width {
-  @variant tablet {
-  }
-
-  @variant not-print {
-    max-width: var(--breakpoint-tablet);
-
-    @variant tablet {
-      margin-inline: auto;
-      width: var(--breakpoint-tablet);
-    }
-  }
-
-  @variant motion-safe {
-    @apply transition-all;
-  }
-}
-
-/* ===============================
- * SVG-related utilities for icons
- * ===============================
- */
-
-/* Underlines the hyperlink with adaptive colors */
-@utility twemoji {
-  display: inline-block;
-  margin-top: 0;
-  margin-bottom: 0;
-  height: 1.15em;
-  width: 1.15em;
-  vertical-align: -0.25em;
-}
-
-/* Enforces icon under this utility to appear on print */
-@utility iconify {
-  print-color-adjust: exact;
-}
-
-/* Enforces icon under this utility to appear on print */
-@utility iconify-color {
-  print-color-adjust: exact;
-}
-
-/* =================================
- * Project-specific custom utilities
- * =================================
- */
-/* Utility to highlight the fursona name */
-@utility bole {
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-bole);
-}
-
-/*
-/*   ____                   */
-/*  | __ )  __ _ ___  ___   */
-/*  |  _ \ / _` / __|/ _ \  */
-/*  | |_) | (_| \__ \  __/  */
-/*  |____/ \__,_|___/\___|  */
-/*                          */
-@layer base {
-  * {
-    scroll-margin-top: --spacing(8);
-  }
-
-  html {
-    background-color: var(--color-default-background);
-    color: var(--color-default-foreground);
-    font-family: var(--font-body), sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    @variant print {
-      --color-default-background: white;
-      --color-default-foreground: var(--color-gray-900);
-
-      background-color: white;
-      color: var(--color-gray-900);
-      font-size: 10pt;
-    }
-  }
-
-  @variant print {
-    a[href]:after {
-      font-size: 0.95em;
-      content: " <" attr(href) ">";
-    }
-  }
-
-  p {
-    widows: 2;
-  }
-
-  hr {
-    width: 100%;
-    border: 1px solid oklch(100% 0 0 / 10%);
-  }
-}
-
-/*    ____                                             _         */
-/*   / ___|___  _ __ ___  _ __   ___  _ __   ___ _ __ | |_ ___   */
-/*  | |   / _ \| '_ ` _ \| '_ \ / _ \| '_ \ / _ \ '_ \| __/ __|  */
-/*  | |__| (_) | | | | | | |_) | (_) | | | |  __/ | | | |_\__ \  */
-/*   \____\___/|_| |_| |_| .__/ \___/|_| |_|\___|_| |_|\__|___/  */
-/*                       |_|                                     */
-
-@layer components {
-  /* Configure Expressive Code via CSS variables. */
-  :root {
-    --ec-code-font-size: 0.95rem;
-    --ec-ui-font-size: 0.9rem;
-
-    --ec-border-color: var(--color-gray-800);
-    --ec-border-radius: var(--radius-lg);
-    --ec-border-width: 2px;
-    --ec-frame-shadow-color: black;
-
-    @variant print {
-      --ec-border-color: var(--color-gray-300);
-      --ec-border-radius: 0;
-      --ec-border-width: 2px;
-      --ec-frame-shadow-color: transparent;
-    }
-  }
-
-  .expressive-code {
-    break-inside: avoid;
-
-    .placeholder {
-      font-style: italic;
-      filter: grayscale(50%) brightness(80%);
-    }
   }
 }

@@ -1,0 +1,33 @@
+/*
+ * Styling and customizing Expressive Code components.
+ * See also: `astro.config.ts` at the project root.
+ */
+
+:root {
+  --ec-code-font-size: 0.95rem;
+  --ec-ui-font-size: 0.9rem;
+
+  --ec-border-color: var(--color-gray-800);
+  --ec-border-radius: var(--radius-lg);
+  --ec-border-width: 2px;
+  --ec-frame-shadow-color: black;
+
+  @variant print {
+    --ec-border-color: var(--color-gray-300);
+    --ec-border-radius: 0;
+    --ec-border-width: 2px;
+    --ec-frame-shadow-color: transparent;
+  }
+}
+
+.expressive-code {
+  break-inside: avoid;
+
+  .placeholder {
+    font-style: italic;
+
+    @variant not-print {
+      filter: grayscale(50%) brightness(80%);
+    }
+  }
+}
