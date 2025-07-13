@@ -6,14 +6,7 @@ import { visit, SKIP } from "unist-util-visit";
 /**
  * A rehype plugin to replace Unicode emojis with Twemoji images.
  */
-export default function rehypeCustomTwemoji() {
-  const twemojiOptions: TwemojiOptions = {
-    className: "twemoji",
-    callback(icon): string {
-      return `/twemoji/${icon}.svg`;
-    },
-  };
-
+export default function rehypeCustomTwemoji(options: TwemojiOptions = {}) {
   return function (tree: hast.Root) {
     // Visits all text nodes in the HAST tree
     visit(tree, "text", (node, index, parent) => {
@@ -24,7 +17,7 @@ export default function rehypeCustomTwemoji() {
 
       // Replaces Unicode emojis in the text node with Twemoji images
       // See <https://github.com/jdecked/twemoji/blob/main/LEGACY.md#string-parsing>
-      const newHtmlString = twemoji.parse(node.value, twemojiOptions);
+      const newHtmlString = twemoji.parse(node.value, options);
 
       // If the parsed HTML remains the same as the original text, skip this node
       if (newHtmlString === node.value) {

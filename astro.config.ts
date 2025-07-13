@@ -106,7 +106,15 @@ export default defineConfig({
       ],
       rehypeUnwrapImages,
       [rehypeCustomAlert, { allowedTypes: true }],
-      rehypeCustomTwemoji,
+      [
+        rehypeCustomTwemoji,
+        {
+          className: "twemoji",
+          callback(icon: string): string {
+            return `/twemoji/${icon}.svg`;
+          },
+        },
+      ],
     ],
     smartypants: false,
   },
