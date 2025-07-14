@@ -126,112 +126,126 @@ const alertRegex = /^\[!([A-Z]+)]([^\n]*)\n?/;
  * Transforms blockquotes containing alerts into styled alert blocks using a custom callback function.
  * Alerts are identified by a syntax pattern within the first paragraph of a blockquote.
  *
- * @param {Options} options - Configuration object for the rehype plugin.
- * @return {(tree: hast.Root) => void} A transformer function that modifies the HAST tree.
+ * @param options - Configuration object for the rehype plugin.
+ * @return A transformer function that modifies the HAST tree.
  */
-export default function rehypeCustomAlert(options: Options = {}) {
-  const callback = resolveCallback(options);
+const rehypeCustomAlert = builder();
+export default rehypeCustomAlert;
 
-  return function (tree: hast.Root): void {
-    visit(
-      tree,
-      { type: "element", tagName: "blockquote" },
-      function (bqNode, index, parent) {
-        if (typeof index !== "number" || !parent) return;
+/**
+ * Uses this function to create a copy of Rehype Custom Alert plugin
+ * so that it can be used multiple times with different configurations.
+ *
+ * @return A copy of Rehype Custom Alert plugin
+ */
+export function builder(): (options?: Options) => (tree: hast.Root) => void {
+  return function (options: Options = {}): (tree: hast.Root) => void {
+    const callback = resolveCallback(options);
 
-        // Skips over whitespace-only child nodes at the beginning of the blockquote.
-        // The first non-whitespace is called the "head".
-        let headIndex = 0;
-        while (
-          headIndex < bqNode.children.length &&
-          whitespace(bqNode.children[headIndex])
-        ) {
-          headIndex++;
-        }
-        const head = bqNode.children[headIndex];
+    return function (tree: hast.Root): void {
+      visit(
+        tree,
+        { type: "element", tagName: "blockquote" },
+        function (bqNode, index, parent) {
+          if (typeof index !== "number" || !parent) return;
 
-        // VALIDATION: The head must be a paragraph node
-        if (!is(head, { type: "element", tagName: "p" })) return;
+          // Skips over whitespace-only child nodes at the beginning of the blockquote.
+          // The first non-whitespace is called the "head".
+          let headIndex = 0;
+          while (
+            headIndex < bqNode.children.length &&
+            whitespace(bqNode.children[headIndex])
+          ) {
+            headIndex++;
+          }
+          const head = bqNode.children[headIndex];
 
-        // VALIDATION: The first child of the paragraph must be a text node
-        const text = head.children[0];
-        if (!is(text, "text")) return;
+          // VALIDATION: The head must be a paragraph node
+          if (!is(head, { type: "element", tagName: "p" })) return;
 
-        // VALIDATION: The text must start with the alert syntax pattern:
-        // - It begins with "[!TYPE]" where TYPE is an uppercase string
-        // - Followed by an optional display text until the first newline character.
-        const match = text.value.match(alertRegex);
-        if (!match || match.index === undefined) return;
+          // VALIDATION: The first child of the paragraph must be a text node
+          const text = head.children[0];
+          if (!is(text, "text")) return;
 
-        // Extracts the alert type and display text from the match.
-        const alertType = match[1].toLowerCase();
-        const displayText = match[2];
+          // VALIDATION: The text must start with the alert syntax pattern:
+          // - It begins with "[!TYPE]" where TYPE is an uppercase string
+          // - Followed by an optional display text until the first newline character.
+          const match = text.value.match(alertRegex);
+          if (!match || match.index === undefined) return;
 
-        // Special case: Parsing the alert type and display text consumes the entire text
-        const endColumn = match.index + match[0].length;
-        if (endColumn >= text.value.length) {
-          const next = head.children[1];
-          if (next) {
-            // VALIDATION: If other siblings to the alert heading in the paragraph node exist,
-            // we expect a line break <br> followed by more content.
-            if (!is(next, { type: "element", tagName: "br" })) return;
-            if (!head.children[2]) return;
+          // Extracts the alert type and display text from the match.
+          const alertType = match[1].toLowerCase();
+          const displayText = match[2];
+
+          // Special case: Parsing the alert type and display text consumes the entire text
+          const endColumn = match.index + match[0].length;
+          if (endColumn >= text.value.length) {
+            const next = head.children[1];
+            if (next) {
+              // VALIDATION: If other siblings to the alert heading in the paragraph node exist,
+              // we expect a line break <br> followed by more content.
+              if (!is(next, { type: "element", tagName: "br" })) return;
+              if (!head.children[2]) return;
+            } else {
+              // If there are no more siblings after the alert heading,
+              // we need to recalculate where the rest of the children of the blockquote start.
+              headIndex++; // Starting from the next note
+              while (
+                headIndex < bqNode.children.length &&
+                whitespace(bqNode.children[headIndex])
+              ) {
+                headIndex++;
+              }
+              // VALIDATION: The rest of the blockquote should not be empty.
+              // This would become the body content of the alert block.
+              // VALIDATION: The next node must be an HTML element.
+              if (
+                headIndex === bqNode.children.length ||
+                !is(bqNode.children[headIndex], "element")
+              ) {
+                return;
+              }
+            }
+          }
+
+          // Creates (and validates) the alert block element using the callback function.
+          const newAlertNode = callback(
+            alertType,
+            displayText,
+            bqNode.children.slice(headIndex),
+          );
+          // VALIDATION: The callback should return a valid HAST node (rather than `false`).
+          if (!newAlertNode) {
+            return;
+          }
+
+          // Post-processing the siblings to the alert block heading
+          if (endColumn >= text.value.length) {
+            const next = head.children[1];
+            if (next) {
+              // VALIDATION: If other siblings to the alert heading in the paragraph node exist,
+              // everything after the <br> becomes the content of the alert.
+              head.children = head.children.slice(2);
+              // Also drops the '\n' character that typically (in markdown) follows <br>.
+              const firstChild = head.children[0];
+              if (
+                is(firstChild, "text") &&
+                firstChild.value.charAt(0) === "\n"
+              ) {
+                firstChild.value = firstChild.value.slice(1);
+              }
+            }
           } else {
-            // If there are no more siblings after the alert heading,
-            // we need to recalculate where the rest of the children of the blockquote start.
-            headIndex++; // Starting from the next note
-            while (
-              headIndex < bqNode.children.length &&
-              whitespace(bqNode.children[headIndex])
-            ) {
-              headIndex++;
-            }
-            // VALIDATION: The rest of the blockquote should not be empty.
-            // This would become the body content of the alert block.
-            // VALIDATION: The next node must be an HTML element.
-            if (
-              headIndex === bqNode.children.length ||
-              !is(bqNode.children[headIndex], "element")
-            ) {
-              return;
-            }
+            // Non-empty text still remains after the alert type and display text.
+            // In such cases, split it into the body content of the alert block.
+            text.value = text.value.slice(endColumn);
           }
-        }
 
-        // Creates (and validates) the alert block element using the callback function.
-        const newAlertNode = callback(
-          alertType,
-          displayText,
-          bqNode.children.slice(headIndex),
-        );
-        // VALIDATION: The callback should return a valid HAST node (rather than `false`).
-        if (!newAlertNode) {
-          return;
-        }
-
-        // Post-processing the siblings to the alert block heading
-        if (endColumn >= text.value.length) {
-          const next = head.children[1];
-          if (next) {
-            // VALIDATION: If other siblings to the alert heading in the paragraph node exist,
-            // everything after the <br> becomes the content of the alert.
-            head.children = head.children.slice(2);
-            // Also drops the '\n' character that typically (in markdown) follows <br>.
-            const firstChild = head.children[0];
-            if (is(firstChild, "text") && firstChild.value.charAt(0) === "\n") {
-              firstChild.value = firstChild.value.slice(1);
-            }
-          }
-        } else {
-          // Non-empty text still remains after the alert type and display text.
-          // In such case, split it into the body content of the alert block.
-          text.value = text.value.slice(endColumn);
-        }
-
-        // Replace the blockquote with the alert block element.
-        parent.children[index] = newAlertNode;
-      },
-    );
+          // Replace the blockquote with the alert block element.
+          parent.children[index] = newAlertNode;
+        },
+      );
+    };
   };
 }
 

@@ -14,6 +14,7 @@ import {
 } from "astro-expressive-code";
 import { glob } from "glob";
 import type * as hast from "hast";
+import { whitespace } from "hast-util-whitespace";
 import { h } from "hastscript";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -22,7 +23,7 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 
 import { SITE } from "#src/config.ts";
 import { pluginPlaceholderMarker } from "#lib/expressive-code/plugin-placeholder-marker.ts";
-import rehypeCustomAlert from "#lib/unified/rehype-custom-alert.ts";
+import { builder as rehypeCustomAlert } from "#lib/unified/rehype-custom-alert.ts";
 import rehypeCustomTwemoji from "#lib/unified/rehype-custom-twemoji.ts";
 
 const basePath = fileURLToPath(new URL(".", import.meta.url));
@@ -73,7 +74,7 @@ const expressiveCodeConfig: AstroExpressiveCodeOptions = {
  *                  |___/|_|                                  |___/
  */
 
-// Configuration for Autolink Headings plugin
+// Configure Autolink Headings plugin
 const autolinkHeadingsConfig = {
   behavior: "append",
   content: h("span.icon.icon--autolink-heading", {
@@ -87,7 +88,7 @@ const autolinkHeadingsConfig = {
   },
 };
 
-// Configuration for External Links plugin
+// Configure External Links plugin
 const externalLinksConfig = {
   rel: ["noopener", "noreferrer"],
   properties: {
@@ -104,13 +105,29 @@ const externalLinksConfig = {
   },
 };
 
-// Configuration for Custom Alert plugin
+// Configure Custom Alert plugin for type "SMALLNOTE"
+function smallnoteAlertConfig(
+  alertType: string,
+  displayText: string,
+  children: hast.ElementContent[],
+): hast.Element | false {
+  if (alertType !== "smallnote") return false;
+  if (!whitespace(displayText)) return false; // disallows custom headings
+
+  return h(`aside.smallnote`, [
+    h(`span.smallnote-icon`),
+    " ",
+    h("div.smallnote-body", children),
+  ]);
+}
+
+// Configure Custom Alert plugin for other alert types
 const customAlertConfig = {
   allowedTypes: true,
   allowsCustomHeading: false,
 };
 
-// Configuration for Custom Twemoji plugin
+// Configure Custom Twemoji plugin to use local SVGs
 const customTwemojiConfig = {
   className: "twemoji",
   callback(icon: string): string {
@@ -149,7 +166,8 @@ export default defineConfig({
       [rehypeAutolinkHeadings, autolinkHeadingsConfig],
       [rehypeExternalLinks, externalLinksConfig],
       rehypeUnwrapImages,
-      [rehypeCustomAlert, customAlertConfig],
+      [rehypeCustomAlert(), smallnoteAlertConfig],
+      [rehypeCustomAlert(), customAlertConfig],
       [rehypeCustomTwemoji, customTwemojiConfig],
     ],
     smartypants: false,
