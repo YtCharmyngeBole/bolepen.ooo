@@ -13,19 +13,14 @@ A *fursonal* website located at <https://bolepen.ooo>.
 ### Design
 
 - [ ] Adorns the website background with animated patterns
-  - Greek adornment patterns on the header and footer area
-  - Animated background SVGs
-- [ ] Add button links components
+  - [ ] Greek adornment patterns on the header and footer area
+  - [ ] Animated background SVGs
 
 ### Technical
 
-- [ ] Generalize GitHub's Alert syntax and allow users to customize the following via plugin options:
-  - A callback function to determine whether an alert type should be allowed
-  - A callback function to create a new HAST node based on the alert type, the display text, and the children
 - [ ] Use `catppuccin-latte` (light) theme for code block in printed media.
 - [ ] Write an Expressive Code plugin that applies the appropriate Iosevka font ligatures
   based on the language of the code block (and allows users to override with meta-string).
-- [ ] Configure prettier to process Markdown files but disabling prose wrapping.
 
 
 ## License
