@@ -107,6 +107,7 @@ const externalLinksConfig = {
 // Configuration for Custom Alert plugin
 const customAlertConfig = {
   allowedTypes: true,
+  allowsCustomHeading: false,
 };
 
 // Configuration for Custom Twemoji plugin
