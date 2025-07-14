@@ -125,16 +125,6 @@
  *
  */
 
-/* Underlines the hyperlink with adaptive colors */
-@utility twemoji {
-  display: inline-block;
-  margin-top: 0;
-  margin-bottom: 0;
-  height: 1.15em;
-  width: 1.15em;
-  vertical-align: -0.25em;
-}
-
 /* Enforces icon under this utility to appear on print */
 @utility iconify {
   print-color-adjust: exact;
@@ -143,6 +133,27 @@
 /* Enforces icon under this utility to appear on print */
 @utility iconify-color {
   print-color-adjust: exact;
+}
+
+/*
+ * Uses standard vertical alignment for inline icons per the docs:
+ * - https://iconify.design/docs/icon-components`/svg-framework/inline.html
+ * - https://iconify.design/docs/icon-components/react/inline.html
+ * - https://iconify.design/docs/iconify-icon/inline.html
+ */
+@utility iconify-inline {
+  vertical-align: -0.125em;
+}
+
+/* Underlines the hyperlink with adaptive colors */
+@utility twemoji {
+  display: inline-block;
+  font-size: 1.15em;
+  height: 1em;
+  width: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+  vertical-align: -0.2em; /* non-standard */
 }
 
 /*
