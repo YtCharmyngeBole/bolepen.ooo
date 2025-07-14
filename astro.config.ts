@@ -157,7 +157,7 @@ export default defineConfig({
   },
   image: {
     responsiveStyles: true,
-    layout: "constrained",
+    layout: "constrained", // TODO: Revise this option (may need to be "none")
   },
   markdown: {
     remarkPlugins: [],
