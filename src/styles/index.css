@@ -16,8 +16,6 @@
 :root {
   --hyperlink-foreground-resting: var(--color-hyperlink-orange);
   --hyperlink-foreground-hover: var(--color-hyperlink-lemon);
-  --hyperlink-background-resting: transparent;
-  --hyperlink-background-hover: transparent;
   --hyperlink-outline-focus: var(--hyperlink-foreground-resting);
 }
 
@@ -94,24 +92,6 @@
   --breakpoint-*: initial;
   --breakpoint-tablet: 36rem;
   --breakpoint-desktop: 72rem;
-
-  /* Custom animations */
-  --animate-shake-rotate: shake-rotate 0.3s ease-in-out;
-
-  @keyframes shake-rotate {
-    0%,
-    100% {
-      transform: rotate(0deg) translateX(0);
-    }
-    20%,
-    60% {
-      transform: rotate(-1.5deg) translateX(1px);
-    }
-    40%,
-    80% {
-      transform: rotate(1.5deg) translateX(-1px);
-    }
-  }
 }
 
 /*

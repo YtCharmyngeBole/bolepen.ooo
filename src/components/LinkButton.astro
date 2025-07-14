@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const {
+  class: className,
+  "class:list": classList,
+  ...attributes
+} = Astro.props as Props;
+---
+
+<a
+  class:list={[
+    "not-markdown inline-block items-center rounded-lg px-4 py-1.5 font-semibold tracking-wide hyperlink",
+    className,
+    classList,
+  ]}
+  {...attributes}
+>
+  <slot />
+</a>
+
+<style>
+  @reference "#src/styles/index.css";
+
+  a {
+    --hyperlink-foreground-hover: var(--color-default-background);
+    background-color: oklch(100% 0 0 / 5%);
+
+    @variant hover {
+      background-color: var(--color-hyperlink-lemon);
+    }
+  }
+</style>

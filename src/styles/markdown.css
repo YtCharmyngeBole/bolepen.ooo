@@ -67,8 +67,8 @@
     margin-bottom: calc(1em + var(--md-vert-breathing));
   }
 
-  a {
-    @apply hyperlink font-medium;
+  a:not(:where(.not-markdown)) {
+    @apply font-medium hyperlink;
 
     &[href] {
       @apply hyperlink-underline;

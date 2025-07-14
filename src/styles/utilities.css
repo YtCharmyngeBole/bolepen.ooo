@@ -90,12 +90,10 @@
 
 /* Hyperlink with customizable resting and hover colors */
 @utility hyperlink {
-  background-color: var(--hyperlink-background-resting);
   color: var(--hyperlink-foreground-resting);
 
   @variant hover {
     color: var(--hyperlink-foreground-hover);
-    background-color: var(--hyperlink-background-hover);
   }
 
   @variant focus {

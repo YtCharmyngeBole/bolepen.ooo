@@ -15,6 +15,7 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [ ] Adorns the website background with animated patterns
   - Greek adornment patterns on the header and footer area
   - Animated background SVGs
+- [ ] Add button links components
 
 ### Technical
 
@@ -24,6 +25,7 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [ ] Use `catppuccin-latte` (light) theme for code block in printed media.
 - [ ] Write an Expressive Code plugin that applies the appropriate Iosevka font ligatures
   based on the language of the code block (and allows users to override with meta-string).
+- [ ] Configure prettier to process Markdown files but disabling prose wrapping.
 
 
 ## License

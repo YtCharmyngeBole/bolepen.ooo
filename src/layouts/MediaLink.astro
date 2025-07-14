@@ -15,12 +15,10 @@ const { item } = Astro.props as Props;
     href={item.href}
     title={`Me on ${item.name}`}
     rel="me noopener"
-    class="flex items-center rounded-lg hyperlink text-center motion-safe:hover:animate-shake-rotate"
+    class="inline-flex items-center gap-0.75 rounded-lg pt-0.5 pr-2.5 pl-1 text-center hyperlink"
   >
-    <span
-      class={`iconify ${item.iconifyClass} inline-block w-9 h-9 mx-1 mt-0.5`}
-    ></span>
-    <span class="pt-0.5 pr-2.5 font-semibold tracking-wide">{item.name}</span>
+    <span class={`iconify ${item.iconifyClass} w-9 h-9`}></span>
+    <span class="font-semibold tracking-wide">{item.name}</span>
   </a>
 </li>
 
@@ -28,8 +26,28 @@ const { item } = Astro.props as Props;
   @reference "#src/styles/index.css";
 
   a {
-    --hyperlink-background-resting: oklch(100% 0 0 / 5%);
-    --hyperlink-background-hover: var(--color-hyperlink-lemon);
     --hyperlink-foreground-hover: var(--color-default-background);
+    background-color: oklch(100% 0 0 / 5%);
+
+    @variant hover {
+      background-color: var(--color-hyperlink-lemon);
+    }
+
+    @variant motion-safe {
+      animation: shake-rotate 0.25s ease 1s 2;
+    }
+  }
+
+  @keyframes shake-rotate {
+    0%,
+    100% {
+      transform: rotate(0deg) translateX(0);
+    }
+    25% {
+      transform: rotate(-1.5deg) translateX(1px);
+    }
+    75% {
+      transform: rotate(1.5deg) translateX(-1px);
+    }
   }
 </style>
