@@ -1,0 +1,17 @@
+[project]
+name = "bolepen.ooo"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.13"
+classifiers = ["Private :: Do Not Upload"]
+
+dependencies = [
+    "brotli~=1.1",
+    "typer~=0.16",
+    "fonttools~=4.53",
+    "tqdm~=4.66",
+]
+
+[[authors]]
+name = "That Charming BOLE"
+email = "165321522+YtCharmyngeBole@users.noreply.github.com"

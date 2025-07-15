@@ -1,3 +1,6 @@
 [submodule "vendor/twemoji"]
 	path = vendor/twemoji
 	url = https://github.com/jdecked/twemoji.git
+[submodule "vendor/iosevka"]
+	path = vendor/iosevka
+	url = https://github.com/be5invis/Iosevka.git

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Python" name="Python facet">
+      <configuration sdkName="Python 3.13 virtualenv at ~/Code/bolepen.ooo/.venv" />
+    </facet>
+  </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
@@ -9,12 +14,13 @@
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/libraries" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/iosevka-fonts/assets/build" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/iosevka-fonts/sandbox" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/iosevka-fonts/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/contrib/iosevka/assets/build" />
+      <excludeFolder url="file://$MODULE_DIR$/contrib/iosevka/sandbox" />
+      <excludeFolder url="file://$MODULE_DIR$/contrib/iosevka/venv" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ts-external-references" level="project" />
+    <orderEntry type="library" name="Python 3.13 virtualenv at ~/Code/bolepen.ooo/.venv interpreter library" level="application" />
   </component>
 </module>

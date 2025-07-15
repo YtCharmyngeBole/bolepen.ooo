@@ -81,11 +81,11 @@
     "Barlow", "Barlow fallback", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-body:
-    "Iosevka Consolas Propo", "Iosevka fallback", ui-sans-serif, system-ui,
+    "Iosevka Custom Propo", "Iosevka fallback", ui-sans-serif, system-ui,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
   --font-mono:
-    "Iosevka Monaco Mono", "Iosevka fallback", ui-monospace, SFMono-Regular,
+    "Iosevka Custom Mono", "Iosevka fallback", ui-monospace, SFMono-Regular,
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Screen viewport breakpoints */

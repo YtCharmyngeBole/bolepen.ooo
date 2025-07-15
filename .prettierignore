@@ -9,7 +9,7 @@
 *.md
 *.markdown
 *.mdx
-vendor/twemoji/
+vendor/
 
 #     _         _                                                         _
 #    / \  _   _| |_ ___        _ __ ___   __ _ _ __   __ _  __ _  ___  __| |
