@@ -7,7 +7,6 @@ html {
   background-color: var(--color-default-background);
   color: var(--color-default-foreground);
   font-family: var(--font-body), sans-serif;
-  letter-spacing: var(--tracking-tight);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

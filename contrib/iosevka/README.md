@@ -54,7 +54,7 @@ The initial Iosevka fonts are large and contain many unused characters.
 Font subsetting splits the fonts into smaller sets based on scripts and usage
 to reduce file size and improve web page loading.
 
-This project contains the script [`subsetting.py`](subsetting.py)
+This project contains the script [`subsetting.py`](old_subsetting.py)
 which will produce font subsets files from the original font files generated from the previous step.
 
 Refer to the script's documentation for usage instructions.

@@ -9,6 +9,7 @@
 *.md
 *.markdown
 *.mdx
+.astro/
 vendor/
 
 #     _         _                                                         _

@@ -1,7 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath, URL } from "node:url";
-
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
@@ -12,7 +8,6 @@ import {
   astroExpressiveCode,
   type AstroExpressiveCodeOptions,
 } from "astro-expressive-code";
-import { glob } from "glob";
 import type * as hast from "hast";
 import { whitespace } from "hast-util-whitespace";
 import { h } from "hastscript";
@@ -21,19 +16,10 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 
-import { SITE } from "#src/config.ts";
-import { pluginPlaceholderMarker } from "#lib/expressive-code/plugin-placeholder-marker.ts";
-import { builder as rehypeCustomAlert } from "#lib/unified/rehype-custom-alert.ts";
-import rehypeCustomTwemoji from "#lib/unified/rehype-custom-twemoji.ts";
-
-const basePath = fileURLToPath(new URL(".", import.meta.url));
-const extraLanguagesPath = path.join(
-  basePath,
-  "src/lib/shiki/*.tmLanguage.json",
-);
-const extraLanguages = glob
-  .sync(extraLanguagesPath)
-  .map((path) => JSON.parse(fs.readFileSync(path, "utf8")));
+import { pluginPlaceholderMarker } from "./lib/expressive-code/plugin-placeholder-marker.ts";
+import { langs } from "./lib/shiki/languages.ts";
+import { builder as rehypeCustomAlert } from "./lib/unified/rehype-custom-alert.ts";
+import rehypeCustomTwemoji from "./lib/unified/rehype-custom-twemoji.ts";
 
 /*
  *  _____                              _              ____          _         ____             __ _
@@ -59,9 +45,7 @@ const expressiveCodeConfig: AstroExpressiveCodeOptions = {
   themes: ["catppuccin-mocha", "catppuccin-latte"],
   useDarkModeMediaQuery: false,
   useStyleReset: false,
-  shiki: {
-    langs: extraLanguages,
-  },
+  shiki: { langs },
   plugins: [pluginPlaceholderMarker()],
 };
 
@@ -144,7 +128,7 @@ const customTwemojiConfig = {
  *                                                                            |___/
  */
 export default defineConfig({
-  site: SITE.baseUrl,
+  site: "https://bolepen.ooo",
   prefetch: true,
   integrations: [
     sitemap(),

@@ -17,7 +17,7 @@ export const SITE = {
     backgroundColor: "#0e0911",
     ogImage: ogImage.src,
     mainFont: {
-      path: "/fonts/IosevkaConsolasPropo-33.2.5-1/IosevkaConsolasPropo-Regular-Latin.woff2",
+      path: "/fonts/IosevkaCustomPropo-33.2.6-2/IosevkaCustomPropo-Regular-Latin.woff2",
       linkType: "font/woff2",
     },
   },

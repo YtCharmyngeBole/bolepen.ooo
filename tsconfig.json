@@ -1,14 +1,17 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["node_modules", "vendor", "dist"],
+  "exclude": ["node_modules", "vendor", "contrib", "dist"],
   "compilerOptions": {
     "baseUrl": ".",
     "module": "ESNext",
-    "target": "ES2022",
+    "target": "ES2024",
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
+      },
+      {
+        "name": "typescript-plugin-toml"
       }
     ]
   }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="WEB_MODULE" version="4">
+<module type="PYTHON_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Python" name="Python facet">
       <configuration sdkName="Python 3.13 virtualenv at ~/Code/bolepen.ooo/.venv" />
@@ -7,20 +7,27 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/temp" />
-      <excludeFolder url="file://$MODULE_DIR$/tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/.astro" />
-      <excludeFolder url="file://$MODULE_DIR$/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea/dictionaries" />
-      <excludeFolder url="file://$MODULE_DIR$/.idea/libraries" />
-      <excludeFolder url="file://$MODULE_DIR$/contrib/iosevka/assets/build" />
-      <excludeFolder url="file://$MODULE_DIR$/contrib/iosevka/sandbox" />
-      <excludeFolder url="file://$MODULE_DIR$/contrib/iosevka/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/__marimo__" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ts-external-references" level="project" />
     <orderEntry type="library" name="Python 3.13 virtualenv at ~/Code/bolepen.ooo/.venv interpreter library" level="application" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/vendor/twemoji/src/templates" />
+      </list>
+    </option>
+  </component>
+  <component name="TestRunnerService">
+    <option name="PROJECT_TEST_RUNNER" value="py.test" />
   </component>
 </module>

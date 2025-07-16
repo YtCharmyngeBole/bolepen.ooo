@@ -1,12 +1,17 @@
 min_version = "2025.6.0"
 
 [tools]
+"aqua:charmbracelet/glow" = "latest"
+"aqua:charmbracelet/gum" = "latest"
+"aqua:ianlewis/todos" = "latest"
+"aqua:mikefarah/yq" = "latest"
 node = "24"
 python = "3.13"
 
 [env]
 _.path = [
     "{{config_root}}/node_modules/.bin",
+    "{{config_root}}/.venv/bin",
 ]
 
 #     _        _                ____                                          _

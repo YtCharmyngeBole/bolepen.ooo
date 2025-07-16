@@ -21,6 +21,8 @@ A *fursonal* website located at <https://bolepen.ooo>.
 - [ ] Use `catppuccin-latte` (light) theme for code block in printed media.
 - [ ] Write an Expressive Code plugin that applies the appropriate Iosevka font ligatures
   based on the language of the code block (and allows users to override with meta-string).
+- [ ] Combine a pair of Iosevka fonts, one using lining numbers and another using old-style numbers,
+  and choose them via `font-variant-numeric` CSS property.
 
 
 ## License
@@ -30,7 +32,7 @@ This license covers only the source files (`.ts`, `.mjs`, `.astro`, etc.),
 markup files (`.astro`, `.md`, `.css`, etc.),
 and configuration files (`.json`, `.yaml`, etc.) included in this repository.
 
-> \[!WARNING]\
+> \[!WARNING]
 > **Textual content and assets such as image are not licensed under the Apache 2.0 License.**
 > All text and images are protected to the fullest extent of the copyright law. ©
 > That Charming BOLE 2024. All rights reserved.

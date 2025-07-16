@@ -41,15 +41,20 @@ shape = 300
 menu = 300
 css = 300
 
+#[buildPlans.IosevkaCustomBase.weights.SemiLight]
+#shape = 350
+#menu = 350
+#css = 350
+
 [buildPlans.IosevkaCustomBase.weights.Regular]
 shape = 400
 menu = 400
 css = 400
 
-[buildPlans.IosevkaCustomBase.weights.Book]
-shape = 450
-menu = 450
-css = 450
+#[buildPlans.IosevkaCustomBase.weights.Book]
+#shape = 450
+#menu = 450
+#css = 450
 
 [buildPlans.IosevkaCustomBase.weights.Medium]
 shape = 500
@@ -89,7 +94,7 @@ shape = "upright"
 menu = "upright"
 css = "normal"
 
-#[buildPlans.IosevkaCustom.slopes.Oblique]
+#[buildPlans.IosevkaCustomBase.slopes.Oblique]
 #angle = 9.4
 #shape = "oblique"
 #menu = "oblique"
@@ -131,6 +136,18 @@ weights.inherits = "buildPlans.IosevkaCustomBase"
 slopes.inherits = "buildPlans.IosevkaCustomBase"
 
 ###################################################################################################
+# Configure variants
+
+[buildPlans.IosevkaCustomPropo.variants.design]
+digit-form = "old-style"
+three = "flat-top-serifless"
+at = "threefold"
+question = "smooth"
+
+# End variant section
+###################################################################################################
+
+###################################################################################################
 # Override default building widths
 # When buildPlans.<plan name>.widths is absent, all widths would be built and mapped to
 # default values.
@@ -145,6 +162,20 @@ slopes.inherits = "buildPlans.IosevkaCustomBase"
 shape = 500
 menu = 5
 css = "normal"
+
+# End width section
+###################################################################################################
+
+###################################################################################################
+# Metric overrides
+# Certain metrics like line height (leading) could be overridden in your build plan file.
+# Edit the values to change the metrics. Remove this section when overriding is not needed.
+
+[buildPlans.IosevkaCustomPropo.metricOverride]
+sb = "default_sb"
+
+# End metric override section
+###################################################################################################
 
 #  ___                     _            ____          _
 # |_ _|___  ___  _____   _| | ____ _   / ___|   _ ___| |_ ___  _ __ ___
@@ -186,3 +217,17 @@ slopes.inherits = "buildPlans.IosevkaCustomBase"
 shape = 500
 menu = 5
 css = "normal"
+
+# End width section
+###################################################################################################
+
+###################################################################################################
+# Metric overrides
+# Certain metrics like line height (leading) could be overridden in your build plan file.
+# Edit the values to change the metrics. Remove this section when overriding is not needed.
+
+[buildPlans.IosevkaCustomMono.metricOverride]
+sb = "default_sb"
+
+# End metric override section
+###################################################################################################

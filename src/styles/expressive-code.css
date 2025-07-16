@@ -23,6 +23,10 @@
 .expressive-code {
   break-inside: avoid;
 
+  .code {
+    letter-spacing: var(--tracking-wide);
+  }
+
   .placeholder {
     font-style: italic;
 
