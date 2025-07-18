@@ -44,14 +44,17 @@ quote-style = "preserve"
 ignore = [
     "COM812", "EXE003", "ISC001", "PIE808",
     "RET505", "RET506", "RET507", "RET508",
+    "SIM102", "SIM103", "SIM108", "SIM109", "SIM112", "SIM114", "SIM116",
+    "RUF013", "TRY003",
 ]
 select = [
-    "F", "E", "W", "C90", "I", "UP", "YTT", "ASYNC", "S", "FBT003", "B",
-    "A", "COM", "C4", "DTZ", "T10", "EXE", "FA", "ISC", "ICN", "LOG", "G",
-    "PIE", "PYI", "PT", "RSE", "RET", "SLOT", "SIM101", "SIM105", "SIM107",
-    "SIM110", "SIM113", "SIM115", "SIM117", "SIM118", "SIM2", "SIM3",
-    "SIM4", "SIM9", "TID", "TCH", "INT", "PTH", "PD", "PGH", "PL", "FLY",
-    "NPY", "PERF", "FURB", "RUF",
+    "FAST", "YTT", "ANN", "ASYNC", "S", "BLE", "FBT003", "B", "A", "COM",
+    "C4", "DTZ", "T10", "DJ", "EXE", "FA", "INT", "ISC", "ICN", "LOG",
+    "G", "PIE", "PYI", "PT", "RSE", "RET", "SIM", "SLOT", "TID", "PTH",
+    "FLY", "I", "C90", "NPY", "PD", "PERF", "E", "W", "F", "PGH", "PL",
+    "UP", "FURB", "RUF",
+    # Preliminarry rules
+    "TC", "TRY"
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -60,6 +63,7 @@ select = [
 [tool.ruff.lint.flake8-annotations]
 ignore-fully-untyped = true
 mypy-init-return = true
+suppress-none-returning = true
 
 [tool.ruff.lint.flake8-import-conventions.extend-aliases]
 datetime = "dt"
