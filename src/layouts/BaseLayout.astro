@@ -9,7 +9,8 @@ export interface Props {
   title?: string;
   author?: string;
   description?: string;
-  ogImage?: string;
+  ogImageSrc?: string;
+  ogImageAlt?: string;
   canonicalURL?: string;
 }
 
@@ -17,7 +18,8 @@ const {
   title: rawTitle,
   author = SITE.metadata.author,
   description = SITE.metadata.description,
-  ogImage = new URL(SITE.theme.ogImage, Astro.site).href,
+  ogImageSrc = new URL(SITE.theme.ogImage.src, Astro.site).href,
+  ogImageAlt = SITE.theme.ogImage.alt,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 
@@ -76,16 +78,19 @@ const title = rawTitle
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageSrc} />
+    <meta property="og:image:alt" content={ogImageSrc} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:image" content={ogImageSrc} />
+    <meta property="twitter:image:alt" content={ogImageAlt} />
 
     <FontLoading />
     <ClientRouter />
