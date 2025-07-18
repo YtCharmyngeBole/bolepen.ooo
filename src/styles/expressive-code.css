@@ -34,4 +34,75 @@
       filter: grayscale(50%) brightness(80%);
     }
   }
+
+  [data-language="rfc7468"] {
+    font-feature-settings: "calt" 0;
+  }
+
+  [data-language="coq"] {
+    font-feature-settings: "calt" 0, "COQX" 1;
+  }
+
+  [data-language="c"],
+  [data-language="cpp"] {
+    font-feature-settings: "calt" 0, "CLIK" 1;
+  }
+
+  [data-language="elm"] {
+    font-feature-settings: "calt" 0, "ELMX" 1;
+  }
+
+  [data-language="erlang"] {
+    font-feature-settings: "calt" 0, "ERLA" 1;
+  }
+
+  [data-language="fsharp"] {
+    font-feature-settings: "calt" 0, "FSHP" 1;
+  }
+
+  [data-language="haskell"] {
+    font-feature-settings: "calt" 0, "HSKL" 1;
+  }
+
+  [data-language="julia"] {
+    font-feature-settings: "calt" 0, "JLIA" 1;
+  }
+
+  [data-language="javascript"],
+  [data-language="typescript"] {
+    font-feature-settings: "calt" 0, "JSPT" 1;
+  }
+
+  [data-language="ocaml"] {
+    font-feature-settings: "calt" 0, "MLXX" 1;
+  }
+
+  [data-language="matlab"] {
+    font-feature-settings: "calt" 0, "MTLB" 1;
+  }
+
+  [data-language="php"] {
+    font-feature-settings: "calt" 0, "PHPX" 1;
+  }
+
+  [data-language="purescript"] {
+    font-feature-settings: "calt" 0, "PURS" 1;
+  }
+
+  [data-language="raku"] {
+    font-feature-settings: "calt" 0, "RAKU" 1;
+  }
+
+  [data-language="swift"] {
+    font-feature-settings: "calt" 0, "SWFT" 1;
+  }
+
+  [data-language="verilog"],
+  [data-language="system-verilog"] {
+    font-feature-settings: "calt" 0, "VRLG" 1;
+  }
+
+  [data-language="wolfram"] {
+    font-feature-settings: "calt" 0, "WFLM" 1;
+  }
 }

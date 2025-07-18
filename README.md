@@ -7,7 +7,6 @@ A *fursonal* website located at <https://bolepen.ooo>.
 
 ### Content
 
-- [ ] Adds a new **Character Sheet** page
 - [ ] Adds a mini web application to customize Artist's and Customer's Commissions Policy
 
 ### Design
@@ -19,8 +18,9 @@ A *fursonal* website located at <https://bolepen.ooo>.
 ### Technical
 
 - [ ] Use `catppuccin-latte` (light) theme for code block in printed media.
-- [ ] Write an Expressive Code plugin that applies the appropriate Iosevka font ligatures
-  based on the language of the code block (and allows users to override with meta-string).
+- [ ] Write an Expressive Code plugin that automatically applies
+  the appropriate Iosevka font ligatures based on the language of the code block
+  (and allows users to override with meta-string).
 - [ ] Combine a pair of Iosevka fonts, one using lining numbers and another using old-style numbers,
   and choose them via `font-variant-numeric` CSS property.
 
