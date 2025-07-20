@@ -3,6 +3,7 @@ name = "bolepen.ooo"
 version = "0.1.0"
 readme = "README.md"
 requires-python = ">=3.13"
+license = "Apache-2.0"
 classifiers = ["Private :: Do Not Upload"]
 
 dependencies = [
@@ -12,6 +13,7 @@ dependencies = [
     "textcase~=0.4.3",
     "tqdm~=4.66",
     "typer~=0.16",
+    "unicodedata2~=16.0",
 ]
 
 [[authors]]
@@ -24,6 +26,7 @@ dev = [
     "openai>=1.96.1",
     "pytest>=8.4.1",
     "python-lsp-server>=1.13.0",
+    "rich[jupyter]>=14.0",
     "ruff>=0.12.1",
     "sqlglot>=27.0.0",
     "vegafusion>=2.0.2",
