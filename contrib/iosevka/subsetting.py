@@ -444,7 +444,7 @@ def with_unicode_file[R](
         def wrapper(path: Path = None) -> R:
             if path is None:
                 with (
-                    urllib.request.urlopen(url) as response,
+                    urllib.request.urlopen(url) as response,  # noqa: S310
                     io.TextIOWrapper(response, encoding="utf-8") as f,
                 ):
                     return processor_func(f)

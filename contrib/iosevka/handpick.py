@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import marimo
 
 __generated_with = "0.14.12"
@@ -6,17 +8,14 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _():
-    from __future__ import annotations
-
     import sys
-    import unicodedata as ud
     from pathlib import Path
 
     import marimo as mo
     import tomli_w
     from fontTools import unicodedata
-
     from subsetting import UnicodeSubset, load_unicode_blocks_subsets, load_unicode_scripts_subsets
+
     return (
         Path,
         UnicodeSubset,
@@ -34,13 +33,11 @@ def _():
     from rich.console import Console
 
     console = Console()
-    return
 
 
 @app.cell
 def _(mo):
     mo.md(r"""## Iosevka entire collection""")
-    return
 
 
 @app.cell
@@ -54,7 +51,6 @@ def _(UnicodeSubset):
 @app.cell
 def _(mo):
     mo.md(r"""## Subsets based on Google Fonts""")
-    return
 
 
 @app.cell
@@ -70,7 +66,8 @@ def _(UnicodeSubset):
     )
 
     google_greek = UnicodeSubset.from_str(
-        "U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF", name="GoogleGreek"
+        "U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF",
+        name="GoogleGreek",
     )
 
     google_greek_ext = UnicodeSubset.from_str("U+1F00-1FFF", name="GoogleGreekExtended")
@@ -124,7 +121,6 @@ def _(UnicodeSubset):
 @app.cell
 def _(mo):
     mo.md(r"""## Subsets from Unicode blocks and script""")
-    return
 
 
 @app.cell
@@ -137,7 +133,6 @@ def _(load_unicode_blocks_subsets, load_unicode_scripts_subsets):
 @app.cell
 def _(mo):
     mo.md(r"""## Handcrafted subsets""")
-    return
 
 
 @app.cell
@@ -464,7 +459,6 @@ def _(
 @app.cell
 def _(mo):
     mo.md(r"""## Playground""")
-    return
 
 
 @app.cell
@@ -481,7 +475,6 @@ def _(Path, iosevka, selected_subsets, tomli_w):
 
     with Path("contrib/iosevka/handpick.partial.toml").open('wb') as f:
         tomli_w.dump(exporting_data, f)
-    return
 
 
 @app.cell
