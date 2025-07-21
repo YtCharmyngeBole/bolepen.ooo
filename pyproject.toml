@@ -11,6 +11,7 @@ dependencies = [
     "fonttools~=4.53",
     "rich~=14.0",
     "textcase~=0.4.3",
+    "tomli-w~=1.2",
     "tqdm~=4.66",
     "typer~=0.16",
     "unicodedata2~=16.0",
@@ -22,13 +23,17 @@ email = "165321522+YtCharmyngeBole@users.noreply.github.com"
 
 [dependency-groups]
 dev = [
-    "marimo>=0.14.10",
+    "altair>=5.5.0",
+    "duckdb>=1.3.2",
+    "marimo[lsp]>=0.14.10",
+    "nbformat>=5.10.4",
     "openai>=1.96.1",
     "pytest>=8.4.1",
     "python-lsp-server>=1.13.0",
     "rich[jupyter]>=14.0",
     "ruff>=0.12.1",
     "sqlglot>=27.0.0",
+    "ty>=0.0.1a15",
     "vegafusion>=2.0.2",
     "vl-convert-python>=1.8.0",
 ]
@@ -91,3 +96,7 @@ ignore-overlong-task-comments = true
 
 [tool.ruff.lint.pylint]
 max-args = 8
+
+[tool.marimo.language_servers.pylsp]
+enabled = true
+enable_ruff = true

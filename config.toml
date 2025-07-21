@@ -9,10 +9,10 @@
 build_plans = ["IosevkaCustomMono", "IosevkaCustomPropo"]
 build_plans_file = "contrib/iosevka/private-build-plans.toml"
 vendor_dir = "vendor/iosevka/"
-font_version = "33.2.6"
+font_version = "33.2.7"
 
 [iosevka.subsetting]
-build_suffix = 2
+build_suffix = 1
 subsets_config = "contrib/iosevka/subsets.toml"
 font_sample = "vendor/iosevka/dist/IosevkaCustomMono/WOFF2/IosevkaCustomMono-Regular.woff2"
 css_base_url = "/fonts/"

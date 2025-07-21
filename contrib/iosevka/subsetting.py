@@ -28,6 +28,7 @@ import shutil
 import subprocess
 import textwrap
 import tomllib
+import urllib.request
 import warnings
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import dataclass, field
@@ -47,7 +48,7 @@ from tqdm import TqdmExperimentalWarning
 from tqdm.rich import tqdm
 
 if TYPE_CHECKING:
-    from collections.abc import Iterable, Iterator
+    from collections.abc import Callable, Iterable, Iterator
 
 INFO = Style(color="gray74")
 RULE = Rule(style="gray19")
@@ -410,19 +411,100 @@ class FontSubsetTask:
 #                         ░
 # Provides functionality to work with Unicode ranges and subsets.
 #
-UNICODE_RANGE_RE = re.compile(r'(?:u|U\+)?([0-9A-Fa-f]+)(?:(?:-|..)(?:u|U\+)?([0-9A-Fa-f]+))?')
+UNICODE_BLOCKS_URL = "https://www.unicode.org/Public/UNIDATA/Blocks.txt"
+UNICODE_SCRIPTS_URL = "https://www.unicode.org/Public/UNIDATA/Scripts.txt"
+
+UNICODE_SCRIPTS_LINE_RE = re.compile(
+    r'^(?P<range>[0-9A-Fa-f]+(?:\.\.[0-9A-Fa-f]+)?)'
+    r'\s*;\s*(?P<script>\w+)$'
+)
+UNICODE_RANGE_RE = re.compile(
+    r'(?:u|U\+)?([0-9A-Fa-f]+)'
+    r'(?:(?:-|..)'
+    r'(?:u|U\+)?([0-9A-Fa-f]+))?'
+)
 UNICODE_FORMAT_SPEC_RE = re.compile(
-    r"(?P<start_prefix>(?:u|U\+)?)XXXX"
-    r"(?P<connector>-|..)"
-    r"(?P<end_prefix>(?:u|U\+)?)XXXX"
-    r"(?P<separator>[:;,\s]*)"
+    r'(?P<start_prefix>(?:u|U\+)?)XXXX'
+    r'(?P<connector>-|..)'
+    r'(?P<end_prefix>(?:u|U\+)?)XXXX'
+    r'(?P<separator>[:;,\s]*)'
 )
 
 
+def with_unicode_file[R](
+    *,
+    url: str,
+) -> Callable[[Callable[[io.TextIOWrapper], R]], Callable[[Path | None], R]]:
+    """
+    Decorates Unicode data loader functions to handle text files,
+    either from a local path or a URL.
+    """
+
+    def decorator(processor_func: Callable[[io.TextIOWrapper], R]) -> Callable[[Path | None], R]:
+        def wrapper(path: Path = None) -> R:
+            if path is None:
+                with (
+                    urllib.request.urlopen(url) as response,
+                    io.TextIOWrapper(response, encoding="utf-8") as f,
+                ):
+                    return processor_func(f)
+            else:
+                with path.open("r") as f:
+                    return processor_func(f)
+
+        return wrapper
+
+    return decorator
+
+
+@with_unicode_file(url=UNICODE_BLOCKS_URL)
+def load_unicode_blocks_subsets(file: io.TextIOWrapper) -> dict[str, UnicodeSubset]:
+    """
+    Loads Unicode subsets from the Unicode Blocks.txt file.
+    If `path` is not provided, it defaults to the Unicode Blocks.txt file
+    located at <https://www.unicode.org/Public/UNIDATA/Blocks.txt>.
+    """
+    blocks_subsets: dict[str, UnicodeSubset] = {}
+    for line in file:
+        line = strip_comment(line)
+        if not line:
+            continue
+        urange, block_name = line.split("; ")
+        blocks_subsets[block_name] = UnicodeSubset.from_str(urange).with_name(block_name)
+    return blocks_subsets
+
+
+@with_unicode_file(url=UNICODE_SCRIPTS_URL)
+def load_unicode_scripts_subsets(file: io.TextIOWrapper) -> dict[str, UnicodeSubset]:
+    """
+    Loads Unicode subsets from the Unicode Scripts.txt file.
+    If `path` is not provided, it defaults to the Unicode Scripts.txt file
+    located at <https://www.unicode.org/Public/UNIDATA/Scripts.txt>.
+    """
+    scripts_subsets: dict[str, UnicodeSubset] = {}
+    for line in file:
+        line = strip_comment(line)
+        match = re.match(UNICODE_SCRIPTS_LINE_RE, line)
+        if not match:
+            continue
+        urange = UnicodeRange.from_str(match.group("range"))
+        script = match.group("script")
+        if script not in scripts_subsets:
+            scripts_subsets[script] = UnicodeSubset(name=script)
+        scripts_subsets[script].update(urange)
+    return scripts_subsets
+
+
+#  ____        _              _       _____ _           _
+# / ___| _   _| |__  ___  ___| |_ ___|  ___(_)_ __   __| | ___ _ __
+# \___ \| | | | '_ \/ __|/ _ \ __/ __| |_  | | '_ \ / _` |/ _ \ '__|
+#  ___) | |_| | |_) \__ \  __/ |_\__ \  _| | | | | | (_| |  __/ |
+# |____/ \__,_|_.__/|___/\___|\__|___/_|   |_|_| |_|\__,_|\___|_|
+#
 @dataclass(frozen=True, kw_only=True)
 class SubsetsFinder:
     """
-    Computes a list of Unicode subsets indicating how to subset a font file
+    Computes a list of Unicode subsets indicating how to perform subsetting a font file
     based on a pre-configured subsets file.
 
     However, if a sample font is provided at the beginning,
@@ -450,40 +532,33 @@ class SubsetsFinder:
     @staticmethod
     def _compute_subsets(*, config_file: Path, font_file: Path) -> list[UnicodeSubset]:
         """
-        Reads the pre-computed Unicode subsets from the ranks file
+        Reads the pre-computed Unicode subsets from the subset config file
         and computes the subsets based on the provided font file.
-
-        TODO: Refactor how subsets are structured in ranks file.
         """
         with config_file.open("rb") as f:
             data = tomllib.load(f)
 
         subsets = []
 
-        common_unicodes = UnicodeSubset()
-        for k, v in data["codepoints"]["common"].items():
-            name = textcase.pascal(k)
-            subset = UnicodeSubset.from_str(v)
-            common_unicodes.update(subset)
-            subsets.append(subset.with_name(name))
+        used_unicodes = UnicodeSubset()
+        for k, v in data["subsets"]["handpick"].items():
+            subset = UnicodeSubset.from_str(v, name=textcase.pascal(k))
+            used_unicodes.update(subset)
+            subsets.append(subset)
 
-        handpicked_unicodes = UnicodeSubset()
-        for k, v in data["codepoints"]["handpick"].items():
-            name = textcase.pascal(k)
-            subset = UnicodeSubset.from_str(v) - common_unicodes
-            handpicked_unicodes.update(subset)
-            subsets.append(subset.with_name(name))
-
-        iosevka_unicodes = UnicodeSubset.from_font_file(font_file)
-        subset = iosevka_unicodes.difference(common_unicodes, handpicked_unicodes)
-        subsets.append(subset.with_name("Others"))
+        iosevka = UnicodeSubset.from_font_file(font_file)
+        others = iosevka.difference(used_unicodes).with_name("Others")
+        subsets.append(others)
 
         return subsets
 
-    # def validate_nonoverlapping_subsets(subsets: list[UnicodeSubset]) -> bool:
-    #     return all(p.is_disjoint(q) for p, q in itertools.combinations(subsets, 2))
 
-
+#  _   _       _               _      ____
+# | | | |_ __ (_) ___ ___   __| | ___|  _ \ __ _ _ __   __ _  ___
+# | | | | '_ \| |/ __/ _ \ / _` |/ _ \ |_) / _` | '_ \ / _` |/ _ \
+# | |_| | | | | | (_| (_) | (_| |  __/  _ < (_| | | | | (_| |  __/
+#  \___/|_| |_|_|\___\___/ \__,_|\___|_| \_\__,_|_| |_|\__, |\___|
+#                                                      |___/
 @dataclass(frozen=True, kw_only=True)
 class UnicodeRange:
     """
@@ -504,7 +579,7 @@ class UnicodeRange:
 
     #: The starting Unicode code point in the range.
     start: int
-    #: The ending Unicode code point in the range. It can be identical to `start`.
+    #: The ending Unicode code point in the range. Can be identical to `start`.
     end: int
 
     @classmethod
@@ -534,6 +609,12 @@ class UnicodeRange:
             return f"{start_prefix}{self.start:04X}{connector}{end_prefix}{self.end:04X}"
 
 
+#  _   _       _               _      ____        _              _
+# | | | |_ __ (_) ___ ___   __| | ___/ ___| _   _| |__  ___  ___| |_
+# | | | | '_ \| |/ __/ _ \ / _` |/ _ \___ \| | | | '_ \/ __|/ _ \ __|
+# | |_| | | | | | (_| (_) | (_| |  __/___) | |_| | |_) \__ \  __/ |_
+#  \___/|_| |_|_|\___\___/ \__,_|\___|____/ \__,_|_.__/|___/\___|\__|
+#
 @dataclass(kw_only=True)
 class UnicodeSubset:
     """
@@ -550,7 +631,7 @@ class UnicodeSubset:
     #: An optional name or identifier for the subset. Defaults to None.
     name: str | None = None
     #: A set containing Unicode code point integers representing the subset.
-    charset: set[int] = field(default_factory=set)
+    codepoints: set[int] = field(default_factory=set)
 
     #   ___         _ _             __  __     _   _            _
     #  / __|___  __| (_)_ _  __ _  |  \/  |___| |_| |_  ___  __| |___
@@ -559,27 +640,27 @@ class UnicodeSubset:
     #                       |___/
 
     @classmethod
-    def from_str(cls, s: str) -> Self:
+    def from_str(cls, s: str, *, name: str = None) -> Self:
         charset = set()
         for urange_str in s.split(","):
             urange = UnicodeRange.from_str(urange_str)
             charset.update(urange)
-        return cls(charset=charset)
+        return cls(codepoints=charset, name=name)
 
     @classmethod
-    def from_font_file(cls, font_file: Path) -> Self:
+    def from_font_file(cls, font_file: Path, *, name: str = None) -> Self:
         font = TTFont(os.fspath(font_file))
-        return cls.from_font(font)
+        return cls.from_font(font, name=name)
 
     @classmethod
-    def from_font(cls, font: TTFont) -> Self:
+    def from_font(cls, font: TTFont, *, name: str = None) -> Self:
         charset = {
             codepoint
             for table in font["cmap"].tables
             if table.isUnicode()
             for codepoint in table.cmap
         }
-        return cls(charset=charset)
+        return cls(codepoints=charset, name=name)
 
     def __format__(self, format_spec: str) -> str:
         match = UNICODE_FORMAT_SPEC_RE.fullmatch(format_spec)
@@ -600,16 +681,24 @@ class UnicodeSubset:
     # |___|\__\___|_|   |_|  |_\___|\__|_||_\___/\__,_/__/
     #
 
+    def sorted_codepoints(self) -> list[int]:
+        return sorted(self.codepoints)
+
     def sorted_uranges(self) -> Iterator[UnicodeRange]:
-        if not self.charset:
+        if not self.codepoints:
             return
-        charset = sorted(self.charset)
-        urange_start = charset[0]
-        for prev, curr in itertools.pairwise(charset):
+        codepoints = self.sorted_codepoints()
+        urange_start = codepoints[0]
+        for prev, curr in itertools.pairwise(codepoints):
             if curr > prev + 1:
                 yield UnicodeRange(start=urange_start, end=prev)
                 urange_start = curr
-        yield UnicodeRange(start=urange_start, end=charset[-1])
+        yield UnicodeRange(start=urange_start, end=codepoints[-1])
+
+    def sorted_debug_line(self) -> Iterator[str]:
+        for c in self.sorted_codepoints():
+            name = unicodedata.name(chr(c), "<undefined>")
+            yield f"{c:04X} {chr(c)!r} {name}"
 
     #  _  _                                    _
     # | \| |___ _ _ ___ ___ _ __  ___ _ _ __ _| |_ ___ _ _
@@ -621,23 +710,42 @@ class UnicodeSubset:
     # |___|_|_|_|_|_|_\_,_|\__\__,_|_.__/_\___| |_|  |_\___|\__|_||_\___/\__,_/__/
     #
 
-    def print_debug(self):
+    def print_debug(self, file: io.TextIOWrapper = None):
         name = self.name if self.name else "<unknown>"
-        count = len(self.charset)
-        subset_str = Padding(Text(format(self, "U+XXXX-XXXX,")), pad=(0, 0, 0, 4), style="green")
-        print(f"[bold]{name}[/] ({count}):", subset_str)
+        count = len(self.codepoints)
+        subset_str = format(self, "U+XXXX-XXXX, ")
+
+        if file is None:
+            print(Text(name, style="bold"), f"({count}):")
+            print(Padding(Text(subset_str, style="green"), pad=(0, 0, 0, 4)))
+        else:
+            file.write(f"{name} ({count}):\n")
+            file.write(f"    {subset_str}\n")
+
+    def print_debug_full(self, file: io.TextIOWrapper = None):
+        name = self.name if self.name else "<unknown>"
+        count = len(self.codepoints)
+
+        if file is None:
+            print(Text(name, style="bold"), f"({count}):")
+            for line in self.sorted_debug_line():
+                print(Padding(Text(line, style="dim"), pad=(0, 0, 0, 4)))
+        else:
+            file.write(f"{name} ({count}):\n")
+            for line in self.sorted_debug_line():
+                file.write(f"    {line}\n")
 
     def empty(self) -> bool:
-        return not bool(self.charset)
+        return not bool(self.codepoints)
 
     def is_disjoint(self, other: UnicodeSubset) -> bool:
-        return self.charset.isdisjoint(other.charset)
+        return self.codepoints.isdisjoint(other.codepoints)
 
     def is_subset(self, other: UnicodeSubset) -> bool:
-        return self.charset.issubset(other)
+        return self.codepoints.issubset(other)
 
     def is_superset(self, other: UnicodeSubset) -> bool:
-        return self.charset.issuperset(other)
+        return self.codepoints.issuperset(other)
 
     def union(self, *others: Iterable[int]) -> Self:
         new_subset = self.copy()
@@ -655,14 +763,14 @@ class UnicodeSubset:
         return new_subset
 
     def copy(self) -> Self:
-        return UnicodeSubset(charset=self.charset.copy())
+        return UnicodeSubset(codepoints=self.codepoints.copy())
 
     def with_name(self, name: str) -> Self:
-        return UnicodeSubset(name=name, charset=self.charset.copy())
+        return UnicodeSubset(name=name, codepoints=self.codepoints.copy())
 
     def without_invalid(self) -> Self:
         """Return a new UnicodeRanges with only valid code points."""
-        return UnicodeSubset({code for code in self.charset if self.check_valid(code)})
+        return UnicodeSubset({code for code in self.codepoints if self.check_valid(code)})
 
     #  _  _                                    _
     # | \| |___ _ _ ___ ___ _ __  ___ _ _ __ _| |_ ___ _ _
@@ -677,27 +785,27 @@ class UnicodeSubset:
     def add(self, code: int | str):
         code = self.ensure_code(code)
         if self.check_valid(code):
-            self.charset.add(code)
+            self.codepoints.add(code)
 
     def remove(self, code: int | str):
         code = self.ensure_code(code)
-        self.charset.remove(code)
+        self.codepoints.remove(code)
 
     def discard(self, code: int | str):
         code = self.ensure_code(code)
-        self.charset.discard(code)
+        self.codepoints.discard(code)
 
     def update(self, *others: Iterable[int]):
-        self.charset.update(*others)
+        self.codepoints.update(*others)
 
     def intersection_update(self, *others: Iterable[int]):
-        self.charset.intersection_update(*others)
+        self.codepoints.intersection_update(*others)
 
     def difference_update(self, *others: Iterable[int]):
-        self.charset.difference_update(*others)
+        self.codepoints.difference_update(*others)
 
     def clear_invalid(self):
-        self.charset = {code for code in self.charset if self.check_valid(code)}
+        self.codepoints = {code for code in self.codepoints if self.check_valid(code)}
 
     #  ___ _        _   _      _  _     _                 __  __     _   _            _
     # / __| |_ __ _| |_(_)__  | || |___| |_ __  ___ _ _  |  \/  |___| |_| |_  ___  __| |___
@@ -730,16 +838,16 @@ class UnicodeSubset:
         if self.name is None:
             return f"{self.__class__.__name__}.from_str({s!r})"
         else:
-            return f"{self.__class__.__name__}.from_str({s!r}).with_name({self.name!r})"
+            return f"{self.__class__.__name__}.from_str({s!r}, name={self.name!r})"
 
     def __len__(self):
-        return len(self.charset)
+        return len(self.codepoints)
 
     def __contains__(self, code):
-        return code in self.charset
+        return code in self.codepoints
 
     def __iter__(self) -> Iterator[int]:
-        return iter(self.charset)
+        return iter(self.codepoints)
 
     def __le__(self, other: UnicodeSubset) -> bool:
         if not isinstance(other, self.__class__):
@@ -747,7 +855,7 @@ class UnicodeSubset:
                 f"unsupported operand type(s) for <=: "
                 f"'{self.__class__.__name__}' and '{type(other).__name__}'"
             )
-        return self.charset <= other.charset
+        return self.codepoints <= other.codepoints
 
     def __lt__(self, other: UnicodeSubset) -> bool:
         if not isinstance(other, self.__class__):
@@ -755,7 +863,7 @@ class UnicodeSubset:
                 f"unsupported operand type(s) for <: "
                 f"'{self.__class__.__name__}' and '{type(other).__name__}'"
             )
-        return self.charset < other.charset
+        return self.codepoints < other.codepoints
 
     def __ge__(self, other: UnicodeSubset) -> bool:
         if not isinstance(other, self.__class__):
@@ -763,7 +871,7 @@ class UnicodeSubset:
                 f"unsupported operand type(s) for >=: "
                 f"'{self.__class__.__name__}' and '{type(other).__name__}'"
             )
-        return self.charset >= other.charset
+        return self.codepoints >= other.codepoints
 
     def __gt__(self, other: UnicodeSubset) -> bool:
         if not isinstance(other, self.__class__):
@@ -771,7 +879,7 @@ class UnicodeSubset:
                 f"unsupported operand type(s) for >: "
                 f"'{self.__class__.__name__}' and '{type(other).__name__}'"
             )
-        return self.charset > other.charset
+        return self.codepoints > other.codepoints
 
     def __or__(self, other: Iterable[int]) -> Self:
         if not isinstance(other, self.__class__):
@@ -1041,6 +1149,11 @@ class FontStyleParser:
 #  ▒ ░▒░ ░ ░ ░  ░░ ░ ▒  ░░▒ ░      ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
 #  ░  ░░ ░   ░     ░ ░   ░░          ░     ░░   ░ ░  ░  ░
 #  ░  ░  ░   ░  ░    ░  ░            ░  ░   ░           ░
+
+
+def strip_comment(s: str) -> str:
+    pos = s.find("#")
+    return s[:pos].strip() if pos != -1 else s.strip()
 
 
 def rich_string[**P](*args: P.args, end: str = "", **kwargs: P.kwargs) -> str:

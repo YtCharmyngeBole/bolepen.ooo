@@ -20,7 +20,7 @@ export const SITE = {
       alt: 'A cartoon illustration features a muscular, purple and pink dog-like character with a large chest and belly, wearing yellow and white briefs. The character has an open-mouthed smile, showing white teeth and a normal-colored tongue, with orange face paint markings on its cheeks. Its right arm is raised in a thumbs-up gesture. Behind the character are light pink cloud shapes. To the left, text reads "That Charming BOLE" in purple, followed by some non-descriptive text in light pink. Below that is "https://bolepen.ooo" the URL of the website. The background is a light pink with a subtle pattern of vertical dashed lines.',
     },
     mainFont: {
-      path: "/fonts/IosevkaCustomPropo-33.2.6-2/IosevkaCustomPropo-Regular-Latin.woff2",
+      path: "/fonts/IosevkaCustomPropo-33.2.7-1/IosevkaCustomPropo-Regular-Latin.woff2",
       linkType: "font/woff2",
     },
   },
