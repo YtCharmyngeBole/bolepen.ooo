@@ -372,3 +372,4 @@ vite.config.ts.timestamp-*
 
 # Force includes lib/ at project root (overrides python's section)
 !/lib/
+.astro/
