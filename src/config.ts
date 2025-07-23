@@ -23,6 +23,7 @@ export const SITE = {
       path: "/fonts/IosevkaCustomPropo-33.2.7-2/IosevkaCustomPropo-Regular-Latin.woff2",
       linkType: "font/woff2",
     },
+    expressiveCodePrintTheme: "catppuccin-latte",
   },
 } as const;
 

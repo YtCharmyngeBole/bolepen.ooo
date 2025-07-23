@@ -26,6 +26,8 @@ const {
 const title = rawTitle
   ? `${rawTitle} :: ${SITE.metadata.title}`
   : SITE.metadata.fullTitle;
+
+const expressiveCodePrintTheme = SITE.theme.expressiveCodePrintTheme;
 ---
 
 <!doctype html>
@@ -97,5 +99,20 @@ const title = rawTitle
   </head>
   <body>
     <slot />
+    <script>
+      import { addPrintEventListener } from "#src/scripts/print.ts";
+
+      const htmlElement = document.querySelector("html");
+      if (htmlElement) {
+        addPrintEventListener({
+          onPrintStart() {
+            htmlElement.dataset.theme = "catppuccin-latte";
+          },
+          onPrintEnd() {
+            delete htmlElement.dataset.theme;
+          },
+        });
+      }
+    </script>
   </body>
 </html>

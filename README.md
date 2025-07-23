@@ -15,15 +15,6 @@ A *fursonal* website located at <https://bolepen.ooo>.
   - [ ] Greek adornment patterns on the header and footer area
   - [ ] Animated background SVGs
 
-### Technical
-
-- [ ] Use `catppuccin-latte` (light) theme for code block in printed media.
-- [ ] Write an Expressive Code plugin that automatically applies
-  the appropriate Iosevka font ligatures based on the language of the code block
-  (and allows users to override with meta-string).
-- [ ] Combine a pair of Iosevka fonts, one using lining numbers and another using old-style numbers,
-  and choose them via `font-variant-numeric` CSS property.
-
 
 ## License
 
