@@ -22,6 +22,7 @@
 
 .expressive-code {
   break-inside: avoid;
+  print-color-adjust: exact;
 
   .code {
     letter-spacing: var(--tracking-wide);
@@ -39,17 +40,17 @@
     font-feature-settings: "calt" 0;
   }
 
-  [data-language="coq"] {
-    font-feature-settings:
-      "calt" 0,
-      "COQX" 1;
-  }
-
   [data-language="c"],
   [data-language="cpp"] {
     font-feature-settings:
       "calt" 0,
       "CLIK" 1;
+  }
+
+  [data-language="coq"] {
+    font-feature-settings:
+      "calt" 0,
+      "COQX" 1;
   }
 
   [data-language="elm"] {

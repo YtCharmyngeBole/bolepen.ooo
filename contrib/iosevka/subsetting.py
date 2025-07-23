@@ -49,6 +49,9 @@ from tqdm.rich import tqdm
 if TYPE_CHECKING:
     from collections.abc import Callable, Iterable, Iterator
 
+EXTRA_LAYOUT_FEATURES = "lnum,onum,CLIK,COQX,DFNY,ELMX,ERLA,FSHP,FSTA,HSKL,IDRS,JLIA,JSPT,MLXX,MTLB,PHPX,PURS,RAKU,SWFT,VRLG,WFLM"
+REMOVE_LAYOUT_FEATURES = "frac,numr,dnom"
+
 INFO = Style(color="gray74")
 RULE = Rule(style="gray19")
 
@@ -361,7 +364,8 @@ class FontSubsetTask:
             f"--unicodes={self.subset:U+XXXX-XXXX,}",
             "--flavor=woff2",
             f"--output-file={os.fspath(self.output_font)}",
-            "--layout-features+=lnum,onum",
+            f"--layout-features+={EXTRA_LAYOUT_FEATURES}",
+            f"--layout-features-={REMOVE_LAYOUT_FEATURES}",
         ]
         self.output_font.parent.mkdir(parents=True, exist_ok=True)
         subset.main(args)

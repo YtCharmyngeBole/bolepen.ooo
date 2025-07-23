@@ -12,7 +12,7 @@ vendor_dir = "vendor/iosevka/"
 font_version = "33.2.7"
 
 [iosevka.subsetting]
-build_suffix = 2
+build_suffix = 3
 subsets_config = "contrib/iosevka/subsets.toml"
 font_sample = "vendor/iosevka/dist/IosevkaCustomMono/WOFF2/IosevkaCustomMono-Regular.woff2"
 css_base_url = "/fonts/"
@@ -43,7 +43,7 @@ backgroundColor = "#0e0911"
 expressiveCodePrintTheme = "catppuccin-latte"
 
 [site.theme.mainFont]
-path = "/fonts/IosevkaCustomPropo-33.2.7-2/IosevkaCustomPropo-Regular-Latin.woff2"
+path = "/fonts/IosevkaCustomPropo-33.2.7-3/IosevkaCustomPropo-Regular-Latin.woff2"
 linkType = "font/woff2"
 
 [site.ogImage]
