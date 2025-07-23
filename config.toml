@@ -12,7 +12,7 @@ vendor_dir = "vendor/iosevka/"
 font_version = "33.2.7"
 
 [iosevka.subsetting]
-build_suffix = 1
+build_suffix = 2
 subsets_config = "contrib/iosevka/subsets.toml"
 font_sample = "vendor/iosevka/dist/IosevkaCustomMono/WOFF2/IosevkaCustomMono-Regular.woff2"
 css_base_url = "/fonts/"

@@ -25,7 +25,6 @@ import itertools
 import os
 import re
 import shutil
-import subprocess
 import textwrap
 import tomllib
 import urllib.request
@@ -37,7 +36,7 @@ from typing import TYPE_CHECKING, Annotated, NoReturn, Self
 
 import textcase
 import typer
-from fontTools import unicodedata
+from fontTools import subset, unicodedata
 from fontTools.ttLib import TTFont
 from rich.console import Console
 from rich.padding import Padding
@@ -358,14 +357,15 @@ class FontSubsetTask:
 
     def build_subset(self):
         args = [
-            "pyftsubset",
             os.fspath(self.input_font),
             f"--unicodes={self.subset:U+XXXX-XXXX,}",
             "--flavor=woff2",
             f"--output-file={os.fspath(self.output_font)}",
+            "--layout-features+=lnum,onum",
         ]
         self.output_font.parent.mkdir(parents=True, exist_ok=True)
-        subprocess.run(args, capture_output=True, check=True)  # noqa: S603
+        subset.main(args)
+        # subprocess.run(args, capture_output=True, check=True)
 
     def generate_css(self) -> str:
         return textwrap.dedent(f"""\
