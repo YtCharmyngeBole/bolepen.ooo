@@ -165,7 +165,7 @@
 
 /* Utility to highlight the fursona name */
 @utility bole {
-  letter-spacing: var(--tracking-wider);
+  letter-spacing: var(--tracking-wide);
   font-weight: var(--font-weight-extrabold);
   color: var(--color-bole);
 }
