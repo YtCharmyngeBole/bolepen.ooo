@@ -9,6 +9,9 @@
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
+      },
+      {
+        "name": "typescript-plugin-toml"
       }
     ]
   }

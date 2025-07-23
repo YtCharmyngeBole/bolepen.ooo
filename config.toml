@@ -17,3 +17,75 @@ subsets_config = "contrib/iosevka/subsets.toml"
 font_sample = "vendor/iosevka/dist/IosevkaCustomMono/WOFF2/IosevkaCustomMono-Regular.woff2"
 css_base_url = "/fonts/"
 output_dir = "public/fonts/"
+
+#   ____  _ _          ____             __ _
+# / ___|(_) |_ ___   / ___|___  _ __  / _(_) __ _
+# \___ \| | __/ _ \ | |   / _ \| '_ \| |_| |/ _` |
+#  ___) | | ||  __/ | |__| (_) | | | |  _| | (_| |
+# |____/|_|\__\___|  \____\___/|_| |_|_| |_|\__, |
+#                                           |___/
+
+[site]
+baseUrl = "https://bolepen.ooo"
+
+[site.metadata]
+author = "That Charming BOLE"
+shortTitle = "Bolepen"
+title = "In the Bolepen"
+fullTitle = "In the Bolepen: Habitat of That Charming BOLE"
+shortDescription = "Fursonal website for That Charming BOLE"
+description = "Welcome to the home base of That Charming BOLE, your friendly free-spirited doggo. I love belly rubs, making new friends, and sharing my adventures. Come on in and have a look around! Why wait? I don’t bite!"
+startYear = 2023
+
+[site.theme]
+color = "#48215b"
+backgroundColor = "#0e0911"
+expressiveCodePrintTheme = "catppuccin-latte"
+
+[site.theme.mainFont]
+path = "/fonts/IosevkaCustomPropo-33.2.7-2/IosevkaCustomPropo-Regular-Latin.woff2"
+linkType = "font/woff2"
+
+[site.ogImage]
+src = "src/images/ogimage.png"
+alt = 'A cartoon illustration features a muscular, purple and pink dog-like character with a large chest and belly, wearing yellow and white briefs. The character has an open-mouthed smile, showing white teeth and a normal-colored tongue, with orange face paint markings on its cheeks. Its right arm is raised in a thumbs-up gesture. Behind the character are light pink cloud shapes. To the left, text reads "That Charming BOLE" in purple, followed by some non-descriptive text in light pink. Below that is "https://bolepen.ooo" the URL of the website. The background is a light pink with a subtle pattern of vertical dashed lines.'
+
+[[site.mediaLinks]]
+name = "Facebook"
+iconifyClass = "media--feesubukku"
+href = "https://facebook.com/YtCharmyngeBole"
+
+[[site.mediaLinks]]
+name = "Instagram"
+iconifyClass = "media--innsuta"
+href = "https://instagram.com/YtCharmyngeBole"
+
+[[site.mediaLinks]]
+name = "Bluesky"
+iconifyClass = "media--bluesky"
+href = "https://bsky.app/profile/bolepen.ooo"
+
+[[site.mediaLinks]]
+name = "GitHub"
+iconifyClass = "media--github"
+href = "https://github.com/YtCharmyngeBole"
+
+[[site.mediaLinks]]
+name = "Discord"
+iconifyClass = "media--discord"
+href = "https://discordapp.com/users/1218406319124512821"
+
+[[site.mediaLinks]]
+name = "BARQ!"
+iconifyClass = "media--barq"
+href = "https://barq.app/@YtCharmyngeBole"
+
+[[site.mediaLinks]]
+name = "Plurk"
+iconifyClass = "media--plurk"
+href = "https://plurk.com/YtCharmyngeBole"
+
+[[site.mediaLinks]]
+name = "Mastodon"
+iconifyClass = "media--mastodon"
+href = "https://furry.engineer/@YtCharmyngeBole"

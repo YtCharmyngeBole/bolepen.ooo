@@ -1,9 +1,10 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
-import { SITE } from "#src/config.ts";
+import CONFIG from "#root/config.toml";
 import FontLoading from "#src/fonts/FontLoading.astro";
 import "#src/styles/index.css";
+import { loadImageDynamic } from "#src/utils/images.ts";
 
 export interface Props {
   title?: string;
@@ -16,18 +17,16 @@ export interface Props {
 
 const {
   title: rawTitle,
-  author = SITE.metadata.author,
-  description = SITE.metadata.description,
-  ogImageSrc = new URL(SITE.theme.ogImage.src, Astro.site).href,
-  ogImageAlt = SITE.theme.ogImage.alt,
+  author = CONFIG.site.metadata.author,
+  description = CONFIG.site.metadata.description,
+  ogImageSrc = (await loadImageDynamic(CONFIG.site.ogImage.src))?.src,
+  ogImageAlt = CONFIG.site.ogImage.alt,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 
 const title = rawTitle
-  ? `${rawTitle} :: ${SITE.metadata.title}`
-  : SITE.metadata.fullTitle;
-
-const expressiveCodePrintTheme = SITE.theme.expressiveCodePrintTheme;
+  ? `${rawTitle} :: ${CONFIG.site.metadata.title}`
+  : CONFIG.site.metadata.fullTitle;
 ---
 
 <!doctype html>
@@ -38,7 +37,7 @@ const expressiveCodePrintTheme = SITE.theme.expressiveCodePrintTheme;
     <!-- Theming Metadata -->
     <meta name="viewport" content="width=device-width" />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content={SITE.theme.color} />
+    <meta name="theme-color" content={CONFIG.site.theme.color} />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -70,7 +69,7 @@ const expressiveCodePrintTheme = SITE.theme.expressiveCodePrintTheme;
     <meta name="title" content={title} />
     <meta
       name="apple-mobile-web-app-title"
-      content={SITE.metadata.shortTitle}
+      content={CONFIG.site.metadata.shortTitle}
     />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
@@ -84,7 +83,7 @@ const expressiveCodePrintTheme = SITE.theme.expressiveCodePrintTheme;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageSrc} />
-    <meta property="og:image:alt" content={ogImageSrc} />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -100,13 +99,15 @@ const expressiveCodePrintTheme = SITE.theme.expressiveCodePrintTheme;
   <body>
     <slot />
     <script>
+      import CONFIG from "#root/config.toml";
       import { addPrintEventListener } from "#src/scripts/print.ts";
 
       const htmlElement = document.querySelector("html");
       if (htmlElement) {
         addPrintEventListener({
           onPrintStart() {
-            htmlElement.dataset.theme = "catppuccin-latte";
+            htmlElement.dataset.theme =
+              CONFIG.site.theme.expressiveCodePrintTheme;
           },
           onPrintEnd() {
             delete htmlElement.dataset.theme;

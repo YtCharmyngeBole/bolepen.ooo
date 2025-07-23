@@ -14,6 +14,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeUnwrapImages from "rehype-unwrap-images";
+import { ViteToml } from "vite-plugin-toml";
 
 import { pluginPlaceholderMarker } from "./lib/expressive-code/plugin-placeholder-marker.ts";
 import { langs } from "./lib/shiki/languages.ts";
@@ -131,7 +132,7 @@ export default defineConfig({
   prefetch: true,
   integrations: [sitemap(), astroExpressiveCode(expressiveCodeConfig), mdx()],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), ViteToml()],
   },
   image: {
     responsiveStyles: true,

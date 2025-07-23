@@ -1,13 +1,13 @@
-import { SITE } from "#src/config.ts";
+import CONFIG from "#root/config.toml";
 
 /**
  * Generates a web manifest file for the site.
  */
 export async function GET() {
   const data = {
-    name: SITE.metadata.title,
-    short_name: SITE.metadata.shortTitle,
-    description: SITE.metadata.shortDescription,
+    name: CONFIG.site.metadata.title,
+    short_name: CONFIG.site.metadata.shortTitle,
+    description: CONFIG.site.metadata.shortDescription,
     icons: [
       {
         src: "/favicons/pwa-192x192.png",
@@ -30,8 +30,8 @@ export async function GET() {
     ],
     start_url: "/",
     display: "minimal-ui",
-    background_color: SITE.theme.backgroundColor,
-    theme_color: SITE.theme.color,
+    background_color: CONFIG.site.theme.backgroundColor,
+    theme_color: CONFIG.site.theme.color,
   };
   return new Response(JSON.stringify(data));
 }
