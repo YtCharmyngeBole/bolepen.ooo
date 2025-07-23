@@ -1,6 +1,5 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import solidJs from "@astrojs/solid-js";
 import tailwindcss from "@tailwindcss/vite";
 import type { AstroUserConfig } from "astro";
 import { defineConfig } from "astro/config";
@@ -130,12 +129,7 @@ const customTwemojiConfig = {
 export default defineConfig({
   site: "https://bolepen.ooo",
   prefetch: true,
-  integrations: [
-    sitemap(),
-    astroExpressiveCode(expressiveCodeConfig),
-    mdx(),
-    solidJs(),
-  ],
+  integrations: [sitemap(), astroExpressiveCode(expressiveCodeConfig), mdx()],
   vite: {
     plugins: [tailwindcss()],
   },

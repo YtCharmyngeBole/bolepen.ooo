@@ -78,7 +78,7 @@
     }
 
     .icon--external-link {
-      @apply mx-px iconify opacity-50 mingcute--external-link-line;
+      @apply iconify opacity-50 heroicons--arrow-top-right-on-square-16-solid;
 
       @variant print {
         display: none;

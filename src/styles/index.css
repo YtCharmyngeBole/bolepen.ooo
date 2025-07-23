@@ -92,6 +92,21 @@
   --breakpoint-*: initial;
   --breakpoint-tablet: 36rem;
   --breakpoint-desktop: 72rem;
+
+  /* Animations */
+  --animate-go-next: go-next 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+
+  @keyframes go-next {
+    0%,
+    95%,
+    100% {
+      transform: translateX(0);
+    }
+    45%,
+    50% {
+      transform: translateX(0.3em);
+    }
+  }
 }
 
 /*
