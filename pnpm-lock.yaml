@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@abhabongse/rehype-enhanced-alert':
+        specifier: jsr:^0.1.5
+        version: '@jsr/abhabongse__rehype-enhanced-alert@0.1.5'
       '@astrojs/check':
         specifier: ^0.9.4
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.6.2)(typescript@5.8.3)
@@ -749,6 +752,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.29':
     resolution: {integrity: sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ==}
+
+  '@jsr/abhabongse__rehype-enhanced-alert@0.1.5':
+    resolution: {integrity: sha512-CFqP75Q6Au3tAj7//jJvTRuWblll+h7/xgZbeuK0YnQSev5wUgySsRPk6EoTc71OLXqix7vHQuwZ2bXnWyezhQ==, tarball: https://npm.jsr.io/~/11/@jsr/abhabongse__rehype-enhanced-alert/0.1.5.tgz}
 
   '@jsr/std__collections@1.1.2':
     resolution: {integrity: sha512-Fen3UrxGCxzra/QGhv6DNEKkzV6OCmWhN090iUF6Q4HRXYsSz9YoFnKci53QPXKnIlaBdha70QiSZDi127OKfQ==, tarball: https://npm.jsr.io/~/11/@jsr/std__collections/1.1.2.tgz}
@@ -1756,6 +1762,10 @@ packages:
 
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
+
+  hast@1.0.0:
+    resolution: {integrity: sha512-vFUqlRV5C+xqP76Wwq2SrM0kipnmpxJm7OfvVXpB35Fp+Fn4MV+ozr+JZr5qFvyR1q/U+Foim2x+3P+x9S1PLA==}
+    deprecated: Renamed to rehype
 
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
@@ -3942,6 +3952,15 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.4
 
+  '@jsr/abhabongse__rehype-enhanced-alert@0.1.5':
+    dependencies:
+      hast: 1.0.0
+      hast-util-whitespace: 3.0.0
+      hastscript: 9.0.1
+      unified: 11.0.5
+      unist-util-is: 6.0.0
+      unist-util-visit: 5.0.0
+
   '@jsr/std__collections@1.1.2': {}
 
   '@jsr/std__toml@1.0.8':
@@ -5232,6 +5251,8 @@ snapshots:
   hast-util-whitespace@3.0.0:
     dependencies:
       '@types/hast': 3.0.4
+
+  hast@1.0.0: {}
 
   hastscript@9.0.1:
     dependencies:

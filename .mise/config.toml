@@ -5,7 +5,7 @@ min_version = "2025.6.0"
 "aqua:charmbracelet/gum" = "latest"
 "aqua:ianlewis/todos" = "latest"
 "aqua:mikefarah/yq" = "latest"
-#node = "24"
+node = "24"
 python = "3.13"
 
 [env]

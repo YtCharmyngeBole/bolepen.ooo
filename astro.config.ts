@@ -1,3 +1,4 @@
+import { builder as rehypeEnhancedAlert } from "@abhabongse/rehype-enhanced-alert/builder";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -18,7 +19,6 @@ import { ViteToml } from "vite-plugin-toml";
 
 import { pluginPlaceholderMarker } from "./lib/expressive-code/plugin-placeholder-marker.ts";
 import { langs } from "./lib/shiki/languages.ts";
-import { builder as rehypeCustomAlert } from "./lib/unified/rehype-custom-alert.ts";
 import rehypeCustomTwemoji from "./lib/unified/rehype-custom-twemoji.ts";
 
 /*
@@ -145,8 +145,8 @@ export default defineConfig({
       [rehypeAutolinkHeadings, autolinkHeadingsConfig],
       [rehypeExternalLinks, externalLinksConfig],
       rehypeUnwrapImages,
-      [rehypeCustomAlert(), smallnoteAlertConfig],
-      [rehypeCustomAlert(), customAlertConfig],
+      [rehypeEnhancedAlert(), smallnoteAlertConfig],
+      [rehypeEnhancedAlert(), customAlertConfig],
       [rehypeCustomTwemoji, customTwemojiConfig],
     ],
     smartypants: false,
