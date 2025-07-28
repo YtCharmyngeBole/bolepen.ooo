@@ -1,4 +1,5 @@
 import { builder as rehypeEnhancedAlert } from "@abhabongse/rehype-enhanced-alert/builder";
+import { rehypeReplaceTwemoji } from "@abhabongse/rehype-replace-twemoji";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -19,7 +20,6 @@ import { ViteToml } from "vite-plugin-toml";
 
 import { pluginPlaceholderMarker } from "./lib/expressive-code/plugin-placeholder-marker.ts";
 import { langs } from "./lib/shiki/languages.ts";
-import rehypeCustomTwemoji from "./lib/unified/rehype-custom-twemoji.ts";
 
 /*
  *  _____                              _              ____          _         ____             __ _
@@ -89,7 +89,7 @@ const externalLinksConfig = {
   },
 };
 
-// Configure Custom Alert plugin for type "SMALLNOTE"
+// Configure alert plugin for type "SMALLNOTE"
 function smallnoteAlertConfig(
   alertType: string,
   displayText: string,
@@ -105,14 +105,14 @@ function smallnoteAlertConfig(
   ]);
 }
 
-// Configure Custom Alert plugin for other alert types
-const customAlertConfig = {
+// Configure alert plugin for all other alert types
+const fallbackAlertConfig = {
   allowedTypes: true,
   allowsCustomHeading: false,
 };
 
-// Configure Custom Twemoji plugin to use local SVGs
-const customTwemojiConfig = {
+// Configure Twemoji plugin to use local SVGs
+const replaceTwemojiConfig = {
   className: "twemoji",
   callback(icon: string): string {
     return `/twemoji/${icon}.svg`;
@@ -146,8 +146,8 @@ export default defineConfig({
       [rehypeExternalLinks, externalLinksConfig],
       rehypeUnwrapImages,
       [rehypeEnhancedAlert(), smallnoteAlertConfig],
-      [rehypeEnhancedAlert(), customAlertConfig],
-      [rehypeCustomTwemoji, customTwemojiConfig],
+      [rehypeEnhancedAlert(), fallbackAlertConfig],
+      [rehypeReplaceTwemoji, replaceTwemojiConfig],
     ],
     smartypants: false,
   },
