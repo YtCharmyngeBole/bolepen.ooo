@@ -1,7 +1,10 @@
+import fs from "node:fs";
+
 import { builder as rehypeEnhancedAlert } from "@abhabongse/rehype-enhanced-alert/builder";
 import { rehypeReplaceTwemoji } from "@abhabongse/rehype-replace-twemoji";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import { parse as parseToml } from "@std/toml";
 import tailwindcss from "@tailwindcss/vite";
 import type { AstroUserConfig } from "astro";
 import { defineConfig } from "astro/config";
@@ -20,6 +23,9 @@ import { ViteToml } from "vite-plugin-toml";
 
 import { pluginPlaceholderMarker } from "./lib/expressive-code/plugin-placeholder-marker.ts";
 import { langs } from "./lib/shiki/languages.ts";
+
+const rawConfig = fs.readFileSync("./config.toml", "utf-8");
+const config = parseToml(rawConfig) as Config;
 
 /*
  *  _____                              _              ____          _         ____             __ _
@@ -128,7 +134,7 @@ const replaceTwemojiConfig = {
  *                                                                            |___/
  */
 export default defineConfig({
-  site: "https://bolepen.ooo",
+  site: config.site.baseUrl,
   prefetch: true,
   integrations: [sitemap(), astroExpressiveCode(expressiveCodeConfig), mdx()],
   vite: {
