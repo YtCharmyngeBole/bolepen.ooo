@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "license": "Proprietary",
+  "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "start": "pnpm run dev",
@@ -11,12 +12,11 @@
     "preview": "astro preview --host=0.0.0.0"
   },
   "imports": {
-    "#root/*": "./*",
-    "#src/*": "./src/*",
-    "#components/*": "./src/components/*",
-    "#layouts/*": "./src/layouts/*",
-    "#lib/*": "./src/lib/*",
-    "#writeups/*": "./src/writeups/*"
+    "~/*": "./*",
+    "~components/*": "./src/components/*",
+    "~layouts/*": "./src/layouts/*",
+    "~styles/*": "./src/styles/*",
+    "~writeups/*": "./src/writeups/*"
   },
   "dependencies": {
     "@abhabongse/rehype-enhanced-alert": "jsr:^0.1.6",

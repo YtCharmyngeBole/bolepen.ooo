@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
 
-import MediaLink from "#layouts/MediaLink.astro";
-import config from "#root/config.toml";
-import imgProfilePic from "#src/images/profilepic.png";
+import config from "~/config.toml";
+import imgProfilePic from "~/src/images/profilepic.png";
+import MediaLink from "~layouts/MediaLink.astro";
 ---
 
 <header
@@ -35,7 +35,7 @@ import imgProfilePic from "#src/images/profilepic.png";
 </header>
 
 <style>
-  @reference "#src/styles/index.css";
+  @reference "~/src/styles/index.css";
 
   :root {
     --color-name: oklch(87.16% 0.043 54.36);

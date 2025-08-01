@@ -1,10 +1,10 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
-import config from "#root/config.toml";
-import FontLoading from "#src/fonts/FontLoading.astro";
-import "#src/styles/index.css";
-import { loadImageDynamic } from "#src/utils/images.ts";
+import config from "~/config.toml";
+import FontLoading from "~/src/fonts/FontLoading.astro";
+import "~/src/styles/index.css";
+import { loadImageDynamic } from "~/src/utils/images.ts";
 
 export interface Props {
   title?: string;
@@ -99,8 +99,8 @@ const title = rawTitle
   <body>
     <slot />
     <script>
-      import config from "#root/config.toml";
-      import { addPrintEventListener } from "#src/scripts/print.ts";
+      import config from "~/config.toml";
+      import { addPrintEventListener } from "~/src/scripts/print.ts";
 
       const htmlElement = document.querySelector("html");
       if (htmlElement) {

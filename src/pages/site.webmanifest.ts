@@ -1,4 +1,4 @@
-import config from "#root/config.toml";
+import config from "~/config.toml";
 
 /**
  * Generates a web manifest file for the site.
