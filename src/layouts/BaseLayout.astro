@@ -1,7 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
-import CONFIG from "#root/config.toml";
+import config from "#root/config.toml";
 import FontLoading from "#src/fonts/FontLoading.astro";
 import "#src/styles/index.css";
 import { loadImageDynamic } from "#src/utils/images.ts";
@@ -17,16 +17,16 @@ export interface Props {
 
 const {
   title: rawTitle,
-  author = CONFIG.site.metadata.author,
-  description = CONFIG.site.metadata.description,
-  ogImageSrc = (await loadImageDynamic(CONFIG.site.ogImage.src))?.src,
-  ogImageAlt = CONFIG.site.ogImage.alt,
+  author = config.site.metadata.author,
+  description = config.site.metadata.description,
+  ogImageSrc = (await loadImageDynamic(config.site.ogImage.src))?.src,
+  ogImageAlt = config.site.ogImage.alt,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
 
 const title = rawTitle
-  ? `${rawTitle} :: ${CONFIG.site.metadata.title}`
-  : CONFIG.site.metadata.fullTitle;
+  ? `${rawTitle} :: ${config.site.metadata.title}`
+  : config.site.metadata.fullTitle;
 ---
 
 <!doctype html>
@@ -37,7 +37,7 @@ const title = rawTitle
     <!-- Theming Metadata -->
     <meta name="viewport" content="width=device-width" />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content={CONFIG.site.theme.color} />
+    <meta name="theme-color" content={config.site.theme.color} />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -69,7 +69,7 @@ const title = rawTitle
     <meta name="title" content={title} />
     <meta
       name="apple-mobile-web-app-title"
-      content={CONFIG.site.metadata.shortTitle}
+      content={config.site.metadata.shortTitle}
     />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
@@ -99,7 +99,7 @@ const title = rawTitle
   <body>
     <slot />
     <script>
-      import CONFIG from "#root/config.toml";
+      import config from "#root/config.toml";
       import { addPrintEventListener } from "#src/scripts/print.ts";
 
       const htmlElement = document.querySelector("html");
@@ -107,7 +107,7 @@ const title = rawTitle
         addPrintEventListener({
           onPrintStart() {
             htmlElement.dataset.theme =
-              CONFIG.site.theme.expressiveCodePrintTheme;
+              config.site.theme.expressiveCodePrintTheme;
           },
           onPrintEnd() {
             delete htmlElement.dataset.theme;

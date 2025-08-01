@@ -1,5 +1,5 @@
 ---
-import CONFIG from "#root/config.toml";
+import config from "#root/config.toml";
 import "#src/fonts/index.ts";
 
 // NOTE: Attribute crossorigin="anonymous" is always required
@@ -8,8 +8,8 @@ import "#src/fonts/index.ts";
 
 <link
   rel="preload"
-  href={CONFIG.site.theme.mainFont.path}
+  href={config.site.theme.mainFont.path}
   as="font"
-  type={CONFIG.site.theme.mainFont.linkType}
+  type={config.site.theme.mainFont.linkType}
   crossorigin="anonymous"
 />

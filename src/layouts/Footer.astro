@@ -1,9 +1,9 @@
 ---
-import CONFIG from "#root/config.toml";
+import config from "#root/config.toml";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
-const startYear = CONFIG.site.metadata.startYear;
+const startYear = config.site.metadata.startYear;
 const endYear = new Date().getFullYear();
 const formattedPeriod =
   startYear == endYear ? `${endYear}` : `${startYear} – ${endYear}`;
@@ -19,7 +19,7 @@ const formattedPeriod =
     page for the most up-to-date information.
   </p>
   <p>
-    &copy;&nbsp;{`${formattedPeriod} ${CONFIG.site.metadata.author}`}.
+    &copy;&nbsp;{`${formattedPeriod} ${config.site.metadata.author}`}.
     <span class="not-print:hidden">All rights reserved.</span>
   </p>
 </footer>

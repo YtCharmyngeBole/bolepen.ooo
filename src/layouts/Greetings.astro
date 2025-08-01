@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 
 import MediaLink from "#layouts/MediaLink.astro";
-import CONFIG from "#root/config.toml";
+import config from "#root/config.toml";
 import imgProfilePic from "#src/images/profilepic.png";
 ---
 
@@ -30,7 +30,7 @@ import imgProfilePic from "#src/images/profilepic.png";
     Find me using the links below, and feel free to say hi!
   </p>
   <ul class="media-links leading-none">
-    {CONFIG.site.mediaLinks.map((item) => <MediaLink item={item} />)}
+    {config.site.mediaLinks.map((item) => <MediaLink item={item} />)}
   </ul>
 </header>
 
