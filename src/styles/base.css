@@ -1,0 +1,43 @@
+* {
+  /* Shifts down anchoring position from the top of the screen */
+  scroll-margin-top: --spacing(8);
+}
+
+html {
+  background-color: var(--color-default-background);
+  color: var(--color-default-foreground);
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @variant print {
+    --color-default-background: white;
+    --color-default-foreground: var(--color-gray-900);
+
+    background-color: white;
+    color: var(--color-gray-900);
+    font-size: 10pt;
+  }
+}
+
+/* Displays hyperlink URL when print */
+@variant print {
+  a[href]:after {
+    font-size: 0.95em;
+    content: " <" attr(href) ">";
+  }
+}
+
+/*
+ * Prohibits widows for appearing when print
+ * (Widow = single last line at the top of a new page)
+ */
+p {
+  widows: 2;
+}
+
+/* TODO: Where does this come from? Why is it here? */
+hr {
+  width: 100%;
+  border: 1px solid oklch(100% 0 0 / 10%);
+}

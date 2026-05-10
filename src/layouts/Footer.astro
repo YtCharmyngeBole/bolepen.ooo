@@ -1,0 +1,25 @@
+---
+import config from "~/config.toml";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
+const startYear = config.site.metadata.startYear;
+const endYear = new Date().getFullYear();
+const formattedPeriod =
+  startYear == endYear ? `${endYear}` : `${startYear} – ${endYear}`;
+---
+
+<footer
+  class="my-16 text-sm font-semibold tracking-wide text-pretty text-muted-foreground not-print:text-center"
+>
+  <p class="mb-4 not-print:hidden">
+    You have been reading a copy of the original document which is available at <a
+      href={canonicalURL}
+      class="hyperlink hyperlink-underline"></a>. Please refer to the referred
+    page for the most up-to-date information.
+  </p>
+  <p>
+    &copy;&nbsp;{`${formattedPeriod} ${config.site.metadata.author}`}.
+    <span class="not-print:hidden">All rights reserved.</span>
+  </p>
+</footer>

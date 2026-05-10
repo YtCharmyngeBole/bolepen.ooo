@@ -1,0 +1,25 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["node_modules", "vendor", "contrib", "dist"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "~components/*": ["./src/components/*"],
+      "~layouts/*": ["./src/layouts/*"],
+      "~styles/*": ["./src/styles/*"],
+      "~writeups/*": ["./src/writeups/*"],
+    },
+    "module": "ESNext",
+    "target": "ES2024",
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      },
+      {
+        "name": "typescript-plugin-toml"
+      }
+    ]
+  },
+}

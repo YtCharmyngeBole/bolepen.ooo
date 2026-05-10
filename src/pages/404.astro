@@ -1,0 +1,27 @@
+---
+import BaseLayout from "~layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 Not Found">
+  <div class="flex h-[100svh] flex-col items-center justify-center gap-1">
+    <h1
+      class="font-display text-2xl leading-relaxed font-extrabold tracking-wide text-(--color-title)"
+    >
+      404 Not Found
+    </h1>
+    <a
+      href="/"
+      class="leading-tight font-normal text-pretty hyperlink hyperlink-underline"
+      >Back to main page</a
+    >
+    <p class="mt-4 leading-loose text-balance text-gray-500">
+      (<em>But seriously</em>, what are you doing here?)
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  :root {
+    --color-title: oklch(87.16% 0.043 54.36);
+  }
+</style>

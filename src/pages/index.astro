@@ -1,0 +1,18 @@
+---
+import BaseLayout from "~layouts/BaseLayout.astro";
+import Footer from "~layouts/Footer.astro";
+import Greetings from "~layouts/Greetings.astro";
+import InnerBodyWrapper from "~layouts/InnerBodyWrapper.astro";
+
+import { Content } from "~writeups/home.mdx";
+---
+
+<BaseLayout>
+  <InnerBodyWrapper>
+    <Greetings />
+    <main class="markdown custom-container-width">
+      <Content />
+    </main>
+    <Footer />
+  </InnerBodyWrapper>
+</BaseLayout>

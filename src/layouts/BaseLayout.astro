@@ -1,0 +1,124 @@
+---
+import { ClientRouter } from "astro:transitions";
+
+import config from "~/config.toml";
+import FontLoading from "~/src/fonts/FontLoading.astro";
+import "~/src/styles/index.css";
+import { loadImageDynamic } from "~/src/utils/images.ts";
+
+export interface Props {
+  title?: string;
+  author?: string;
+  description?: string;
+  ogImageSrc?: string;
+  ogImageAlt?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title: rawTitle,
+  author = config.site.metadata.author,
+  description = config.site.metadata.description,
+  ogImageSrc = (await loadImageDynamic(config.site.ogImage.src))?.src,
+  ogImageAlt = config.site.ogImage.alt,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+} = Astro.props;
+
+const title = rawTitle
+  ? `${rawTitle} :: ${config.site.metadata.title}`
+  : config.site.metadata.fullTitle;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Theming Metadata -->
+    <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content={config.site.theme.color} />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="any"
+      href="/favicons/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta
+      name="apple-mobile-web-app-title"
+      content={config.site.metadata.shortTitle}
+    />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageSrc} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:image" content={ogImageSrc} />
+    <meta property="twitter:image:alt" content={ogImageAlt} />
+
+    <FontLoading />
+    <ClientRouter />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import { initMediaPrintEvents } from "~/src/scripts/print.ts";
+      import config from "~/config.toml";
+
+      function setupExpressiveCodePrintTheme() {
+        const htmlElement = document.querySelector("html");
+        if (!htmlElement) return;
+
+        window.addEventListener("mediaprintstart", () => {
+          console.log("Adding theme");
+          htmlElement.dataset.theme =
+            config.site.theme.expressiveCodePrintTheme;
+        });
+        window.addEventListener("mediaprintend", () => {
+          delete htmlElement.dataset.theme;
+          console.log("Removed theme");
+        });
+      }
+
+      initMediaPrintEvents();
+      setupExpressiveCodePrintTheme();
+    </script>
+  </body>
+</html>

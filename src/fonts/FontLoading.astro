@@ -1,0 +1,15 @@
+---
+import config from "~/config.toml";
+import "~/src/fonts/index.ts";
+
+// NOTE: Attribute crossorigin="anonymous" is always required
+//       even if the font is hosted on the same domain
+---
+
+<link
+  rel="preload"
+  href={config.site.theme.mainFont.path}
+  as="font"
+  type={config.site.theme.mainFont.linkType}
+  crossorigin="anonymous"
+/>

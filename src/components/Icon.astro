@@ -1,0 +1,15 @@
+---
+import { sentenceCase } from "change-case";
+
+export interface Props {
+  name: string;
+  title?: string;
+  isColor?: boolean;
+}
+
+const { name, title, isColor = false } = Astro.props as Props;
+---
+
+<span
+  class={`${isColor ? "iconify-color" : "iconify"} ${name} iconify-inline`}
+  title={title}></span>

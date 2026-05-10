@@ -1,0 +1,157 @@
+@import "tailwindcss";
+@import "./utilities.css";
+@import "./base.css" layer(base);
+@import "./markdown.css" layer(components);
+@import "./expressive-code.css" layer(components);
+@plugin "./iconify-tailwind/index.ts";
+
+/*
+ * __     __         _       _     _
+ * \ \   / /_ _ _ __(_) __ _| |__ | | ___  ___
+ *  \ \ / / _` | '__| |/ _` | '_ \| |/ _ \/ __|
+ *   \ V / (_| | |  | | (_| | |_) | |  __/\__ \
+ *    \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
+ *
+ */
+:root {
+  --hyperlink-foreground-resting: var(--color-hyperlink-orange);
+  --hyperlink-foreground-hover: var(--color-hyperlink-lemon);
+  --hyperlink-outline-focus: var(--hyperlink-foreground-resting);
+}
+
+/* Displays missing glyphs for iconify icons without concrete icon name */
+@property --svg {
+  syntax: "<url>";
+  inherits: false;
+  initial-value: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath fill='%23000' d='M22.996 51.754c2.977 2.977 7.125 2.93 10.101-.047l18.61-18.61c2.977-2.976 3.024-7.148.07-10.1L33.004 4.222c-2.977-2.953-7.125-2.883-10.102.093L4.316 22.902c-2.976 2.977-3.047 7.125-.07 10.102Zm4.289-17.461c-1.266 0-1.969-.656-1.969-1.922v-.328c0-2.414 1.313-3.727 3.094-4.945c2.156-1.477 3.188-2.32 3.188-4.008c0-1.852-1.454-3.117-3.704-3.117c-1.64 0-2.882.82-3.632 2.156c-.797.937-1.008 1.664-2.415 1.664c-.82 0-1.687-.586-1.687-1.687c0-.422.07-.82.211-1.22c.61-2.273 3.445-4.265 7.688-4.265c4.171 0 7.804 2.203 7.804 6.281c0 2.953-1.71 4.36-4.078 5.977c-1.687 1.148-2.531 1.992-2.531 3.375v.305c0 .96-.727 1.734-1.969 1.734m.094 7.055c-1.36 0-2.625-1.078-2.625-2.532s1.242-2.53 2.625-2.53c1.36 0 2.625 1.054 2.625 2.53c0 1.477-1.29 2.532-2.625 2.532'/%3E%3C/svg%3E");
+}
+
+/*
+ *  _____ _
+ * |_   _| |__   ___ _ __ ___   ___
+ *   | | | '_ \ / _ \ '_ ` _ \ / _ \
+ *   | | | | | |  __/ | | | | |  __/
+ *   |_| |_| |_|\___|_| |_| |_|\___|
+ *
+ */
+@theme {
+  /* Resets all color variables to initial */
+  --color-*: initial;
+
+  /* Basic colors */
+  --color-inherit: inherit;
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-white: oklch(100% 0 0);
+  --color-black: oklch(0% 0 0);
+
+  /*
+   * Gray color palette is taken in verbatim from Tailwind CSS
+   * at https://tailwindcss.com/docs/colors#default-color-palette-reference
+   */
+  --color-gray-50: oklch(98.5% 0.002 247.839);
+  --color-gray-100: oklch(96.7% 0.003 264.542);
+  --color-gray-200: oklch(92.8% 0.006 264.531);
+  --color-gray-300: oklch(87.2% 0.01 258.338);
+  --color-gray-400: oklch(70.7% 0.022 261.325);
+  --color-gray-500: oklch(55.1% 0.027 264.364);
+  --color-gray-600: oklch(44.6% 0.03 256.802);
+  --color-gray-700: oklch(37.3% 0.034 259.733);
+  --color-gray-800: oklch(27.8% 0.033 256.848);
+  --color-gray-900: oklch(21% 0.034 264.665);
+  --color-gray-950: oklch(13% 0.028 261.692);
+
+  /* Custom set of text foreground and background colors */
+  --color-default-background: oklch(15% 0.02 313);
+  --color-default-foreground: oklch(78% 0.014 259.83);
+  --color-muted-foreground: oklch(53.41% 0.0434 313.07);
+  --color-hyperlink-orange: oklch(70.77% 0.1844 27.61);
+  --color-hyperlink-lemon: oklch(94.55% 0.0661 88.89);
+
+  /* Specially named colors */
+  --color-bole: oklch(76% 0.15 360);
+  --color-beetroot: oklch(65.17% 0.103 360);
+  --color-orange: oklch(70.96% 0.147 25.44);
+  --color-lemon: oklch(85.52% 0.107 88.56);
+  --color-eggplant: oklch(69.12% 0.126 314.07);
+
+  /* Font family definitions */
+  --font-*: initial;
+  --font-display:
+    "Barlow", "Barlow fallback", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-body:
+    "Iosevka Custom Propo", "Iosevka fallback", ui-sans-serif, system-ui,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-mono:
+    "Iosevka Custom Mono", "Iosevka fallback", ui-monospace, SFMono-Regular,
+    Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Screen viewport breakpoints */
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 36rem;
+  --breakpoint-desktop: 72rem;
+
+  /* Animations */
+  --animate-go-next: go-next 1.6s ease infinite alternate;
+
+  @keyframes go-next {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0.3em);
+    }
+  }
+}
+
+/*
+ *  ____                    ____       _
+ * |  _ \ __ _  __ _  ___  / ___|  ___| |_ _   _ _ __
+ * | |_) / _` |/ _` |/ _ \ \___ \ / _ \ __| | | | '_ \
+ * |  __/ (_| | (_| |  __/  ___) |  __/ |_| |_| | |_) |
+ * |_|   \__,_|\__, |\___| |____/ \___|\__|\__,_| .__/
+ *             |___/                            |_|
+ */
+
+/* Page setup for print */
+@page {
+  size: A4 portrait;
+  margin: 0.75in;
+}
+
+/* No page number on the first page */
+@page :first {
+  @bottom-left {
+    content: "";
+  }
+
+  @bottom-right {
+    content: "";
+  }
+}
+
+/*
+ * On the right page (i.e. recto in left-to-right reading),
+ * the page number is displayed at the bottom right corner.
+ */
+@page :right {
+  @bottom-right {
+    font-size: 9pt;
+    color: var(--color-gray-600);
+    content: counter(page);
+  }
+}
+
+/*
+ * On the left page (i.e. verso in left-to-right reading),
+ * the page number is displayed at the bottom left corner.
+ */
+@page :left {
+  @bottom-left {
+    font-size: 9pt;
+    color: var(--color-gray-600);
+    content: counter(page);
+  }
+}

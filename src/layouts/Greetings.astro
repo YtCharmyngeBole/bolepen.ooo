@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+
+import config from "~/config.toml";
+import imgProfilePic from "~/src/images/profilepic.png";
+import MediaLink from "~layouts/MediaLink.astro";
+---
+
+<header
+  class="mt-16 mb-4 flex flex-col items-center gap-4 motion-safe:transition-all tablet:mt-24 desktop:mt-32 desktop:mb-8"
+>
+  <Image
+    src={imgProfilePic}
+    alt="Drawing of Bole's head"
+    title="Drawing of Bole's head"
+    width="288"
+    priority={true}
+    class="w-[192px] motion-safe:transition-all tablet:w-[288px] print:w-[2in]"
+  />
+  <h1 class="flex flex-col items-center gap-1 leading-relaxed">
+    <span
+      class="text-center font-display text-2xl font-bold tracking-wide text-(--color-name)"
+      >That Charming BOLE</span
+    >
+    <span class="text-center font-mono text-xl text-(--color-username)">
+      (@YtCharmyngeBole)
+    </span>
+  </h1>
+  <p class="text-center text-base/snug text-balance">
+    Find me using the links below, and feel free to say hi!
+  </p>
+  <ul class="media-links leading-none">
+    {config.site.mediaLinks.map((item) => <MediaLink item={item} />)}
+  </ul>
+</header>
+
+<style>
+  @reference "~/src/styles/index.css";
+
+  :root {
+    --color-name: oklch(87.16% 0.043 54.36);
+    --color-username: oklch(51.31% 0.026 104.5);
+  }
+
+  ul.media-links {
+    @variant not-print {
+      @apply flex w-fit max-w-144 flex-wrap justify-center gap-3 px-8 py-2;
+    }
+  }
+</style>
