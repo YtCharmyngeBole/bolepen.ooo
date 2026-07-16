@@ -21,6 +21,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import { ViteToml } from "vite-plugin-toml";
 
+import { twemojiAssets, twemojiIconUrl } from "./lib/astro/twemoji-assets.ts";
 import { pluginPlaceholderMarker } from "./lib/expressive-code/plugin-placeholder-marker.ts";
 import { langs } from "./lib/shiki/languages.ts";
 
@@ -117,12 +118,11 @@ const fallbackAlertConfig = {
   allowsCustomHeading: false,
 };
 
-// Configure Twemoji plugin to use local SVGs
+// Configure Twemoji plugin to use local SVGs.
+// The twemojiAssets integration serves and emits these under the same URL prefix.
 const replaceTwemojiConfig = {
   className: "twemoji",
-  callback(icon: string): string {
-    return `/twemoji/${icon}.svg`;
-  },
+  callback: twemojiIconUrl,
 };
 
 /*
@@ -136,7 +136,12 @@ const replaceTwemojiConfig = {
 export default defineConfig({
   site: config.site.baseUrl,
   prefetch: true,
-  integrations: [sitemap(), astroExpressiveCode(expressiveCodeConfig), mdx()],
+  integrations: [
+    sitemap(),
+    astroExpressiveCode(expressiveCodeConfig),
+    mdx(),
+    twemojiAssets(),
+  ],
   vite: {
     plugins: [tailwindcss(), ViteToml()],
   },

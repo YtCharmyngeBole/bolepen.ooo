@@ -1,6 +1,10 @@
 [submodule "vendor/twemoji"]
 	path = vendor/twemoji
 	url = https://github.com/jdecked/twemoji.git
+	shallow = true
 [submodule "vendor/iosevka"]
 	path = vendor/iosevka
 	url = https://github.com/be5invis/Iosevka.git
+	# Skip this on plain recursive clones (especially for Netlify build).
+	# To fetch it on purpose: git submodule update --init --checkout vendor/iosevka
+	update = none
