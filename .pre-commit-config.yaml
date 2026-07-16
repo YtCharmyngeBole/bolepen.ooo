@@ -1,0 +1,70 @@
+# Run `mise run pre-commit:install` once to enable these hooks, and
+# `mise run pre-commit:autoupdate` to refresh the frozen revisions below.
+
+# Generated and vendored trees are never ours to rewrite.
+exclude: |
+  (?x)^(
+    vendor/|
+    dist/|
+    public/fonts/|
+    .*\.lock$|
+    pnpm-lock\.yaml$
+  )
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # frozen: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: ["--fix", "lf"]
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-toml
+      - id: check-yaml
+      - id: check-ast
+      - id: debug-statements
+      - id: detect-private-key
+      - id: fix-byte-order-marker
+
+  # Python: lint, format, and lockfile, using the same ruff and uv as the python:* tasks.
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 2700fd5671c633760d912769c041bfcde2b9a01b # frozen: v0.15.22
+    hooks:
+      - id: ruff-check
+        args: ["--fix"]
+      - id: ruff-format
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: b7359babf83a050dcd7bf892538f3df09c3d4ba6 # frozen: 0.11.29
+    hooks:
+      - id: uv-lock
+
+  # Code formatting reuses the same tools as the `mise run node:format:*` tasks, so
+  # committing and running the task by hand give identical results. Markdown and
+  # MDX go through remark; everything else through Prettier (its own ignore file
+  # keeps it off Markdown and vendored paths).
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        language: system
+        entry: prettier --write --ignore-unknown
+        files: \.(ts|tsx|mjs|cjs|js|astro|css|json|json5|html)$
+        pass_filenames: true
+
+      - id: remark-markdown
+        name: remark (markdown)
+        language: system
+        entry: remark -u frontmatter -u gfm -u heading-gap -fo
+        files: \.md$
+        pass_filenames: true
+
+      - id: remark-mdx
+        name: remark (mdx)
+        language: system
+        entry: remark -e mdx -u frontmatter -u gfm -u heading-gap -u mdx -fo
+        files: \.mdx$
+        pass_filenames: true

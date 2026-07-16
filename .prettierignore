@@ -32,6 +32,9 @@ vendor/
 dist/
 build/
 
+# Generated font assets (produced by the iosevka mise tasks)
+public/fonts/
+
 # Report artifacts
 coverage/
 

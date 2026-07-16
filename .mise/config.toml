@@ -1,25 +1,48 @@
 min_version = "2025.6.0"
 
 [tools]
+"core:node" = "24"
+"core:python" = "3.13"
+"aqua:astral-sh/uv" = "latest"
 "aqua:charmbracelet/glow" = "latest"
 "aqua:charmbracelet/gum" = "latest"
 "aqua:ianlewis/todos" = "latest"
+"aqua:j178/prek" = "latest"
 "aqua:mikefarah/yq" = "latest"
-node = "24"
-python = "3.13"
+"aqua:pnpm/pnpm" = "latest"
+
+[settings]
+# Auto-create and activate the uv-managed .venv, so Python tools resolve without
+# manually adding .venv/bin to PATH.
+python.uv_venv_auto = "create|source"
 
 [env]
-_.path = [
-    "{{config_root}}/node_modules/.bin",
-    "{{config_root}}/.venv/bin",
-]
+_.path = ["{{config_root}}/node_modules/.bin"]
 PYTHONPATH = "{{config_root}}/contrib/iosevka/"
 
-#     _        _                ____                                          _
-#    / \   ___| |_ _ __ ___    / ___|___  _ __ ___  _ __ ___   __ _ _ __   __| |___
-#   / _ \ / __| __| '__/ _ \  | |   / _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` / __|
-#  / ___ \\__ \ |_| | | (_) | | |__| (_) | | | | | | | | | | | (_| | | | | (_| \__ \
-# /_/   \_\___/\__|_|  \___/   \____\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|___/
+#  ___      _
+# / __| ___| |_ _  _ _ __
+# \__ \/ -_)  _| || | '_ \
+# |___/\___|\__|\_,_| .__/
+#                  |_|
+
+[tasks.setup]
+description = "Prepare the dev environment after cloning: dependencies, submodules, and hooks"
+depends = ["submodules:sync", "node:sync", "python:sync", "pre-commit:install"]
+
+# vendor/iosevka carries update=none, so plain recursive clones (e.g. Netlify) skip it.
+# Development needs it to regenerate the fonts, so force its checkout explicitly.
+[tasks."submodules:sync"]
+description = "Check out git submodules for development, including Iosevka"
+run = [
+    "git submodule update --init --recursive",
+    "git submodule update --init --checkout vendor/iosevka",
+]
+
+#    _       _
+#   /_\   __| |_ _ _ ___
+#  / _ \ (_-<  _| '_/ _ \
+# /_/ \_\/__/\__|_| \___/
 #
 
 [tasks.dev]
@@ -29,7 +52,7 @@ alias = "d"
 
 [tasks.build]
 description = "Builds the static site"
-depends = ["typecheck"]
+depends = ["node:check:types"]
 run = "astro build"
 alias = "b"
 
@@ -38,38 +61,131 @@ description = "Previews the built site"
 run = "astro preview --host=0.0.0.0"
 alias = "p"
 
-#   ____          _         ___              _ _ _
-#  / ___|___   __| | ___   / _ \ _   _  __ _| (_) |_ _   _
-# | |   / _ \ / _` |/ _ \ | | | | | | |/ _` | | | __| | | |
-# | |__| (_) | (_| |  __/ | |_| | |_| | (_| | | | |_| |_| |
-#  \____\___/ \__,_|\___|  \__\_\\__,_|\__,_|_|_|\__|\__, |
-#                                                    |___/
+#   ___            _ _ _
+#  / _ \ _  _ __ _| (_) |_ _  _
+# | (_) | || / _` | | |  _| || |
+#  \__\_\\_,_\__,_|_|_|\__|\_, |
+#                          |__/
 
-[tasks.typecheck]
-description = "Performs type checking"
+[tasks.check]
+description = "Run all read-only quality gates across the code base"
+depends = ["node:check", "python:check"]
+alias = "c"
+
+[tasks.format]
+description = "Format the whole code base"
+depends = ["node:format", "python:format"]
+alias = "f"
+
+[tasks.update]
+description = "Update dependencies and pre-commit hooks"
+depends = ["node:update", "python:update", "pre-commit:autoupdate"]
+alias = "u"
+
+[tasks."check:todos"]
+description = "Scan the whole codebase for TODO and FIXME comments"
+run = "todos"
+
+#  _  _         _
+# | \| |___  __| |___
+# | .` / _ \/ _` / -_)
+# |_|\_\___/\__,_\___|
+#
+
+[tasks."node:sync"]
+description = "Install Node dependencies with pnpm"
+run = "pnpm install"
+
+[tasks."node:update"]
+description = "Update Node dependencies within their semver ranges"
+run = "pnpm update"
+
+[tasks."node:check"]
+description = "Type-check and format-check web sources"
+depends = ["node:check:types", "node:check:prettier"]
+
+[tasks."node:check:types"]
+description = "Type-check Astro and TypeScript sources"
 run = [
     "astro check",
     "tsc --noEmit",
 ]
-alias = "tc"
 
-[tasks.format]
-description = "Formats the code base"
-depends = [
-    "format:markdown .",
-    "format:mdx .",
-    "format:prettier .",
-]
-alias = "f"
+[tasks."node:check:prettier"]
+description = "Check formatting with Prettier without writing"
+run = "prettier . --check"
 
-[tasks."format:markdown"]
+[tasks."node:check:deps"]
+description = "Report unused and missing Node dependencies"
+run = "depcheck"
+
+[tasks."node:format"]
+description = "Format web sources: Markdown, MDX, and code"
+depends = ["node:format:markdown", "node:format:mdx", "node:format:prettier"]
+
+[tasks."node:format:markdown"]
 description = "Formats Markdown files"
-run = "remark {{arg(name='path', help='Path to markdown file')}} -u frontmatter -u gfm -u heading-gap -fo"
+usage = 'arg "<path>" help="Path to format" default="."'
+run = 'remark "${usage_path}" -u frontmatter -u gfm -u heading-gap -fo'
 
-[tasks."format:mdx"]
+[tasks."node:format:mdx"]
 description = "Formats MDX files"
-run = "remark {{arg(name='path', help='Path to MDX file')}} -e mdx -u frontmatter -u gfm -u heading-gap -u mdx -fo"
+usage = 'arg "<path>" help="Path to format" default="."'
+run = 'remark "${usage_path}" -e mdx -u frontmatter -u gfm -u heading-gap -u mdx -fo'
 
-[tasks."format:prettier"]
+[tasks."node:format:prettier"]
 description = "Formats code with Prettier"
-run = "prettier {{arg(name='path', help='Path to run prettier')}} --write"
+usage = 'arg "<path>" help="Path to format" default="."'
+run = 'prettier "${usage_path}" --write'
+
+#  ___      _   _
+# | _ \_  _| |_| |_  ___ _ _
+# |  _/ || |  _| ' \/ _ \ ' \
+# |_|  \_, |\__|_||_\___/_||_|
+#      |__/
+
+[tasks."python:sync"]
+description = "Install Python dependencies with uv"
+run = "uv sync"
+
+[tasks."python:update"]
+description = "Upgrade the uv lockfile to the latest allowed versions"
+run = "uv lock --upgrade"
+
+[tasks."python:check"]
+description = "Lint and type-check Python code"
+depends = ["python:check:lint", "python:check:types"]
+
+[tasks."python:check:lint"]
+description = "Lint Python code with ruff"
+run = "ruff check"
+
+[tasks."python:check:types"]
+description = "Type-check Python code with ty"
+run = "ty check"
+
+[tasks."python:format"]
+description = "Format Python code with ruff"
+run = ["ruff check --fix .", "ruff format ."]
+
+[tasks."python:test"]
+description = "Run Python tests with pytest"
+run = "pytest"
+
+#  ___                                _ _
+# | _ \_ _ ___ ___ __ ___ _ __  _ __ (_) |_
+# |  _/ '_/ -_)___/ _/ _ \ '  \| '  \| |  _|
+# |_| |_| \___|   \__\___/_|_|_|_|_|_|_|\__|
+#
+
+[tasks."pre-commit:install"]
+description = "Installs the prek git hooks"
+run = "prek install"
+
+[tasks."pre-commit:run"]
+description = "Runs prek against all files"
+run = "prek run --all-files"
+
+[tasks."pre-commit:autoupdate"]
+description = "Updates prek hook revisions, keeping them frozen to a SHA"
+run = "prek autoupdate --freeze"
