@@ -23,8 +23,7 @@ export interface PluginPlaceholderMarkersProps {
 }
 
 declare module "@expressive-code/core" {
-  export interface ExpressiveCodeBlockProps
-    extends PluginPlaceholderMarkersProps {}
+  export interface ExpressiveCodeBlockProps extends PluginPlaceholderMarkersProps {}
 }
 
 /**
