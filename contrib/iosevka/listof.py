@@ -1,5 +1,9 @@
+from __future__ import annotations
+
 import argparse
+
 from fontTools.ttLib import TTFont
+
 
 def list_opentype_features(woff2_path):
     """
@@ -47,19 +51,16 @@ def list_opentype_features(woff2_path):
 
     except FileNotFoundError:
         print(f"Error: Font file not found at '{woff2_path}'. Please check the path.")
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f"Error processing font '{woff2_path}': {e}")
+
 
 if __name__ == "__main__":
     # Set up argument parser
     parser = argparse.ArgumentParser(
         description="List OpenType features (GSUB and GPOS) of a WOFF2 font."
     )
-    parser.add_argument(
-        "font_path",
-        type=str,
-        help="The path to the WOFF2 font file."
-    )
+    parser.add_argument("font_path", type=str, help="The path to the WOFF2 font file.")
 
     # Parse command-line arguments
     args = parser.parse_args()

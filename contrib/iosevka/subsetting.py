@@ -49,7 +49,10 @@ from tqdm.rich import tqdm
 if TYPE_CHECKING:
     from collections.abc import Callable, Iterable, Iterator
 
-EXTRA_LAYOUT_FEATURES = "lnum,onum,CLIK,COQX,DFNY,ELMX,ERLA,FSHP,FSTA,HSKL,IDRS,JLIA,JSPT,MLXX,MTLB,PHPX,PURS,RAKU,SWFT,VRLG,WFLM"
+EXTRA_LAYOUT_FEATURES = (
+    "lnum,onum,CLIK,COQX,DFNY,ELMX,ERLA,FSHP,FSTA,HSKL,IDRS,JLIA,"
+    "JSPT,MLXX,MTLB,PHPX,PURS,RAKU,SWFT,VRLG,WFLM"
+)
 REMOVE_LAYOUT_FEATURES = "frac,numr,dnom"
 
 INFO = Style(color="gray74")
@@ -715,7 +718,7 @@ class UnicodeSubset:
     #
 
     def print_debug(self, file: io.TextIOWrapper = None):
-        name = self.name if self.name else "<unknown>"
+        name = self.name or "<unknown>"
         count = len(self.codepoints)
         subset_str = format(self, "U+XXXX-XXXX, ")
 
@@ -727,7 +730,7 @@ class UnicodeSubset:
             file.write(f"    {subset_str}\n")
 
     def print_debug_full(self, file: io.TextIOWrapper = None):
-        name = self.name if self.name else "<unknown>"
+        name = self.name or "<unknown>"
         count = len(self.codepoints)
 
         if file is None:
