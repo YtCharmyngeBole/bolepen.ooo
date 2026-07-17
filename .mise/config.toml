@@ -161,8 +161,8 @@ description = "Lint Python code with ruff"
 run = "ruff check"
 
 [tasks."python:check:types"]
-description = "Type-check Python code with ty"
-run = "ty check"
+description = "Type-check Python code with basedpyright"
+run = "basedpyright"
 
 [tasks."python:format"]
 description = "Format Python code with ruff"
