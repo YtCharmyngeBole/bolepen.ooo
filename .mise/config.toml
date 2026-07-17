@@ -126,12 +126,12 @@ depends = ["node:format:markdown", "node:format:mdx", "node:format:prettier"]
 [tasks."node:format:markdown"]
 description = "Formats Markdown files"
 usage = 'arg "<path>" help="Path to format" default="."'
-run = 'remark "${usage_path}" -u frontmatter -u gfm -u heading-gap -fo'
+run = 'remark -u frontmatter -u gfm -u heading-gap -fo -- "${usage_path}"'
 
 [tasks."node:format:mdx"]
 description = "Formats MDX files"
 usage = 'arg "<path>" help="Path to format" default="."'
-run = 'remark "${usage_path}" -e mdx -u frontmatter -u gfm -u heading-gap -u mdx -fo'
+run = 'remark -e mdx -u frontmatter -u gfm -u heading-gap -u mdx -fo -- "${usage_path}"'
 
 [tasks."node:format:prettier"]
 description = "Formats code with Prettier"

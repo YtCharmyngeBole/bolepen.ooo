@@ -58,13 +58,13 @@ repos:
       - id: remark-markdown
         name: remark (markdown)
         language: system
-        entry: remark -u frontmatter -u gfm -u heading-gap -fo
+        entry: remark -u frontmatter -u gfm -u heading-gap -fo --
         files: \.md$
         pass_filenames: true
 
       - id: remark-mdx
         name: remark (mdx)
         language: system
-        entry: remark -e mdx -u frontmatter -u gfm -u heading-gap -u mdx -fo
+        entry: remark -e mdx -u frontmatter -u gfm -u heading-gap -u mdx -fo --
         files: \.mdx$
         pass_filenames: true

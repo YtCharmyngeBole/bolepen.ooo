@@ -32,7 +32,7 @@ import warnings
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from pathlib import Path  # noqa: TC003
-from typing import TYPE_CHECKING, Annotated, NoReturn, Self
+from typing import TYPE_CHECKING, Annotated, Any, NoReturn, Self
 
 import textcase
 import typer
@@ -132,7 +132,7 @@ def program(  # noqa: PLR0913
         ),
     ],
     sample_font: Annotated[
-        Path,
+        Path | None,
         typer.Option(
             show_default=False,
             help="Uses this font to obtain all Unicode code points "
@@ -448,7 +448,7 @@ def with_unicode_file[R](
     """
 
     def decorator(processor_func: Callable[[io.TextIOWrapper], R]) -> Callable[[Path | None], R]:
-        def wrapper(path: Path = None) -> R:
+        def wrapper(path: Path | None = None) -> R:
             if path is None:
                 with (
                     urllib.request.urlopen(url) as response,  # noqa: S310
@@ -531,7 +531,7 @@ class SubsetsFinder:
     def from_config(cls, *, subsets_config: Path, sample_font: Path | None) -> Self:
         subsets = (
             cls._compute_subsets(config_file=subsets_config, font_file=sample_font)
-            if subsets_config
+            if sample_font
             else None
         )
         return cls(subsets_config=subsets_config, subsets=subsets)
@@ -647,7 +647,7 @@ class UnicodeSubset:
     #                       |___/
 
     @classmethod
-    def from_str(cls, s: str, *, name: str = None) -> Self:
+    def from_str(cls, s: str, *, name: str | None = None) -> Self:
         charset = set()
         for urange_str in s.split(","):
             urange = UnicodeRange.from_str(urange_str)
@@ -655,12 +655,12 @@ class UnicodeSubset:
         return cls(codepoints=charset, name=name)
 
     @classmethod
-    def from_font_file(cls, font_file: Path, *, name: str = None) -> Self:
+    def from_font_file(cls, font_file: Path, *, name: str | None = None) -> Self:
         font = TTFont(os.fspath(font_file))
         return cls.from_font(font, name=name)
 
     @classmethod
-    def from_font(cls, font: TTFont, *, name: str = None) -> Self:
+    def from_font(cls, font: TTFont, *, name: str | None = None) -> Self:
         charset = {
             codepoint
             for table in font["cmap"].tables
@@ -671,7 +671,7 @@ class UnicodeSubset:
 
     def __format__(self, format_spec: str) -> str:
         match = UNICODE_FORMAT_SPEC_RE.fullmatch(format_spec)
-        if not match and not match["separator"]:
+        if not match or not match["separator"]:
             raise ValueError(f"Invalid format specifier: {format_spec}")
 
         start_prefix, connector, end_prefix = match.group(
@@ -717,7 +717,7 @@ class UnicodeSubset:
     # |___|_|_|_|_|_|_\_,_|\__\__,_|_.__/_\___| |_|  |_\___|\__|_||_\___/\__,_/__/
     #
 
-    def print_debug(self, file: io.TextIOWrapper = None):
+    def print_debug(self, file: io.TextIOWrapper | None = None):
         name = self.name or "<unknown>"
         count = len(self.codepoints)
         subset_str = format(self, "U+XXXX-XXXX, ")
@@ -729,7 +729,7 @@ class UnicodeSubset:
             file.write(f"{name} ({count}):\n")
             file.write(f"    {subset_str}\n")
 
-    def print_debug_full(self, file: io.TextIOWrapper = None):
+    def print_debug_full(self, file: io.TextIOWrapper | None = None):
         name = self.name or "<unknown>"
         count = len(self.codepoints)
 
@@ -770,14 +770,14 @@ class UnicodeSubset:
         return new_subset
 
     def copy(self) -> Self:
-        return UnicodeSubset(codepoints=self.codepoints.copy())
+        return type(self)(codepoints=self.codepoints.copy())
 
     def with_name(self, name: str) -> Self:
-        return UnicodeSubset(name=name, codepoints=self.codepoints.copy())
+        return type(self)(name=name, codepoints=self.codepoints.copy())
 
     def without_invalid(self) -> Self:
         """Return a new UnicodeRanges with only valid code points."""
-        return UnicodeSubset({code for code in self.codepoints if self.check_valid(code)})
+        return type(self)(codepoints={code for code in self.codepoints if self.check_valid(code)})
 
     #  _  _                                    _
     # | \| |___ _ _ ___ ___ _ __  ___ _ _ __ _| |_ ___ _ _
@@ -960,7 +960,7 @@ class StyleMetric:
     name: str
     default_key: str
     fallback_keys: list[str]
-    map: dict[str, ...]
+    map: dict[str, str | int]
 
 
 @dataclass(frozen=True, kw_only=True, order=True)
@@ -1069,7 +1069,12 @@ class FontStyleParser:
         if font_filename == f"{self.plan_name}-Regular.woff2":
             width, weight, slope = "", "", ""
         else:
-            match = self.style_re.fullmatch(font_filename)  # always expected a match
+            match = self.style_re.fullmatch(font_filename)
+            if match is None:
+                raise error(
+                    f"Font filename {font_filename!r} does not match "
+                    f"the style pattern of plan {self.plan_name!r}"
+                )
             width, weight, slope = match.group("width", "weight", "slope")
         return CSSValues(
             width=self.widths_map[width],
@@ -1093,9 +1098,21 @@ class FontStyleParser:
         with build_plans.open("rb") as f:
             data = tomllib.load(f)
 
-        widths_map = cls.load_style_config(data["buildPlans"], plan_name, WIDTHS_STYLES)
-        weights_map = cls.load_style_config(data["buildPlans"], plan_name, WEIGHTS_STYLES)
-        slopes_map = cls.load_style_config(data["buildPlans"], plan_name, SLOPES_STYLES)
+        # Each metric map is converted to its true value type at this boundary;
+        # int() fails loudly on values that cannot be weights.
+        raw_plans = data["buildPlans"]
+        widths_map = {
+            k: str(v)
+            for k, v in cls.load_style_config(raw_plans, plan_name, WIDTHS_STYLES).items()
+        }
+        weights_map = {
+            k: int(v)
+            for k, v in cls.load_style_config(raw_plans, plan_name, WEIGHTS_STYLES).items()
+        }
+        slopes_map = {
+            k: str(v)
+            for k, v in cls.load_style_config(raw_plans, plan_name, SLOPES_STYLES).items()
+        }
         metric_re = cls.build_style_re(
             plan_name=plan_name,
             widths=list(widths_map.keys()),
@@ -1113,17 +1130,32 @@ class FontStyleParser:
     @staticmethod
     def load_style_config(
         config: JSONValue, plan_name: str, metric: StyleMetric
-    ) -> dict[str, ...]:
+    ) -> dict[str, str | int]:
         viewer = JSONViewer(config)
         while True:
             metric_viewer = viewer[plan_name, metric.name]
             if inherits := ~metric_viewer["inherits"]:
+                if not isinstance(inherits, str):
+                    raise error(
+                        f"`inherits` under plan {plan_name!r} must be a string, got {inherits!r}"
+                    )
                 plan_name = FontStyleParser.parse_plan_name(inherits)
             else:
                 break
-        metric_map = {}
-        for key in list(~metric_viewer or metric.fallback_keys):
+        metric_map: dict[str, str | int] = {}
+        raw_metric = ~metric_viewer
+        keys = (
+            list(raw_metric)
+            if isinstance(raw_metric, dict) and raw_metric
+            else metric.fallback_keys
+        )
+        for key in keys:
             value = ~metric_viewer[key, "css"] or metric.map.get(key, key)
+            if not isinstance(value, str | int):
+                raise error(
+                    f"Value for {metric.name}[{key!r}] under plan {plan_name!r} "
+                    f"must be a string or integer, got {value!r}"
+                )
             sanitized_key = "" if key == metric.default_key else key
             metric_map[sanitized_key] = value
         return metric_map
@@ -1163,7 +1195,7 @@ def strip_comment(s: str) -> str:
     return s[:pos].strip() if pos != -1 else s.strip()
 
 
-def rich_string[**P](*args: P.args, end: str = "", **kwargs: P.kwargs) -> str:
+def rich_string(*args: Any, end: str = "", **kwargs: Any) -> str:  # noqa: ANN401
     """Rich's print-compatible function that returns a string instead of printing to console."""
     string_io = io.StringIO()
     console = Console(file=string_io, force_terminal=True, highlight=False)
@@ -1171,7 +1203,7 @@ def rich_string[**P](*args: P.args, end: str = "", **kwargs: P.kwargs) -> str:
     return string_io.getvalue()
 
 
-def error[**P](*args: P.args, status: int = 1, **kwargs: P.kwargs) -> typer.Exit:
+def error(*args: Any, status: int = 1, **kwargs: Any) -> typer.Exit:  # noqa: ANN401
     """
     Print an error message to the console and exit the program.
     The caller should raise the value returned by this function.
@@ -1200,11 +1232,13 @@ class JSONViewer:
         JSONViewer(2)
         >>> ~viewer["banana", "yellow"]
         2
-        >>> ~viewer["banana"]["red"]
+        >>> ~viewer["banana"]["yellow"]
         2
         >>> viewer["banana", "red"]
         JSONViewer(None)
         >>> viewer["banana", "red", "cool"]
+        JSONViewer(None)
+        >>> viewer["apple", "seed"]
         JSONViewer(None)
         >>> ~viewer
         {"apple": 1, "banana": {"yellow": 2, "green": 3}}
@@ -1226,13 +1260,17 @@ class JSONViewer:
         value = self._data
         for key in keys:
             if isinstance(value, dict):
-                if key not in value:
+                if not isinstance(key, str) or key not in value:
                     return None
                 value = value[key]
             elif isinstance(value, list) and isinstance(key, int):
                 if key < 0 or key >= len(value):
                     return None
                 value = value[key]
+            else:
+                # A non-container (or a mistyped key) with keys remaining means the
+                # path misses; without this the leaf itself would be returned.
+                return None
         return value
 
     def __setitem__(self, item: JSONKey | tuple[JSONKey, ...], value: JSONValue) -> NoReturn:
