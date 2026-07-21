@@ -38,7 +38,7 @@
     "@twemoji/api": "^16.0.1",
     "@types/hast": "^3.0.5",
     "@types/lodash": "^4.17.24",
-    "astro": "^5.18.2",
+    "astro": "^7.1.0",
     "astro-expressive-code": "^0.41.7",
     "date-fns": "^4.4.0",
     "github-slugger": "^2.0.0",
