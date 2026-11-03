@@ -7,7 +7,7 @@ license = "Apache-2.0"
 classifiers = ["Private :: Do Not Upload"]
 
 dependencies = [
-    "brotli~=1.1",
+    "brotli~=1.2",
     "fonttools~=4.53",
     "rich~=14.0",
     "textcase~=0.4.3",
