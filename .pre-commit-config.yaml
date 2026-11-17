@@ -38,7 +38,7 @@ repos:
         args: ["--fix"]
       - id: ruff-format
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: b7359babf83a050dcd7bf892538f3df09c3d4ba6 # frozen: 0.11.29
+    rev: b9d5257d60a86c20fd9a3919d548e08ba5ab905b # frozen: 0.13.8
     hooks:
       - id: uv-lock
 
